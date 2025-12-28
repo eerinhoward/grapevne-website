@@ -1,0 +1,369 @@
+import React, { useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+
+function About() {
+  const location = useLocation()
+  const logoRef = useRef(null)
+  const currentRotateX = useRef(0)
+  const currentRotateY = useRef(0)
+  const targetRotateX = useRef(0)
+  const targetRotateY = useRef(0)
+  const animationFrameId = useRef(null)
+  
+  useEffect(() => {
+    const cursor = document.createElement('div')
+    cursor.innerHTML = '🍔'
+    cursor.style.position = 'fixed'
+    cursor.style.pointerEvents = 'none'
+    cursor.style.fontSize = '24px'
+    cursor.style.zIndex = '9999'
+    cursor.style.transform = 'translate(-50%, -50%)'
+    document.body.appendChild(cursor)
+    document.body.style.cursor = 'none'
+
+    const updateLogoTransform = () => {
+      if (logoRef.current) {
+        const logo = logoRef.current
+        const lerpFactor = 0.6
+        currentRotateX.current += (targetRotateX.current - currentRotateX.current) * lerpFactor
+        currentRotateY.current += (targetRotateY.current - currentRotateY.current) * lerpFactor
+
+        logo.style.transform = `perspective(1000px) rotateX(${currentRotateX.current}deg) rotateY(${currentRotateY.current}deg)`
+      }
+      animationFrameId.current = requestAnimationFrame(updateLogoTransform)
+    }
+
+    const handleMouseMove = (e) => {
+      cursor.style.left = e.clientX + 'px'
+      cursor.style.top = e.clientY + 'px'
+
+      const target = e.target
+      const isClickable = target.closest('a, button, [onclick], [role="button"], input, textarea, select')
+      if (isClickable) {
+        cursor.style.opacity = '0'
+      } else {
+        cursor.style.opacity = '1'
+      }
+
+      // 3D effect for logo
+      if (logoRef.current) {
+        const logo = logoRef.current
+        const rect = logo.getBoundingClientRect()
+        const logoCenterX = rect.left + rect.width / 2
+        const logoCenterY = rect.top + rect.height / 2
+
+        const dx = e.clientX - logoCenterX
+        const dy = e.clientY - logoCenterY
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        
+        const viewportWidth = window.innerWidth
+        const viewportHeight = window.innerHeight
+        const maxDistance = Math.sqrt(viewportWidth * viewportWidth + viewportHeight * viewportHeight)
+        const normalizedDistance = Math.min(distance / maxDistance, 1)
+        
+        const influence = normalizedDistance * 0.35 + 0.2
+        const angle = Math.atan2(dy, dx)
+        const maxRotation = 60
+        targetRotateY.current = Math.cos(angle) * maxRotation * influence
+        targetRotateX.current = -Math.sin(angle) * maxRotation * influence
+      }
+    }
+
+    // Start animation loop
+    animationFrameId.current = requestAnimationFrame(updateLogoTransform)
+
+    document.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.body.removeChild(cursor)
+      document.body.style.cursor = 'auto'
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current)
+      }
+    }
+  }, [])
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header with Logo */}
+      <header className="pt-8 pb-6 px-4 relative">
+        <div className="flex justify-center items-center gap-4">
+          <div className="flex flex-col items-center">
+            <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+              Press
+            </Link>
+            {location.pathname === '/press' && (
+              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+            )}
+          </div>
+          <Link to="/" className="flex justify-center">
+            <img 
+              ref={logoRef}
+              src="/filledTransparent.png" 
+              alt="Grapevne Logo" 
+              className="h-28 w-auto"
+              style={{ 
+                transformStyle: 'preserve-3d',
+                willChange: 'transform'
+              }}
+            />
+          </Link>
+          <div className="flex flex-col items-center">
+            <Link to="/about" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+              About
+            </Link>
+            {location.pathname === '/about' && (
+              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+            )}
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-4xl mx-auto px-8 py-20">
+        <div className="space-y-16">
+          {/* Hero Section */}
+          <section className="text-center mb-20">
+            <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-8 leading-tight lowercase">
+              I gather, therefore I am.
+            </h1>
+          </section>
+
+          {/* First Section */}
+          <section className="space-y-6 text-center">
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Since the beginning, people have found reasons to come together.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Around food. Around stories. Around whatever was available.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Sharing a meal is one of the oldest social acts we have. It's how friendships start, ideas spread, and communities take shape.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              And yet, somehow, getting fed on campus has become weirdly hard.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Free food exists everywhere - club meetings, pop-ups, events, leftover catering - but it's scattered, unannounced, and easy to miss. You hear about it ten minutes too late. Or not at all.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              So we built something better.
+            </p>
+          </section>
+
+          {/* Solution Section */}
+          <section className="space-y-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 leading-tight lowercase">
+              From "there might be food" to "I'm on my way"
+            </h2>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Grapevne makes campus food visible in real time.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Not tomorrow. Not in a buried email. Not through five group chats.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Whether you're posting leftover pizza, finding a pop-up across campus, or just trying to eat between classes, Grapevne turns missed moments into shared ones.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              It's simple: see what's happening, where it is, and when it's gone.
+            </p>
+          </section>
+
+          {/* Built For Section */}
+          <section className="space-y-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 leading-tight lowercase">
+              Built for how campuses actually work
+            </h2>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              We didn't design Grapevne in theory - we built it while living this problem.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              We know how fast food disappears.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              We know how chaotic campus schedules are.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              We know how often things go to waste simply because no one knew.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              So we made something lightweight, fast, and social by default. No friction. No overthinking. Just enough structure to make sharing easy - and finding food even easier.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Because when access improves, waste drops.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              And when food moves better, people do too.
+            </p>
+          </section>
+
+          {/* Team Section */}
+          <section className="space-y-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 leading-tight lowercase">
+              Who's behind this?
+            </h2>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              We're a small team who cares a little too much about how things move through campus.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Some of us hate seeing food thrown out.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Some of us hate missing it.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Some of us just believe that access - to food, to space, to each other - shouldn't depend on being "in the know."
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Different backgrounds, same belief:
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              small systems shape daily life more than big ideas do.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              That's why we're building Grapevne.
+            </p>
+            <p className="text-xl text-gray-900 leading-relaxed">
+              Not to reinvent campus - but to make it work the way it always should have.
+            </p>
+          </section>
+        </div>
+      </main>
+
+      {/* Team Members Section */}
+      <section className="py-20 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto">
+            {[
+              // Top left
+              { 
+                default: '/team-member-1-1.png', 
+                hover: '/team-member-1-2.png',
+                name: 'Team Member 1',
+                location: 'Location',
+                major: 'Major',
+                college: 'College',
+                title: 'Head of Marketing'
+              },
+              // Top middle
+              { 
+                default: '/team-member-2-1.png', 
+                hover: '/team-member-2-2.png',
+                name: 'Team Member 2',
+                location: 'Location',
+                major: 'Major',
+                college: 'College',
+                title: 'Head of UR/UX'
+              },
+              // Top right
+              { 
+                default: '/team-member-3-1.png', 
+                hover: '/team-member-3-2.png',
+                name: 'Team Member 3',
+                location: 'Location',
+                major: 'Major',
+                college: 'College',
+                title: 'Head of Communications'
+              },
+              // Bottom left
+              { 
+                default: '/team-member-4-1.png', 
+                hover: '/team-member-4-2.png',
+                name: 'Team Member 4',
+                location: 'Location',
+                major: 'Major',
+                college: 'College',
+                title: 'Head of Product Management'
+              },
+              // Bottom middle
+              { 
+                default: '/team-member-5-1.png', 
+                hover: '/team-member-5-2.png',
+                name: 'Team Member 5',
+                location: 'Location',
+                major: 'Major',
+                college: 'College',
+                title: 'Founder and Lead Developer and CEO'
+              },
+              // Bottom right
+              { 
+                default: '/team-member-6-1.png', 
+                hover: '/team-member-6-2.png',
+                name: 'Team Member 6',
+                location: 'Location',
+                major: 'Major',
+                college: 'College',
+                title: 'Advisor'
+              }
+            ].map((member, index) => (
+              <div key={index} className="relative group cursor-pointer">
+                <div className="relative overflow-hidden" style={{ aspectRatio: '3/4' }}>
+                  {/* Default Image */}
+                  <img
+                    src={member.default}
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-all duration-300"
+                    style={{ filter: 'grayscale(100%) sepia(100%) hue-rotate(200deg) saturate(200%) brightness(0.8)' }}
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                    }}
+                  />
+                  {/* Hover Overlay with Info */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
+                    style={{ backgroundColor: 'var(--grapevne-blue)' }}
+                  >
+                    <div className="text-black text-left w-full" style={{ fontSize: '14px', lineHeight: '1.6', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                      <div className="text-sm">
+                        {member.location && member.major && member.college && member.title && (
+                          <div>
+                            <div>
+                              <span className="bg-black text-white px-2 py-1 inline-block text-sm" style={{ fontFamily: 'Canela, serif' }}>
+                                {member.name}
+                              </span>
+                            </div>
+                            <div>
+                              / {member.location} / {member.major} /
+                            </div>
+                            <div>
+                              {member.college} / {member.title}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer with ®, ™, and © symbols */}
+      <footer className="py-8 px-4">
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
+          <div className="flex justify-center items-center gap-3">
+            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
+            <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
+            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+          </div>
+          <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
+            <span className="text-gray-400 font-medium">USE CASES</span>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
+export default About
+
