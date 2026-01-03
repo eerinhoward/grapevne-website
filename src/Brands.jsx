@@ -143,32 +143,24 @@ function Brands() {
             
             {/* Goal List */}
             <div className="mb-8">
-              <label className="block text-xl mb-4" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Choose your goal
-              </label>
               <div className="space-y-3">
                 {Object.keys(goals).map((goal) => (
-                  <div key={goal} className="flex items-start gap-4">
-                    <input
-                      type="radio"
-                      id={goal}
-                      name="goal"
-                      value={goal}
-                      checked={selectedGoal === goal}
-                      onChange={(e) => setSelectedGoal(e.target.value)}
-                      className="mt-1"
-                      style={{ accentColor: '#1a1a1a' }}
-                    />
-                    <label 
-                      htmlFor={goal}
-                      className="text-xl cursor-pointer flex-1"
-                      style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
-                    >
+                  <div 
+                    key={goal} 
+                    className="flex items-start gap-4 cursor-pointer"
+                    onClick={() => setSelectedGoal(selectedGoal === goal ? '' : goal)}
+                  >
+                    <div className="flex items-center" style={{ paddingTop: '0.25rem' }}>
+                      {selectedGoal === goal && (
+                        <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+                      )}
+                    </div>
+                    <div className="text-xl flex-1" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
                       <div className="font-medium mb-1">{goal}</div>
                       <div className="text-base font-normal" style={{ color: '#666' }}>
                         {goals[goal]}
                       </div>
-                    </label>
+                    </div>
                   </div>
                 ))}
               </div>
