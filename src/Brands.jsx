@@ -81,14 +81,33 @@ function Brands() {
     <div className="min-h-screen bg-white">
       {/* Header with Logo */}
       <header className="pt-4 pb-4 px-4 relative">
-        <div className="flex justify-center items-center gap-4">
-          <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              Press
-            </Link>
-            {location.pathname === '/press' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
+        <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
+          <div className="flex items-center gap-6 pl-8 md:pl-12">
+            <div className="flex flex-col items-center">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                Press
+              </Link>
+              {location.pathname === '/press' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <div className="flex flex-col items-center">
+              <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                About
+              </Link>
+              {location.pathname === '/about' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <a 
+              href="https://apps.apple.com/us/app/grapevne/id6745459372" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
+              style={{ color: '#1a1a1a' }}
+            >
+              download
+            </a>
           </div>
           <Link to="/" className="flex justify-center">
             <img 
@@ -102,14 +121,6 @@ function Brands() {
               }}
             />
           </Link>
-          <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              About
-            </Link>
-            {location.pathname === '/about' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
-          </div>
         </div>
       </header>
 
@@ -217,8 +228,8 @@ function Brands() {
             <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
             <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>
           </div>
         </div>
       </footer>

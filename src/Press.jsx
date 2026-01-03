@@ -337,8 +337,8 @@ function Press() {
     <div className={`min-h-screen bg-white flex flex-col ${reachedEnd ? 'overflow-auto' : 'overflow-hidden h-screen'}`}>
       {/* Header with Logo */}
       <header className="pt-4 pb-4 px-4 relative flex-shrink-0">
-        <div className="flex flex-col justify-center items-center gap-4">
-          <div className="flex justify-center items-center gap-4">
+        <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
+          <div className="flex items-center gap-6 pl-8 md:pl-12">
             <div className="flex flex-col items-center">
               <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
                 Press
@@ -347,18 +347,6 @@ function Press() {
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
-            <Link to="/" className="flex justify-center">
-              <img 
-                ref={logoRef}
-                src="/filledTransparent.png" 
-                alt="Grapevne Logo" 
-                className="h-28 w-auto"
-                style={{ 
-                  transformStyle: 'preserve-3d',
-                  willChange: 'transform'
-                }}
-              />
-            </Link>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
                 About
@@ -367,9 +355,31 @@ function Press() {
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
+            <a 
+              href="https://apps.apple.com/us/app/grapevne/id6745459372" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
+              style={{ color: '#1a1a1a' }}
+            >
+              download
+            </a>
           </div>
-          {/* Social Media Links */}
-          <div className="flex items-center gap-4">
+          <Link to="/" className="flex justify-center">
+            <img 
+              ref={logoRef}
+              src="/filledTransparent.png" 
+              alt="Grapevne Logo" 
+              className="h-28 w-auto"
+              style={{ 
+                transformStyle: 'preserve-3d',
+                willChange: 'transform'
+              }}
+            />
+          </Link>
+        </div>
+        {/* Social Media Links */}
+        <div className="flex items-center justify-center gap-4 mt-4">
             <a 
               href="https://www.linkedin.com/company/grapevneapp" 
               target="_blank" 
@@ -407,7 +417,6 @@ function Press() {
               </svg>
             </a>
           </div>
-        </div>
       </header>
 
       {/* Kitchen Order Rail */}
@@ -505,7 +514,7 @@ function Press() {
               return (
               <div 
                 key={item.id} 
-                className="flex-shrink-0 w-56 relative ticket-wrapper"
+                className="flex-shrink-0 w-64 relative ticket-wrapper"
                 data-index={index}
                 style={{
                   transform: `rotate(${baseRotation}deg)`,
@@ -676,8 +685,8 @@ function Press() {
             <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
             <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>
           </div>
         </div>
       </footer>

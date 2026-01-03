@@ -9,7 +9,7 @@ function Home() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [currentSection, setCurrentSection] = useState(0) // 0 = first, 1 = middle, 2 = map, 3 = campus footprint, 4 = no RSVP
+  const [currentSection, setCurrentSection] = useState(0) // 0 = first, 1 = middle, 2 = map, 3 = campus footprint, 4 = Grapevne, 5 = no RSVP
   const [middleStep, setMiddleStep] = useState(0) // 0-4 for the animated sequence in section 1
   const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
@@ -33,10 +33,14 @@ function Home() {
           targetSection = 3
         } else if (currentSectionRef.current === 3 && scrollY >= 8850) {
           targetSection = 4
+        } else if (currentSectionRef.current === 4 && scrollY >= 10050) {
+          targetSection = 5
         }
       } else {
         // Scrolling up - can only go back to previous section
-        if (currentSectionRef.current === 4 && scrollY < 8850) {
+        if (currentSectionRef.current === 5 && scrollY < 10050) {
+          targetSection = 4
+        } else if (currentSectionRef.current === 4 && scrollY < 8850) {
           targetSection = 3
         } else if (currentSectionRef.current === 3 && scrollY < 7650) {
           targetSection = 2
@@ -168,7 +172,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="bg-white flex flex-col" style={{ minHeight: '1100vh' }}>
+    <div className="bg-white flex flex-col" style={{ minHeight: '1200vh' }}>
       {/* Background Strip - hides with navbar */}
       <div 
         className="fixed top-0 left-0 right-0 h-[120px] bg-transparent z-10 transition-transform duration-300"
@@ -180,14 +184,33 @@ function Home() {
         className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-transparent z-20 transition-transform duration-300"
         style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
       >
-        <div className="flex justify-center items-center gap-4" style={{ perspective: '1000px' }}>
-          <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              Press
-            </Link>
-            {location.pathname === '/press' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
+        <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
+          <div className="flex items-center gap-6 pl-8 md:pl-12">
+            <div className="flex flex-col items-center">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                Press
+              </Link>
+              {location.pathname === '/press' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <div className="flex flex-col items-center">
+              <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                About
+              </Link>
+              {location.pathname === '/about' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <a 
+              href="https://apps.apple.com/us/app/grapevne/id6745459372" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
+              style={{ color: '#1a1a1a' }}
+            >
+              download
+            </a>
           </div>
           <Link to="/" className="flex justify-center">
             <img 
@@ -201,14 +224,6 @@ function Home() {
               }}
             />
           </Link>
-          <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              About
-            </Link>
-            {location.pathname === '/about' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
-          </div>
         </div>
       </header>
 
@@ -231,7 +246,7 @@ function Home() {
               </h2>
               <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                 While it's happening.
-          </h2>
+              </h2>
             </div>
             
             {/* Bottom - Horizontal Image Row */}
@@ -267,8 +282,8 @@ function Home() {
             }}
           >
             <div className="text-2xl md:text-3xl lg:text-4xl lowercase whitespace-nowrap" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <span>grapevne is </span>
-              <span>a real-time campus discovery layer.</span>
+              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none' }}>Grapevne</span>
+              <span> is the real-time campus discovery layer.</span>
             </div>
           </div>
           
@@ -292,7 +307,8 @@ function Home() {
                           middleStep >= 2 ? 'translateX(300px)' : 'translateX(400px)'
               }}
             >
-              <span>grapevne is </span>
+              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none' }}>Grapevne</span>
+              <span> is </span>
               <span className="transition-all duration-500" style={{ opacity: middleStep >= 1 ? 1 : 0 }}>
                 free food
               </span>
@@ -419,13 +435,27 @@ function Home() {
           </div>
         </div>
         
-        {/* Section 4 - No RSVP, No coordinate */}
+        {/* Section 4 - Grapevne */}
         <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
           style={{
-            transform: currentSection === 4 ? 'translateY(-5%)' : 'translateY(100%)',
+            transform: currentSection === 4 ? 'translateY(-5%)' : (currentSection === 5 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 4 ? 1 : 0,
             pointerEvents: currentSection === 4 ? 'auto' : 'none'
+          }}
+        >
+          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
+            Grapevne
+          </div>
+        </div>
+        
+        {/* Section 5 - No RSVP, No coordinate */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          style={{
+            transform: currentSection === 5 ? 'translateY(-5%)' : 'translateY(100%)',
+            opacity: currentSection === 5 ? 1 : 0,
+            pointerEvents: currentSection === 5 ? 'auto' : 'none'
           }}
         >
           <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-center" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -464,8 +494,8 @@ function Home() {
             <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
             <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>
           </div>
           {/* Social Media Links */}
           <div className="flex justify-center items-center gap-3 mt-2">

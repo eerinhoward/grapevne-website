@@ -88,14 +88,33 @@ function About() {
     <div className="min-h-screen bg-white">
       {/* Header with Logo */}
       <header className="pt-4 pb-4 px-4 relative">
-        <div className="flex justify-center items-center gap-4">
-          <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              Press
-            </Link>
-            {location.pathname === '/press' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
+        <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
+          <div className="flex items-center gap-6 pl-8 md:pl-12">
+            <div className="flex flex-col items-center">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                Press
+              </Link>
+              {location.pathname === '/press' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <div className="flex flex-col items-center">
+              <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                About
+              </Link>
+              {location.pathname === '/about' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <a 
+              href="https://apps.apple.com/us/app/grapevne/id6745459372" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
+              style={{ color: '#1a1a1a' }}
+            >
+              download
+            </a>
           </div>
           <Link to="/" className="flex justify-center">
             <img 
@@ -109,125 +128,79 @@ function About() {
               }}
             />
           </Link>
-          <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              About
-            </Link>
-            {location.pathname === '/about' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
-          </div>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
-        <div className="space-y-16">
-          {/* Hero Section */}
-          <section className="text-center mb-20">
-            <h1 className="text-5xl md:text-6xl font-light mb-8 leading-tight lowercase" style={{ color: '#1a1a1a' }}>
-              I gather, therefore I am.
-            </h1>
+        <div className="space-y-20 md:space-y-32">
+          {/* First Section - Image Left, Text Right */}
+          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="w-full md:w-1/2">
+              <img 
+                src="/walking.jpg" 
+                alt="Grapevne community" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="w-full md:w-1/2 space-y-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
+                We're here to make what's already happening easier to find.
+              </h2>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+                Grapevne is a campus platform for free food and other moments that don't last long. By showing what exists in real time, we help students move through campus with more awareness - and less waste.
+              </p>
+            </div>
           </section>
 
-          {/* First Section */}
-          <section className="space-y-6 text-center">
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Since the beginning, people have found reasons to come together.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Around food. Around stories. Around whatever was available.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Sharing a meal is one of the oldest social acts we have. It's how friendships start, ideas spread, and communities take shape.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              And yet, somehow, getting fed on campus has become weirdly hard.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Free food exists everywhere - club meetings, pop-ups, events, leftover catering - but it's scattered, unannounced, and easy to miss. You hear about it ten minutes too late. Or not at all.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              So we built something better.
-            </p>
+          {/* Second Section - Text Left, Image Right */}
+          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="w-full md:w-1/2 space-y-6 order-2 md:order-1">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
+                What makes us different
+              </h2>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+                A lot of what happens on campus spreads quietly. Someone hears about it, tells a friend, and if you're nearby, you make it in time. Grapevne is built to surface those moments - before they pass.
+              </p>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+                We focus on availability over popularity. Free food and other finite moments show up suddenly and fade fast. By showing what's available in real time, we help students see what's happening around them, not what's trending elsewhere - and move through campus with more awareness and less waste.
+              </p>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+                Free food is the entry point. But Grapevne isn't just about food. It's about the moments that don't last long, but are worth noticing while they do - and deciding whether you're on your way.
+              </p>
+            </div>
+            <div className="w-full md:w-1/2 order-1 md:order-2">
+              <img 
+                src="/girl.png" 
+                alt="Grapevne moments" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </section>
 
-          {/* Solution Section */}
-          <section className="space-y-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-light leading-tight lowercase" style={{ color: '#1a1a1a' }}>
-              From "there might be food" to "I'm on my way"
-            </h2>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Grapevne makes campus food visible in real time.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Not tomorrow. Not in a buried email. Not through five group chats.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Whether you're posting leftover pizza, finding a pop-up across campus, or just trying to eat between classes, Grapevne turns missed moments into shared ones.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              It's simple: see what's happening, where it is, and when it's gone.
-            </p>
-          </section>
-
-          {/* Built For Section */}
-          <section className="space-y-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-light leading-tight lowercase" style={{ color: '#1a1a1a' }}>
-              Built for how campuses actually work
-            </h2>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              We didn't design Grapevne in theory - we built it while living this problem.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              We know how fast food disappears.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              We know how chaotic campus schedules are.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              We know how often things go to waste simply because no one knew.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              So we made something lightweight, fast, and social by default. No friction. No overthinking. Just enough structure to make sharing easy - and finding food even easier.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Because when access improves, waste drops.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              And when food moves better, people do too.
-            </p>
-          </section>
-
-          {/* Team Section */}
-          <section className="space-y-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-light leading-tight lowercase" style={{ color: '#1a1a1a' }}>
-              Who's behind this?
-            </h2>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              We're a small team who cares a little too much about how things move through campus.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Some of us hate seeing food thrown out.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Some of us hate missing it.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Some of us just believe that access - to food, to space, to each other - shouldn't depend on being "in the know."
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Different backgrounds, same belief:
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              small systems shape daily life more than big ideas do.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              That's why we're building Grapevne.
-            </p>
-            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-              Not to reinvent campus - but to make it work the way it always should have.
-            </p>
+          {/* Third Section - Image Left, Text Right */}
+          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            <div className="w-full md:w-1/2">
+              <img 
+                src="/friends.png" 
+                alt="Grapevne team" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="w-full md:w-1/2 space-y-6">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
+                Our history
+              </h2>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+                Grapevne started in 2025 after a simple observation: free food on campus is abundant, but poorly distributed. Information arrives late. Food goes to waste.
+              </p>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+                That gap revealed a larger opportunity in how finite moments move through campus. Free food isn't just a perk - it's a shared campus habit. Grapevne grew out of the idea that if you can make that habit visible, you can make campus life more efficient, more connected, and less wasteful.
+              </p>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+                Today, Grapevne is being shaped by a small team of 7 college students, still working from inside the environments it serves.
+              </p>
+            </div>
           </section>
         </div>
       </main>
@@ -246,8 +219,8 @@ function About() {
             <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
             <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>
           </div>
         </div>
       </footer>
