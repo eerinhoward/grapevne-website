@@ -9,7 +9,7 @@ function Universities() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [selectedGoal, setSelectedGoal] = useState('Reduce Food Waste')
+  const [selectedGoal, setSelectedGoal] = useState('')
   
   const goals = {
     'Reduce Food Waste': 'Redistribute surplus food from campus events in real time, before it\'s discarded.',
@@ -147,18 +147,22 @@ function Universities() {
                 {Object.keys(goals).map((goal) => (
                   <div 
                     key={goal} 
-                    className="flex items-start gap-4 cursor-pointer"
+                    className="cursor-pointer"
                     onClick={() => setSelectedGoal(selectedGoal === goal ? '' : goal)}
                   >
-                    <div className="flex items-center" style={{ paddingTop: '0.25rem' }}>
-                      {selectedGoal === goal && (
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                      )}
-                    </div>
-                    <div className="text-xl flex-1" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                      <div className="font-medium mb-1">{goal}</div>
-                      <div className="text-base font-normal" style={{ color: '#666' }}>
-                        {goals[goal]}
+                    <div className="flex items-start gap-4">
+                      <div className="flex items-center" style={{ paddingTop: '0.5rem' }}>
+                        {selectedGoal === goal && (
+                          <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+                        )}
+                      </div>
+                      <div className="text-xl flex-1" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                        <div className="font-medium mb-1">{goal}</div>
+                        {selectedGoal === goal && (
+                          <div className="text-base font-normal" style={{ color: '#666' }}>
+                            {goals[goal]}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
