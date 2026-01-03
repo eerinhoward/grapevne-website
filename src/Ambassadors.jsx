@@ -140,7 +140,7 @@ function Ambassadors() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Logo */}
-      <header className="pt-8 pb-6 px-4 relative">
+      <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
             <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">

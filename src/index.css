@@ -26,7 +26,7 @@ body {
 }
 
 :root {
-  --grapevne-blue: #6BA3E8; /* Medium-light, slightly desaturated blue matching the Grapevne logo */
+  --grapevne-blue: #3FA9F5; /* Light blue matching the Grapevne logo */
 }
 
 .hover-grapevne-blue:hover {
@@ -147,7 +147,7 @@ body {
   color: white;
   position: relative;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   margin-bottom: 2px;
@@ -158,11 +158,21 @@ body {
   border: none;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
   -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+  transform: translateX(calc(-100% + 50px));
+}
+
+.terms-tab-edge:hover {
+  transform: translateX(0);
+  background: var(--grapevne-blue);
 }
 
 .terms-tab-edge.active {
-  background: #000;
+  background: var(--grapevne-blue);
   color: white;
+}
+
+.terms-tab-edge.active:hover {
+  background: var(--grapevne-blue);
 }
 
 .terms-content {

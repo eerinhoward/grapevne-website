@@ -10,17 +10,33 @@ function Home() {
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
   const [showNewContent, setShowNewContent] = useState(false)
+  const [showHeader, setShowHeader] = useState(true)
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset
-      // Trigger transition at a higher scroll point so user can see the slogan longer
-      // Reversible - scrolling back up reverses the transition
+      
+      // Content transition
       if (scrollY > 300) {
         setShowNewContent(true)
       } else {
         setShowNewContent(false)
       }
+      
+      // Header show/hide based on scroll direction
+      // Always show at top of page
+      if (scrollY < 100) {
+        setShowHeader(true)
+      } else if (scrollY < lastScrollY.current) {
+        // Scrolling up - show header
+        setShowHeader(true)
+      } else if (scrollY > lastScrollY.current) {
+        // Scrolling down - hide header
+        setShowHeader(false)
+      }
+      
+      lastScrollY.current = scrollY
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -111,8 +127,11 @@ function Home() {
 
   return (
     <div className="bg-white flex flex-col" style={{ minHeight: '200vh' }}>
-      {/* Header with Logo */}
-      <header className="pt-4 pb-4 px-4 relative">
+      {/* Header with Logo - shows on scroll up, hides on scroll down */}
+      <header 
+        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-transparent z-20 transition-transform duration-300"
+        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+      >
         <div className="flex justify-center items-center gap-4" style={{ perspective: '1000px' }}>
           <div className="flex flex-col items-center">
             <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
@@ -149,16 +168,37 @@ function Home() {
       <main className="fixed top-[120px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
         {/* Original Slogan */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out"
+          className="absolute inset-0 flex items-center justify-start transition-all duration-700 ease-in-out"
           style={{
             transform: showNewContent ? 'translateY(-100%)' : 'translateY(0)',
             opacity: showNewContent ? 0 : 1,
             pointerEvents: showNewContent ? 'none' : 'auto'
           }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 lowercase whitespace-nowrap text-center" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-            giving back to the community via the free things in life
+          <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
+            {/* Top - Bold Helvetica Slogan */}
+            <div className="text-left pl-8 md:pl-16">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                what's happening.
+              </h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                while it's happening.
           </h2>
+            </div>
+            
+            {/* Bottom - Horizontal Image Row */}
+            <div className="flex gap-4 md:gap-5 lg:gap-6">
+              <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
+                <img src="/Photoshoot1.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
+              </a>
+              <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
+                <img src="/Photoshoot2.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
+              </a>
+              <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
+                <img src="/Photoshoot3.png" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
+              </a>
+            </div>
+          </div>
         </div>
         
         {/* New Content */}
@@ -174,15 +214,12 @@ function Home() {
             {/* Left side - Text */}
             <div className="text-2xl md:text-3xl lg:text-4xl text-gray-900 lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
               <div className="font-bold">
-                Map what's happening <span className="italic">right now</span>
+                Map what's happening <span className="font-bold italic">right now</span>
               </div>
               <div className="font-normal">See where things are popping off.</div>
               <div className="font-normal">See who's pulling up.</div>
               <div className="font-normal mt-4">No group chats.</div>
               <div className="font-normal">No flyers.</div>
-              <div className="font-normal mt-4">
-                Just what's happening, <span className="italic">right now</span>.
-              </div>
             </div>
             
             {/* Right side - iPhone */}
@@ -198,7 +235,7 @@ function Home() {
       </main>
 
       {/* Footer with ®, ™, and © symbols - Persistent */}
-      <footer className="py-8 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
+      <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
@@ -213,6 +250,42 @@ function Home() {
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
             <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
             <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
+          </div>
+          {/* Social Media Links */}
+          <div className="flex justify-center items-center gap-3 mt-2">
+            <a 
+              href="https://www.linkedin.com/company/grapevneapp" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-900 hover-grapevne-blue transition-colors"
+              aria-label="LinkedIn"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a 
+              href="https://www.instagram.com/grapevne.co/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-900 hover-grapevne-blue transition-colors"
+              aria-label="Instagram"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162 0 3.403 2.759 6.162 6.162 6.162 3.403 0 6.162-2.759 6.162-6.162 0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a 
+              href="https://www.tiktok.com/@grapevne" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-900 hover-grapevne-blue transition-colors"
+              aria-label="TikTok"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+            </a>
           </div>
         </div>
       </footer>

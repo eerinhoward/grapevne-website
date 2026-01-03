@@ -87,7 +87,7 @@ function About() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Logo */}
-      <header className="pt-8 pb-6 px-4 relative">
+      <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
             <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
@@ -240,7 +240,7 @@ function About() {
             <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
             <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
           </div>
-            <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
+          <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
             <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
             <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>

@@ -278,7 +278,7 @@ function Press() {
   return (
     <div className="h-screen bg-white flex flex-col overflow-hidden">
       {/* Header with Logo */}
-      <header className="pt-8 pb-4 px-4 relative flex-shrink-0">
+      <header className="pt-4 pb-4 px-4 relative flex-shrink-0">
         <div className="flex flex-col justify-center items-center gap-4">
           <div className="flex justify-center items-center gap-4">
             <div className="flex flex-col items-center">

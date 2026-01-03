@@ -80,7 +80,7 @@ function Universities() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Logo */}
-      <header className="pt-8 pb-6 px-4 relative">
+      <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
             <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
@@ -200,7 +200,7 @@ function Universities() {
                   300 Summit St.<br />
                   Hartford, CT 06106
                 </div>
-              </div>
+                    </div>
               <div className="text-left">
                 <div className="font-bold text-gray-900 text-lg mb-2">Stevens Institute of Technology</div>
                 <div className="text-gray-600 text-base">

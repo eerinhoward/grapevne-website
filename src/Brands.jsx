@@ -80,7 +80,7 @@ function Brands() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Logo */}
-      <header className="pt-8 pb-6 px-4 relative">
+      <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
             <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
@@ -138,7 +138,7 @@ function Brands() {
                 Campus activations reward chance, not reach
               </h2>
               <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight">
-                <span style={{ color: '#A8D5E2' }}>Grapevne</span> makes them persistent
+                <span style={{ color: '#3FA9F5' }}>Grapevne</span> makes them persistent
               </h2>
               </div>
             </div>

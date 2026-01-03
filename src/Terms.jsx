@@ -82,7 +82,7 @@ function Terms() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header with Logo */}
-      <header className="pt-8 pb-6 px-4 relative">
+      <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
             <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
@@ -136,18 +136,18 @@ function Terms() {
 
           {/* Terms Tabs */}
           <section className="pt-6">
-            <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 flex flex-col">
+            <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-50 flex flex-col terms-tabs-container">
               <button
                 onClick={() => setActiveTab(activeTab === 'app' ? null : 'app')}
                 className={`terms-tab-edge ${activeTab === 'app' ? 'active' : ''}`}
               >
-                App Terms
+                App Terms of Service
               </button>
               <button
                 onClick={() => setActiveTab(activeTab === 'website' ? null : 'website')}
                 className={`terms-tab-edge ${activeTab === 'website' ? 'active' : ''}`}
               >
-                Website Terms
+                Website Terms of Service
               </button>
             </div>
             

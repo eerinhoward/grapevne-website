@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './Home'
 import Press from './Press'
 import Brands from './Brands'
@@ -8,6 +8,16 @@ import Terms from './Terms'
 import Privacy from './Privacy'
 import Ambassadors from './Ambassadors'
 import About from './About'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 function App() {
   useEffect(() => {
@@ -151,6 +161,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/press" element={<Press />} />
