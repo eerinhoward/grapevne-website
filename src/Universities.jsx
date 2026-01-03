@@ -83,7 +83,7 @@ function Universities() {
       <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               Press
             </Link>
             {location.pathname === '/press' && (
@@ -103,7 +103,7 @@ function Universities() {
             />
           </Link>
           <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               About
             </Link>
             {location.pathname === '/about' && (
@@ -118,7 +118,7 @@ function Universities() {
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-center">
-            <h1 className="text-6xl md:text-7xl font-light text-gray-900 mb-6 leading-tight">
+            <h1 className="text-6xl md:text-7xl font-light mb-6 leading-tight" style={{ color: '#1a1a1a' }}>
               For Universities
             </h1>
             <p className="text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
@@ -130,7 +130,7 @@ function Universities() {
           {/* Benefits Section */}
           <section className="space-y-12">
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Real-Time Behavioral Insights
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -139,7 +139,7 @@ function Universities() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Reduce Food Waste
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -148,7 +148,7 @@ function Universities() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Sustainability Analytics
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -157,7 +157,7 @@ function Universities() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Higher Student Engagement
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -166,7 +166,7 @@ function Universities() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 No Operational Overhead
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -190,19 +190,19 @@ function Universities() {
 
           {/* Trusted Partners Section */}
           <section className="pt-12 pb-8">
-            <h3 className="text-2xl md:text-3xl font-light text-gray-900 mb-8">
+            <h3 className="text-2xl md:text-3xl font-light mb-8" style={{ color: '#1a1a1a' }}>
               trusted by our friendly neighborhood partners:
             </h3>
             <div className="flex flex-wrap gap-16 md:gap-24">
               <div className="text-left">
-                <div className="font-bold text-gray-900 text-lg mb-2">Trinity College</div>
+                <div className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>Trinity College</div>
                 <div className="text-gray-600 text-base">
                   300 Summit St.<br />
                   Hartford, CT 06106
                 </div>
                     </div>
               <div className="text-left">
-                <div className="font-bold text-gray-900 text-lg mb-2">Stevens Institute of Technology</div>
+                <div className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>Stevens Institute of Technology</div>
                 <div className="text-gray-600 text-base">
                   1 Castle Point Terrace<br />
                   Hoboken, NJ 07030
@@ -218,9 +218,9 @@ function Universities() {
       <footer className="py-8 px-4 mt-12">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>

@@ -83,7 +83,7 @@ function Brands() {
       <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               Press
             </Link>
             {location.pathname === '/press' && (
@@ -103,7 +103,7 @@ function Brands() {
             />
           </Link>
           <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               About
             </Link>
             {location.pathname === '/about' && (
@@ -128,16 +128,16 @@ function Brands() {
             </div>
             <div className="flex-1" style={{ backgroundColor: '#FFD700', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingTop: '60px', paddingBottom: '60px' }}>
               <div className="text-right px-8 max-w-4xl">
-              <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-3">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-3" style={{ color: '#1a1a1a' }}>
                 You had to be there
               </h2>
-              <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: '#1a1a1a' }}>
                 And most students weren't
               </h2>
-              <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight mb-2">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
                 Campus activations reward chance, not reach
               </h2>
-              <h2 className="text-4xl md:text-5xl font-bold text-black leading-tight">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight" style={{ color: '#1a1a1a' }}>
                 <span style={{ color: '#3FA9F5' }}>Grapevne</span> makes them persistent
               </h2>
               </div>
@@ -150,7 +150,7 @@ function Brands() {
           {/* Benefits Section */}
           <section className="space-y-12">
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Connect to Gen Z Within Seconds
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -159,7 +159,7 @@ function Brands() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Instant Pop-Ups & Activations
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -168,7 +168,7 @@ function Brands() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Market & Promote Food & Drink Products
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -177,7 +177,7 @@ function Brands() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Real-Time Engagement & Insights
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -207,9 +207,9 @@ function Brands() {
       <footer className="py-8 px-4 mt-12">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>

@@ -16,7 +16,7 @@ function Footer() {
                   placeholder="Your Email"
                   className="flex-1 outline-none text-sm bg-transparent"
                 />
-                <button type="submit" className="text-gray-400 hover:text-gray-900 transition-colors">
+                <button type="submit" className="text-gray-400 transition-colors" onMouseEnter={(e) => e.currentTarget.style.color = '#1a1a1a'} onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -45,9 +45,9 @@ function Footer() {
           </div>
         </div>
         <div className="flex justify-center items-center gap-3">
-          <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
-          <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
-          <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+          <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+          <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+          <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
         </div>
       </div>
     </footer>

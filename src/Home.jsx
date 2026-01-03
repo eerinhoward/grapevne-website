@@ -134,7 +134,7 @@ function Home() {
       >
         <div className="flex justify-center items-center gap-4" style={{ perspective: '1000px' }}>
           <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               Press
             </Link>
             {location.pathname === '/press' && (
@@ -154,7 +154,7 @@ function Home() {
             />
           </Link>
           <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               About
             </Link>
             {location.pathname === '/about' && (
@@ -178,10 +178,10 @@ function Home() {
           <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
             {/* Top - Bold Helvetica Slogan */}
             <div className="text-left pl-8 md:pl-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                 what's happening.
               </h2>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                 while it's happening.
           </h2>
             </div>
@@ -212,7 +212,7 @@ function Home() {
         >
           <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
             {/* Left side - Text */}
-            <div className="text-2xl md:text-3xl lg:text-4xl text-gray-900 lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+            <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
               <div className="font-bold">
                 Map what's happening <span className="font-bold italic">right now</span>
               </div>
@@ -238,9 +238,9 @@ function Home() {
       <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
@@ -257,7 +257,8 @@ function Home() {
               href="https://www.linkedin.com/company/grapevneapp" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-900 hover-grapevne-blue transition-colors"
+              className="hover-grapevne-blue transition-colors"
+              style={{ color: '#1a1a1a' }}
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -268,7 +269,8 @@ function Home() {
               href="https://www.instagram.com/grapevne.co/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-900 hover-grapevne-blue transition-colors"
+              className="hover-grapevne-blue transition-colors"
+              style={{ color: '#1a1a1a' }}
               aria-label="Instagram"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -279,7 +281,8 @@ function Home() {
               href="https://www.tiktok.com/@grapevne" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-900 hover-grapevne-blue transition-colors"
+              className="hover-grapevne-blue transition-colors"
+              style={{ color: '#1a1a1a' }}
               aria-label="TikTok"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

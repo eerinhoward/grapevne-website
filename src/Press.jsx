@@ -282,7 +282,7 @@ function Press() {
         <div className="flex flex-col justify-center items-center gap-4">
           <div className="flex justify-center items-center gap-4">
             <div className="flex flex-col items-center">
-              <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
                 Press
               </Link>
               {location.pathname === '/press' && (
@@ -302,7 +302,7 @@ function Press() {
               />
             </Link>
             <div className="flex flex-col items-center">
-              <Link to="/about" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+              <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
                 About
               </Link>
               {location.pathname === '/about' && (
@@ -316,7 +316,8 @@ function Press() {
               href="https://www.linkedin.com/company/grapevneapp" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-900 hover-grapevne-blue transition-colors"
+              className="hover-grapevne-blue transition-colors"
+              style={{ color: '#1a1a1a' }}
               aria-label="LinkedIn"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -327,7 +328,8 @@ function Press() {
               href="https://www.instagram.com/grapevne.co/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-900 hover-grapevne-blue transition-colors"
+              className="hover-grapevne-blue transition-colors"
+              style={{ color: '#1a1a1a' }}
               aria-label="Instagram"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -338,7 +340,8 @@ function Press() {
               href="https://www.tiktok.com/@grapevne" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-900 hover-grapevne-blue transition-colors"
+              className="hover-grapevne-blue transition-colors"
+              style={{ color: '#1a1a1a' }}
               aria-label="TikTok"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -351,6 +354,13 @@ function Press() {
 
       {/* Kitchen Order Rail */}
       <main className="flex-1 flex flex-col justify-center py-6 overflow-hidden">
+        {/* Header Text */}
+        <div className="text-left px-4 mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
+            We brought the receipts 😮‍💨
+          </h2>
+        </div>
+        
         {/* Order Rail - the metal bar */}
         <div className="relative mb-1" style={{ height: '6px', perspective: '1000px' }}>
           {/* 3D Top face - main rail surface */}
@@ -475,7 +485,7 @@ function Press() {
                   <div className="p-4 relative z-10">
                     <div className="mb-3">
                       <div className="text-xs font-mono text-gray-500 mb-1">ITEM:</div>
-                      <h2 className="text-base font-bold text-gray-900 leading-tight mb-2">
+                      <h2 className="text-base font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
                         {item.title}
                       </h2>
                     </div>
@@ -544,14 +554,16 @@ function Press() {
                 e.stopPropagation()
                 setSelectedItem(null)
               }}
-              className="absolute top-8 right-8 text-gray-400 hover:text-gray-900 text-4xl font-light leading-none"
+              className="absolute top-8 right-8 text-gray-400 text-4xl font-light leading-none"
               style={{ lineHeight: '1' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#1a1a1a'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
             >
               ×
             </button>
             
             <div className="max-w-lg">
-              <h1 className="text-5xl font-normal text-gray-900 mb-8 leading-tight">
+              <h1 className="text-5xl font-normal mb-8 leading-tight" style={{ color: '#1a1a1a' }}>
                 {selectedItem.title}
               </h1>
               
@@ -562,7 +574,7 @@ function Press() {
               <div>
                 <p className="text-sm text-gray-500 mb-2 uppercase tracking-wide">From</p>
                 <div className="flex items-center gap-3 mb-1">
-                  <p className="text-lg text-gray-900 font-medium">
+                  <p className="text-lg font-medium" style={{ color: '#1a1a1a' }}>
                     {selectedItem.author}
                   </p>
                   {selectedItem.teamMember && (
@@ -584,9 +596,9 @@ function Press() {
       <footer className="py-6 px-4 flex-shrink-0">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>

@@ -85,7 +85,7 @@ function Terms() {
       <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               Press
             </Link>
             {location.pathname === '/press' && (
@@ -105,7 +105,7 @@ function Terms() {
             />
           </Link>
           <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               About
             </Link>
             {location.pathname === '/about' && (
@@ -120,16 +120,16 @@ function Terms() {
         <div>
           {/* Legal Process Summary */}
           <section className="space-y-6" style={{ textAlign: 'justify', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-            <p className="text-xl text-black leading-relaxed">
+            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
               Our legal framework is built in partnership with the <a href="https://entrepreneurship.mit.edu/bu-law-clinic/" target="_blank" rel="noopener noreferrer" className="highlight-link highlight-link-blue">BU/MIT Student Innovations Law Clinic</a> (SILC), which provides legal advice to student entrepreneurs. The clinic is staffed by BU Law students under law faculty supervision across three practice groups: Intellectual Property & Media; Privacy, Security & Health; and Venture & Finance. SILC has been involved since the beginning of Grapevne's conceptualization and formation, providing ongoing compliance guidance and legal oversight.
             </p>
-            <p className="text-xl text-black leading-relaxed">
+            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
               Given that Grapevne facilitates the sharing of food on campus, we work closely with the clinic to address food safety regulations, liability considerations, and compliance requirements. This includes guidance on food handling standards and campus-specific regulations that protect both those sharing food and those receiving it. The clinic's early involvement has helped shape our platform design and user safety measures from the ground up.
             </p>
-            <p className="text-xl text-black leading-relaxed">
+            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
               SILC's expertise in intellectual property, information privacy, corporate law, and platform liability helps us navigate the complex legal landscape of operating a platform that connects students, universities, and brands around food sharing. Their guidance on user conduct policies, platform protections, and regulatory compliance has been integral to Grapevne's development.
             </p>
-            <p className="text-xl text-black leading-relaxed">
+            <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
               Our terms of service reflect this collaborative approach, ensuring transparency, safety, and legal compliance while maintaining the community-driven spirit of Grapevne.
             </p>
           </section>
@@ -155,7 +155,7 @@ function Terms() {
             <div className={`terms-content ${activeTab === 'app' ? 'open' : ''}`}>
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     Agreement to Terms
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -164,7 +164,7 @@ function Terms() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     Use License
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -173,7 +173,7 @@ function Terms() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     User Conduct
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -182,7 +182,7 @@ function Terms() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     Food Safety and Liability
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -191,7 +191,7 @@ function Terms() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     Disclaimer
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -205,7 +205,7 @@ function Terms() {
             <div className={`terms-content ${activeTab === 'website' ? 'open' : ''}`}>
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     Agreement to Terms
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -214,7 +214,7 @@ function Terms() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     Use License
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -223,7 +223,7 @@ function Terms() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     User Conduct
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -232,7 +232,7 @@ function Terms() {
                 </div>
 
                 <div>
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                  <h2 className="text-3xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                     Disclaimer
                   </h2>
                   <p className="text-lg text-gray-600 leading-relaxed">
@@ -250,9 +250,9 @@ function Terms() {
       <footer className="py-8 px-4 mt-12">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>

@@ -143,7 +143,7 @@ function Ambassadors() {
       <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4">
           <div className="flex flex-col items-center">
-            <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               Press
             </Link>
             {location.pathname === '/press' && (
@@ -163,7 +163,7 @@ function Ambassadors() {
             />
           </Link>
           <div className="flex flex-col items-center">
-            <Link to="/about" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
+            <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               About
             </Link>
             {location.pathname === '/about' && (
@@ -207,7 +207,7 @@ function Ambassadors() {
           {/* Benefits Section */}
           <section className="space-y-12">
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Make an Impact
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -216,7 +216,7 @@ function Ambassadors() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Build Your Network
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -225,7 +225,7 @@ function Ambassadors() {
             </div>
 
             <div>
-              <h2 className="text-4xl font-light text-gray-900 mb-4">
+              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
                 Flexible Commitment
               </h2>
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -236,13 +236,13 @@ function Ambassadors() {
 
           {/* Form Section */}
           <section className="pt-8">
-            <h2 className="text-4xl font-light text-gray-900 mb-8 text-center">
+            <h2 className="text-4xl font-light mb-8 text-center" style={{ color: '#1a1a1a' }}>
               Get Started
             </h2>
             
             {submitted ? (
               <div className="text-center py-12">
-                <p className="text-2xl text-gray-900 mb-4">Thank you!</p>
+                <p className="text-2xl mb-4" style={{ color: '#1a1a1a' }}>Thank you!</p>
                 <p className="text-xl text-gray-600">We'll be in touch soon.</p>
               </div>
             ) : (
@@ -371,9 +371,9 @@ function Ambassadors() {
       <footer className="py-8 px-4 mt-12">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>®</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
-            <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
