@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 function About() {
@@ -9,6 +9,39 @@ function About() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
+  const [showTeamList, setShowTeamList] = useState(false)
+  const teamListRef = useRef(null)
+  const teamLinkRef = useRef(null)
+  
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showTeamList && 
+          teamListRef.current && 
+          !teamListRef.current.contains(event.target) &&
+          teamLinkRef.current &&
+          !teamLinkRef.current.contains(event.target)) {
+        setShowTeamList(false)
+      }
+    }
+    
+    if (showTeamList) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showTeamList])
+  
+  const teamMembers = [
+    { name: 'Erin Howard', position: 'Founder', linkedin: 'https://www.linkedin.com/in/erin-howard' },
+    { name: 'Sara Shiferaw', position: 'Head of Communications', linkedin: 'https://www.linkedin.com' },
+    { name: 'Jasmine Kamara', position: 'Head of Growth', linkedin: 'https://www.linkedin.com' },
+    { name: 'Dylan Koa', position: 'Head of Marketing', linkedin: 'https://www.linkedin.com' },
+    { name: 'Ryan Kang', position: 'Head of UR/UX', linkedin: 'https://www.linkedin.com' },
+    { name: 'Siran Rao', position: 'Head of Product Management', linkedin: 'https://www.linkedin.com' },
+    { name: 'Calvin Prajogo', position: 'Head of Engineering', linkedin: 'https://www.linkedin.com' }
+  ]
   
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -132,10 +165,10 @@ function About() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
-        <div className="space-y-20 md:space-y-32">
+      <main className="max-w-6xl mx-auto px-4 md:px-6 py-20" style={{ position: 'relative' }}>
+        <div className="space-y-16 md:space-y-24">
           {/* First Section - Image Left, Text Right */}
-          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-6">
             <div className="w-full md:w-1/2">
               <img 
                 src="/walking.jpg" 
@@ -147,25 +180,25 @@ function About() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                 We're here to make what's already happening easier to find.
               </h2>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 Grapevne is a campus platform for free food and other moments that don't last long. By showing what exists in real time, we help students move through campus with more awareness - and less waste.
               </p>
             </div>
           </section>
 
           {/* Second Section - Text Left, Image Right */}
-          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-6">
             <div className="w-full md:w-1/2 space-y-6 order-2 md:order-1">
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                 What makes us different
               </h2>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 A lot of what happens on campus spreads quietly. Someone hears about it, tells a friend, and if you're nearby, you make it in time. Grapevne is built to surface those moments - before they pass.
               </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 We focus on availability over popularity. Free food and other finite moments show up suddenly and fade fast. By showing what's available in real time, we help students see what's happening around them, not what's trending elsewhere - and move through campus with more awareness and less waste.
               </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 Free food is the entry point. But Grapevne isn't just about food. It's about the moments that don't last long, but are worth noticing while they do - and deciding whether you're on your way.
               </p>
             </div>
@@ -179,7 +212,7 @@ function About() {
           </section>
 
           {/* Third Section - Image Left, Text Right */}
-          <section className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <section className="flex flex-col md:flex-row items-start gap-8 md:gap-6 relative">
             <div className="w-full md:w-1/2">
               <img 
                 src="/friends.png" 
@@ -191,19 +224,77 @@ function About() {
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                 Our history
               </h2>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 Grapevne started in 2025 after a simple observation: free food on campus is abundant, but poorly distributed. Information arrives late. Food goes to waste.
               </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 That gap revealed a larger opportunity in how finite moments move through campus. Free food isn't just a perk - it's a shared campus habit. Grapevne grew out of the idea that if you can make that habit visible, you can make campus life more efficient, more connected, and less wasteful.
               </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
-                Today, Grapevne is being shaped by a small team of 7 college students, still working from inside the environments it serves.
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
+                Today, Grapevne is being shaped by a small team of{' '}
+                <span 
+                  ref={teamLinkRef}
+                  onClick={() => setShowTeamList(true)}
+                  className="cursor-pointer"
+                  style={{ 
+                    textDecoration: 'underline',
+                    textDecorationStyle: 'dashed',
+                    textDecorationColor: '#3FA9F5',
+                    color: '#3FA9F5'
+                  }}
+                >
+                  7 college students
+                </span>
+                , still working from inside the environments it serves.
               </p>
             </div>
+            {showTeamList && (
+              <div 
+                ref={teamListRef}
+                className="hidden md:block absolute"
+                style={{ 
+                  left: '100%',
+                  marginLeft: '2rem',
+                  width: '220px',
+                  maxWidth: '220px',
+                  top: '0'
+                }}
+              >
+                <ul className="space-y-2">
+                  {teamMembers.map((member, index) => (
+                    <li key={index} style={{ wordWrap: 'break-word', overflowWrap: 'break-word', maxWidth: '220px' }}>
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-base transition-colors block group"
+                        style={{ 
+                          color: '#1a1a1a', 
+                          wordWrap: 'break-word', 
+                          overflowWrap: 'break-word',
+                          maxWidth: '100%',
+                          display: 'block'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = '#3FA9F5'
+                          e.target.textContent = member.position
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = '#1a1a1a'
+                          e.target.textContent = member.name
+                        }}
+                      >
+                        {member.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </section>
         </div>
       </main>
+
 
       {/* Footer with ®, ™, and © symbols */}
       <footer className="py-8 px-4">
