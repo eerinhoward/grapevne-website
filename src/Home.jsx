@@ -2,12 +2,30 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 function Home() {
+  const location = useLocation()
   const logoRef = useRef(null)
   const currentRotateX = useRef(0)
   const currentRotateY = useRef(0)
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
+  const [showNewContent, setShowNewContent] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset
+      // Trigger transition at a higher scroll point so user can see the slogan longer
+      // Reversible - scrolling back up reverses the transition
+      if (scrollY > 300) {
+        setShowNewContent(true)
+      } else {
+        setShowNewContent(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -92,9 +110,9 @@ function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="bg-white flex flex-col" style={{ minHeight: '200vh' }}>
       {/* Header with Logo */}
-      <header className="pt-8 pb-4 px-4 relative">
+      <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-center items-center gap-4" style={{ perspective: '1000px' }}>
           <div className="flex flex-col items-center">
             <Link to="/press" className="text-lg font-bold text-gray-900 hover-grapevne-blue transition-colors lowercase">
@@ -127,12 +145,55 @@ function Home() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-grow flex items-center justify-center" style={{ minHeight: 'calc(100vh - 180px)', paddingBottom: '100px' }}>
-        <div className="text-center w-full flex justify-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 lowercase whitespace-nowrap">
+      {/* Main Content - accounts for header (~120px) and fixed footer (~80px) */}
+      <main className="fixed top-[120px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
+        {/* Original Slogan */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out"
+          style={{
+            transform: showNewContent ? 'translateY(-100%)' : 'translateY(0)',
+            opacity: showNewContent ? 0 : 1,
+            pointerEvents: showNewContent ? 'none' : 'auto'
+          }}
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 lowercase whitespace-nowrap text-center" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
             giving back to the community via the free things in life
           </h2>
+        </div>
+        
+        {/* New Content */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          style={{
+            transform: showNewContent ? 'translateY(-5%)' : 'translateY(100%)',
+            opacity: showNewContent ? 1 : 0,
+            pointerEvents: showNewContent ? 'auto' : 'none'
+          }}
+        >
+          <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
+            {/* Left side - Text */}
+            <div className="text-2xl md:text-3xl lg:text-4xl text-gray-900 lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <div className="font-bold">
+                Map what's happening <span className="italic">right now</span>
+              </div>
+              <div className="font-normal">See where things are popping off.</div>
+              <div className="font-normal">See who's pulling up.</div>
+              <div className="font-normal mt-4">No group chats.</div>
+              <div className="font-normal">No flyers.</div>
+              <div className="font-normal mt-4">
+                Just what's happening, <span className="italic">right now</span>.
+              </div>
+            </div>
+            
+            {/* Right side - iPhone */}
+            <div className="flex-shrink-0">
+              <img 
+                src="/iphone image.png" 
+                alt="Grapevne App" 
+                className="h-[400px] md:h-[500px] w-auto object-contain"
+              />
+            </div>
+          </div>
         </div>
       </main>
 
@@ -146,12 +207,12 @@ function Home() {
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

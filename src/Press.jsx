@@ -12,6 +12,7 @@ function Press() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
+  const scrollAnimationFrameId = useRef(null)
 
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -89,7 +90,6 @@ function Press() {
     let targetPosition = 0
     const friction = 0.92 // Damping factor
     const spring = 0.15 // Spring factor for smooth movement
-    let animationFrameId = null
 
     // Get all ticket elements
     const getTicketElements = () => {
@@ -174,7 +174,7 @@ function Press() {
         })
       }
       
-      animationFrameId = requestAnimationFrame(animate)
+      scrollAnimationFrameId.current = requestAnimationFrame(animate)
     }
 
     // Start animation loop
@@ -188,11 +188,11 @@ function Press() {
       document.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('keydown', handleKeyDown)
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId)
-      }
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
+      }
+      if (scrollAnimationFrameId.current) {
+        cancelAnimationFrame(scrollAnimationFrameId.current)
       }
       document.body.removeChild(cursor)
       document.body.style.cursor = 'auto'
@@ -590,12 +590,12 @@ function Press() {
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

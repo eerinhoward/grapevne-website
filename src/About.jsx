@@ -121,7 +121,7 @@ function About() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-8 py-20">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-center mb-20">
@@ -232,116 +232,6 @@ function About() {
         </div>
       </main>
 
-      {/* Team Members Section */}
-      <section className="py-20 px-8 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-3xl mx-auto">
-            {[
-              // Top left
-              { 
-                default: '/team-member-1-1.png', 
-                hover: '/team-member-1-2.png',
-                name: 'Team Member 1',
-                location: 'Location',
-                major: 'Major',
-                college: 'College',
-                title: 'Head of Marketing'
-              },
-              // Top middle
-              { 
-                default: '/team-member-2-1.png', 
-                hover: '/team-member-2-2.png',
-                name: 'Team Member 2',
-                location: 'Location',
-                major: 'Major',
-                college: 'College',
-                title: 'Head of UR/UX'
-              },
-              // Top right
-              { 
-                default: '/team-member-3-1.png', 
-                hover: '/team-member-3-2.png',
-                name: 'Team Member 3',
-                location: 'Location',
-                major: 'Major',
-                college: 'College',
-                title: 'Head of Communications'
-              },
-              // Bottom left
-              { 
-                default: '/team-member-4-1.png', 
-                hover: '/team-member-4-2.png',
-                name: 'Team Member 4',
-                location: 'Location',
-                major: 'Major',
-                college: 'College',
-                title: 'Head of Product Management'
-              },
-              // Bottom middle
-              { 
-                default: '/team-member-5-1.png', 
-                hover: '/team-member-5-2.png',
-                name: 'Team Member 5',
-                location: 'Location',
-                major: 'Major',
-                college: 'College',
-                title: 'Founder and Lead Developer and CEO'
-              },
-              // Bottom right
-              { 
-                default: '/team-member-6-1.png', 
-                hover: '/team-member-6-2.png',
-                name: 'Team Member 6',
-                location: 'Location',
-                major: 'Major',
-                college: 'College',
-                title: 'Advisor'
-              }
-            ].map((member, index) => (
-              <div key={index} className="relative group cursor-pointer">
-                <div className="relative overflow-hidden" style={{ aspectRatio: '3/4' }}>
-                  {/* Default Image */}
-                  <img
-                    src={member.default}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-all duration-300"
-                    style={{ filter: 'grayscale(100%) sepia(100%) hue-rotate(200deg) saturate(200%) brightness(0.8)' }}
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                    }}
-                  />
-                  {/* Hover Overlay with Info */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6"
-                    style={{ backgroundColor: 'var(--grapevne-blue)' }}
-                  >
-                    <div className="text-black text-left w-full" style={{ fontSize: '14px', lineHeight: '1.6', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                      <div className="text-sm">
-                        {member.location && member.major && member.college && member.title && (
-                          <div>
-                            <div>
-                              <span className="bg-black text-white px-2 py-1 inline-block text-sm" style={{ fontFamily: 'Canela, serif' }}>
-                                {member.name}
-                              </span>
-                            </div>
-                            <div>
-                              / {member.location} / {member.major} /
-                            </div>
-                            <div>
-                              {member.college} / {member.title}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Footer with ®, ™, and © symbols */}
       <footer className="py-8 px-4">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
@@ -350,14 +240,14 @@ function About() {
             <span className="ip-symbol text-black" style={{ transform: 'translateY(1px)' }}>™</span>
             <span className="ip-symbol text-black" style={{ transform: 'translateY(-1px)' }}>©</span>
           </div>
-          <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
+            <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

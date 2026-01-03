@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 function Terms() {
   const location = useLocation()
   const [activeTab, setActiveTab] = useState(null)
-  const [openIndex, setOpenIndex] = useState(null)
   const logoRef = useRef(null)
   const currentRotateX = useRef(0)
   const currentRotateY = useRef(0)
@@ -79,32 +78,6 @@ function Terms() {
     }
   }, [])
 
-  const faqs = [
-    {
-      question: "What are the terms of service?",
-      answer: "By using Grapevne, you agree to our terms of service which govern your use of the platform."
-    },
-    {
-      question: "How do I report a violation?",
-      answer: "You can report violations by contacting us through the app or via email at support@grapevneapp.com."
-    },
-    {
-      question: "What happens if I violate the terms?",
-      answer: "Violations may result in account suspension or termination, depending on the severity of the violation."
-    },
-    {
-      question: "Can I use Grapevne for commercial purposes?",
-      answer: "Commercial use requires prior approval. Please contact us for more information about commercial licensing."
-    },
-    {
-      question: "How often are the terms updated?",
-      answer: "We may update our terms periodically. Users will be notified of significant changes."
-    },
-    {
-      question: "Who do I contact with questions about the terms?",
-      answer: "For questions about our terms of service, please contact legal@grapevneapp.com."
-    }
-  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -143,7 +116,7 @@ function Terms() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-8 pt-8 pb-20">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-20">
         <div>
           {/* Legal Process Summary */}
           <section className="space-y-6" style={{ textAlign: 'justify', fontFamily: 'Helvetica, Arial, sans-serif' }}>
@@ -270,33 +243,6 @@ function Terms() {
             </div>
           </section>
 
-          {/* FAQ Section */}
-          <section className="pt-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">Frequently asked questions</h2>
-            <div className="space-y-0">
-              {faqs.map((faq, index) => (
-                <div key={index}>
-                  <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between py-6 text-left transition-colors group"
-                  >
-                    <span className="text-lg text-gray-900 group-hover:text-[#60A5FA] transition-colors">{faq.question}</span>
-                    <span className="text-gray-400 group-hover:text-[#60A5FA] text-xl transition-colors" style={{ transform: openIndex === index ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                      ›
-                    </span>
-                  </button>
-                  {openIndex === index && (
-                    <div className="pb-6 text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  )}
-                  {index < faqs.length - 1 && (
-                    <div className="border-t border-gray-200"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
         </div>
       </main>
 
@@ -310,12 +256,12 @@ function Terms() {
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

@@ -190,7 +190,7 @@ function Ambassadors() {
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-20">
           <div className="space-y-16">
             {/* Hero Section */}
             <section className="text-center">
@@ -201,7 +201,7 @@ function Ambassadors() {
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="space-y-16">
 
           {/* Benefits Section */}
@@ -377,12 +377,12 @@ function Ambassadors() {
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

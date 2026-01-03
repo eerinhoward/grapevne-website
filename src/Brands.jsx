@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 
 function Brands() {
   const location = useLocation()
-  const [openIndex, setOpenIndex] = useState(null)
   const logoRef = useRef(null)
   const currentRotateX = useRef(0)
   const currentRotateY = useRef(0)
@@ -146,7 +145,7 @@ function Brands() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-20">
           <div className="space-y-16">
           {/* Benefits Section */}
           <section className="space-y-12">
@@ -200,58 +199,6 @@ function Brands() {
             </a>
           </section>
 
-          {/* FAQ Section */}
-          <section className="pt-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">Frequently asked questions</h2>
-            <div className="space-y-0">
-              {[
-                {
-                  question: "How do I get started with Grapevne for my brand?",
-                  answer: "Contact us at brands@grapevneapp.com to discuss your campus activation goals and we'll help you get started."
-                },
-                {
-                  question: "What approval do I need from COSU?",
-                  answer: "You'll need approval from the campus's COSU (Campus Operations and Student Union) office before running activations. We can help guide you through this process."
-                },
-                {
-                  question: "How much does it cost?",
-                  answer: "Pricing varies based on your activation needs and campus reach. Contact us for a customized quote."
-                },
-                {
-                  question: "Which campuses are available?",
-                  answer: "We're expanding to campuses nationwide. Contact us to see if your target campus is available."
-                },
-                {
-                  question: "What kind of insights can I get?",
-                  answer: "You'll receive real-time data on student engagement, attendance patterns, and campus-level interest in your brand or products."
-                },
-                {
-                  question: "How quickly can I set up a campus activation?",
-                  answer: "Once COSU approval is obtained, activations can typically be set up within a few days."
-                }
-              ].map((faq, index) => (
-                <div key={index}>
-                  <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between py-6 text-left transition-colors group"
-                  >
-                    <span className="text-lg text-gray-900 group-hover:text-[#60A5FA] transition-colors">{faq.question}</span>
-                    <span className="text-gray-400 group-hover:text-[#60A5FA] text-xl transition-colors" style={{ transform: openIndex === index ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                      ›
-                    </span>
-                  </button>
-                  {openIndex === index && (
-                    <div className="pb-6 text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  )}
-                  {index < 5 && (
-                    <div className="border-t border-gray-200"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
           </div>
         </div>
       </main>
@@ -266,12 +213,12 @@ function Brands() {
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

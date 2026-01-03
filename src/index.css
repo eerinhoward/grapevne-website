@@ -33,6 +33,11 @@ body {
   color: var(--grapevne-blue) !important;
 }
 
+.footer-link {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-weight: normal;
+}
+
 /* Text selection styling */
 ::selection {
   background-color: var(--grapevne-blue);
@@ -137,8 +142,9 @@ body {
 /* Edge tab style - positioned on left edge of screen */
 .terms-tab-edge {
   display: block;
-  padding: 6px 0;
-  background: white;
+  padding: 8px 20px 8px 12px;
+  background: #000;
+  color: white;
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -146,39 +152,17 @@ body {
   font-size: 13px;
   margin-bottom: 2px;
   white-space: nowrap;
-  text-align: center;
+  text-align: left;
   min-width: 70px;
   box-sizing: border-box;
-  border-top: 1.5px solid #000;
-  border-bottom: 1.5px solid #000;
-  border-left: none;
-  border-right: none;
-  padding-right: 8px;
-}
-
-.terms-tab-edge::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: -1.5px;
-  bottom: -1.5px;
-  width: 8px;
-  border: 1.5px solid #000;
-  border-left: none;
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 50%, 0 100%);
-  pointer-events: none;
-  box-sizing: border-box;
+  border: none;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%);
 }
 
 .terms-tab-edge.active {
   background: #000;
   color: white;
-}
-
-.terms-tab-edge.active::after {
-  background: #000;
-  border-color: #000;
 }
 
 .terms-content {

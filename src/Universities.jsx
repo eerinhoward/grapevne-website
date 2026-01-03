@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 
 function Universities() {
   const location = useLocation()
-  const [openIndex, setOpenIndex] = useState(null)
   const logoRef = useRef(null)
   const currentRotateX = useRef(0)
   const currentRotateY = useRef(0)
@@ -115,7 +114,7 @@ function Universities() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-8 py-20">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-center">
@@ -127,26 +126,6 @@ function Universities() {
             </p>
           </section>
 
-          {/* Adopted by Section */}
-          <section className="py-12">
-            <div className="max-w-6xl mx-auto w-full">
-              <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-16 text-center">
-                Adopted by
-              </h3>
-              <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
-                <img 
-                  src="/Trinity_Seal_FullColor_RGB-951x1024-1-279x300.png" 
-                  alt="Trinity College" 
-                  className="h-24 md:h-32 w-auto"
-                />
-                <img 
-                  src="/Seal_of_Stevens_Institute_of_Technology.svg.png" 
-                  alt="Stevens Institute of Technology" 
-                  className="h-24 md:h-32 w-auto"
-                />
-              </div>
-            </div>
-          </section>
 
           {/* Benefits Section */}
           <section className="space-y-12">
@@ -209,58 +188,29 @@ function Universities() {
             </a>
           </section>
 
-          {/* FAQ Section */}
-          <section className="pt-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">Frequently asked questions</h2>
-            <div className="space-y-0">
-              {[
-                {
-                  question: "How does Grapevne integrate with existing campus systems?",
-                  answer: "Grapevne is designed to work independently without requiring integration with existing systems. Students voluntarily use the app, generating data through natural behavior."
-                },
-                {
-                  question: "What data privacy measures are in place?",
-                  answer: "We follow strict data privacy protocols. Student data is anonymized and aggregated before being shared with universities. Personal information is never shared."
-                },
-                {
-                  question: "How much does it cost for universities?",
-                  answer: "Pricing is customized based on campus size and specific needs. Contact us at universities@grapevneapp.com for a quote."
-                },
-                {
-                  question: "Do we need to train staff to use Grapevne?",
-                  answer: "No operational changes or staff training are required. Students use the app independently, and you receive insights through our dashboard."
-                },
-                {
-                  question: "What kind of insights will we receive?",
-                  answer: "You'll receive real-time data on student movement patterns, engagement hotspots, food waste reduction metrics, and behavioral insights across campus."
-                },
-                {
-                  question: "How quickly can we implement Grapevne?",
-                  answer: "Implementation can typically begin within a few weeks, depending on your campus's approval process and specific requirements."
-                }
-              ].map((faq, index) => (
-                <div key={index}>
-                  <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between py-6 text-left transition-colors group"
-                  >
-                    <span className="text-lg text-gray-900 group-hover:text-[#60A5FA] transition-colors">{faq.question}</span>
-                    <span className="text-gray-400 group-hover:text-[#60A5FA] text-xl transition-colors" style={{ transform: openIndex === index ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                      ›
-                    </span>
-                  </button>
-                  {openIndex === index && (
-                    <div className="pb-6 text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  )}
-                  {index < 5 && (
-                    <div className="border-t border-gray-200"></div>
-                  )}
+          {/* Trusted Partners Section */}
+          <section className="pt-12 pb-8">
+            <h3 className="text-2xl md:text-3xl font-light text-gray-900 mb-8">
+              trusted by our friendly neighborhood partners:
+            </h3>
+            <div className="flex flex-wrap gap-16 md:gap-24">
+              <div className="text-left">
+                <div className="font-bold text-gray-900 text-lg mb-2">Trinity College</div>
+                <div className="text-gray-600 text-base">
+                  300 Summit St.<br />
+                  Hartford, CT 06106
                 </div>
-              ))}
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-gray-900 text-lg mb-2">Stevens Institute of Technology</div>
+                <div className="text-gray-600 text-base">
+                  1 Castle Point Terrace<br />
+                  Hoboken, NJ 07030
+                </div>
+              </div>
             </div>
           </section>
+
         </div>
       </main>
 
@@ -274,12 +224,12 @@ function Universities() {
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

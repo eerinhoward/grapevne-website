@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 function Privacy() {
   const location = useLocation()
   const [activeTab, setActiveTab] = useState(null)
-  const [openIndex, setOpenIndex] = useState(null)
   const logoRef = useRef(null)
   const currentRotateX = useRef(0)
   const currentRotateY = useRef(0)
@@ -79,32 +78,6 @@ function Privacy() {
     }
   }, [])
 
-  const faqs = [
-    {
-      question: "What information does Grapevne collect?",
-      answer: "We collect information you provide directly, such as your profile information, posts, and location data when you use location-based features."
-    },
-    {
-      question: "How is my data used?",
-      answer: "Your data is used to provide and improve our services, send notifications, and generate aggregated insights for universities and brands (with appropriate privacy protections)."
-    },
-    {
-      question: "Is my data shared with third parties?",
-      answer: "We may share aggregated, anonymized data with partner universities and brands. Personal information is never sold to third parties."
-    },
-    {
-      question: "How can I delete my account?",
-      answer: "You can delete your account at any time through the app settings. This will permanently delete your personal data."
-    },
-    {
-      question: "How is my location data protected?",
-      answer: "Location data is only collected when you actively use location-based features and is stored securely with encryption."
-    },
-    {
-      question: "Can I opt out of data collection?",
-      answer: "You can control data collection through app settings, though some features may require certain data to function properly."
-    }
-  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -143,7 +116,7 @@ function Privacy() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-8 pt-8 pb-20">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-20">
         <div>
           {/* Legal Process Summary */}
           <section className="space-y-6" style={{ textAlign: 'justify', fontFamily: 'Helvetica, Arial, sans-serif' }}>
@@ -261,33 +234,6 @@ function Privacy() {
             </div>
           </section>
 
-          {/* FAQ Section */}
-          <section className="pt-6">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12">Frequently asked questions</h2>
-            <div className="space-y-0">
-              {faqs.map((faq, index) => (
-                <div key={index}>
-                  <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                    className="w-full flex items-center justify-between py-6 text-left transition-colors group"
-                  >
-                    <span className="text-lg text-gray-900 group-hover:text-[#60A5FA] transition-colors">{faq.question}</span>
-                    <span className="text-gray-400 group-hover:text-[#60A5FA] text-xl transition-colors" style={{ transform: openIndex === index ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
-                      ›
-                    </span>
-                  </button>
-                  {openIndex === index && (
-                    <div className="pb-6 text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </div>
-                  )}
-                  {index < faqs.length - 1 && (
-                    <div className="border-t border-gray-200"></div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
         </div>
       </main>
 
@@ -301,12 +247,12 @@ function Privacy() {
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
           </div>
         </div>
       </footer>

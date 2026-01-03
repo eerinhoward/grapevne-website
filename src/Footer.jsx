@@ -35,12 +35,12 @@ function Footer() {
           <div className="flex flex-col items-end gap-3 text-xs text-gray-600">
             <div className="flex items-center gap-3">
               <span className="text-gray-400 font-medium">USE CASES</span>
-              <Link to="/universities" className="hover-grapevne-blue transition-colors">Universities</Link>
-              <Link to="/brands" className="hover-grapevne-blue transition-colors">Brands</Link>
-              <Link to="/ambassadors" className="hover-grapevne-blue transition-colors">Ambassadors</Link>
+              <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
+              <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+              <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
               <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-              <Link to="/terms" className="hover-grapevne-blue transition-colors">Terms of Service</Link>
-              <Link to="/privacy" className="hover-grapevne-blue transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms of Service</Link>
+              <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy Policy</Link>
             </div>
           </div>
         </div>
