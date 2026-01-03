@@ -346,7 +346,7 @@ function Home() {
               <img 
                 src="/iphone image.png" 
                 alt="Grapevne App" 
-                className="h-[400px] md:h-[500px] w-auto object-contain"
+                className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
               />
             </div>
           </div>
@@ -398,7 +398,7 @@ function Home() {
               <img 
                 src="/iphone image.png" 
                 alt="Grapevne App" 
-                className="h-[400px] md:h-[500px] w-auto object-contain"
+                className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
               />
             </div>
           </div>
@@ -429,7 +429,7 @@ function Home() {
               <img 
                 src="/iphone image.png" 
                 alt="Grapevne App" 
-                className="h-[400px] md:h-[500px] w-auto object-contain"
+                className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
               />
             </div>
           </div>

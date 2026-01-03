@@ -9,6 +9,14 @@ function Brands() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
+  const [selectedGoal, setSelectedGoal] = useState('Campus Awareness')
+  
+  const goals = {
+    'Campus Awareness': 'Reach students through real, in-person moments.',
+    'Product Sampling': 'Distribute food or goods during high-traffic campus moments with zero guesswork.',
+    'Event Visibility': 'Surface pop-ups and brand moments to students already nearby.',
+    'Authentic Engagement': 'Be discovered through utility, not interruption.'
+  }
   
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -125,83 +133,50 @@ function Brands() {
       </header>
 
       {/* Main Content */}
-      <main>
-        {/* Split Screen Layout - Problem Statement */}
-        <div className="w-full px-4 md:px-8">
-          <div className="w-full flex" style={{ height: '80vh' }}>
-            <div className="flex-1" style={{ backgroundColor: '#ffffff', overflow: 'hidden' }}>
-              <img 
-                src="/HenryBayhaXP2C7839 (1).jpg" 
-                alt="Campus Scene" 
-                className="w-full h-full object-cover"
-                style={{ filter: 'grayscale(100%) contrast(1.1)' }}
-              />
-            </div>
-            <div className="flex-1" style={{ backgroundColor: '#FFD700', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingTop: '60px', paddingBottom: '60px' }}>
-              <div className="text-right px-8 max-w-4xl">
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-3" style={{ color: '#1a1a1a' }}>
-                You had to be there
-              </h2>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: '#1a1a1a' }}>
-                And most students weren't
-              </h2>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
-                Campus activations reward chance, not reach
-              </h2>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight" style={{ color: '#1a1a1a' }}>
-                <span style={{ color: '#3FA9F5' }}>Grapevne</span> makes them persistent
-              </h2>
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
+        <div className="space-y-16">
+          {/* Hero Section */}
+          <section className="text-left">
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              Brands
+            </h1>
+            
+            {/* Goal List */}
+            <div className="mb-8">
+              <label className="block text-xl mb-4" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Choose your goal
+              </label>
+              <div className="space-y-3">
+                {Object.keys(goals).map((goal) => (
+                  <div key={goal} className="flex items-start gap-4">
+                    <input
+                      type="radio"
+                      id={goal}
+                      name="goal"
+                      value={goal}
+                      checked={selectedGoal === goal}
+                      onChange={(e) => setSelectedGoal(e.target.value)}
+                      className="mt-1"
+                      style={{ accentColor: '#1a1a1a' }}
+                    />
+                    <label 
+                      htmlFor={goal}
+                      className="text-xl cursor-pointer flex-1"
+                      style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
+                    >
+                      <div className="font-medium mb-1">{goal}</div>
+                      <div className="text-base font-normal" style={{ color: '#666' }}>
+                        {goals[goal]}
+                      </div>
+                    </label>
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-20">
-          <div className="space-y-16">
-          {/* Benefits Section */}
-          <section className="space-y-12">
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Connect to Gen Z Within Seconds
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Reach thousands of Gen Z students instantly. With COSU approval, run instant pop-ups and get your food & drink products in front of engaged students in real time. No waiting, no delays—instant connection to the campus community.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Instant Pop-Ups & Activations
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Launch campus pop-ups and study breaks with instant notifications to all students on the app at that campus. Market your brand, promote your products, and drive foot traffic—all within seconds of activation. Reach students when they need a break, when they're hungry, when they're ready to discover something new.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Market & Promote Food & Drink Products
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Perfect for food and beverage brands looking to reach Gen Z. Showcase new products, run tastings, build brand awareness, and drive sales through targeted campus activations. Students are already on the app looking for food—meet them where they are.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Real-Time Engagement & Insights
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                See instant results. Track attendance, engagement, and campus-level interest in real time. Understand when and where students are most active to optimize your marketing strategy and maximize ROI.
-              </p>
             </div>
           </section>
 
           {/* CTA Section */}
           <section className="text-center pt-8">
-            <p className="text-xl text-gray-600 mb-8">
-              Ready to connect with campus communities?
-            </p>
             <a 
               href="mailto:brands@grapevneapp.com" 
               className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
@@ -209,8 +184,6 @@ function Brands() {
               Get in Touch
             </a>
           </section>
-
-          </div>
         </div>
       </main>
 

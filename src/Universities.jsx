@@ -9,6 +9,14 @@ function Universities() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
+  const [selectedGoal, setSelectedGoal] = useState('Reduce Food Waste')
+  
+  const goals = {
+    'Reduce Food Waste': 'Redistribute surplus food from campus events in real time, before it\'s discarded.',
+    'Improve Sustainability Reporting': 'Track when and where surplus occurs to support institutional sustainability goals.',
+    'Increase Student Access': 'xxx',
+    'Improve Event Visibility & Flow': 'xxx'
+  }
   
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -128,69 +136,47 @@ function Universities() {
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
         <div className="space-y-16">
           {/* Hero Section */}
-          <section className="text-center">
-            <h1 className="text-6xl md:text-7xl font-light mb-6 leading-tight" style={{ color: '#1a1a1a' }}>
+          <section className="text-left">
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
               For Universities
             </h1>
-            <p className="text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Real-time visibility into campus behavior. Reduce food waste. Understand student engagement patterns.
-            </p>
-          </section>
-
-
-          {/* Benefits Section */}
-          <section className="space-y-12">
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Real-Time Behavioral Insights
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Gain unprecedented visibility into when and where students are most active. See movement patterns, engagement hotspots, and demand signals that traditional systems can't capture.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Reduce Food Waste
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Students voluntarily generate data by posting leftover food from events. See when and where surplus emerges in real time, so you can redirect food before it becomes waste—no operational changes required.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Sustainability Analytics
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Track food recovery metrics, measure impact, and demonstrate sustainability progress. Unlike systems that depend on staff compliance, Grapevne works because students want to use it.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Higher Student Engagement
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Achieve materially higher engagement compared to typical campus apps. Our utility-first design means students check the app daily—creating a rich behavioral data layer for your institution.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                No Operational Overhead
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Unlike food waste systems that require staff training and compliance, Grapevne requires no operational change. Students voluntarily generate the data through everyday behavior.
-              </p>
+            
+            {/* Goal List */}
+            <div className="mb-8">
+              <label className="block text-xl mb-4" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Choose your goal
+              </label>
+              <div className="space-y-3">
+                {Object.keys(goals).map((goal) => (
+                  <div key={goal} className="flex items-start gap-4">
+                    <input
+                      type="radio"
+                      id={goal}
+                      name="goal"
+                      value={goal}
+                      checked={selectedGoal === goal}
+                      onChange={(e) => setSelectedGoal(e.target.value)}
+                      className="mt-1"
+                      style={{ accentColor: '#1a1a1a' }}
+                    />
+                    <label 
+                      htmlFor={goal}
+                      className="text-xl cursor-pointer flex-1"
+                      style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
+                    >
+                      <div className="font-medium mb-1">{goal}</div>
+                      <div className="text-base font-normal" style={{ color: '#666' }}>
+                        {goals[goal]}
+                      </div>
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
           {/* CTA Section */}
           <section className="text-center pt-8">
-            <p className="text-xl text-gray-600 mb-8">
-              Ready to build the behavioral data layer for your campus?
-            </p>
             <a 
               href="mailto:universities@grapevneapp.com" 
               className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
