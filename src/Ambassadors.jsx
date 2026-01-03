@@ -159,9 +159,9 @@ function Ambassadors() {
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
-            <a 
-              href="https://apps.apple.com/us/app/grapevne/id6745459372" 
-              target="_blank" 
+            <a
+              href="https://apps.apple.com/us/app/grapevne/id6745459372"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
               style={{ color: '#1a1a1a' }}
@@ -170,12 +170,12 @@ function Ambassadors() {
             </a>
           </div>
           <Link to="/" className="flex justify-center">
-            <img 
+            <img
               ref={logoRef}
-              src="/filledTransparent.png" 
-              alt="Grapevne Logo" 
+              src="/filledTransparent.png"
+              alt="Grapevne Logo"
               className="h-28 w-auto"
-              style={{ 
+              style={{
                 transformStyle: 'preserve-3d',
                 willChange: 'transform'
               }}
@@ -189,9 +189,9 @@ function Ambassadors() {
         {/* American Apparel-style Ad Image - Full Width with Overlay Text */}
         <div className="w-full mb-16 relative px-4 md:px-8">
           <div className="w-full relative" style={{ backgroundColor: '#f5f5f5' }}>
-            <img 
-              src="/HenryBayhaXP2C7783-2 (1).jpg" 
-              alt="Grapevne Ambassadors" 
+            <img
+              src="/HenryBayhaXP2C7783-2 (1).jpg"
+              alt="Grapevne Ambassadors"
               className="w-full object-cover block"
               style={{ height: '500px', objectFit: 'cover', objectPosition: 'center 40%' }}
             />
@@ -215,165 +215,180 @@ function Ambassadors() {
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="space-y-16">
 
-          {/* Benefits Section */}
-          <section className="space-y-12">
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Make an Impact
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Help reduce food waste on your campus while connecting students with free food opportunities. Your efforts directly benefit your community.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Build Your Network
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Work with campus administration, student organizations, and brands. Gain valuable experience in community building and product growth.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
-                Flexible Commitment
-              </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                We work around your schedule. Whether you're a freshman or senior, there's a way to contribute that fits your life.
-              </p>
-            </div>
-          </section>
-
-          {/* Form Section */}
-          <section className="pt-8">
-            <h2 className="text-4xl font-light mb-8 text-center" style={{ color: '#1a1a1a' }}>
-              Get Started
-            </h2>
-            
-            {submitted ? (
-              <div className="text-center py-12">
-                <p className="text-2xl mb-4" style={{ color: '#1a1a1a' }}>Thank you!</p>
-                <p className="text-xl text-gray-600">We'll be in touch soon.</p>
+            {/* Benefits Section */}
+            <section className="space-y-12">
+              <div>
+                <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
+                  Make an Impact
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Help reduce food waste on your campus while connecting students with free food opportunities. Your efforts directly benefit your community.
+                </p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#60A5FA] focus:border-transparent text-lg"
-                  />
-                </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#60A5FA] focus:border-transparent text-lg"
-                  />
-                </div>
+              <div>
+                <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
+                  Build Your Network
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Work with campus administration, student organizations, and brands. Gain valuable experience in community building and product growth.
+                </p>
+              </div>
 
-                <div>
-                  <label htmlFor="school" className="block text-sm font-medium text-gray-700 mb-2">
-                    School/University
-                  </label>
-                  <select
-                    id="school"
-                    name="school"
-                    value={formData.school}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#60A5FA] focus:border-transparent text-lg bg-white"
-                  >
-                    <option value="">Select your school</option>
-                    {officialPartners.map((school) => (
-                      <option key={school} value={school}>
-                        {school}
-                      </option>
-                    ))}
-                    <option value="other">Other</option>
-                  </select>
-                  
-                  {showOtherSchool && (
-                    <div className="mt-4 space-y-2">
-                      <p className="text-base text-gray-600">
-                        Don't see your school? Let's bring Grapevne to your campus.
-                      </p>
+              <div>
+                <h2 className="text-4xl font-light mb-4" style={{ color: '#1a1a1a' }}>
+                  Flexible Commitment
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  We work around your schedule. Whether you're a freshman or senior, there's a way to contribute that fits your life.
+                </p>
+              </div>
+            </section>
+
+            {/* Form Section */}
+            <section className="pt-8 w-full px-4">
+              <h2 className="text-4xl font-light mb-8 text-center" style={{ color: '#1a1a1a' }}>
+                Get Started
+              </h2>
+
+              {submitted ? (
+                <div className="text-center py-12">
+                  <p className="text-2xl mb-4" style={{ color: '#1a1a1a' }}>Thank you!</p>
+                  <p className="text-xl text-gray-600">We'll be in touch soon.</p>
+                </div>
+              ) : (
+                <div className="bg-gray-50 rounded-2xl p-8 w-full max-w-4xl mx-auto">
+                  <div className="space-y-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#1a1a1a' }}>
+                        Full Name *
+                      </label>
                       <input
                         type="text"
-                        id="otherSchool"
-                        name="otherSchool"
-                        value={formData.otherSchool}
+                        id="name"
+                        name="name"
+                        value={formData.name}
                         onChange={handleChange}
-                        required
-                        placeholder="Enter your school name"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#60A5FA] focus:border-transparent text-lg"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style={{ backgroundColor: 'white' }}
                       />
                     </div>
-                  )}
-                </div>
 
-                <div>
-                  <label htmlFor="year" className="block text-sm font-medium text-gray-700 mb-2">
-                    Year in School
-                  </label>
-                  <select
-                    id="year"
-                    name="year"
-                    value={formData.year}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#60A5FA] focus:border-transparent text-lg bg-white"
-                  >
-                    <option value="">Select year</option>
-                    <option value="Freshman">Freshman</option>
-                    <option value="Sophomore">Sophomore</option>
-                    <option value="Junior">Junior</option>
-                    <option value="Senior">Senior</option>
-                    <option value="Graduate">Graduate</option>
-                  </select>
-                </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#1a1a1a' }}>
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        style={{ backgroundColor: 'white' }}
+                      />
+                    </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Why are you interested in being a Grapevne ambassador? (Optional)
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#60A5FA] focus:border-transparent text-lg resize-none"
-                  />
-                </div>
+                    <div>
+                      <label htmlFor="school" className="block text-sm font-medium mb-2" style={{ color: '#1a1a1a' }}>
+                        School/University *
+                      </label>
+                      <select
+                        id="school"
+                        name="school"
+                        value={formData.school}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none bg-no-repeat bg-right"
+                        style={{
+                          backgroundColor: 'white',
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
+                          backgroundPosition: 'right 12px center',
+                          backgroundSize: '12px',
+                          color: formData.school ? '#1a1a1a' : '#999'
+                        }}
+                      >
+                        <option value="">Select your school</option>
+                        {officialPartners.map((school) => (
+                          <option key={school} value={school}>
+                            {school}
+                          </option>
+                        ))}
+                        <option value="other">Other</option>
+                      </select>
 
-                <div className="pt-4">
-                  <button
-                    type="submit"
-                    className="w-full bg-black text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-800 transition-colors"
-                  >
-                    Submit
-                  </button>
+                      {showOtherSchool && (
+                        <div className="mt-4 space-y-2">
+                          <p className="text-sm text-gray-600">
+                            Don't see your school? Let's bring Grapevne to your campus.
+                          </p>
+                          <input
+                            type="text"
+                            id="otherSchool"
+                            name="otherSchool"
+                            value={formData.otherSchool}
+                            onChange={handleChange}
+                            placeholder="Enter your school name"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            style={{ backgroundColor: 'white' }}
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
+                      <label htmlFor="year" className="block text-sm font-medium mb-2" style={{ color: '#1a1a1a' }}>
+                        Year in School *
+                      </label>
+                      <select
+                        id="year"
+                        name="year"
+                        value={formData.year}
+                        onChange={handleChange}
+                        className="w-full px-4 py-2.5 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm appearance-none bg-no-repeat bg-right"
+                        style={{
+                          backgroundColor: 'white',
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
+                          backgroundPosition: 'right 12px center',
+                          backgroundSize: '12px',
+                          color: formData.year ? '#1a1a1a' : '#999'
+                        }}
+                      >
+                        <option value="">Select year</option>
+                        <option value="Freshman">Freshman</option>
+                        <option value="Sophomore">Sophomore</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Graduate">Graduate</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#1a1a1a' }}>
+                        Why are you interested in being a Grapevne ambassador?
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows="5"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                        style={{ backgroundColor: 'white' }}
+                      />
+                    </div>
+
+                    <div className="pt-2">
+                      <button
+                        onClick={handleSubmit}
+                        className="w-full bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </form>
-            )}
-          </section>
+              )}
+            </section>
           </div>
         </div>
       </main>
@@ -402,4 +417,3 @@ function Ambassadors() {
 }
 
 export default Ambassadors
-

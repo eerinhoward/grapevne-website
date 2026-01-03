@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import ContactForm from './ContactForm'
 
 function Universities() {
   const location = useLocation()
@@ -10,14 +11,15 @@ function Universities() {
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
   const [selectedGoal, setSelectedGoal] = useState('')
-  
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
   const goals = {
     'Reduce Food Waste': 'Redistribute surplus food from campus events in real time, before it\'s discarded.',
     'Improve Sustainability Reporting': 'Track when and where surplus occurs to support institutional sustainability goals.',
     'Increase Student Access': 'xxx',
     'Improve Event Visibility & Flow': 'xxx'
   }
-  
+
   useEffect(() => {
     const cursor = document.createElement('div')
     cursor.innerHTML = '🍔'
@@ -107,9 +109,9 @@ function Universities() {
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
-            <a 
-              href="https://apps.apple.com/us/app/grapevne/id6745459372" 
-              target="_blank" 
+            <a
+              href="https://apps.apple.com/us/app/grapevne/id6745459372"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
               style={{ color: '#1a1a1a' }}
@@ -118,12 +120,12 @@ function Universities() {
             </a>
           </div>
           <Link to="/" className="flex justify-center">
-            <img 
+            <img
               ref={logoRef}
-              src="/filledTransparent.png" 
-              alt="Grapevne Logo" 
+              src="/filledTransparent.png"
+              alt="Grapevne Logo"
               className="h-28 w-auto"
-              style={{ 
+              style={{
                 transformStyle: 'preserve-3d',
                 willChange: 'transform'
               }}
@@ -140,13 +142,13 @@ function Universities() {
             <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
               For Universities
             </h1>
-            
+
             {/* Goal List */}
             <div className="mb-8">
               <div className="space-y-3">
                 {Object.keys(goals).map((goal) => (
-                  <div 
-                    key={goal} 
+                  <div
+                    key={goal}
                     className="cursor-pointer"
                     onClick={() => setSelectedGoal(selectedGoal === goal ? '' : goal)}
                   >
@@ -173,12 +175,21 @@ function Universities() {
 
           {/* CTA Section */}
           <section className="text-center pt-8">
-            <a 
-              href="mailto:universities@grapevneapp.com" 
+            <button
+              onClick={() => setIsFormOpen(!isFormOpen)}
               className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
             >
-              Get in Touch
-            </a>
+              {isFormOpen ? 'Close Form' : 'Get in Touch'}
+            </button>
+          </section>
+
+          {/* Contact Form */}
+          <section className="transition-all duration-500 ease-in-out">
+            <ContactForm 
+              isOpen={isFormOpen} 
+              onClose={() => setIsFormOpen(false)}
+              emailTo="universities@grapevneapp.com"
+            />
           </section>
 
           {/* Trusted Partners Section */}
@@ -193,7 +204,7 @@ function Universities() {
                   300 Summit St.<br />
                   Hartford, CT 06106
                 </div>
-                    </div>
+              </div>
               <div className="text-left">
                 <div className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>Stevens Institute of Technology</div>
                 <div className="text-gray-600 text-base">
@@ -231,4 +242,3 @@ function Universities() {
 }
 
 export default Universities
-

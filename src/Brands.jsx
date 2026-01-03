@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import ContactForm from './ContactForm'
 
 function Brands() {
   const location = useLocation()
@@ -10,6 +11,7 @@ function Brands() {
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
   const [selectedGoal, setSelectedGoal] = useState('')
+  const [isFormOpen, setIsFormOpen] = useState(false)
   
   const goals = {
     'Campus Awareness': 'Reach students through real, in-person moments.',
@@ -173,12 +175,21 @@ function Brands() {
 
           {/* CTA Section */}
           <section className="text-center pt-8">
-            <a 
-              href="mailto:brands@grapevneapp.com" 
+            <button
+              onClick={() => setIsFormOpen(!isFormOpen)}
               className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
             >
-              Get in Touch
-            </a>
+              {isFormOpen ? 'Close Form' : 'Get in Touch'}
+            </button>
+          </section>
+
+          {/* Contact Form */}
+          <section className="transition-all duration-500 ease-in-out">
+            <ContactForm 
+              isOpen={isFormOpen} 
+              onClose={() => setIsFormOpen(false)}
+              emailTo="brands@grapevneapp.com"
+            />
           </section>
         </div>
       </main>
@@ -207,4 +218,3 @@ function Brands() {
 }
 
 export default Brands
-
