@@ -27,16 +27,16 @@ function Home() {
         // Scrolling down - can only advance to next section
         if (currentSectionRef.current === 0 && scrollY >= 600) {
           targetSection = 1
-        } else if (currentSectionRef.current === 1 && scrollY >= 4750) {
+        } else if (currentSectionRef.current === 1 && scrollY >= 5350) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY >= 5550) {
+        } else if (currentSectionRef.current === 2 && scrollY >= 6150) {
           targetSection = 3
         }
       } else {
         // Scrolling up - can only go back to previous section
-        if (currentSectionRef.current === 3 && scrollY < 5550) {
+        if (currentSectionRef.current === 3 && scrollY < 6150) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY < 4750) {
+        } else if (currentSectionRef.current === 2 && scrollY < 5350) {
           targetSection = 1
         } else if (currentSectionRef.current === 1 && scrollY < 600) {
           targetSection = 0
@@ -48,16 +48,16 @@ function Home() {
         setCurrentSection(targetSection)
       }
       
-      // Calculate middle step based on scroll position within section 1 (600-4750)
-      // Custom thresholds: step 0 gets 1000px, step 5 gets 900px
-      if (scrollY >= 600 && scrollY < 4750) {
+      // Calculate middle step based on scroll position within section 1 (600-5350)
+      // Custom thresholds: step 0 gets 1000px, step 1 gets 750px, step 3 gets 750px, step 5 gets 900px
+      if (scrollY >= 600 && scrollY < 5350) {
         let step = 0
-        if (scrollY >= 4300) step = 6  // Extra slide after italics (4300-4750)
-        else if (scrollY >= 3400) step = 5  // "…before they're gone." (3400-4300) - 900px
-        else if (scrollY >= 2950) step = 4  // (2950-3400)
-        else if (scrollY >= 2500) step = 3  // (2500-2950)
-        else if (scrollY >= 2050) step = 2  // (2050-2500)
-        else if (scrollY >= 1600) step = 1  // (1600-2050)
+        if (scrollY >= 4900) step = 6  // Extra slide after italics (4900-5350)
+        else if (scrollY >= 4000) step = 5  // "…before they're gone." (4000-4900) - 900px
+        else if (scrollY >= 3550) step = 4  // (3550-4000)
+        else if (scrollY >= 2800) step = 3  // (2800-3550) - 750px for "iconic campus moments"
+        else if (scrollY >= 2350) step = 2  // (2350-2800)
+        else if (scrollY >= 1600) step = 1  // (1600-2350) - 750px for "free food"
         // step 0: 600-1600 (1000px for initial tagline)
         setMiddleStep(step)
       }

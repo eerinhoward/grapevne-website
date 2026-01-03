@@ -6,6 +6,7 @@ function Press() {
   const ticketsContainerRef = useRef(null)
   const ticketRefs = useRef([])
   const [selectedItem, setSelectedItem] = useState(null)
+  const [reachedEnd, setReachedEnd] = useState(false)
   const logoRef = useRef(null)
   const currentRotateX = useRef(0)
   const currentRotateY = useRef(0)
@@ -13,6 +14,7 @@ function Press() {
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
   const scrollAnimationFrameId = useRef(null)
+  const scrollPositionRef = useRef(0)
 
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -101,17 +103,40 @@ function Press() {
       // Don't handle wheel if modal is open
       if (selectedItem) return
       
-      e.preventDefault()
       if (ticketsContainerRef.current) {
+        const containerWidth = ticketsContainerRef.current.scrollWidth
+        const viewportWidth = window.innerWidth
+        const maxTranslate = Math.max(0, containerWidth - viewportWidth)
+        
+        // Check if we're at the end and scrolling down, or at the start and scrolling up
+        const atEnd = scrollPositionRef.current >= maxTranslate - 10
+        const atStart = scrollPositionRef.current <= 10
+        const scrollingDown = e.deltaY > 0
+        const scrollingUp = e.deltaY < 0
+        
+        // If at end and scrolling down, allow vertical scroll
+        if (atEnd && scrollingDown) {
+          setReachedEnd(true)
+          return // Don't prevent default, allow vertical scroll
+        }
+        
+        // If at start and scrolling up, allow vertical scroll
+        if (atStart && scrollingUp) {
+          return // Don't prevent default, allow vertical scroll
+        }
+        
+        // If we were in vertical scroll mode but now scrolling back
+        if (scrollingUp && atEnd) {
+          setReachedEnd(false)
+        }
+        
+        e.preventDefault()
         // Add velocity based on scroll delta
         const delta = e.deltaY * 0.5
         velocity += delta * 0.1 // Accumulate velocity
         targetPosition += delta
         
         // Limit scroll bounds
-        const containerWidth = ticketsContainerRef.current.scrollWidth
-        const viewportWidth = window.innerWidth
-        const maxTranslate = Math.max(0, containerWidth - viewportWidth)
         targetPosition = Math.max(0, Math.min(targetPosition, maxTranslate))
       }
     }
@@ -153,6 +178,9 @@ function Press() {
         scrollPosition += velocity
         velocity *= friction
         
+        // Track scroll position in ref
+        scrollPositionRef.current = scrollPosition
+        
         // Update container position
         ticketsContainerRef.current.style.transform = `translateX(-${scrollPosition}px)`
         
@@ -179,15 +207,24 @@ function Press() {
 
     // Start animation loop
     animate()
+    
+    // Handle scroll event for detecting scroll back to top
+    const handleScroll = () => {
+      if (window.scrollY <= 0) {
+        setReachedEnd(false)
+      }
+    }
 
     document.addEventListener('mousemove', handleMouseMove)
     window.addEventListener('wheel', handleWheel, { passive: false })
     window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('scroll', handleScroll)
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
       }
@@ -200,6 +237,18 @@ function Press() {
   }, [selectedItem])
 
   // Sample testimonials/press items - replace with real content
+  const photoshootImages = [
+    "/Photoshoot1.jpg",
+    "/Photoshoot2.jpg",
+    "/Photoshoot3.png",
+    "/HenryBayhaXP2C7783-2 (1).jpg",
+    "/HenryBayhaXP2C7839 (1).jpg",
+    "/Screenshot 2026-01-02 at 10.51.10 PM.png",
+    "/Screenshot 2026-01-02 at 10.52.05 PM.png",
+    "/Photoshoot1.jpg",
+    "/Photoshoot2.jpg"
+  ]
+
   const pressItems = [
     {
       id: 1,
@@ -207,7 +256,8 @@ function Press() {
       author: "Campus Tech Review",
       source: "campustech.review",
       quote: "Grapevne transforms how students find free food on campus while providing valuable insights to universities.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[0]
     },
     {
       id: 2,
@@ -215,7 +265,8 @@ function Press() {
       author: "Erin Howard",
       source: "Founder",
       quote: "The app addresses food waste and social isolation simultaneously - a win-win for campuses.",
-      teamMember: true
+      teamMember: true,
+      image: photoshootImages[1]
     },
     {
       id: 3,
@@ -223,7 +274,8 @@ function Press() {
       author: "Tech Campus",
       source: "techcampus.com",
       quote: "Finally, a campus app that students actually want to use. The free food angle is genius.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[2]
     },
     {
       id: 4,
@@ -231,7 +283,8 @@ function Press() {
       author: "Green Campus",
       source: "greencampus.org",
       quote: "Grapevne's approach to reducing food waste through student engagement is innovative and effective.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[3]
     },
     {
       id: 5,
@@ -239,7 +292,8 @@ function Press() {
       author: "Trinity News",
       source: "trinity.edu/news",
       quote: "Trinity becomes the first official partner, bringing real-time behavioral insights to campus operations.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[4]
     },
     {
       id: 6,
@@ -247,7 +301,8 @@ function Press() {
       author: "Higher Ed Tech",
       source: "higheredtech.com",
       quote: "Universities gain unprecedented visibility into student movement and engagement patterns.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[5]
     },
     {
       id: 7,
@@ -255,7 +310,8 @@ function Press() {
       author: "Marketing Campus",
       source: "marketingcampus.io",
       quote: "Brands can now understand campus-level interest and run more effective activations.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[6]
     },
     {
       id: 8,
@@ -263,7 +319,8 @@ function Press() {
       author: "UX Campus",
       source: "uxcampus.design",
       quote: "By focusing on daily utility, Grapevne achieves higher engagement than typical campus apps.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[7]
     },
     {
       id: 9,
@@ -271,12 +328,13 @@ function Press() {
       author: "Data Campus",
       source: "datacampus.tech",
       quote: "Grapevne is building the behavioral data layer for closed institutional networks.",
-      teamMember: false
+      teamMember: false,
+      image: photoshootImages[8]
     }
   ]
 
   return (
-    <div className="h-screen bg-white flex flex-col overflow-hidden">
+    <div className={`min-h-screen bg-white flex flex-col ${reachedEnd ? 'overflow-auto' : 'overflow-hidden h-screen'}`}>
       {/* Header with Logo */}
       <header className="pt-4 pb-4 px-4 relative flex-shrink-0">
         <div className="flex flex-col justify-center items-center gap-4">
@@ -447,7 +505,7 @@ function Press() {
               return (
               <div 
                 key={item.id} 
-                className="flex-shrink-0 w-64 relative ticket-wrapper"
+                className="flex-shrink-0 w-56 relative ticket-wrapper"
                 data-index={index}
                 style={{
                   transform: `rotate(${baseRotation}deg)`,
@@ -479,6 +537,15 @@ function Press() {
                         </div>
                       )}
                     </div>
+                  </div>
+                  
+                  {/* Image above title - edge to edge */}
+                  <div className="w-full overflow-hidden" style={{ aspectRatio: '4/2' }}>
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   
                   {/* Ticket Content - like order items */}
@@ -524,26 +591,29 @@ function Press() {
           {/* Left side - Image */}
           <div className="w-1/2 bg-white flex items-center justify-center p-12">
             <div 
-              className="w-96 h-96 border-2 bg-white flex items-center justify-center relative"
+              className="w-96 h-96 border-2 bg-white flex items-center justify-center relative overflow-hidden"
               style={{
                 maxWidth: '80%',
                 maxHeight: '80%',
-                aspectRatio: '1 / 1',
+                aspectRatio: '4 / 2',
                 borderColor: '#3B82F6',
                 borderStyle: 'dashed'
               }}
             >
               {/* Corner handles like macOS selection */}
-              <div className="absolute -top-1 -left-1 w-3 h-3 border-2 border-blue-500 bg-white"></div>
-              <div className="absolute -top-1 -right-1 w-3 h-3 border-2 border-blue-500 bg-white"></div>
-              <div className="absolute -bottom-1 -left-1 w-3 h-3 border-2 border-blue-500 bg-white"></div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-2 border-blue-500 bg-white"></div>
+              <div className="absolute -top-1 -left-1 w-3 h-3 border-2 border-blue-500 bg-white z-10"></div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 border-2 border-blue-500 bg-white z-10"></div>
+              <div className="absolute -bottom-1 -left-1 w-3 h-3 border-2 border-blue-500 bg-white z-10"></div>
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-2 border-blue-500 bg-white z-10"></div>
               
-              {/* X lines for broken image placeholder */}
-              <svg className="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="0" x2="100" y2="100" stroke="#3B82F6" strokeWidth="1"/>
-                <line x1="100" y1="0" x2="0" y2="100" stroke="#3B82F6" strokeWidth="1"/>
-              </svg>
+              {/* Actual image */}
+              {selectedItem.image && (
+                <img 
+                  src={selectedItem.image} 
+                  alt={selectedItem.title}
+                  className="w-full h-full object-cover"
+                />
+              )}
             </div>
           </div>
 
@@ -593,12 +663,12 @@ function Press() {
       )}
 
       {/* Footer */}
-      <footer className="py-6 px-4 flex-shrink-0">
-        <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
+      <footer className="py-2 px-4 bg-white fixed bottom-2 left-0 right-0">
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-0.5">
           <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
-            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
-            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
+            <span className="ip-symbol text-sm" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol text-sm" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol text-sm" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
