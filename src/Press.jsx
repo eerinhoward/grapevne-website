@@ -356,7 +356,7 @@ function Press() {
       <main className="flex-1 flex flex-col justify-center py-6 overflow-hidden">
         {/* Header Text */}
         <div className="text-left px-4 mb-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
             We brought the receipts 😮‍💨
           </h2>
         </div>

@@ -27,16 +27,16 @@ function Home() {
         // Scrolling down - can only advance to next section
         if (currentSectionRef.current === 0 && scrollY >= 600) {
           targetSection = 1
-        } else if (currentSectionRef.current === 1 && scrollY >= 4300) {
+        } else if (currentSectionRef.current === 1 && scrollY >= 4750) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY >= 5100) {
+        } else if (currentSectionRef.current === 2 && scrollY >= 5550) {
           targetSection = 3
         }
       } else {
         // Scrolling up - can only go back to previous section
-        if (currentSectionRef.current === 3 && scrollY < 5100) {
+        if (currentSectionRef.current === 3 && scrollY < 5550) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY < 4300) {
+        } else if (currentSectionRef.current === 2 && scrollY < 4750) {
           targetSection = 1
         } else if (currentSectionRef.current === 1 && scrollY < 600) {
           targetSection = 0
@@ -48,12 +48,12 @@ function Home() {
         setCurrentSection(targetSection)
       }
       
-      // Calculate middle step based on scroll position within section 1 (600-4300)
-      // Custom thresholds: step 0 gets 1000px, all others get 450px each
-      if (scrollY >= 600 && scrollY < 4300) {
+      // Calculate middle step based on scroll position within section 1 (600-4750)
+      // Custom thresholds: step 0 gets 1000px, step 5 gets 900px
+      if (scrollY >= 600 && scrollY < 4750) {
         let step = 0
-        if (scrollY >= 3850) step = 6  // Extra slide after italics (3850-4300)
-        else if (scrollY >= 3400) step = 5  // "…before they're gone." (3400-3850)
+        if (scrollY >= 4300) step = 6  // Extra slide after italics (4300-4750)
+        else if (scrollY >= 3400) step = 5  // "…before they're gone." (3400-4300) - 900px
         else if (scrollY >= 2950) step = 4  // (2950-3400)
         else if (scrollY >= 2500) step = 3  // (2500-2950)
         else if (scrollY >= 2050) step = 2  // (2050-2500)
@@ -164,7 +164,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="bg-white flex flex-col" style={{ minHeight: '1000vh' }}>
+    <div className="bg-white flex flex-col" style={{ minHeight: '1100vh' }}>
       {/* Background Strip - hides with navbar */}
       <div 
         className="fixed top-0 left-0 right-0 h-[120px] bg-transparent z-10 transition-transform duration-300"
@@ -369,14 +369,14 @@ function Home() {
         >
           <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-center" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
             <div className="flex items-center justify-center gap-3 mb-2">
-              <svg className="w-10 h-10 md:w-12 md:h-12 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg className="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
               </svg>
               <span>RSVP.</span>
             </div>
             <div className="flex items-center justify-center gap-3 mb-6">
-              <svg className="w-10 h-10 md:w-12 md:h-12 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <svg className="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
               </svg>
