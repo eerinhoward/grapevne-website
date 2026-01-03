@@ -9,19 +9,57 @@ function Home() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [showNewContent, setShowNewContent] = useState(false)
+  const [currentSection, setCurrentSection] = useState(0) // 0 = first, 1 = middle, 2 = final
+  const [middleStep, setMiddleStep] = useState(0) // 0-4 for the animated sequence in section 1
   const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
+  const currentSectionRef = useRef(0) // Track current section for scroll logic
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset
+      const isScrollingDown = scrollY > lastScrollY.current
       
-      // Content transition
-      if (scrollY > 300) {
-        setShowNewContent(true)
+      // Content transitions - only allow moving one section at a time
+      let targetSection = currentSectionRef.current
+      
+      if (isScrollingDown) {
+        // Scrolling down - can only advance to next section
+        if (currentSectionRef.current === 0 && scrollY >= 600) {
+          targetSection = 1
+        } else if (currentSectionRef.current === 1 && scrollY >= 4300) {
+          targetSection = 2
+        } else if (currentSectionRef.current === 2 && scrollY >= 5100) {
+          targetSection = 3
+        }
       } else {
-        setShowNewContent(false)
+        // Scrolling up - can only go back to previous section
+        if (currentSectionRef.current === 3 && scrollY < 5100) {
+          targetSection = 2
+        } else if (currentSectionRef.current === 2 && scrollY < 4300) {
+          targetSection = 1
+        } else if (currentSectionRef.current === 1 && scrollY < 600) {
+          targetSection = 0
+        }
+      }
+      
+      if (targetSection !== currentSectionRef.current) {
+        currentSectionRef.current = targetSection
+        setCurrentSection(targetSection)
+      }
+      
+      // Calculate middle step based on scroll position within section 1 (600-4300)
+      // Custom thresholds: step 0 gets 1000px, all others get 450px each
+      if (scrollY >= 600 && scrollY < 4300) {
+        let step = 0
+        if (scrollY >= 3850) step = 6  // Extra slide after italics (3850-4300)
+        else if (scrollY >= 3400) step = 5  // "…before they're gone." (3400-3850)
+        else if (scrollY >= 2950) step = 4  // (2950-3400)
+        else if (scrollY >= 2500) step = 3  // (2500-2950)
+        else if (scrollY >= 2050) step = 2  // (2050-2500)
+        else if (scrollY >= 1600) step = 1  // (1600-2050)
+        // step 0: 600-1600 (1000px for initial tagline)
+        setMiddleStep(step)
       }
       
       // Header show/hide based on scroll direction
@@ -126,7 +164,13 @@ function Home() {
   }, [])
 
   return (
-    <div className="bg-white flex flex-col" style={{ minHeight: '200vh' }}>
+    <div className="bg-white flex flex-col" style={{ minHeight: '1000vh' }}>
+      {/* Background Strip - hides with navbar */}
+      <div 
+        className="fixed top-0 left-0 right-0 h-[120px] bg-transparent z-10 transition-transform duration-300"
+        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+      />
+      
       {/* Header with Logo - shows on scroll up, hides on scroll down */}
       <header 
         className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-transparent z-20 transition-transform duration-300"
@@ -170,19 +214,19 @@ function Home() {
         <div 
           className="absolute inset-0 flex items-center justify-start transition-all duration-700 ease-in-out"
           style={{
-            transform: showNewContent ? 'translateY(-100%)' : 'translateY(0)',
-            opacity: showNewContent ? 0 : 1,
-            pointerEvents: showNewContent ? 'none' : 'auto'
+            transform: currentSection === 0 ? 'translateY(0)' : 'translateY(-100%)',
+            opacity: currentSection === 0 ? 1 : 0,
+            pointerEvents: currentSection === 0 ? 'auto' : 'none'
           }}
         >
-          <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
+          <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
             {/* Top - Bold Helvetica Slogan */}
             <div className="text-left pl-8 md:pl-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                what's happening.
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                What's happening.
               </h2>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                while it's happening.
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                While it's happening.
           </h2>
             </div>
             
@@ -201,13 +245,94 @@ function Home() {
           </div>
         </div>
         
-        {/* New Content */}
+        {/* Middle Content - Grapevne description with animated sequence */}
         <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
           style={{
-            transform: showNewContent ? 'translateY(-5%)' : 'translateY(100%)',
-            opacity: showNewContent ? 1 : 0,
-            pointerEvents: showNewContent ? 'auto' : 'none'
+            transform: currentSection === 1 ? 'translateY(0)' : (currentSection === 2 ? 'translateY(-100%)' : 'translateY(100%)'),
+            opacity: currentSection === 1 ? 1 : 0,
+            pointerEvents: currentSection === 1 ? 'auto' : 'none'
+          }}
+        >
+          <div className="relative text-2xl md:text-3xl lg:text-4xl lowercase" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+            {/* Step 0: Initial tagline */}
+            <div 
+              className="transition-all duration-500 whitespace-nowrap"
+              style={{ 
+                opacity: middleStep === 0 ? 1 : 0,
+                pointerEvents: middleStep === 0 ? 'auto' : 'none'
+              }}
+            >
+              <span>grapevne is </span>
+              <span>a real-time campus discovery layer.</span>
+            </div>
+            
+            {/* Steps 1-4: Use cases with sliding & - all on one line */}
+            <div 
+              className="absolute top-0 left-0 transition-all duration-700 whitespace-nowrap"
+              style={{ 
+                opacity: middleStep >= 1 && middleStep < 5 ? 1 : 0,
+                pointerEvents: middleStep >= 1 && middleStep < 5 ? 'auto' : 'none',
+                // Slide left as more items are added to keep them in view
+                transform: middleStep >= 4 ? 'translateX(-700px)' : 
+                          middleStep >= 3 ? 'translateX(-350px)' : 
+                          middleStep >= 2 ? 'translateX(-150px)' : 'translateX(0)'
+              }}
+            >
+              <span>grapevne is </span>
+              <span className="transition-all duration-500" style={{ opacity: middleStep >= 1 ? 1 : 0 }}>
+                free food
+              </span>
+              <span 
+                className="transition-all duration-500 inline-block"
+                style={{ 
+                  opacity: middleStep >= 2 ? 1 : 0,
+                  transform: middleStep >= 2 ? 'translateX(0)' : 'translateX(30px)'
+                }}
+              >
+                &nbsp;&amp;&nbsp;brand pop-ups
+              </span>
+              <span 
+                className="transition-all duration-500 inline-block"
+                style={{ 
+                  opacity: middleStep >= 3 ? 1 : 0,
+                  transform: middleStep >= 3 ? 'translateX(0)' : 'translateX(30px)'
+                }}
+              >
+                &nbsp;&amp;&nbsp;iconic campus moments
+              </span>
+              <span 
+                className="transition-all duration-500 inline-block"
+                style={{ 
+                  opacity: middleStep >= 4 ? 1 : 0,
+                  transform: middleStep >= 4 ? 'translateX(0)' : 'translateX(30px)'
+                }}
+              >
+                &nbsp;&amp;&nbsp;things worth leaving your dorm for
+              </span>
+            </div>
+            
+            {/* Step 5-6: "…before they're gone." - separate centered section */}
+            <div 
+              className="absolute top-0 left-0 right-0 transition-all duration-700 text-center italic"
+              style={{ 
+                opacity: middleStep >= 5 ? 1 : 0,
+                pointerEvents: middleStep >= 5 ? 'auto' : 'none',
+                transform: middleStep >= 5 ? 'translateY(0)' : 'translateY(30px)'
+              }}
+            >
+              …before they're gone.
+            </div>
+          </div>
+        </div>
+        
+        {/* Section 2 - iPhone blurb */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          style={{
+            transform: currentSection === 2 ? 'translateY(-5%)' : (currentSection === 3 ? 'translateY(-100%)' : 'translateY(100%)'),
+            opacity: currentSection === 2 ? 1 : 0,
+            pointerEvents: currentSection === 2 ? 'auto' : 'none'
           }}
         >
           <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
@@ -229,6 +354,36 @@ function Home() {
                 alt="Grapevne App" 
                 className="h-[400px] md:h-[500px] w-auto object-contain"
               />
+            </div>
+          </div>
+        </div>
+        
+        {/* Section 3 - No RSVP, No coordinate */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          style={{
+            transform: currentSection === 3 ? 'translateY(-5%)' : 'translateY(100%)',
+            opacity: currentSection === 3 ? 1 : 0,
+            pointerEvents: currentSection === 3 ? 'auto' : 'none'
+          }}
+        >
+          <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-center" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <svg className="w-10 h-10 md:w-12 md:h-12 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+              </svg>
+              <span>RSVP.</span>
+            </div>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <svg className="w-10 h-10 md:w-12 md:h-12 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+              </svg>
+              <span>coordination.</span>
+            </div>
+            <div className="font-normal text-xl md:text-2xl lg:text-3xl">
+              You just see what's happening and decide.
             </div>
           </div>
         </div>
