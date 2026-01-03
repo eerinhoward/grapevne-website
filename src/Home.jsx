@@ -9,7 +9,7 @@ function Home() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [currentSection, setCurrentSection] = useState(0) // 0 = first, 1 = middle, 2 = final
+  const [currentSection, setCurrentSection] = useState(0) // 0 = first, 1 = middle, 2 = map, 3 = campus footprint, 4 = no RSVP
   const [middleStep, setMiddleStep] = useState(0) // 0-4 for the animated sequence in section 1
   const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
@@ -27,16 +27,20 @@ function Home() {
         // Scrolling down - can only advance to next section
         if (currentSectionRef.current === 0 && scrollY >= 600) {
           targetSection = 1
-        } else if (currentSectionRef.current === 1 && scrollY >= 5350) {
+        } else if (currentSectionRef.current === 1 && scrollY >= 5650) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY >= 6150) {
+        } else if (currentSectionRef.current === 2 && scrollY >= 7650) {
           targetSection = 3
+        } else if (currentSectionRef.current === 3 && scrollY >= 8850) {
+          targetSection = 4
         }
       } else {
         // Scrolling up - can only go back to previous section
-        if (currentSectionRef.current === 3 && scrollY < 6150) {
+        if (currentSectionRef.current === 4 && scrollY < 8850) {
+          targetSection = 3
+        } else if (currentSectionRef.current === 3 && scrollY < 7650) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY < 5350) {
+        } else if (currentSectionRef.current === 2 && scrollY < 5650) {
           targetSection = 1
         } else if (currentSectionRef.current === 1 && scrollY < 600) {
           targetSection = 0
@@ -50,11 +54,11 @@ function Home() {
       
       // Calculate middle step based on scroll position within section 1 (600-5350)
       // Custom thresholds: step 0 gets 1000px, step 1 gets 750px, step 3 gets 750px, step 5 gets 900px
-      if (scrollY >= 600 && scrollY < 5350) {
+      if (scrollY >= 600 && scrollY < 5650) {
         let step = 0
-        if (scrollY >= 4900) step = 6  // Extra slide after italics (4900-5350)
-        else if (scrollY >= 4000) step = 5  // "…before they're gone." (4000-4900) - 900px
-        else if (scrollY >= 3550) step = 4  // (3550-4000)
+        if (scrollY >= 5200) step = 6  // Extra slide after italics (5200-5650)
+        else if (scrollY >= 4300) step = 5  // "…before they're gone." (4300-5200) - 900px
+        else if (scrollY >= 3550) step = 4  // (3550-4300) - 750px for "things worth leaving your dorm for"
         else if (scrollY >= 2800) step = 3  // (2800-3550) - 750px for "iconic campus moments"
         else if (scrollY >= 2350) step = 2  // (2350-2800)
         else if (scrollY >= 1600) step = 1  // (1600-2350) - 750px for "free food"
@@ -236,10 +240,10 @@ function Home() {
                 <img src="/Photoshoot1.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
               </a>
               <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
-                <img src="/Photoshoot2.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
+                <img src="/Photoshoot2.png" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
               </a>
               <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
-                <img src="/Photoshoot3.png" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
+                <img src="/Photoshoot3.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
               </a>
             </div>
           </div>
@@ -254,29 +258,38 @@ function Home() {
             pointerEvents: currentSection === 1 ? 'auto' : 'none'
           }}
         >
-          <div className="relative text-2xl md:text-3xl lg:text-4xl lowercase" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-            {/* Step 0: Initial tagline */}
-            <div 
-              className="transition-all duration-500 whitespace-nowrap"
-              style={{ 
-                opacity: middleStep === 0 ? 1 : 0,
-                pointerEvents: middleStep === 0 ? 'auto' : 'none'
-              }}
-            >
+          {/* Step 0: Initial tagline - centered, no iPhone */}
+          <div 
+            className="absolute inset-0 flex items-center justify-center transition-all duration-500"
+            style={{ 
+              opacity: middleStep === 0 ? 1 : 0,
+              pointerEvents: middleStep === 0 ? 'auto' : 'none'
+            }}
+          >
+            <div className="text-2xl md:text-3xl lg:text-4xl lowercase whitespace-nowrap" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
               <span>grapevne is </span>
               <span>a real-time campus discovery layer.</span>
             </div>
-            
-            {/* Steps 1-4: Use cases with sliding & - all on one line */}
+          </div>
+          
+          {/* Steps 1-4: Use cases with iPhone on the right */}
+          <div 
+            className="absolute inset-0 flex items-center justify-center gap-12 md:gap-16 lg:gap-24 transition-all duration-700"
+            style={{ 
+              opacity: middleStep >= 1 && middleStep < 5 ? 1 : 0,
+              pointerEvents: middleStep >= 1 && middleStep < 5 ? 'auto' : 'none'
+            }}
+          >
+            {/* Left side - sliding text */}
             <div 
-              className="absolute top-0 left-0 transition-all duration-700 whitespace-nowrap"
+              className="text-2xl md:text-3xl lg:text-4xl lowercase whitespace-nowrap transition-all duration-700"
               style={{ 
-                opacity: middleStep >= 1 && middleStep < 5 ? 1 : 0,
-                pointerEvents: middleStep >= 1 && middleStep < 5 ? 'auto' : 'none',
-                // Slide left as more items are added to keep them in view
-                transform: middleStep >= 4 ? 'translateX(-700px)' : 
-                          middleStep >= 3 ? 'translateX(-350px)' : 
-                          middleStep >= 2 ? 'translateX(-150px)' : 'translateX(0)'
+                fontFamily: 'Helvetica, Arial, sans-serif', 
+                color: '#1a1a1a',
+                // Start more to the right so full text is visible, then slide left as more items are added
+                transform: middleStep >= 4 ? 'translateX(-600px)' : 
+                          middleStep >= 3 ? 'translateX(100px)' : 
+                          middleStep >= 2 ? 'translateX(300px)' : 'translateX(400px)'
               }}
             >
               <span>grapevne is </span>
@@ -312,12 +325,29 @@ function Home() {
               </span>
             </div>
             
-            {/* Step 5-6: "…before they're gone." - separate centered section */}
+            {/* Right side - iPhone */}
+            <div className="flex-shrink-0">
+              <img 
+                src="/iphone image.png" 
+                alt="Grapevne App" 
+                className="h-[400px] md:h-[500px] w-auto object-contain"
+              />
+            </div>
+          </div>
+          
+          {/* Step 5-6: "…before they're gone." - centered, no iPhone */}
+          <div 
+            className="absolute inset-0 flex items-center justify-center transition-all duration-700"
+            style={{ 
+              opacity: middleStep >= 5 ? 1 : 0,
+              pointerEvents: middleStep >= 5 ? 'auto' : 'none'
+            }}
+          >
             <div 
-              className="absolute top-0 left-0 right-0 transition-all duration-700 text-center italic"
+              className="text-2xl md:text-3xl lg:text-4xl lowercase text-center italic transition-all duration-700"
               style={{ 
-                opacity: middleStep >= 5 ? 1 : 0,
-                pointerEvents: middleStep >= 5 ? 'auto' : 'none',
+                fontFamily: 'Helvetica, Arial, sans-serif', 
+                color: '#1a1a1a',
                 transform: middleStep >= 5 ? 'translateY(0)' : 'translateY(30px)'
               }}
             >
@@ -326,7 +356,7 @@ function Home() {
           </div>
         </div>
         
-        {/* Section 2 - iPhone blurb */}
+        {/* Section 2 - Map blurb */}
         <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
           style={{
@@ -338,7 +368,7 @@ function Home() {
           <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
             {/* Left side - Text */}
             <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <div className="font-bold">
+              <div className="font-bold" style={{ textTransform: 'none', fontFamily: '"Cooper Black", serif' }}>
                 Map what's happening <span className="font-bold italic">right now</span>
               </div>
               <div className="font-normal">See where things are popping off.</div>
@@ -358,13 +388,44 @@ function Home() {
           </div>
         </div>
         
-        {/* Section 3 - No RSVP, No coordinate */}
+        {/* Section 3 - Campus footprint */}
         <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
           style={{
-            transform: currentSection === 3 ? 'translateY(-5%)' : 'translateY(100%)',
+            transform: currentSection === 3 ? 'translateY(-5%)' : (currentSection === 4 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 3 ? 1 : 0,
             pointerEvents: currentSection === 3 ? 'auto' : 'none'
+          }}
+        >
+          <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
+            {/* Left side - Text */}
+            <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+              <div className="font-bold mb-2" style={{ textTransform: 'none', fontFamily: '"Cooper Black", serif' }}>
+                Your campus footprint, all in one place.
+              </div>
+              <div className="font-normal">moments.</div>
+              <div className="font-normal">people.</div>
+              <div className="font-normal">things you were part of.</div>
+            </div>
+            
+            {/* Right side - iPhone */}
+            <div className="flex-shrink-0">
+              <img 
+                src="/iphone image.png" 
+                alt="Grapevne App" 
+                className="h-[400px] md:h-[500px] w-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
+        
+        {/* Section 4 - No RSVP, No coordinate */}
+        <div 
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          style={{
+            transform: currentSection === 4 ? 'translateY(-5%)' : 'translateY(100%)',
+            opacity: currentSection === 4 ? 1 : 0,
+            pointerEvents: currentSection === 4 ? 'auto' : 'none'
           }}
         >
           <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-center" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>

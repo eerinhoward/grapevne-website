@@ -239,14 +239,14 @@ function Press() {
   // Sample testimonials/press items - replace with real content
   const photoshootImages = [
     "/Photoshoot1.jpg",
-    "/Photoshoot2.jpg",
-    "/Photoshoot3.png",
+    "/Photoshoot2.png",
+    "/Photoshoot3.jpg",
     "/HenryBayhaXP2C7783-2 (1).jpg",
     "/HenryBayhaXP2C7839 (1).jpg",
     "/Screenshot 2026-01-02 at 10.51.10 PM.png",
     "/Screenshot 2026-01-02 at 10.52.05 PM.png",
     "/Photoshoot1.jpg",
-    "/Photoshoot2.jpg"
+    "/Photoshoot2.png"
   ]
 
   const pressItems = [
@@ -414,7 +414,7 @@ function Press() {
       <main className="flex-1 flex flex-col justify-center py-6 overflow-hidden">
         {/* Header Text */}
         <div className="text-left px-4 mb-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl" style={{ fontFamily: '"Cooper Black", serif', fontWeight: 400, letterSpacing: '0.03em', color: 'var(--grapevne-blue)' }}>
             We brought the receipts 😮‍💨
           </h2>
         </div>
