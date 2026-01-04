@@ -14,6 +14,7 @@ function Home() {
   const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
   const currentSectionRef = useRef(0) // Track current section for scroll logic
+  const [showUseCases, setShowUseCases] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -193,6 +194,31 @@ function Home() {
             {location.pathname === '/press' && (
               <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
             )}
+            </div>
+            <div className="flex flex-col items-center relative"
+              onMouseEnter={() => setShowUseCases(true)}
+              onMouseLeave={() => setShowUseCases(false)}
+            >
+              <div 
+                className="text-lg font-bold hover-grapevne-blue transition-colors lowercase cursor-pointer" 
+                style={{ color: '#1a1a1a' }}
+                onClick={() => setShowUseCases(true)}
+              >
+                Use Cases
+              </div>
+              {(location.pathname === '/universities' || location.pathname === '/brands') && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+              {showUseCases && (
+                <div className="absolute top-full pt-1 pb-2 z-30 min-w-[120px] left-0 pl-4">
+                  <Link to="/universities" className="block text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                    Universities
+                  </Link>
+                  <Link to="/brands" className="block text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                    Brands
+                  </Link>
+                </div>
+              )}
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>

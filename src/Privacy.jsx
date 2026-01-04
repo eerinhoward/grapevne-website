@@ -127,7 +127,7 @@ function Privacy() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-8" style={{ paddingBottom: '100px' }}>
+      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-20">
         <div>
           {/* Preface Header */}
           <h1 className="text-4xl md:text-5xl font-bold mb-8" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
@@ -254,7 +254,7 @@ function Privacy() {
       </main>
 
       {/* Footer */}
-      <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
+      <footer className="py-8 px-4 mt-12">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
