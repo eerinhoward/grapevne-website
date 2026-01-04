@@ -13,17 +13,27 @@ function Universities() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
-  const [scrollStep, setScrollStep] = useState(0) // 0 = initial, 1 = Partners
+  const [scrollStep, setScrollStep] = useState(0) // 0 = initial, 1 = Place and trust, 2 = Shared by the people already there, 3 = Make it legible
   const scrollStepRef = useRef(0)
   const isScrollingRef = useRef(false)
   const [hoveredPartner, setHoveredPartner] = useState(null)
   const [selectedPartnerIndex, setSelectedPartnerIndex] = useState(null)
   const [showUseCases, setShowUseCases] = useState(false)
   
-  // Define scroll positions for each step
-  const scrollPositions = {
-    0: 0,      // Initial position
-    1: 400     // Partners section
+  // Define scroll positions for each step - calculated dynamically
+  const getScrollPositions = () => {
+    const vh = window.innerHeight
+    // Hero section is approximately 800px (600px min-height + padding)
+    const heroHeight = 800
+    const sectionHeight = vh  // Match the actual content section height (min-h-screen)
+    return {
+      0: 0,                           // Initial position (hero)
+      1: heroHeight,                  // Place and trust section
+      2: heroHeight + sectionHeight,      // Shared by the people already there section
+      3: heroHeight + sectionHeight * 2,  // Make it legible section
+      4: heroHeight + sectionHeight * 3,  // Make reporting real section
+      5: heroHeight + sectionHeight * 4   // It becomes routine section
+    }
   }
 
   const partners = [
@@ -160,13 +170,13 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
       
       if (scrollingDown) {
         // Scrolling down - advance to next step
-        if (scrollStepRef.current === 0) {
-          targetStep = 1
+        if (scrollStepRef.current < 5) {
+          targetStep = scrollStepRef.current + 1
         }
       } else {
         // Scrolling up - go back to previous step
-        if (scrollStepRef.current === 1) {
-          targetStep = 0
+        if (scrollStepRef.current > 0) {
+          targetStep = scrollStepRef.current - 1
         }
       }
       
@@ -175,15 +185,16 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
         setScrollStep(targetStep)
         
         // Smooth scroll to target position
+        const positions = getScrollPositions()
         window.scrollTo({
-          top: scrollPositions[targetStep],
+          top: positions[targetStep],
           behavior: 'smooth'
         })
         
         // Reset scrolling flag after animation
         setTimeout(() => {
           isScrollingRef.current = false
-        }, 500)
+        }, 300)
       } else {
         isScrollingRef.current = false
       }
@@ -191,18 +202,25 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
     
     const handleScroll = () => {
       const scrollY = window.scrollY || window.pageYOffset
+      const positions = getScrollPositions()
       
       // Update step based on scroll position (for initial load or direct navigation)
-      if (scrollY >= scrollPositions[1] - 50) {
-        if (scrollStepRef.current !== 1) {
-          scrollStepRef.current = 1
-          setScrollStep(1)
-        }
-      } else {
-        if (scrollStepRef.current !== 0) {
-          scrollStepRef.current = 0
-          setScrollStep(0)
-        }
+      let newStep = 0
+      if (scrollY >= positions[5] - 50) {
+        newStep = 5
+      } else if (scrollY >= positions[4] - 50) {
+        newStep = 4
+      } else if (scrollY >= positions[3] - 50) {
+        newStep = 3
+      } else if (scrollY >= positions[2] - 50) {
+        newStep = 2
+      } else if (scrollY >= positions[1] - 50) {
+        newStep = 1
+      }
+      
+      if (scrollStepRef.current !== newStep) {
+        scrollStepRef.current = newStep
+        setScrollStep(newStep)
       }
       
       // Header show/hide based on scroll direction
@@ -230,16 +248,14 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Background Strip - hides with navbar */}
+      {/* Background Strip */}
       <div 
-        className="fixed top-0 left-0 right-0 h-[120px] bg-white z-10 transition-transform duration-300"
-        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+        className="fixed top-0 left-0 right-0 h-[120px] bg-white z-10"
       />
       
-      {/* Header with Logo */}
+      {/* Header with Logo - always visible */}
       <header 
-        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20 transition-transform duration-300"
-        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20"
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
@@ -317,71 +333,71 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
       </header>
 
       {/* Main Content */}
-      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '100px' }}>
+      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '40px' }}>
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-left pt-12 pb-8 min-h-[600px] relative">
             {/* Step 0: Hero with header and partner pills */}
             <div 
-              className="absolute inset-0 transition-opacity duration-500"
+              className="absolute inset-0 transition-opacity duration-300"
               style={{ 
                 opacity: scrollStep === 0 ? 1 : 0,
                 pointerEvents: scrollStep === 0 ? 'auto' : 'none'
               }}
             >
+              {/* Partner Pills - absolutely positioned at bottom left of hero section */}
+              {partners.map((partner, index) => {
+                const rotations = [-2, 1.5]
+                const rotation = rotations[index] || 0
+                const delays = ['0s', '0.3s']
+                const delay = delays[index] || '0s'
+                
+                // Position at bottom left, stacked vertically - moved up slightly
+                const leftPosition = index === 0 ? '6rem' : '0'
+                const bottomPosition = index === 0 ? '2.75rem' : '6.25rem'
+                
+                return (
+                  <div
+                    key={index}
+                    className="absolute"
+                    style={{
+                      bottom: bottomPosition,
+                      left: leftPosition,
+                      transform: `rotate(${rotation}deg)`,
+                      zIndex: hoveredPartner === index ? 1000 : index
+                    }}
+                  >
+                    <button
+                      onClick={() => handlePartnerClick(index)}
+                      className={`partner-pill-bounce border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
+                      onMouseEnter={() => setHoveredPartner(index)}
+                      onMouseLeave={() => setHoveredPartner(null)}
+                      style={{
+                        color: '#1a1a1a',
+                        fontFamily: 'Helvetica, Arial, sans-serif',
+                        whiteSpace: 'nowrap',
+                        padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined,
+                        animationDelay: delay
+                      }}
+                    >
+                      {partner.image ? (
+                        <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
+                      ) : (
+                        <>
+                          {partner.name} →
+                        </>
+                      )}
+                    </button>
+                  </div>
+                )
+              })}
+              
               <div className="flex flex-col gap-4 md:gap-5 lg:gap-6 relative">
                 {/* Header */}
               <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                   Built for <span style={{ color: 'var(--grapevne-blue)' }}>Universities.</span><br />
                   <span style={{ color: '#1a1a1a' }}>Designed for Students.</span>
               </h1>
-                
-                {/* Partner Pills - absolutely positioned */}
-                {partners.map((partner, index) => {
-                  const rotations = [-2, 1.5]
-                  const rotation = rotations[index] || 0
-                  const delays = ['0s', '0.3s']
-                  const delay = delays[index] || '0s'
-                  
-                  // Trinity (index 0) positioned more to the left, Stevens (index 1) at right edge
-                  const rightPosition = index === 0 ? '12rem' : '0'
-                  // Trinity (index 0) moved down slightly, Stevens (index 1) moved up slightly
-                  const topPosition = index === 0 ? '1.5rem' : '4.75rem'
-                  
-                  return (
-                    <div
-                      key={index}
-                      className="absolute"
-                      style={{
-                        top: topPosition,
-                        right: rightPosition,
-                        transform: `rotate(${rotation}deg)`
-                      }}
-                    >
-                      <button
-                        onClick={() => handlePartnerClick(index)}
-                        className={`partner-pill-bounce border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
-                        onMouseEnter={() => setHoveredPartner(index)}
-                        onMouseLeave={() => setHoveredPartner(null)}
-                        style={{
-                          color: '#1a1a1a',
-                          fontFamily: 'Helvetica, Arial, sans-serif',
-                          whiteSpace: 'nowrap',
-                          padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined,
-                          animationDelay: delay
-                        }}
-                      >
-                        {partner.image ? (
-                          <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
-                        ) : (
-                          <>
-                            {partner.name} →
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  )
-                })}
               
               {/* 1x5 Grid Image */}
               <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
@@ -422,10 +438,9 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 </div>
               </div>
               
-              {/* Folder Tabs */}
+              {/* Folder Tabs - commented out */}
+              {/*
               <div className="fixed left-0 right-0" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw', minHeight: '120px', bottom: '75px' }}>
-                {/* Extended tabs that continue through rows */}
-                {/* Travel - extends through all rows */}
                 <div 
                   className="absolute py-2 px-6 text-sm font-bold uppercase tracking-wide"
                   style={{ 
@@ -442,7 +457,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 >
                   Travel
                 </div>
-                {/* Energy - extends through all rows */}
                 <div 
                   className="absolute py-2 text-sm font-bold uppercase tracking-wide"
                   style={{ 
@@ -460,7 +474,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 >
                   Energy
                 </div>
-                {/* Waste - extends through Row 2 and 3 with diagonal bottom */}
                 <div 
                   className="absolute py-2 px-6 text-sm font-bold uppercase tracking-wide"
                   style={{ 
@@ -477,7 +490,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 >
                   Waste
                 </div>
-                {/* Catering - extends through Row 2 and 3 */}
                 <div 
                   className="absolute py-2 text-sm font-bold uppercase tracking-wide"
                   style={{ 
@@ -495,7 +507,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 >
                   Catering
                 </div>
-                {/* Suppliers - Row 2 only */}
                 <div 
                   className="absolute py-2 text-sm font-bold uppercase tracking-wide"
                   style={{ 
@@ -513,7 +524,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 >
                   Suppliers
                 </div>
-                {/* Community - Row 3 only */}
                 <div 
                   className="absolute py-2 px-6 text-sm font-bold uppercase tracking-wide"
                   style={{ 
@@ -530,7 +540,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 >
                   Community
                 </div>
-                {/* Conclusion - Row 3 only */}
                 <div 
                   className="absolute py-2 text-sm font-bold uppercase tracking-wide"
                   style={{ 
@@ -549,60 +558,224 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   Conclusion
                 </div>
               </div>
+              */}
               </div>
             </div>
             
-            {/* Step 1: Partners section */}
-            <div 
-              className="absolute inset-0 transition-opacity duration-500"
+          </section>
+
+          {/* Narrative Sections with Sticky Navigation - Step 1+ */}
+          <section className="relative" style={{ minHeight: '500vh' }}>
+            <div className="flex gap-12">
+              {/* Sticky Left Navigation */}
+              <div 
+                className="sticky self-start transition-opacity duration-300"
+                style={{ 
+                  width: '30%', 
+                  top: '50%', 
+                  transform: 'translateY(-50%)',
+                  opacity: scrollStep >= 1 ? 1 : 0,
+                  pointerEvents: scrollStep >= 1 ? 'auto' : 'none'
+                }}
+              >
+                <nav className="space-y-6">
+                  <div
+                    className={`cursor-pointer transition-colors ${scrollStep === 1 ? 'font-bold' : 'font-normal'}`}
+                    style={{ 
+                      color: scrollStep === 1 ? '#1a1a1a' : '#999',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      fontSize: '1.125rem'
+                    }}
+                    onClick={() => {
+                      scrollStepRef.current = 1
+                      setScrollStep(1)
+                      const positions = getScrollPositions()
+                      window.scrollTo({ top: positions[1], behavior: 'smooth' })
+                    }}
+                  >
+                    Place and trust.
+                  </div>
+                  <div 
+                    className={`cursor-pointer transition-colors ${scrollStep === 2 ? 'font-bold' : 'font-normal'}`}
+                    style={{ 
+                      color: scrollStep === 2 ? '#1a1a1a' : '#999',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      fontSize: '1.125rem'
+                    }}
+                    onClick={() => {
+                      scrollStepRef.current = 2
+                      setScrollStep(2)
+                      const positions = getScrollPositions()
+                      window.scrollTo({ top: positions[2], behavior: 'smooth' })
+                    }}
+                  >
+                    Shared by the people already there.
+                  </div>
+                  <div 
+                    className={`cursor-pointer transition-colors ${scrollStep === 3 ? 'font-bold' : 'font-normal'}`}
+                    style={{ 
+                      color: scrollStep === 3 ? '#1a1a1a' : '#999',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      fontSize: '1.125rem'
+                    }}
+                    onClick={() => {
+                      scrollStepRef.current = 3
+                      setScrollStep(3)
+                      const positions = getScrollPositions()
+                      window.scrollTo({ top: positions[3], behavior: 'smooth' })
+                    }}
+                  >
+                    Make it legible.
+                  </div>
+                  <div 
+                    className={`cursor-pointer transition-colors ${scrollStep === 4 ? 'font-bold' : 'font-normal'}`}
               style={{ 
-                opacity: scrollStep === 1 ? 1 : 0,
-                pointerEvents: scrollStep === 1 ? 'auto' : 'none'
-              }}
-            >
-              <div className="mb-8">
-                <h3 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  Partners
-                </h3>
+                      color: scrollStep === 4 ? '#1a1a1a' : '#999',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      fontSize: '1.125rem'
+                    }}
+                    onClick={() => {
+                      scrollStepRef.current = 4
+                      setScrollStep(4)
+                      const positions = getScrollPositions()
+                      window.scrollTo({ top: positions[4], behavior: 'smooth' })
+                    }}
+                  >
+                    Make reporting real.
+            </div>
+            <div 
+                    className={`cursor-pointer transition-colors ${scrollStep === 5 ? 'font-bold' : 'font-normal'}`}
+              style={{ 
+                      color: scrollStep === 5 ? '#1a1a1a' : '#999',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      fontSize: '1.125rem'
+                    }}
+                    onClick={() => {
+                      scrollStepRef.current = 5
+                      setScrollStep(5)
+                      const positions = getScrollPositions()
+                      window.scrollTo({ top: positions[5], behavior: 'smooth' })
+                    }}
+                  >
+                    It becomes routine.
+                  </div>
+                </nav>
               </div>
               
-              {/* Partner Pills */}
-              <div className="relative flex items-center justify-center" style={{ minHeight: '400px' }}>
-                {partners.map((partner, index) => {
-                  const positions = [
-                    { rotation: -2, top: '50%', left: '50%', translateX: '-50%', translateY: '-60%' },
-                    { rotation: 1.5, top: '50%', left: '50%', translateX: '-50%', translateY: '40%' }
-                  ]
-                  const position = positions[index] || { rotation: 0, top: '50%', left: '50%', translateX: '-50%', translateY: '-50%' }
-                  
-                  return (
-                    <button
-                      key={index}
-                      onClick={() => handlePartnerClick(index)}
-                      className={`absolute border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
-                      onMouseEnter={() => setHoveredPartner(index)}
-                      onMouseLeave={() => setHoveredPartner(null)}
-                      style={{
-                        transform: `translate(${position.translateX}, ${position.translateY}) rotate(${position.rotation}deg)`,
-                        top: position.top,
-                        left: position.left,
-                        color: '#1a1a1a',
-                        fontFamily: 'Helvetica, Arial, sans-serif',
-                        whiteSpace: 'nowrap',
-                        zIndex: hoveredPartner === index ? 1000 : index,
-                        padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined
-                      }}
-                    >
-                      {partner.image ? (
-                        <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
-                      ) : (
-                        <>
-                          {partner.name} →
-                        </>
-                      )}
-                    </button>
-                  )
-                })}
+              {/* Right Column - Narrative Content */}
+              <div className="flex-1">
+                {/* Step 1: Place and trust section */}
+                <div 
+                  className="min-h-screen flex items-center transition-colors duration-300"
+                >
+                  <div className="w-full space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 1 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Place and trust.
+                    </h2>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 1 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Things work better when they're built for the place they're used.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 1 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Everything you see is specific to your campus.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 1 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Students, organizers, and campus affiliates join through their university.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 2: Shared by the people already there section */}
+                <div 
+                  className="min-h-screen flex items-center transition-colors duration-300"
+                >
+                  <div className="w-full space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 2 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Shared by the people already there.
+                    </h2>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 2 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Posting takes seconds. Checking takes even less.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 2 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      When students are looking, they know where to check.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 2 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      When food is left over, organizers know where to share it.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 2 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      It's the same place. Every time.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 3: Make it legible section */}
+                <div 
+                  className="min-h-screen flex items-center transition-colors duration-300"
+                >
+                  <div className="w-full space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 3 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Make it legible.
+                    </h2>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 3 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Built for campus life. Clear. Immediate. Uncluttered.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 3 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      When free food becomes available, students hear about it in time.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 3 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Designed to feel like second nature.
+                    </p>
+                    <div className="pt-6">
+                      <img 
+                        src="/push-notification.png" 
+                        alt="Push notification example" 
+                        className="max-w-md rounded-lg shadow-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 4: Make reporting real section */}
+                <div 
+                  className="min-h-screen flex items-center transition-colors duration-300"
+                >
+                  <div className="w-full space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 4 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Make reporting real.
+                    </h2>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 4 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      When sharing happens in one place, it's easier to see what's actually happening.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 4 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Universities get a clearer picture of surplus activity over time.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 4 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      Not through surveys or estimates, but through everyday use.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 4 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      That visibility supports sustainability reporting and planning, without adding work for students or staff.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 5: It becomes routine section */}
+                <div 
+                  className="min-h-screen flex items-center transition-colors duration-300"
+                >
+                  <div className="w-full space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8 transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 5 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      It becomes routine.
+                    </h2>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 5 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      It takes less effort than the alternatives.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 5 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      So people keep using it.
+                    </p>
+                    <p className="text-xl leading-relaxed transition-colors duration-300" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: scrollStep === 5 ? 'var(--grapevne-blue)' : '#1a1a1a' }}>
+                      And when people keep using it, it becomes the place campus turns to.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -710,8 +883,8 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
         </div>
       )}
 
-      {/* Footer */}
-      <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
+      {/* Footer - anchored to bottom of page */}
+      <footer className="pt-3 pb-4 px-4 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
