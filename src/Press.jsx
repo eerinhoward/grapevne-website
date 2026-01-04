@@ -364,19 +364,19 @@ function Press() {
             >
               download
             </a>
-          </div>
-          <Link to="/" className="flex justify-center">
-            <img 
-              ref={logoRef}
-              src="/filledTransparent.png" 
-              alt="Grapevne Logo" 
-              className="h-28 w-auto"
-              style={{ 
-                transformStyle: 'preserve-3d',
-                willChange: 'transform'
-              }}
-            />
-          </Link>
+            </div>
+            <Link to="/" className="flex justify-center">
+              <img 
+                ref={logoRef}
+                src="/filledTransparent.png" 
+                alt="Grapevne Logo" 
+                className="h-28 w-auto"
+                style={{ 
+                  transformStyle: 'preserve-3d',
+                  willChange: 'transform'
+                }}
+              />
+            </Link>
         </div>
       </header>
 

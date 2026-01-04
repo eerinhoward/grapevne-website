@@ -140,8 +140,60 @@ function Brands() {
           {/* Hero Section */}
           <section className="text-left">
             <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-              Brands
+              Brands,<br />
+              for the college generation
             </h1>
+            
+            {/* 1x4 Grid Image */}
+            <div className="grid grid-cols-4 gap-0 mb-12 w-full max-w-7xl">
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'grayscale(1)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+            {/* Brand Description */}
+            <div className="mb-12 space-y-4">
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                A brand pop-up can change the pace of a day.
+              </p>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                It's social, unexpected, and temporary.
+              </p>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Some of the best brand moments on campus are easy to miss and short-lived.
+              </p>
+              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Grapevne helps students catch them in time.
+              </p>
+              <p className="text-xl leading-relaxed italic" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Campus moments don't wait.
+              </p>
+            </div>
             
             {/* Goal List */}
             <div className="mb-8">

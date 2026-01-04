@@ -10,6 +10,7 @@ function About() {
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
   const [showTeamList, setShowTeamList] = useState(false)
+  const [selectedMemberIndex, setSelectedMemberIndex] = useState(null)
   const teamListRef = useRef(null)
   const teamLinkRef = useRef(null)
   
@@ -34,14 +35,54 @@ function About() {
   }, [showTeamList])
   
   const teamMembers = [
-    { name: 'Erin Howard', position: 'Founder', linkedin: 'https://www.linkedin.com/in/erin-howard' },
-    { name: 'Sara Shiferaw', position: 'Head of Communications', linkedin: 'https://www.linkedin.com' },
-    { name: 'Jasmine Kamara', position: 'Head of Growth', linkedin: 'https://www.linkedin.com' },
-    { name: 'Dylan Koa', position: 'Head of Marketing', linkedin: 'https://www.linkedin.com' },
-    { name: 'Ryan Kang', position: 'Head of UR/UX', linkedin: 'https://www.linkedin.com' },
-    { name: 'Siran Rao', position: 'Head of Product Management', linkedin: 'https://www.linkedin.com' },
-    { name: 'Calvin Prajogo', position: 'Head of Engineering', linkedin: 'https://www.linkedin.com' }
+    { name: 'Erin Howard', position: 'Founder', linkedin: 'https://www.linkedin.com/in/erin-howard', image: '/team-member-1-1.png' },
+    { name: 'Sara Shiferaw', position: 'Head of Communications', linkedin: 'https://www.linkedin.com', image: '/team-member-2-1.png' },
+    { name: 'Jasmine Kamara', position: 'Head of Growth', linkedin: 'https://www.linkedin.com', image: '/team-member-3-1.png' },
+    { name: 'Dylan Koa', position: 'Head of Marketing', linkedin: 'https://www.linkedin.com', image: '/team-member-4-1.png' },
+    { name: 'Ryan Kang', position: 'Head of UR/UX', linkedin: 'https://www.linkedin.com', image: '/team-member-5-1.png' },
+    { name: 'Siran Rao', position: 'Head of Product Management', linkedin: 'https://www.linkedin.com', image: '/team-member-6-1.png' },
+    { name: 'Calvin Prajogo', position: 'Head of Engineering', linkedin: 'https://www.linkedin.com', image: '/team-member-1-1.png' }
   ]
+
+  const getFirstName = (fullName) => {
+    return fullName.split(' ')[0]
+  }
+
+  const handleMemberClick = (index) => {
+    setSelectedMemberIndex(index)
+    setShowTeamList(false)
+  }
+
+  const handleNext = () => {
+    setSelectedMemberIndex((prev) => (prev + 1) % teamMembers.length)
+  }
+
+  const handlePrev = () => {
+    setSelectedMemberIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length)
+  }
+
+  const handleCloseGallery = () => {
+    setSelectedMemberIndex(null)
+  }
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (selectedMemberIndex !== null) {
+        if (e.key === 'ArrowRight' || e.key === '+' || e.key === '=') {
+          setSelectedMemberIndex((prev) => (prev + 1) % teamMembers.length)
+        } else if (e.key === 'ArrowLeft' || e.key === '-') {
+          setSelectedMemberIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length)
+        } else if (e.key === 'Escape') {
+          setSelectedMemberIndex(null)
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyPress)
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [selectedMemberIndex, teamMembers.length])
   
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -123,13 +164,13 @@ function About() {
       <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
-            <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center">
               <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                Press
-              </Link>
-              {location.pathname === '/press' && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
+              Press
+            </Link>
+            {location.pathname === '/press' && (
+              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+            )}
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
@@ -179,7 +220,7 @@ function About() {
             <div className="w-full md:w-1/2 space-y-6">
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                 We're here to make what's already happening easier to find.
-              </h2>
+            </h2>
               <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 Grapevne is a campus platform for free food and other moments that don't last long. By showing what exists in real time, we help students move through campus with more awareness - and less waste.
               </p>
@@ -191,7 +232,7 @@ function About() {
             <div className="w-full md:w-1/2 space-y-6 order-2 md:order-1">
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                 What makes us different
-              </h2>
+            </h2>
               <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 A lot of what happens on campus spreads quietly. Someone hears about it, tells a friend, and if you're nearby, you make it in time. Grapevne is built to surface those moments - before they pass.
               </p>
@@ -223,7 +264,7 @@ function About() {
             <div className="w-full md:w-1/2 space-y-6">
               <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a' }}>
                 Our history
-              </h2>
+            </h2>
               <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 Grapevne started in 2025 after a simple observation: free food on campus is abundant, but poorly distributed. Information arrives late. Food goes to waste.
               </p>
@@ -263,17 +304,19 @@ function About() {
                 <ul className="space-y-2">
                   {teamMembers.map((member, index) => (
                     <li key={index} style={{ wordWrap: 'break-word', overflowWrap: 'break-word', maxWidth: '220px' }}>
-                      <a
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-base transition-colors block group"
+                      <button
+                        onClick={() => handleMemberClick(index)}
+                        className="text-base transition-colors block group cursor-pointer w-full text-left"
                         style={{ 
                           color: '#1a1a1a', 
                           wordWrap: 'break-word', 
                           overflowWrap: 'break-word',
                           maxWidth: '100%',
-                          display: 'block'
+                          display: 'block',
+                          background: 'none',
+                          border: 'none',
+                          padding: '0',
+                          font: 'inherit'
                         }}
                         onMouseEnter={(e) => {
                           e.target.style.color = '#3FA9F5'
@@ -285,7 +328,7 @@ function About() {
                         }}
                       >
                         {member.name}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -295,6 +338,76 @@ function About() {
         </div>
       </main>
 
+
+      {/* Team Member Gallery Modal */}
+      {selectedMemberIndex !== null && (
+        <div 
+          className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+          style={{ backgroundColor: '#ffffff' }}
+          onClick={handleCloseGallery}
+        >
+          <div 
+            className="relative w-full h-full flex flex-col items-center justify-center px-8 py-12 max-w-6xl mx-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={handleCloseGallery}
+              className="absolute top-8 right-8 text-2xl font-bold"
+              style={{ color: '#1a1a1a' }}
+            >
+              ×
+            </button>
+
+            {/* Navigation buttons */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-8 top-1/2 transform -translate-y-1/2 text-4xl font-bold"
+              style={{ color: '#1a1a1a' }}
+            >
+              −
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-8 top-1/2 transform -translate-y-1/2 text-4xl font-bold"
+              style={{ color: '#1a1a1a' }}
+            >
+              +
+            </button>
+
+            {/* Gallery content */}
+            <div className="flex flex-col items-center w-full">
+              {/* Header: "Meet [First Name]" */}
+              <h1 
+                className="text-5xl md:text-6xl font-bold mb-6 text-left w-full"
+                style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
+              >
+                Meet {getFirstName(teamMembers[selectedMemberIndex].name)}.
+              </h1>
+
+              {/* Black bar */}
+              <div className="w-full h-1 bg-black mb-6"></div>
+
+              {/* Position/Subtext */}
+              <p 
+                className="text-xl md:text-2xl mb-8 text-left w-full"
+                style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
+              >
+                {teamMembers[selectedMemberIndex].position}
+              </p>
+
+              {/* Image */}
+              <div className="w-full max-w-4xl">
+                <img 
+                  src={teamMembers[selectedMemberIndex].image} 
+                  alt={teamMembers[selectedMemberIndex].name}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer with ®, ™, and © symbols */}
       <footer className="py-8 px-4">

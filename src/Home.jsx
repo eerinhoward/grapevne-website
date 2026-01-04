@@ -186,13 +186,13 @@ function Home() {
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
-            <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center">
               <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                Press
-              </Link>
-              {location.pathname === '/press' && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
+              Press
+            </Link>
+            {location.pathname === '/press' && (
+              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+            )}
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
@@ -246,7 +246,7 @@ function Home() {
               </h2>
               <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                 While it's happening.
-              </h2>
+          </h2>
             </div>
             
             {/* Bottom - Horizontal Image Row */}
