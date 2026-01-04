@@ -32,15 +32,9 @@ function Universities() {
       image: '/trinitylogo.svg',
       description: `At Trinity College, Grapevne is being rolled out in partnership with the Sustainability Department to notify students about available leftover food on campus.
 
-Instead of relying on ad-hoc emails, word of mouth, or last-minute signage, Grapevne provides a simple way to:
+Instead of relying on ad-hoc emails, word of mouth, or last-minute signage, Grapevne provides a simple way to: notify students when surplus food is available, thereby reduce food waste from campus events and meetings, and support sustainability initiatives without adding staff overhead.
 
-Notify students when surplus food is available
-
-Reduce food waste from campus events and meetings
-
-Support sustainability initiatives without adding staff overhead
-
-The app is launching campus-wide in Spring 2026 as part of Trinity's broader sustainability efforts`
+The app is launching campus-wide in Spring 2026 as part of Trinity's broader sustainability efforts.`
     },
     {
       name: 'Stevens',
@@ -297,6 +291,14 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
+            <div className="flex flex-col items-center">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                Press
+              </Link>
+              {location.pathname === '/press' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
             <a
               href="https://apps.apple.com/us/app/grapevne/id6745459372"
               target="_blank"
@@ -408,13 +410,13 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               </div>
               
               {/* Partner Pills */}
-              <div className="relative" style={{ minHeight: '400px' }}>
+              <div className="relative flex items-center justify-center" style={{ minHeight: '400px' }}>
                 {partners.map((partner, index) => {
                   const positions = [
-                    { rotation: -2, top: '0%', left: '0%' },
-                    { rotation: 1.5, top: '10%', left: '15%' }
+                    { rotation: -2, top: '50%', left: '50%', translateX: '-50%', translateY: '-60%' },
+                    { rotation: 1.5, top: '50%', left: '50%', translateX: '-50%', translateY: '40%' }
                   ]
-                  const position = positions[index] || { rotation: 0, top: '0%', left: '0%' }
+                  const position = positions[index] || { rotation: 0, top: '50%', left: '50%', translateX: '-50%', translateY: '-50%' }
                   
                   return (
                     <button
@@ -424,7 +426,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                       onMouseEnter={() => setHoveredPartner(index)}
                       onMouseLeave={() => setHoveredPartner(null)}
                       style={{
-                        transform: `rotate(${position.rotation}deg)`,
+                        transform: `translate(${position.translateX}, ${position.translateY}) rotate(${position.rotation}deg)`,
                         top: position.top,
                         left: position.left,
                         color: '#1a1a1a',
@@ -493,15 +495,19 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             {/* Navigation buttons */}
             <button
               onClick={handlePrev}
-              className="fixed left-8 md:left-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
+              className="fixed left-8 md:left-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10 transition-colors"
               style={{ color: '#1a1a1a' }}
+              onMouseEnter={(e) => e.target.style.color = 'var(--grapevne-blue)'}
+              onMouseLeave={(e) => e.target.style.color = '#1a1a1a'}
             >
               −
             </button>
             <button
               onClick={handleNext}
-              className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
+              className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10 transition-colors"
               style={{ color: '#1a1a1a' }}
+              onMouseEnter={(e) => e.target.style.color = 'var(--grapevne-blue)'}
+              onMouseLeave={(e) => e.target.style.color = '#1a1a1a'}
             >
               +
             </button>

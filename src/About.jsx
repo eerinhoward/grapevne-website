@@ -165,14 +165,6 @@ function About() {
       <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
-          <div className="flex flex-col items-center">
-              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              Press
-            </Link>
-            {location.pathname === '/press' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
-            </div>
             <div className="flex items-center"
               onMouseEnter={() => setShowUseCases(true)}
               onMouseLeave={() => setShowUseCases(false)}
@@ -212,6 +204,14 @@ function About() {
               {location.pathname === '/about' && (
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
+            </div>
+          <div className="flex flex-col items-center">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+              Press
+            </Link>
+            {location.pathname === '/press' && (
+              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+            )}
             </div>
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
@@ -395,15 +395,19 @@ function About() {
             {/* Navigation buttons */}
             <button
               onClick={handlePrev}
-              className="fixed left-8 md:left-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
+              className="fixed left-8 md:left-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10 transition-colors"
               style={{ color: '#1a1a1a' }}
+              onMouseEnter={(e) => e.target.style.color = 'var(--grapevne-blue)'}
+              onMouseLeave={(e) => e.target.style.color = '#1a1a1a'}
             >
               −
             </button>
             <button
               onClick={handleNext}
-              className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
+              className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10 transition-colors"
               style={{ color: '#1a1a1a' }}
+              onMouseEnter={(e) => e.target.style.color = 'var(--grapevne-blue)'}
+              onMouseLeave={(e) => e.target.style.color = '#1a1a1a'}
             >
               +
             </button>

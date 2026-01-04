@@ -340,14 +340,6 @@ function Press() {
       <header className="pt-4 pb-4 px-4 relative flex-shrink-0">
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
-            <div className="flex flex-col items-center">
-              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                Press
-              </Link>
-              {location.pathname === '/press' && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
-            </div>
             <div className="flex items-center"
               onMouseEnter={() => setShowUseCases(true)}
               onMouseLeave={() => setShowUseCases(false)}
@@ -385,6 +377,14 @@ function Press() {
                 About
               </Link>
               {location.pathname === '/about' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <div className="flex flex-col items-center">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                Press
+              </Link>
+              {location.pathname === '/press' && (
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
