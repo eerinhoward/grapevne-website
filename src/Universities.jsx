@@ -10,14 +10,18 @@ function Universities() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [selectedGoal, setSelectedGoal] = useState('')
   const [isFormOpen, setIsFormOpen] = useState(false)
-
-  const goals = {
-    'Reduce Food Waste': 'Redistribute surplus food from campus events in real time, before it\'s discarded.',
-    'Improve Sustainability Reporting': 'Track when and where surplus occurs to support institutional sustainability goals.',
-    'Increase Student Access': 'xxx',
-    'Improve Event Visibility & Flow': 'xxx'
+  const [showHeader, setShowHeader] = useState(true)
+  const lastScrollY = useRef(0)
+  const [scrollStep, setScrollStep] = useState(0) // 0 = initial, 1 = Partners
+  const scrollStepRef = useRef(0)
+  const isScrollingRef = useRef(false)
+  const [hoveredPartner, setHoveredPartner] = useState(null)
+  
+  // Define scroll positions for each step
+  const scrollPositions = {
+    0: 0,      // Initial position
+    1: 400     // Partners section
   }
 
   useEffect(() => {
@@ -87,10 +91,102 @@ function Universities() {
     }
   }, [])
 
+  useEffect(() => {
+    const handleWheel = (e) => {
+      // Don't interfere if form is open
+      if (isFormOpen) return
+      
+      e.preventDefault()
+      
+      if (isScrollingRef.current) return
+      isScrollingRef.current = true
+      
+      const scrollingDown = e.deltaY > 0
+      let targetStep = scrollStepRef.current
+      
+      if (scrollingDown) {
+        // Scrolling down - advance to next step
+        if (scrollStepRef.current === 0) {
+          targetStep = 1
+        }
+      } else {
+        // Scrolling up - go back to previous step
+        if (scrollStepRef.current === 1) {
+          targetStep = 0
+        }
+      }
+      
+      if (targetStep !== scrollStepRef.current) {
+        scrollStepRef.current = targetStep
+        setScrollStep(targetStep)
+        
+        // Smooth scroll to target position
+        window.scrollTo({
+          top: scrollPositions[targetStep],
+          behavior: 'smooth'
+        })
+        
+        // Reset scrolling flag after animation
+        setTimeout(() => {
+          isScrollingRef.current = false
+        }, 500)
+      } else {
+        isScrollingRef.current = false
+      }
+    }
+    
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset
+      
+      // Update step based on scroll position (for initial load or direct navigation)
+      if (scrollY >= scrollPositions[1] - 50) {
+        if (scrollStepRef.current !== 1) {
+          scrollStepRef.current = 1
+          setScrollStep(1)
+        }
+      } else {
+        if (scrollStepRef.current !== 0) {
+          scrollStepRef.current = 0
+          setScrollStep(0)
+        }
+      }
+      
+      // Header show/hide based on scroll direction
+      // Always show at top of page
+      if (scrollY < 100) {
+        setShowHeader(true)
+      } else if (scrollY < lastScrollY.current) {
+        // Scrolling up - show header
+        setShowHeader(true)
+      } else if (scrollY > lastScrollY.current) {
+        // Scrolling down - hide header
+        setShowHeader(false)
+      }
+      
+      lastScrollY.current = scrollY
+    }
+
+    window.addEventListener('wheel', handleWheel, { passive: false })
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isFormOpen])
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Background Strip - hides with navbar */}
+      <div 
+        className="fixed top-0 left-0 right-0 h-[120px] bg-white z-10 transition-transform duration-300"
+        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+      />
+      
       {/* Header with Logo */}
-      <header className="pt-4 pb-4 px-4 relative">
+      <header 
+        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20 transition-transform duration-300"
+        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+      >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
             <div className="flex flex-col items-center">
@@ -135,39 +231,120 @@ function Universities() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
+      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '100px' }}>
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-left">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-              For Universities
-            </h1>
+            <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                For Universities
+              </h1>
+              
+              {/* 1x5 Grid Image */}
+              <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                  <img 
+                    src="/university.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                  <img 
+                    src="/university2.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                  <img 
+                    src="/university.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                  <img 
+                    src="/university2.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                  <img 
+                    src="/university.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              
+              {/* University Description */}
+              <div className="space-y-2 text-right">
+                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  Built for sustainability teams. Designed for students.
+                </p>
+              </div>
+            </div>
+          </section>
 
-            {/* Goal List */}
-            <div className="mb-8">
-              <div className="space-y-3">
-                {Object.keys(goals).map((goal) => (
-                  <div
-                    key={goal}
-                    className="cursor-pointer"
-                    onClick={() => setSelectedGoal(selectedGoal === goal ? '' : goal)}
+          {/* Case Studies / Partners Section */}
+          <section className="pt-12 pb-8 min-h-[600px] relative">
+            {/* Step 0: Initial state - hidden or placeholder */}
+            <div 
+              className="absolute inset-0 flex items-center justify-center transition-opacity duration-500"
+              style={{ 
+                opacity: scrollStep === 0 ? 1 : 0,
+                pointerEvents: scrollStep === 0 ? 'auto' : 'none'
+              }}
+            >
+              {/* Empty or placeholder content for step 0 */}
+            </div>
+            
+            {/* Step 1: Partners */}
+            <div 
+              className="absolute inset-0 transition-opacity duration-500"
+              style={{ 
+                opacity: scrollStep === 1 ? 1 : 0,
+                pointerEvents: scrollStep === 1 ? 'auto' : 'none'
+              }}
+            >
+              <div className="mb-8">
+                <h3 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  Partners
+                </h3>
+              </div>
+              
+              {/* Partner Pills */}
+              <div className="relative" style={{ minHeight: '400px' }}>
+                {[
+                  { name: 'Trinity College', image: '/trinitylogo.svg', rotation: -2, top: '0%', left: '0%' },
+                  { name: 'Stevens', image: '/stevens.png', rotation: 1.5, top: '10%', left: '15%' },
+                ].map((partner, index) => (
+                  <button
+                    key={index}
+                    className={`absolute border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
+                    onMouseEnter={() => setHoveredPartner(index)}
+                    onMouseLeave={() => setHoveredPartner(null)}
+                    style={{
+                      transform: `rotate(${partner.rotation}deg)`,
+                      top: partner.top,
+                      left: partner.left,
+                      color: '#1a1a1a',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      whiteSpace: 'nowrap',
+                      zIndex: hoveredPartner === index ? 1000 : index,
+                      padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined
+                    }}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex items-center" style={{ paddingTop: '0.5rem' }}>
-                        {selectedGoal === goal && (
-                          <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                        )}
-                      </div>
-                      <div className="text-xl flex-1" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                        <div className="font-medium mb-1">{goal}</div>
-                        {selectedGoal === goal && (
-                          <div className="text-base font-normal" style={{ color: '#666' }}>
-                            {goals[goal]}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                    {partner.image ? (
+                      <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
+                    ) : (
+                      <>
+                        {partner.name} →
+                      </>
+                    )}
+                  </button>
                 ))}
               </div>
             </div>
@@ -192,34 +369,11 @@ function Universities() {
             />
           </section>
 
-          {/* Trusted Partners Section */}
-          <section className="pt-12 pb-8">
-            <h3 className="text-2xl md:text-3xl font-light mb-8" style={{ color: '#1a1a1a' }}>
-              trusted by our friendly neighborhood partners:
-            </h3>
-            <div className="flex flex-wrap gap-16 md:gap-24">
-              <div className="text-left">
-                <div className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>Trinity College</div>
-                <div className="text-gray-600 text-base">
-                  300 Summit St.<br />
-                  Hartford, CT 06106
-                </div>
-              </div>
-              <div className="text-left">
-                <div className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>Stevens Institute of Technology</div>
-                <div className="text-gray-600 text-base">
-                  1 Castle Point Terrace<br />
-                  Hoboken, NJ 07030
-                </div>
-              </div>
-            </div>
-          </section>
-
         </div>
       </main>
 
       {/* Footer */}
-      <footer className="py-8 px-4 mt-12">
+      <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
