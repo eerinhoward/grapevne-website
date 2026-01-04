@@ -175,14 +175,14 @@ function Brands() {
           {/* Hero Section */}
           <section className="text-left">
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
-              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Brands,<br />
-                for the college generation.
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                <span style={{ color: 'var(--grapevne-blue)' }}>Brands,</span><br />
+                <span style={{ color: '#1a1a1a' }}>for our college generation.</span>
               </h1>
               
               {/* 1x5 Grid Image */}
-              <div className="grid grid-cols-5 gap-0 w-screen -ml-8 md:-ml-16 -mr-8 md:-mr-16">
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
+              <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
                 <img 
                   src="/pizza food.png" 
                   alt="" 
@@ -214,7 +214,7 @@ function Brands() {
                 <img 
                   src="/pizza food.png" 
                   alt="" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-r-lg"
                 />
               </div>
             </div>

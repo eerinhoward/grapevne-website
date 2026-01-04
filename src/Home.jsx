@@ -25,7 +25,7 @@ function Home() {
       
       if (isScrollingDown) {
         // Scrolling down - can only advance to next section
-        if (currentSectionRef.current === 0 && scrollY >= 600) {
+        if (currentSectionRef.current === 0 && scrollY >= 300) {
           targetSection = 1
         } else if (currentSectionRef.current === 1 && scrollY >= 5650) {
           targetSection = 2
@@ -46,7 +46,7 @@ function Home() {
           targetSection = 2
         } else if (currentSectionRef.current === 2 && scrollY < 5650) {
           targetSection = 1
-        } else if (currentSectionRef.current === 1 && scrollY < 600) {
+        } else if (currentSectionRef.current === 1 && scrollY < 300) {
           targetSection = 0
         }
       }
@@ -240,14 +240,11 @@ function Home() {
           }}
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
-            {/* Top - Bold Helvetica Slogan */}
+            {/* Top - Grapevne */}
             <div className="text-left pl-8 md:pl-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                What's happening.
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
+                Grapevne
               </h2>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                While it's happening.
-          </h2>
             </div>
             
             {/* Bottom - Horizontal Image Row */}
@@ -261,6 +258,16 @@ function Home() {
               <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
                 <img src="/Photoshoot3.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
               </a>
+            </div>
+            
+            {/* What's happening text */}
+            <div className="text-left pl-8 md:pl-16">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                What's happening.
+              </h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                While it's happening.
+              </h2>
             </div>
           </div>
         </div>
