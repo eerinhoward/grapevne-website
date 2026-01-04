@@ -12,6 +12,8 @@ function Brands() {
   const animationFrameId = useRef(null)
   const [selectedGoal, setSelectedGoal] = useState('')
   const [isFormOpen, setIsFormOpen] = useState(false)
+  const [showHeader, setShowHeader] = useState(true)
+  const lastScrollY = useRef(0)
   
   const goals = {
     'Campus Awareness': 'Reach students through real, in-person moments.',
@@ -20,6 +22,30 @@ function Brands() {
     'Authentic Engagement': 'Be discovered through utility, not interruption.'
   }
   
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset
+      const isScrollingDown = scrollY > lastScrollY.current
+      
+      // Header show/hide based on scroll direction
+      // Always show at top of page
+      if (scrollY < 100) {
+        setShowHeader(true)
+      } else if (scrollY < lastScrollY.current) {
+        // Scrolling up - show header
+        setShowHeader(true)
+      } else if (scrollY > lastScrollY.current) {
+        // Scrolling down - hide header
+        setShowHeader(false)
+      }
+      
+      lastScrollY.current = scrollY
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   useEffect(() => {
     const cursor = document.createElement('div')
     cursor.innerHTML = '🍔'
@@ -89,8 +115,17 @@ function Brands() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Background Strip - hides with navbar */}
+      <div 
+        className="fixed top-0 left-0 right-0 h-[120px] bg-white z-10 transition-transform duration-300"
+        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+      />
+      
       {/* Header with Logo */}
-      <header className="pt-4 pb-4 px-4 relative">
+      <header 
+        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20 transition-transform duration-300"
+        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+      >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
             <div className="flex flex-col items-center">
@@ -135,39 +170,47 @@ function Brands() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20">
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20" style={{ paddingTop: '140px' }}>
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-left">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-              Brands,<br />
-              for the college generation
-            </h1>
-            
-            {/* 1x4 Grid Image */}
-            <div className="grid grid-cols-4 gap-0 mb-12 w-full max-w-7xl">
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
+            <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Brands,<br />
+                for the college generation.
+              </h1>
+              
+              {/* 1x5 Grid Image */}
+              <div className="grid grid-cols-5 gap-0 w-full max-w-7xl">
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
                 <img 
                   src="/pizza food.png" 
                   alt="" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
                 <img 
                   src="/pizza food.png" 
                   alt="" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
                 <img 
                   src="/pizza food.png" 
                   alt="" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '3 / 2', filter: 'grayscale(1)' }}>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
                 <img 
                   src="/pizza food.png" 
                   alt="" 
@@ -176,23 +219,18 @@ function Brands() {
               </div>
             </div>
             
-            {/* Brand Description */}
-            <div className="mb-12 space-y-4">
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                A brand pop-up can change the pace of a day.
-              </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                It's social, unexpected, and temporary.
-              </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Some of the best brand moments on campus are easy to miss and short-lived.
-              </p>
-              <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Grapevne helps students catch them in time.
-              </p>
-              <p className="text-xl leading-relaxed italic" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Campus moments don't wait.
-              </p>
+              {/* Brand Description */}
+              <div className="space-y-4 text-right">
+                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  A brand event can change the pace of a day - social, unexpected, and temporary.
+                </p>
+                <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  Some of the best moments on campus are easy to miss.
+                </p>
+                <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  Grapevne helps students catch them in time.
+                </p>
+              </div>
             </div>
             
             {/* Goal List */}
