@@ -57,6 +57,11 @@ body {
   color: white;
 }
 
+/* Hide scrollbar for horizontal scroll containers */
+#narrative-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* Selection handles */
 .selection-handle {
   position: fixed;
