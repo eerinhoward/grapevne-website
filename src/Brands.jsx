@@ -170,7 +170,7 @@ function Brands() {
       </header>
 
       {/* Main Content */}
-      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px' }}>
+      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '100px' }}>
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-left">
@@ -214,21 +214,21 @@ function Brands() {
                 <img 
                   src="/pizza food.png" 
                   alt="" 
-                  className="w-full h-full object-cover rounded-r-lg"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
             
               {/* Brand Description */}
-              <div className="space-y-4 text-right">
+              <div className="space-y-2 text-right">
                 <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  A brand event can change the pace of a day - social, unexpected, and temporary.
+                  As college students, campus brand events are the kind of thing you hear about too late.
                 </p>
-                <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  Some of the best moments on campus are easy to miss.
+                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  They're fun, social, and over before you realize they started.
                 </p>
-                <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  Grapevne helps students catch them in time.
+                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  Grapevne makes them easier to catch.
                 </p>
               </div>
             </div>
@@ -285,7 +285,7 @@ function Brands() {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 px-4 mt-12">
+      <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
