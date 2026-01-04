@@ -358,3 +358,16 @@ body {
   animation: gentleBounce 3s ease-in-out infinite;
 }
 
+@keyframes partnerBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.partner-pill-bounce {
+  animation: partnerBounce 2s ease-in-out infinite;
+}
+

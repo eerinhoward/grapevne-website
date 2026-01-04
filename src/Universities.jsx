@@ -320,68 +320,111 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
       <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '100px' }}>
         <div className="space-y-16">
           {/* Hero Section */}
-          <section className="text-left">
-            <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
-              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Built for <span style={{ color: 'var(--grapevne-blue)' }}>Universities.</span><br />
-                <span style={{ color: '#1a1a1a' }}>Designed for Students</span>
-              </h1>
-              
-              {/* 1x5 Grid Image */}
-              <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
-                  <img 
-                    src="/university.jpg" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
-                  <img 
-                    src="/university2.jpg" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
-                  <img 
-                    src="/university.jpg" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
-                  <img 
-                    src="/university2.jpg" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
-                  <img 
-                    src="/university.jpg" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Case Studies / Partners Section */}
-          <section className="pt-12 pb-8 min-h-[600px] relative">
-            {/* Step 0: Initial state - hidden or placeholder */}
+          <section className="text-left pt-12 pb-8 min-h-[600px] relative">
+            {/* Step 0: Hero with header and partner pills */}
             <div 
-              className="absolute inset-0 flex items-center justify-center transition-opacity duration-500"
+              className="absolute inset-0 transition-opacity duration-500"
               style={{ 
                 opacity: scrollStep === 0 ? 1 : 0,
                 pointerEvents: scrollStep === 0 ? 'auto' : 'none'
               }}
             >
-              {/* Empty or placeholder content for step 0 */}
+              <div className="flex flex-col gap-4 md:gap-5 lg:gap-6 relative">
+                {/* Header */}
+                <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                  Built for <span style={{ color: 'var(--grapevne-blue)' }}>Universities.</span><br />
+                  <span style={{ color: '#1a1a1a' }}>Designed for Students.</span>
+                </h1>
+                
+                {/* Partner Pills - absolutely positioned */}
+                {partners.map((partner, index) => {
+                  const rotations = [-2, 1.5]
+                  const rotation = rotations[index] || 0
+                  const delays = ['0s', '0.3s']
+                  const delay = delays[index] || '0s'
+                  
+                  // Trinity (index 0) positioned more to the left, Stevens (index 1) at right edge
+                  const rightPosition = index === 0 ? '12rem' : '0'
+                  // Trinity (index 0) moved down slightly, Stevens (index 1) moved up slightly
+                  const topPosition = index === 0 ? '1.5rem' : '4.75rem'
+                  
+                  return (
+                    <div
+                      key={index}
+                      className="absolute"
+                      style={{
+                        top: topPosition,
+                        right: rightPosition,
+                        transform: `rotate(${rotation}deg)`
+                      }}
+                    >
+                      <button
+                        onClick={() => handlePartnerClick(index)}
+                        className={`partner-pill-bounce border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
+                        onMouseEnter={() => setHoveredPartner(index)}
+                        onMouseLeave={() => setHoveredPartner(null)}
+                        style={{
+                          color: '#1a1a1a',
+                          fontFamily: 'Helvetica, Arial, sans-serif',
+                          whiteSpace: 'nowrap',
+                          padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined,
+                          animationDelay: delay
+                        }}
+                      >
+                        {partner.image ? (
+                          <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
+                        ) : (
+                          <>
+                            {partner.name} →
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  )
+                })}
+                
+                {/* 1x5 Grid Image */}
+                <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
+                    <img 
+                      src="/university.jpg" 
+                      alt="" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
+                    <img 
+                      src="/university2.jpg" 
+                      alt="" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                    <img 
+                      src="/university.jpg" 
+                      alt="" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
+                    <img 
+                      src="/university2.jpg" 
+                      alt="" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
+                    <img 
+                      src="/university.jpg" 
+                      alt="" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             
-            {/* Step 1: Partners */}
+            {/* Step 1: Partners section */}
             <div 
               className="absolute inset-0 transition-opacity duration-500"
               style={{ 
