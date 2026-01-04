@@ -16,10 +16,20 @@ function Home() {
   const currentSectionRef = useRef(0) // Track current section for scroll logic
   const [showUseCases, setShowUseCases] = useState(false)
   const lastPositionRef = useRef({ x: 0, y: 0 })
-  const imageIndexRef = useRef(0)
+  const lastImageIndexRef = useRef(-1)
   const [trailImages, setTrailImages] = useState([])
-  const images = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg']
+  const images = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg', '/homepage.jpg', '/snake.jpg', '/taking.jpg', '/gathering.jpg']
   const maxImages = 8
+
+  // Get random image index that's different from the last one
+  const getRandomImageIndex = () => {
+    let newIndex
+    do {
+      newIndex = Math.floor(Math.random() * images.length)
+    } while (newIndex === lastImageIndexRef.current && images.length > 1)
+    lastImageIndexRef.current = newIndex
+    return newIndex
+  }
 
   useEffect(() => {
     if (currentSection !== 0) {
@@ -33,14 +43,14 @@ function Home() {
       
       // Add image every 25px of movement
       if (distanceX >= 25 || distanceY >= 25) {
+        const randomIndex = getRandomImageIndex()
         const newImage = {
           id: Date.now(),
           x: e.clientX,
           y: e.clientY,
-          src: images[imageIndexRef.current % images.length]
+          src: images[randomIndex]
         }
         
-        imageIndexRef.current++
         lastPositionRef.current = { x: e.clientX, y: e.clientY }
         
         setTrailImages(prev => {
