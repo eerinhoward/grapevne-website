@@ -339,13 +339,21 @@ function Home() {
         
         {/* Original Slogan */}
         <div 
-          className="absolute inset-0 flex items-start justify-start transition-all duration-700 ease-in-out"
+          className="absolute inset-0 flex items-start justify-start transition-all duration-700 ease-in-out cursor-pointer"
           style={{
             transform: currentSection === 0 ? 'translateY(0)' : 'translateY(-100%)',
             opacity: currentSection === 0 ? 1 : 0,
             pointerEvents: currentSection === 0 ? 'auto' : 'none',
             paddingTop: '40px',
             zIndex: 10
+          }}
+          onClick={() => {
+            if (currentSection === 0) {
+              window.scrollTo({
+                top: 300,
+                behavior: 'smooth'
+              })
+            }
           }}
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
@@ -613,7 +621,6 @@ function Home() {
             <span className="text-gray-400 font-medium">USE CASES</span>
             <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
             <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
             <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
             <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>

@@ -332,6 +332,22 @@ function Brands() {
                   Students find value in what you offer, naturally.
                 </p>
               </div>
+
+              {/* Card 5: Ambassadors */}
+              <div className="flex-shrink-0 w-80 md:w-96">
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Ambassadors.
+                </h3>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Give your ambassadors the direct channel to students on their campus looking for brand perks.
+                </p>
+                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Connect directly with the students who want what you're offering.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -368,7 +384,6 @@ function Brands() {
             <span className="text-gray-400 font-medium">USE CASES</span>
             <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
             <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
-            <Link to="/ambassadors" className="hover-grapevne-blue transition-colors footer-link">Ambassadors</Link>
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
             <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
             <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>
