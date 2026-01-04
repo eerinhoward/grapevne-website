@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 function Privacy() {
   const location = useLocation()
   const [activeTab, setActiveTab] = useState(null)
+  const [showUseCases, setShowUseCases] = useState(false)
   const logoRef = useRef(null)
   const currentRotateX = useRef(0)
   const currentRotateY = useRef(0)
@@ -85,19 +86,51 @@ function Privacy() {
       <header className="pt-4 pb-4 px-4 relative">
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
-          <div className="flex flex-col items-center">
-              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-              Press
-            </Link>
-            {location.pathname === '/press' && (
-              <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-            )}
+            <div className="flex items-center"
+              onMouseEnter={() => setShowUseCases(true)}
+              onMouseLeave={() => setShowUseCases(false)}
+            >
+              <div className="flex flex-col items-center">
+                <div 
+                  className="text-lg font-bold hover-grapevne-blue transition-colors lowercase cursor-pointer" 
+                  style={{ color: '#1a1a1a' }}
+                  onClick={() => setShowUseCases(true)}
+                >
+                  Use Cases
+                </div>
+                {(location.pathname === '/universities' || location.pathname === '/brands') && !showUseCases && (
+                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+                )}
+              </div>
+              <div 
+                className="flex items-center gap-4 overflow-hidden transition-all duration-300 ease-in-out"
+                style={{ 
+                  maxWidth: showUseCases ? '300px' : '0px',
+                  opacity: showUseCases ? 1 : 0,
+                  marginLeft: showUseCases ? '24px' : '0px'
+                }}
+              >
+                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  Universities
+                </Link>
+                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  Brands
+                </Link>
+              </div>
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
                 About
               </Link>
               {location.pathname === '/about' && (
+                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+              )}
+            </div>
+            <div className="flex flex-col items-center">
+              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+                Press
+              </Link>
+              {location.pathname === '/press' && (
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
