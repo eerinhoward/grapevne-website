@@ -15,6 +15,51 @@ function Home() {
   const lastScrollY = useRef(0)
   const currentSectionRef = useRef(0) // Track current section for scroll logic
   const [showUseCases, setShowUseCases] = useState(false)
+  const lastPositionRef = useRef({ x: 0, y: 0 })
+  const imageIndexRef = useRef(0)
+  const [trailImages, setTrailImages] = useState([])
+  const images = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg']
+  const maxImages = 8
+
+  useEffect(() => {
+    if (currentSection !== 0) {
+      setTrailImages([])
+      return
+    }
+
+    const handleMouseMove = (e) => {
+      const distanceX = Math.abs(e.clientX - lastPositionRef.current.x)
+      const distanceY = Math.abs(e.clientY - lastPositionRef.current.y)
+      
+      // Add image every 25px of movement
+      if (distanceX >= 25 || distanceY >= 25) {
+        const newImage = {
+          id: Date.now(),
+          x: e.clientX,
+          y: e.clientY,
+          src: images[imageIndexRef.current % images.length]
+        }
+        
+        imageIndexRef.current++
+        lastPositionRef.current = { x: e.clientX, y: e.clientY }
+        
+        setTrailImages(prev => {
+          const updated = [...prev, newImage]
+          // Keep only the last maxImages
+          if (updated.length > maxImages) {
+            return updated.slice(-maxImages)
+          }
+          return updated
+        })
+      }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [currentSection])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -195,30 +240,37 @@ function Home() {
               <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
             )}
             </div>
-            <div className="flex flex-col items-center relative"
+            <div className="flex items-center"
               onMouseEnter={() => setShowUseCases(true)}
               onMouseLeave={() => setShowUseCases(false)}
             >
-              <div 
-                className="text-lg font-bold hover-grapevne-blue transition-colors lowercase cursor-pointer" 
-                style={{ color: '#1a1a1a' }}
-                onClick={() => setShowUseCases(true)}
-              >
-                Use Cases
-              </div>
-              {(location.pathname === '/universities' || location.pathname === '/brands') && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
-              {showUseCases && (
-                <div className="absolute top-full pt-1 pb-2 z-30 min-w-[120px] left-0 pl-4">
-                  <Link to="/universities" className="block text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                    Universities
-                  </Link>
-                  <Link to="/brands" className="block text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                    Brands
-                  </Link>
+              <div className="flex flex-col items-center">
+                <div 
+                  className="text-lg font-bold hover-grapevne-blue transition-colors lowercase cursor-pointer" 
+                  style={{ color: '#1a1a1a' }}
+                  onClick={() => setShowUseCases(true)}
+                >
+                  Use Cases
                 </div>
-              )}
+                {(location.pathname === '/universities' || location.pathname === '/brands') && !showUseCases && (
+                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+                )}
+              </div>
+              <div 
+                className="flex items-center gap-4 overflow-hidden transition-all duration-300 ease-in-out"
+                style={{ 
+                  maxWidth: showUseCases ? '300px' : '0px',
+                  opacity: showUseCases ? 1 : 0,
+                  marginLeft: showUseCases ? '24px' : '0px'
+                }}
+              >
+                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  Universities
+                </Link>
+                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  Brands
+                </Link>
+              </div>
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
@@ -255,6 +307,26 @@ function Home() {
 
       {/* Main Content - accounts for header (~120px) and fixed footer (~80px) */}
       <main className="fixed top-[100px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
+        {/* Trail Images - Bottom Layer */}
+        {currentSection === 0 && (
+          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+            {trailImages.map((img, index) => (
+              <img
+                key={img.id}
+                src={img.src}
+                alt=""
+                className="absolute w-64 md:w-80 lg:w-96 h-auto object-cover"
+                style={{
+                  left: `${img.x}px`,
+                  top: `${img.y}px`,
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: index // Newer images on top
+                }}
+              />
+            ))}
+          </div>
+        )}
+        
         {/* Original Slogan */}
         <div 
           className="absolute inset-0 flex items-start justify-start transition-all duration-700 ease-in-out"
@@ -262,7 +334,8 @@ function Home() {
             transform: currentSection === 0 ? 'translateY(0)' : 'translateY(-100%)',
             opacity: currentSection === 0 ? 1 : 0,
             pointerEvents: currentSection === 0 ? 'auto' : 'none',
-            paddingTop: '40px'
+            paddingTop: '40px',
+            zIndex: 10
           }}
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
@@ -273,7 +346,7 @@ function Home() {
               </h2>
             </div>
             
-            {/* Bottom - Horizontal Image Row */}
+            {/* Bottom - Horizontal Image Row (commented out for now)
             <div className="flex gap-4 md:gap-5 lg:gap-6">
               <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
                 <img src="/Photoshoot1.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
@@ -285,6 +358,10 @@ function Home() {
                 <img src="/Photoshoot3.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
               </a>
             </div>
+            */}
+            
+            {/* Spacer for where image strip was */}
+            <div className="h-[280px]"></div>
             
             {/* What's happening text */}
             <div className="text-left pl-8 md:pl-16">
