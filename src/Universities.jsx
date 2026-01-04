@@ -538,8 +538,8 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             >
               {/* Card 1: Place and trust */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Image placeholder</span>
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                   Place and trust.
@@ -554,8 +554,8 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
               {/* Card 2: Shared by the people already there */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Image placeholder</span>
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                   Shared by the people already there.
@@ -570,11 +570,11 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
               {/* Card 3: Make it legible */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+                <div className="h-64 mb-6 flex items-center justify-center">
                   <img 
-                    src="/push-notification.png" 
+                    src="/notification.png" 
                     alt="Push notification example" 
-                    className="w-full h-full object-cover"
+                    className="h-full object-contain transition-transform duration-300 hover:scale-105"
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -590,8 +590,8 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               
               {/* Card 4: Make reporting real */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Image placeholder</span>
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                   Make reporting real.
@@ -606,8 +606,8 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
               {/* Card 5: It becomes routine */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 bg-gray-100 rounded-lg mb-6 flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Image placeholder</span>
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                   It becomes routine.
