@@ -228,7 +228,7 @@ function Brands() {
                   They're fun, social, and over before you realize they started.
                 </p>
                 <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  Grapevne makes them easier to catch.
+                  <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> makes them easier to catch.
                 </p>
               </div>
             </div>

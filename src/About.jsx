@@ -362,14 +362,14 @@ function About() {
             {/* Navigation buttons */}
             <button
               onClick={handlePrev}
-              className="absolute left-8 top-1/2 transform -translate-y-1/2 text-4xl font-bold"
+              className="fixed left-8 md:left-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
               style={{ color: '#1a1a1a' }}
             >
               −
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-8 top-1/2 transform -translate-y-1/2 text-4xl font-bold"
+              className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
               style={{ color: '#1a1a1a' }}
             >
               +

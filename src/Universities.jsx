@@ -17,12 +17,71 @@ function Universities() {
   const scrollStepRef = useRef(0)
   const isScrollingRef = useRef(false)
   const [hoveredPartner, setHoveredPartner] = useState(null)
+  const [selectedPartnerIndex, setSelectedPartnerIndex] = useState(null)
   
   // Define scroll positions for each step
   const scrollPositions = {
     0: 0,      // Initial position
     1: 400     // Partners section
   }
+
+  const partners = [
+    {
+      name: 'Trinity College',
+      image: '/trinitylogo.svg',
+      description: `At Trinity College, Grapevne is being rolled out in partnership with the Sustainability Department to notify students about available leftover food on campus.
+
+Instead of relying on ad-hoc emails, word of mouth, or last-minute signage, Grapevne provides a simple way to:
+
+Notify students when surplus food is available
+
+Reduce food waste from campus events and meetings
+
+Support sustainability initiatives without adding staff overhead
+
+The app is launching campus-wide in Spring 2026 as part of Trinity's broader sustainability efforts`
+    },
+    {
+      name: 'Stevens',
+      image: '/stevens.png',
+      description: 'Stevens Institute of Technology partner description coming soon.'
+    }
+  ]
+
+  const handlePartnerClick = (index) => {
+    setSelectedPartnerIndex(index)
+  }
+
+  const handleNext = () => {
+    setSelectedPartnerIndex((prev) => (prev + 1) % partners.length)
+  }
+
+  const handlePrev = () => {
+    setSelectedPartnerIndex((prev) => (prev - 1 + partners.length) % partners.length)
+  }
+
+  const handleCloseGallery = () => {
+    setSelectedPartnerIndex(null)
+  }
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (selectedPartnerIndex !== null) {
+        if (e.key === 'ArrowRight' || e.key === '+' || e.key === '=') {
+          setSelectedPartnerIndex((prev) => (prev + 1) % partners.length)
+        } else if (e.key === 'ArrowLeft' || e.key === '-') {
+          setSelectedPartnerIndex((prev) => (prev - 1 + partners.length) % partners.length)
+        } else if (e.key === 'Escape') {
+          setSelectedPartnerIndex(null)
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyPress)
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [selectedPartnerIndex, partners.length])
 
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -236,8 +295,8 @@ function Universities() {
           {/* Hero Section */}
           <section className="text-left">
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
-              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                For Universities
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                For <span style={{ color: 'var(--grapevne-blue)' }}>Universities</span>
               </h1>
               
               {/* 1x5 Grid Image */}
@@ -317,35 +376,41 @@ function Universities() {
               
               {/* Partner Pills */}
               <div className="relative" style={{ minHeight: '400px' }}>
-                {[
-                  { name: 'Trinity College', image: '/trinitylogo.svg', rotation: -2, top: '0%', left: '0%' },
-                  { name: 'Stevens', image: '/stevens.png', rotation: 1.5, top: '10%', left: '15%' },
-                ].map((partner, index) => (
-                  <button
-                    key={index}
-                    className={`absolute border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
-                    onMouseEnter={() => setHoveredPartner(index)}
-                    onMouseLeave={() => setHoveredPartner(null)}
-                    style={{
-                      transform: `rotate(${partner.rotation}deg)`,
-                      top: partner.top,
-                      left: partner.left,
-                      color: '#1a1a1a',
-                      fontFamily: 'Helvetica, Arial, sans-serif',
-                      whiteSpace: 'nowrap',
-                      zIndex: hoveredPartner === index ? 1000 : index,
-                      padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined
-                    }}
-                  >
-                    {partner.image ? (
-                      <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
-                    ) : (
-                      <>
-                        {partner.name} →
-                      </>
-                    )}
-                  </button>
-                ))}
+                {partners.map((partner, index) => {
+                  const positions = [
+                    { rotation: -2, top: '0%', left: '0%' },
+                    { rotation: 1.5, top: '10%', left: '15%' }
+                  ]
+                  const position = positions[index] || { rotation: 0, top: '0%', left: '0%' }
+                  
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handlePartnerClick(index)}
+                      className={`absolute border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
+                      onMouseEnter={() => setHoveredPartner(index)}
+                      onMouseLeave={() => setHoveredPartner(null)}
+                      style={{
+                        transform: `rotate(${position.rotation}deg)`,
+                        top: position.top,
+                        left: position.left,
+                        color: '#1a1a1a',
+                        fontFamily: 'Helvetica, Arial, sans-serif',
+                        whiteSpace: 'nowrap',
+                        zIndex: hoveredPartner === index ? 1000 : index,
+                        padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined
+                      }}
+                    >
+                      {partner.image ? (
+                        <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
+                      ) : (
+                        <>
+                          {partner.name} →
+                        </>
+                      )}
+                    </button>
+                  )
+                })}
               </div>
             </div>
           </section>
@@ -371,6 +436,83 @@ function Universities() {
 
         </div>
       </main>
+
+      {/* Partner Gallery Modal */}
+      {selectedPartnerIndex !== null && (
+        <div 
+          className="fixed inset-0 bg-white z-50 flex items-center justify-center"
+          style={{ backgroundColor: '#ffffff' }}
+          onClick={handleCloseGallery}
+        >
+          <div 
+            className="relative w-full h-full flex flex-col items-center justify-center px-8 py-12 max-w-6xl mx-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={handleCloseGallery}
+              className="fixed right-8 md:right-16 top-8 text-xl md:text-2xl font-bold z-10"
+              style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
+            >
+              exit
+            </button>
+
+            {/* Navigation buttons */}
+            <button
+              onClick={handlePrev}
+              className="fixed left-8 md:left-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
+              style={{ color: '#1a1a1a' }}
+            >
+              −
+            </button>
+            <button
+              onClick={handleNext}
+              className="fixed right-8 md:right-16 top-1/2 transform -translate-y-1/2 text-5xl md:text-6xl font-bold z-10"
+              style={{ color: '#1a1a1a' }}
+            >
+              +
+            </button>
+
+            {/* Gallery content */}
+            <div className="flex flex-col items-center w-full">
+              {/* Partner Pill */}
+              <div className="mb-6 w-full flex justify-start">
+                <div
+                  className={`border border-black bg-white rounded-full flex items-center justify-center ${partners[selectedPartnerIndex].name === 'Stevens' ? '' : 'px-6 py-3'}`}
+                  style={{
+                    transform: `rotate(${partners[selectedPartnerIndex].name === 'Trinity College' ? '-2deg' : '1.5deg'})`,
+                    padding: partners[selectedPartnerIndex].image ? (partners[selectedPartnerIndex].name === 'Stevens' ? '0' : '12px 16px') : undefined
+                  }}
+                >
+                  {partners[selectedPartnerIndex].image ? (
+                    <img 
+                      src={partners[selectedPartnerIndex].image} 
+                      alt={partners[selectedPartnerIndex].name} 
+                      className={partners[selectedPartnerIndex].name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} 
+                      style={partners[selectedPartnerIndex].name === 'Stevens' ? { margin: '-6px' } : {}} 
+                    />
+                  ) : (
+                    <>
+                      {partners[selectedPartnerIndex].name} →
+                    </>
+                  )}
+                </div>
+              </div>
+
+              {/* Black bar */}
+              <div className="w-full h-1 bg-black mb-6"></div>
+
+              {/* Description */}
+              <div 
+                className="text-lg md:text-xl mb-8 w-full whitespace-pre-line"
+                style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif', lineHeight: '1.6', textAlign: 'justify' }}
+              >
+                {partners[selectedPartnerIndex].description}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
