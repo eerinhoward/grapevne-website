@@ -505,15 +505,15 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
           </section>
 
           {/* Horizontal Scroll Narrative Section */}
-          <section className="pt-2 pb-16">
+          <section className="pb-16" style={{ marginTop: '-1rem' }}>
             {/* Navigation arrows */}
-            <div className="flex justify-end gap-4 mb-8">
+            <div className="flex justify-end gap-4 mb-3">
               <button 
                 onClick={() => {
                   const container = document.getElementById('narrative-scroll')
                   container.scrollBy({ left: -400, behavior: 'smooth' })
                 }}
-                className="text-2xl font-light hover:text-gray-500 transition-colors"
+                className="text-2xl font-bold hover:text-gray-500 transition-colors"
                 style={{ color: '#1a1a1a' }}
               >
                 ←
@@ -523,7 +523,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   const container = document.getElementById('narrative-scroll')
                   container.scrollBy({ left: 400, behavior: 'smooth' })
                 }}
-                className="text-2xl font-light hover:text-gray-500 transition-colors"
+                className="text-2xl font-bold hover:text-gray-500 transition-colors"
                 style={{ color: '#1a1a1a' }}
               >
                 →
