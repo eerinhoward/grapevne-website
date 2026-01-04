@@ -231,11 +231,12 @@ function Home() {
       <main className="fixed top-[100px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
         {/* Original Slogan */}
         <div 
-          className="absolute inset-0 flex items-center justify-start transition-all duration-700 ease-in-out"
+          className="absolute inset-0 flex items-start justify-start transition-all duration-700 ease-in-out"
           style={{
             transform: currentSection === 0 ? 'translateY(0)' : 'translateY(-100%)',
             opacity: currentSection === 0 ? 1 : 0,
-            pointerEvents: currentSection === 0 ? 'auto' : 'none'
+            pointerEvents: currentSection === 0 ? 'auto' : 'none',
+            paddingTop: '40px'
           }}
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
