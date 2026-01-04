@@ -30,7 +30,7 @@ function Universities() {
     {
       name: 'Trinity College',
       image: '/trinitylogo.svg',
-      description: `At Trinity College, Grapevne is being rolled out in partnership with the Sustainability Department to notify students about available leftover food on campus.
+      description: `At Trinity College, Grapevne is being implemented in partnership with the Sustainability Department to notify students about available leftover food on campus.
 
 Instead of relying on ad-hoc emails, word of mouth, or last-minute signage, Grapevne provides a simple way to: notify students when surplus food is available, thereby reduce food waste from campus events and meetings, and support sustainability initiatives without adding staff overhead.
 
@@ -323,19 +323,20 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
           <section className="text-left">
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
               <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                For <span style={{ color: 'var(--grapevne-blue)' }}>Universities</span>
+                Built for <span style={{ color: 'var(--grapevne-blue)' }}>Universities.</span><br />
+                <span style={{ color: '#1a1a1a' }}>Designed for Students</span>
               </h1>
               
               {/* 1x5 Grid Image */}
               <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
                   <img 
                     src="/university.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
                   <img 
                     src="/university2.jpg" 
                     alt="" 
@@ -349,27 +350,20 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
                   <img 
                     src="/university2.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
                   <img 
                     src="/university.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-              </div>
-              
-              {/* University Description */}
-              <div className="space-y-2 text-right">
-                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  Built for sustainability teams. Designed for students.
-                </p>
               </div>
             </div>
           </section>
