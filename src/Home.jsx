@@ -228,7 +228,7 @@ function Home() {
       </header>
 
       {/* Main Content - accounts for header (~120px) and fixed footer (~80px) */}
-      <main className="fixed top-[120px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
+      <main className="fixed top-[100px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
         {/* Original Slogan */}
         <div 
           className="absolute inset-0 flex items-center justify-start transition-all duration-700 ease-in-out"

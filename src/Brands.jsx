@@ -170,7 +170,7 @@ function Brands() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 py-20" style={{ paddingTop: '140px' }}>
+      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px' }}>
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-left">
@@ -181,7 +181,7 @@ function Brands() {
               </h1>
               
               {/* 1x5 Grid Image */}
-              <div className="grid grid-cols-5 gap-0 w-full max-w-7xl">
+              <div className="grid grid-cols-5 gap-0 w-screen -ml-8 md:-ml-16 -mr-8 md:-mr-16">
               <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
                 <img 
                   src="/pizza food.png" 
