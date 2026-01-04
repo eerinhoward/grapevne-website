@@ -283,62 +283,62 @@ function Brands() {
                 pointerEvents: scrollStep === 0 ? 'auto' : 'none'
               }}
             >
-              <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
-                <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  <span style={{ color: 'var(--grapevne-blue)' }}>Brands,</span><br />
-                  <span style={{ color: '#1a1a1a' }}>for our college generation.</span>
-                </h1>
-                
-                {/* 1x5 Grid Image */}
-                <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
-                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
-                  <img 
-                    src="/pizza food.png" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
-                  <img 
-                    src="/pizza food.png" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
-                  <img 
-                    src="/pizza food.png" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
-                  <img 
-                    src="/pizza food.png" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
-                  <img 
-                    src="/pizza food.png" 
-                    alt="" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+            <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                <span style={{ color: 'var(--grapevne-blue)' }}>Brands,</span><br />
+                <span style={{ color: '#1a1a1a' }}>for our college generation.</span>
+              </h1>
               
-                {/* Brand Description */}
+              {/* 1x5 Grid Image */}
+              <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                <img 
+                  src="/pizza food.png" 
+                  alt="" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+            
+              {/* Brand Description */}
                 <div className="space-y-0.5 text-right">
-                  <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
                     On campus, brand events are the kind of thing you hear about too late.
-                  </p>
-                  <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                </p>
+                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
                     You hear about it after the fact and realize you were next door.
-                  </p>
-                  <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                </p>
+                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
                     <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> is a real-time layer for brand presence on campus, where timing matters.
-                  </p>
+                </p>
                 </div>
               </div>
             </div>
@@ -351,34 +351,34 @@ function Brands() {
                 pointerEvents: scrollStep === 1 ? 'auto' : 'none'
               }}
             >
-              <div className="mb-8">
+            <div className="mb-8">
                 <h3 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
                   Goals
                 </h3>
-                <div className="space-y-3">
-                  {Object.keys(goals).map((goal) => (
-                    <div 
-                      key={goal} 
-                      className="cursor-pointer"
-                      onClick={() => setSelectedGoal(selectedGoal === goal ? '' : goal)}
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="flex items-center" style={{ paddingTop: '0.5rem' }}>
-                          {selectedGoal === goal && (
-                            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                          )}
-                        </div>
-                        <div className="text-xl flex-1" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                          <div className="font-medium mb-1">{goal}</div>
-                          {selectedGoal === goal && (
-                            <div className="text-base font-normal" style={{ color: '#666' }}>
-                              {goals[goal]}
-                            </div>
-                          )}
-                        </div>
+              <div className="space-y-3">
+                {Object.keys(goals).map((goal) => (
+                  <div 
+                    key={goal} 
+                    className="cursor-pointer"
+                    onClick={() => setSelectedGoal(selectedGoal === goal ? '' : goal)}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex items-center" style={{ paddingTop: '0.5rem' }}>
+                        {selectedGoal === goal && (
+                          <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+                        )}
+                      </div>
+                      <div className="text-xl flex-1" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                        <div className="font-medium mb-1">{goal}</div>
+                        {selectedGoal === goal && (
+                          <div className="text-base font-normal" style={{ color: '#666' }}>
+                            {goals[goal]}
+                          </div>
+                        )}
                       </div>
                     </div>
-                  ))}
+                  </div>
+                ))}
                 </div>
               </div>
             </div>

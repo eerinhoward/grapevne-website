@@ -331,10 +331,10 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             >
               <div className="flex flex-col gap-4 md:gap-5 lg:gap-6 relative">
                 {/* Header */}
-                <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                   Built for <span style={{ color: 'var(--grapevne-blue)' }}>Universities.</span><br />
                   <span style={{ color: '#1a1a1a' }}>Designed for Students.</span>
-                </h1>
+              </h1>
                 
                 {/* Partner Pills - absolutely positioned */}
                 {partners.map((partner, index) => {
@@ -382,45 +382,173 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                     </div>
                   )
                 })}
-                
-                {/* 1x5 Grid Image */}
-                <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
+              
+              {/* 1x5 Grid Image */}
+              <div className="grid grid-cols-5 gap-0 -ml-8 md:-ml-16 -mr-8 md:-mr-16" style={{ width: 'calc(100% + 4rem)' }}>
                   <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
-                    <img 
-                      src="/university.jpg" 
-                      alt="" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
-                    <img 
-                      src="/university2.jpg" 
-                      alt="" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
-                    <img 
-                      src="/university.jpg" 
-                      alt="" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
-                    <img 
-                      src="/university2.jpg" 
-                      alt="" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
-                    <img 
-                      src="/university.jpg" 
-                      alt="" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                  <img 
+                    src="/university.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
+                  <img 
+                    src="/university2.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                  <img 
+                    src="/university.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
+                  <img 
+                    src="/university2.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
+                  <img 
+                    src="/university.jpg" 
+                    alt="" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              
+              {/* Folder Tabs */}
+              <div className="fixed left-0 right-0" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', width: '100vw', minHeight: '120px', bottom: '75px' }}>
+                {/* Extended tabs that continue through rows */}
+                {/* Travel - extends through all rows */}
+                <div 
+                  className="absolute py-2 px-6 text-sm font-bold uppercase tracking-wide"
+                  style={{ 
+                    backgroundColor: '#DCDCDC',
+                    color: '#1a1a1a',
+                    clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%)',
+                    paddingRight: '32px',
+                    width: '50%',
+                    top: '0',
+                    left: '0',
+                    height: '120px',
+                    zIndex: 1
+                  }}
+                >
+                  Travel
+                </div>
+                {/* Energy - extends through all rows */}
+                <div 
+                  className="absolute py-2 text-sm font-bold uppercase tracking-wide"
+                  style={{ 
+                    backgroundColor: '#3FA9F5',
+                    color: 'white',
+                    clipPath: 'polygon(20px 0, 100% 0, 100% 100%, 0 100%)',
+                    paddingLeft: '32px',
+                    paddingRight: '32px',
+                    top: '0',
+                    left: 'calc(50% - 20px)',
+                    right: '0',
+                    height: '120px',
+                    zIndex: 2
+                  }}
+                >
+                  Energy
+                </div>
+                {/* Waste - extends through Row 2 and 3 with diagonal bottom */}
+                <div 
+                  className="absolute py-2 px-6 text-sm font-bold uppercase tracking-wide"
+                  style={{ 
+                    backgroundColor: '#3FA9F5',
+                    color: 'white',
+                    clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) calc(100% - 20px), calc(100% - 40px) 100%, 0 100%)',
+                    paddingRight: '32px',
+                    width: '28%',
+                    top: '40px',
+                    left: '0',
+                    height: '80px',
+                    zIndex: 3
+                  }}
+                >
+                  Waste
+                </div>
+                {/* Catering - extends through Row 2 and 3 */}
+                <div 
+                  className="absolute py-2 text-sm font-bold uppercase tracking-wide"
+                  style={{ 
+                    backgroundColor: '#1a1a1a',
+                    color: 'white',
+                    clipPath: 'polygon(20px 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%)',
+                    paddingLeft: '32px',
+                    paddingRight: '32px',
+                    top: '40px',
+                    left: 'calc(28% - 20px)',
+                    width: '28%',
+                    height: '80px',
+                    zIndex: 2
+                  }}
+                >
+                  Catering
+                </div>
+                {/* Suppliers - Row 2 only */}
+                <div 
+                  className="absolute py-2 text-sm font-bold uppercase tracking-wide"
+                  style={{ 
+                    backgroundColor: '#0CAD55',
+                    color: 'white',
+                    clipPath: 'polygon(20px 0, 100% 0, 100% 100%, 0 100%)',
+                    paddingLeft: '32px',
+                    paddingRight: '32px',
+                    top: '40px',
+                    left: 'calc(56% - 40px)',
+                    right: '0',
+                    height: '40px',
+                    zIndex: 3
+                  }}
+                >
+                  Suppliers
+                </div>
+                {/* Community - Row 3 only */}
+                <div 
+                  className="absolute py-2 px-6 text-sm font-bold uppercase tracking-wide"
+                  style={{ 
+                    backgroundColor: '#F66800',
+                    color: 'white',
+                    clipPath: 'polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%)',
+                    paddingRight: '32px',
+                    width: '45%',
+                    top: '80px',
+                    left: '0',
+                    height: '40px',
+                    zIndex: 3
+                  }}
+                >
+                  Community
+                </div>
+                {/* Conclusion - Row 3 only */}
+                <div 
+                  className="absolute py-2 text-sm font-bold uppercase tracking-wide"
+                  style={{ 
+                    backgroundColor: '#DCDCDC',
+                    color: '#1a1a1a',
+                    clipPath: 'polygon(20px 0, 100% 0, 100% 100%, 0 100%)',
+                    paddingLeft: '32px',
+                    paddingRight: '32px',
+                    top: '80px',
+                    left: 'calc(45% - 20px)',
+                    right: '0',
+                    height: '40px',
+                    zIndex: 4
+                  }}
+                >
+                  Conclusion
+                </div>
+              </div>
               </div>
             </div>
             
