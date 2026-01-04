@@ -505,7 +505,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
           </section>
 
           {/* Horizontal Scroll Narrative Section */}
-          <section className="pb-16" style={{ marginTop: '-1rem' }}>
+          <section className="pb-16" style={{ marginTop: '-0.5rem' }}>
             {/* Navigation arrows */}
             <div className="flex justify-end gap-4 mb-3">
               <button 
@@ -533,9 +533,11 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             {/* Horizontal scroll container */}
             <div 
               id="narrative-scroll"
-              className="flex gap-8 overflow-x-auto pb-8 -mr-8 md:-mr-16 pr-8 md:pr-16"
-              style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="flex gap-8 overflow-x-auto pb-8 -mx-8 md:-mx-16 px-8 md:px-16"
+              style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', msOverflowStyle: 'none', scrollPaddingLeft: '2rem' }}
             >
+              {/* Spacer to respect left margin */}
+              <div className="flex-shrink-0 w-8 md:w-16" style={{ scrollSnapAlign: 'start' }}></div>
               {/* Card 1: Place and trust */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
                 <div className="h-64 mb-6 flex items-center justify-center">
