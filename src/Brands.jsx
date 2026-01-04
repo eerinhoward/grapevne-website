@@ -10,110 +10,9 @@ function Brands() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [selectedGoal, setSelectedGoal] = useState('')
   const [isFormOpen, setIsFormOpen] = useState(false)
-  const [showHeader, setShowHeader] = useState(true)
-  const lastScrollY = useRef(0)
-  const [scrollStep, setScrollStep] = useState(0) // 0 = initial, 1 = Goals
-  const scrollStepRef = useRef(0)
-  const isScrollingRef = useRef(false)
   const [showUseCases, setShowUseCases] = useState(false)
   
-  // Define scroll positions for each step
-  const scrollPositions = {
-    0: 0,      // Initial position
-    1: 400     // Goals section
-  }
-  
-  const goals = {
-    'Campus Awareness': 'Reach students through real, in-person moments.',
-    'Product Sampling': 'Distribute food or goods during high-traffic campus moments with zero guesswork.',
-    'Event Visibility': 'Surface pop-ups and brand moments to students already nearby.',
-    'Authentic Engagement': 'Be discovered through utility, not interruption.'
-  }
-  
-  useEffect(() => {
-    const handleWheel = (e) => {
-      // Don't interfere if form is open
-      if (isFormOpen) return
-      
-      e.preventDefault()
-      
-      if (isScrollingRef.current) return
-      isScrollingRef.current = true
-      
-      const scrollingDown = e.deltaY > 0
-      let targetStep = scrollStepRef.current
-      
-      if (scrollingDown) {
-        // Scrolling down - advance to next step
-        if (scrollStepRef.current === 0) {
-          targetStep = 1
-        }
-      } else {
-        // Scrolling up - go back to previous step
-        if (scrollStepRef.current === 1) {
-          targetStep = 0
-        }
-      }
-      
-      if (targetStep !== scrollStepRef.current) {
-        scrollStepRef.current = targetStep
-        setScrollStep(targetStep)
-        
-        // Smooth scroll to target position
-        window.scrollTo({
-          top: scrollPositions[targetStep],
-          behavior: 'smooth'
-        })
-        
-        // Reset scrolling flag after animation
-        setTimeout(() => {
-          isScrollingRef.current = false
-        }, 500)
-      } else {
-        isScrollingRef.current = false
-      }
-    }
-    
-    const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset
-      
-      // Update step based on scroll position (for initial load or direct navigation)
-      if (scrollY >= scrollPositions[1] - 50) {
-        if (scrollStepRef.current !== 1) {
-          scrollStepRef.current = 1
-          setScrollStep(1)
-        }
-      } else {
-        if (scrollStepRef.current !== 0) {
-          scrollStepRef.current = 0
-          setScrollStep(0)
-        }
-      }
-      
-      // Header show/hide based on scroll direction
-      // Always show at top of page
-      if (scrollY < 100) {
-        setShowHeader(true)
-      } else if (scrollY < lastScrollY.current) {
-        // Scrolling up - show header
-        setShowHeader(true)
-      } else if (scrollY > lastScrollY.current) {
-        // Scrolling down - hide header
-        setShowHeader(false)
-      }
-      
-      lastScrollY.current = scrollY
-    }
-
-    window.addEventListener('wheel', handleWheel, { passive: false })
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('wheel', handleWheel)
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [isFormOpen])
 
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -184,16 +83,14 @@ function Brands() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Background Strip - hides with navbar */}
+      {/* Background Strip */}
       <div 
-        className="fixed top-0 left-0 right-0 h-[120px] bg-white z-10 transition-transform duration-300"
-        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+        className="fixed top-0 left-0 right-0 h-[120px] bg-white z-10"
       />
       
-      {/* Header with Logo */}
+      {/* Header with Logo - always visible */}
       <header 
-        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20 transition-transform duration-300"
-        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20"
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
@@ -271,18 +168,10 @@ function Brands() {
       </header>
 
       {/* Main Content */}
-      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '100px' }}>
+      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '40px' }}>
         <div className="space-y-16">
           {/* Hero Section */}
-          <section className="text-left pt-12 pb-8 min-h-[600px] relative">
-            {/* Step 0: Hero content with text lines */}
-            <div 
-              className="absolute inset-0 transition-opacity duration-500"
-              style={{ 
-                opacity: scrollStep === 0 ? 1 : 0,
-                pointerEvents: scrollStep === 0 ? 'auto' : 'none'
-              }}
-            >
+          <section className="text-left pt-12 pb-8 min-h-[600px]">
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
               <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                 <span style={{ color: 'var(--grapevne-blue)' }}>Brands,</span><br />
@@ -341,45 +230,107 @@ function Brands() {
                 </p>
                 </div>
               </div>
+          </section>
+
+          {/* Horizontal Scroll Narrative Section */}
+          <section className="pb-16" style={{ marginTop: '-0.5rem' }}>
+            {/* Navigation arrows */}
+            <div className="flex justify-end gap-4 mb-3">
+              <button 
+                onClick={() => {
+                  const container = document.getElementById('brands-narrative-scroll')
+                  container.scrollBy({ left: -400, behavior: 'smooth' })
+                }}
+                className="text-2xl font-bold hover:text-gray-500 transition-colors"
+                style={{ color: '#1a1a1a' }}
+              >
+                ←
+              </button>
+              <button 
+                onClick={() => {
+                  const container = document.getElementById('brands-narrative-scroll')
+                  container.scrollBy({ left: 400, behavior: 'smooth' })
+                }}
+                className="text-2xl font-bold hover:text-gray-500 transition-colors"
+                style={{ color: '#1a1a1a' }}
+              >
+                →
+              </button>
             </div>
             
-            {/* Step 1: Goal List */}
+            {/* Horizontal scroll container */}
             <div 
-              className="absolute inset-0 transition-opacity duration-500"
-              style={{ 
-                opacity: scrollStep === 1 ? 1 : 0,
-                pointerEvents: scrollStep === 1 ? 'auto' : 'none'
-              }}
+              id="brands-narrative-scroll"
+              className="flex gap-8 overflow-x-auto pb-8 -mr-8 md:-mr-16 pr-8 md:pr-16"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
-            <div className="mb-8">
-                <h3 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                  Goals
-                </h3>
-              <div className="space-y-3">
-                {Object.keys(goals).map((goal) => (
-                  <div 
-                    key={goal} 
-                    className="cursor-pointer"
-                    onClick={() => setSelectedGoal(selectedGoal === goal ? '' : goal)}
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex items-center" style={{ paddingTop: '0.5rem' }}>
-                        {selectedGoal === goal && (
-                          <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                        )}
-                      </div>
-                      <div className="text-xl flex-1" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                        <div className="font-medium mb-1">{goal}</div>
-                        {selectedGoal === goal && (
-                          <div className="text-base font-normal" style={{ color: '#666' }}>
-                            {goals[goal]}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+              
+              {/* Card 1 */}
+              <div className="flex-shrink-0 w-80 md:w-96">
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Campus Awareness.
+                </h3>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Reach students through real, in-person moments.
+                </p>
+                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Be where students are, when they're there.
+                </p>
+              </div>
+
+              {/* Card 2 */}
+              <div className="flex-shrink-0 w-80 md:w-96">
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Product Sampling.
+                </h3>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Distribute food or goods during high-traffic campus moments with zero guesswork.
+                </p>
+                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Timing is everything.
+                </p>
+              </div>
+
+              {/* Card 3 */}
+              <div className="flex-shrink-0 w-80 md:w-96">
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img 
+                    src="/notification.png" 
+                    alt="Push notification example" 
+                    className="h-full object-contain transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Event Visibility.
+                </h3>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Surface pop-ups and brand moments to students already nearby.
+                </p>
+                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Real-time notifications reach students in time.
+                </p>
+              </div>
+              
+              {/* Card 4 */}
+              <div className="flex-shrink-0 w-80 md:w-96">
+                <div className="h-64 mb-6 flex items-center justify-center">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Authentic Engagement.
+                </h3>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Be discovered through utility, not interruption.
+                </p>
+                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Students find value in what you offer, naturally.
+                </p>
               </div>
             </div>
           </section>
@@ -405,8 +356,8 @@ function Brands() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
+      {/* Footer - anchored to bottom of page */}
+      <footer className="pt-3 pb-4 px-4 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>

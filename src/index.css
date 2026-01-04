@@ -58,7 +58,8 @@ body {
 }
 
 /* Hide scrollbar for horizontal scroll containers */
-#narrative-scroll::-webkit-scrollbar {
+#narrative-scroll::-webkit-scrollbar,
+#brands-narrative-scroll::-webkit-scrollbar {
   display: none;
 }
 
