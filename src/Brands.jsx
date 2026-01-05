@@ -13,8 +13,9 @@ function Brands() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [showUseCases, setShowUseCases] = useState(false)
   
-  // Horizontal scroll state
+  // Scroll-lock horizontal state
   const horizontalScrollRef = useRef(null)
+  const stickyContainerRef = useRef(null)
   const [horizontalProgress, setHorizontalProgress] = useState(0)
   const totalCards = 5
   
@@ -76,27 +77,49 @@ function Brands() {
     animationFrameId.current = requestAnimationFrame(updateLogoTransform)
     document.addEventListener('mousemove', handleMouseMove)
 
-    // Track horizontal scroll progress
-    const handleHorizontalScroll = () => {
-      if (!horizontalScrollRef.current) return
-      const scrollContainer = horizontalScrollRef.current
-      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth
-      if (maxScrollLeft > 0) {
-        setHorizontalProgress(scrollContainer.scrollLeft / maxScrollLeft)
+    // Scroll-lock: vertical scroll controls horizontal scroll
+    const handleScroll = () => {
+      if (!stickyContainerRef.current || !horizontalScrollRef.current) return
+      
+      const container = stickyContainerRef.current
+      const scrollEl = horizontalScrollRef.current
+      const maxScrollLeft = scrollEl.scrollWidth - scrollEl.clientWidth
+      
+      if (maxScrollLeft <= 0) return
+      
+      // Get the container's position
+      const containerRect = container.getBoundingClientRect()
+      const headerHeight = 140
+      
+      // Calculate how far we've scrolled into the sticky zone
+      // The sticky zone starts when container top reaches header bottom
+      // and ends when we've scrolled an amount equal to the horizontal scroll width
+      const scrollIntoContainer = -containerRect.top + headerHeight
+      const scrollRange = container.offsetHeight - window.innerHeight
+      
+      if (scrollIntoContainer >= 0 && scrollIntoContainer <= scrollRange) {
+        // We're in the sticky zone - translate vertical to horizontal
+        const progress = Math.min(1, Math.max(0, scrollIntoContainer / scrollRange))
+        setHorizontalProgress(progress)
+        scrollEl.scrollLeft = progress * maxScrollLeft
+      } else if (scrollIntoContainer < 0) {
+        // Before sticky zone
+        setHorizontalProgress(0)
+        scrollEl.scrollLeft = 0
+      } else {
+        // After sticky zone
+        setHorizontalProgress(1)
+        scrollEl.scrollLeft = maxScrollLeft
       }
     }
 
-    // Add scroll listener to horizontal container after mount
-    const scrollContainer = horizontalScrollRef.current
-    if (scrollContainer) {
-      scrollContainer.addEventListener('scroll', handleHorizontalScroll, { passive: true })
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    // Initial call
+    setTimeout(handleScroll, 100)
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
-      if (scrollContainer) {
-        scrollContainer.removeEventListener('scroll', handleHorizontalScroll)
-      }
+      window.removeEventListener('scroll', handleScroll)
       document.body.removeChild(cursor)
       document.body.style.cursor = 'auto'
       if (animationFrameId.current) {
@@ -255,35 +278,43 @@ function Brands() {
               </div>
           </section>
 
-          {/* Horizontal Narrative Section */}
-          <section className="py-16 pl-8 md:pl-16">
-            {/* Progress indicator */}
-            <div className="flex items-center gap-4 mb-8 pr-8 md:pr-16">
-              <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
-                <div 
-                  className="h-full rounded-full transition-all duration-150"
-                  style={{ 
-                    width: `${horizontalProgress * 100}%`,
-                    backgroundColor: 'var(--grapevne-blue)'
-                  }}
-                />
-              </div>
-              <span className="text-sm font-medium text-gray-500" style={{ minWidth: '3rem' }}>
-                {Math.round(horizontalProgress * (totalCards - 1)) + 1}/{totalCards}
-              </span>
-            </div>
-            
-            {/* Horizontal scroll container */}
+          {/* Scroll-Locked Horizontal Narrative Section */}
+          {/* This container is tall to provide scroll space for the horizontal progression */}
+          <div 
+            ref={stickyContainerRef}
+            style={{ height: '300vh' }}
+          >
+            {/* Sticky wrapper that stays in view while scrolling */}
             <div 
-              ref={horizontalScrollRef}
-              id="brands-narrative-scroll"
-              className="flex gap-8 overflow-x-auto pb-4"
-              style={{ 
-                scrollbarWidth: 'none', 
-                msOverflowStyle: 'none', 
-                WebkitOverflowScrolling: 'touch'
-              }}
+              className="sticky top-[140px] bg-white py-8 pl-8 md:pl-16"
+              style={{ height: 'calc(100vh - 180px)' }}
             >
+              {/* Progress indicator */}
+              <div className="flex items-center gap-4 mb-8 pr-8 md:pr-16">
+                <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full rounded-full transition-all duration-100"
+                    style={{ 
+                      width: `${horizontalProgress * 100}%`,
+                      backgroundColor: 'var(--grapevne-blue)'
+                    }}
+                  />
+                </div>
+                <span className="text-sm font-medium text-gray-500" style={{ minWidth: '3rem' }}>
+                  {Math.round(horizontalProgress * (totalCards - 1)) + 1}/{totalCards}
+                </span>
+              </div>
+              
+              {/* Horizontal scroll container - controlled by vertical scroll */}
+              <div 
+                ref={horizontalScrollRef}
+                id="brands-narrative-scroll"
+                className="flex gap-8 overflow-x-hidden pb-4 h-full items-center"
+                style={{ 
+                  scrollbarWidth: 'none', 
+                  msOverflowStyle: 'none'
+                }}
+              >
               
               {/* Card 1 */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
@@ -368,8 +399,9 @@ function Brands() {
                   Connect directly with the students who want what you're offering.
                 </p>
               </div>
+              </div>
             </div>
-          </section>
+          </div>
 
           {/* Final Section: Full-Screen Device Mockup */}
           <section 
