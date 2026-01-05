@@ -8,6 +8,10 @@ import Terms from './Terms'
 import Privacy from './Privacy'
 import Ambassadors from './Ambassadors'
 import About from './About'
+import Dashboard from './pages/Dashboard'
+import Login from './components/auth/Login'
+import ProtectedRoute from './components/auth/ProtectedRoute'
+import { AuthProvider } from './components/auth/AuthContext'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -161,17 +165,28 @@ function App() {
 
   return (
     <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/press" element={<Press />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/brands" element={<Brands />} />
-        <Route path="/universities" element={<Universities />} />
-        <Route path="/terms" element={<Terms />} />
-        <Route path="/privacy" element={<Privacy />} />
-        <Route path="/ambassadors" element={<Ambassadors />} />
-      </Routes>
+      <AuthProvider>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/press" element={<Press />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/brands" element={<Brands />} />
+          <Route path="/universities" element={<Universities />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/ambassadors" element={<Ambassadors />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
     </Router>
   )
 }
