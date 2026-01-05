@@ -13,6 +13,11 @@ function Brands() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [showUseCases, setShowUseCases] = useState(false)
   
+  // Horizontal scroll state
+  const horizontalScrollRef = useRef(null)
+  const [horizontalProgress, setHorizontalProgress] = useState(0)
+  const totalCards = 5
+  
 
   useEffect(() => {
     const cursor = document.createElement('div')
@@ -71,8 +76,27 @@ function Brands() {
     animationFrameId.current = requestAnimationFrame(updateLogoTransform)
     document.addEventListener('mousemove', handleMouseMove)
 
+    // Track horizontal scroll progress
+    const handleHorizontalScroll = () => {
+      if (!horizontalScrollRef.current) return
+      const scrollContainer = horizontalScrollRef.current
+      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth
+      if (maxScrollLeft > 0) {
+        setHorizontalProgress(scrollContainer.scrollLeft / maxScrollLeft)
+      }
+    }
+
+    // Add scroll listener to horizontal container after mount
+    const scrollContainer = horizontalScrollRef.current
+    if (scrollContainer) {
+      scrollContainer.addEventListener('scroll', handleHorizontalScroll, { passive: true })
+    }
+
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('scroll', handleHorizontalScroll)
+      }
       document.body.removeChild(cursor)
       document.body.style.cursor = 'auto'
       if (animationFrameId.current) {
@@ -168,10 +192,9 @@ function Brands() {
       </header>
 
       {/* Main Content */}
-      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '40px' }}>
-        <div className="space-y-16">
-          {/* Hero Section */}
-          <section className="text-left pt-12 pb-8 min-h-[600px]">
+      <main className="py-20" style={{ paddingTop: '140px', paddingBottom: '0' }}>
+        {/* Hero Section */}
+        <section className="text-left pt-12 pb-8 min-h-[600px] pl-8 md:pl-16 pr-8 md:pr-16">
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
               <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                 <span style={{ color: 'var(--grapevne-blue)' }}>Brands,</span><br />
@@ -232,42 +255,39 @@ function Brands() {
               </div>
           </section>
 
-          {/* Horizontal Scroll Narrative Section */}
-          <section className="pb-16" style={{ marginTop: '-0.5rem' }}>
-            {/* Navigation arrows */}
-            <div className="flex justify-end gap-4 mb-3">
-              <button 
-                onClick={() => {
-                  const container = document.getElementById('brands-narrative-scroll')
-                  container.scrollBy({ left: -400, behavior: 'smooth' })
-                }}
-                className="text-2xl font-bold hover:text-gray-500 transition-colors"
-                style={{ color: '#1a1a1a' }}
-              >
-                ←
-              </button>
-              <button 
-                onClick={() => {
-                  const container = document.getElementById('brands-narrative-scroll')
-                  container.scrollBy({ left: 400, behavior: 'smooth' })
-                }}
-                className="text-2xl font-bold hover:text-gray-500 transition-colors"
-                style={{ color: '#1a1a1a' }}
-              >
-                →
-              </button>
+          {/* Horizontal Narrative Section */}
+          <section className="py-16 pl-8 md:pl-16">
+            {/* Progress indicator */}
+            <div className="flex items-center gap-4 mb-8 pr-8 md:pr-16">
+              <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                <div 
+                  className="h-full rounded-full transition-all duration-150"
+                  style={{ 
+                    width: `${horizontalProgress * 100}%`,
+                    backgroundColor: 'var(--grapevne-blue)'
+                  }}
+                />
+              </div>
+              <span className="text-sm font-medium text-gray-500" style={{ minWidth: '3rem' }}>
+                {Math.round(horizontalProgress * (totalCards - 1)) + 1}/{totalCards}
+              </span>
             </div>
             
             {/* Horizontal scroll container */}
             <div 
+              ref={horizontalScrollRef}
               id="brands-narrative-scroll"
-              className="flex gap-8 overflow-x-auto pb-8 -mr-8 md:-mr-16 pr-8 md:pr-16"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="flex gap-8 overflow-x-auto pb-4"
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none', 
+                WebkitOverflowScrolling: 'touch'
+              }}
             >
               
               {/* Card 1 */}
-              <div className="flex-shrink-0 w-80 md:w-96">
-                <div className="h-64 mb-6 flex items-center justify-center">
+              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -282,8 +302,8 @@ function Brands() {
               </div>
 
               {/* Card 2 */}
-              <div className="flex-shrink-0 w-80 md:w-96">
-                <div className="h-64 mb-6 flex items-center justify-center">
+              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -298,8 +318,8 @@ function Brands() {
               </div>
 
               {/* Card 3 */}
-              <div className="flex-shrink-0 w-80 md:w-96">
-                <div className="h-64 mb-6 flex items-center justify-center">
+              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img 
                     src="/notification.png" 
                     alt="Push notification example" 
@@ -318,8 +338,8 @@ function Brands() {
               </div>
               
               {/* Card 4 */}
-              <div className="flex-shrink-0 w-80 md:w-96">
-                <div className="h-64 mb-6 flex items-center justify-center">
+              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -334,8 +354,8 @@ function Brands() {
               </div>
 
               {/* Card 5: Ambassadors */}
-              <div className="flex-shrink-0 w-80 md:w-96">
-                <div className="h-64 mb-6 flex items-center justify-center">
+              <div className="flex-shrink-0 w-80 md:w-96 pr-8 md:pr-16" style={{ minWidth: '320px' }}>
+                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -351,8 +371,34 @@ function Brands() {
             </div>
           </section>
 
+          {/* Final Section: Full-Screen Device Mockup */}
+          <section 
+            className="min-h-screen flex flex-col items-center justify-center px-8 md:px-16 relative"
+            style={{ backgroundColor: '#fafafa' }}
+          >
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                Ready when your<br />
+                <span style={{ color: 'var(--grapevne-blue)' }}>students are.</span>
+              </h2>
+              <p className="text-xl leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#666' }}>
+                Be where students are, when they're looking.
+              </p>
+            </div>
+            
+            {/* Device Mockup */}
+            <div className="relative w-full max-w-md mx-auto">
+              <img 
+                src="/iphone image.png" 
+                alt="Grapevne app on iPhone" 
+                className="w-full h-auto mx-auto"
+                style={{ maxHeight: '60vh', objectFit: 'contain' }}
+              />
+            </div>
+          </section>
+
           {/* CTA Section */}
-          <section className="text-center pt-8">
+          <section className="text-center py-20 px-8 md:px-16">
             <button
               onClick={() => setIsFormOpen(!isFormOpen)}
               className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
@@ -362,14 +408,13 @@ function Brands() {
           </section>
 
           {/* Contact Form */}
-          <section className="transition-all duration-500 ease-in-out">
+          <section className="transition-all duration-500 ease-in-out px-8 md:px-16 pb-20">
             <ContactForm 
               isOpen={isFormOpen} 
               onClose={() => setIsFormOpen(false)}
               emailTo="brands@grapevneapp.com"
             />
           </section>
-        </div>
       </main>
 
       {/* Footer - anchored to bottom of page */}
