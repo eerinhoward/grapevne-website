@@ -359,7 +359,7 @@ function Home() {
           <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
             {/* Top - Grapevne */}
             <div className="text-left pl-8 md:pl-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
                 Grapevne
               </h2>
             </div>
@@ -383,10 +383,10 @@ function Home() {
             
             {/* What's happening text */}
             <div className="text-left pl-8 md:pl-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 What's happening.
               </h2>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight mt-2" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 While it's happening.
               </h2>
             </div>
@@ -411,7 +411,7 @@ function Home() {
             }}
           >
             <div className="text-2xl md:text-3xl lg:text-4xl lowercase whitespace-nowrap" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none' }}>Grapevne</span>
+              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>Grapevne</span>
               <span> is the real-time campus discovery layer.</span>
             </div>
           </div>
@@ -436,7 +436,7 @@ function Home() {
                           middleStep >= 2 ? 'translateX(300px)' : 'translateX(400px)'
               }}
             >
-              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none' }}>Grapevne</span>
+              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>Grapevne</span>
               <span> is </span>
               <span className="transition-all duration-500" style={{ opacity: middleStep >= 1 ? 1 : 0 }}>
                 free food
@@ -573,7 +573,7 @@ function Home() {
             pointerEvents: currentSection === 4 ? 'auto' : 'none'
           }}
         >
-          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: 'var(--grapevne-blue)' }}>
+          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
             Grapevne
           </div>
         </div>

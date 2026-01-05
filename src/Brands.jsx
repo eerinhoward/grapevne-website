@@ -218,7 +218,7 @@ function Brands() {
           {/* Hero Section */}
         <section className="text-left pt-12 pb-8 min-h-[600px] pl-8 md:pl-16 pr-8 md:pr-16">
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
-              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
                 <span style={{ color: 'var(--grapevne-blue)' }}>Brands,</span><br />
                 <span style={{ color: '#1a1a1a' }}>for our college generation.</span>
               </h1>
@@ -264,10 +264,10 @@ function Brands() {
             
               {/* Brand Description */}
                 <div className="space-y-0.5 text-right">
-                <p className="text-2xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                <p className="text-2xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
                     Brands don't live on campus. <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> does.
                 </p>
-                <p className="text-2xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                <p className="text-2xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
                     <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> provides the consistent entry point for on-campus activations.
                 </p>
               </div>
@@ -314,7 +314,7 @@ function Brands() {
                 <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Short-lived by nature.
                 </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -340,7 +340,7 @@ function Brands() {
                     className="h-full object-contain transition-transform duration-300 hover:scale-105"
                   />
                 </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Campus-wide reach.
                 </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -362,7 +362,7 @@ function Brands() {
                 <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                           </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Ambassadors.
                 </h3>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -375,7 +375,7 @@ function Brands() {
                 <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                     </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Designed for real turnout.
                 </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -391,7 +391,7 @@ function Brands() {
                 <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Deployed one campus at a time.
                 </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -405,13 +405,29 @@ function Brands() {
             </div>
           </div>
 
+          {/* Video Section */}
+          <section 
+            className="w-full"
+            style={{ backgroundColor: '#fafafa', position: 'static' }}
+          >
+            <video 
+              src="/demo.mov"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto"
+              style={{ display: 'block' }}
+            />
+          </section>
+
           {/* Final Section: Full-Screen Device Mockup */}
           <section 
             className="min-h-screen flex flex-col items-center justify-center px-8 md:px-16 relative"
             style={{ backgroundColor: '#fafafa' }}
           >
             <div className="max-w-4xl mx-auto text-center mb-12">
-              <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 Ready when your<br />
                 <span style={{ color: 'var(--grapevne-blue)' }}>students are.</span>
               </h2>

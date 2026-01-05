@@ -182,6 +182,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
     }
   }, [])
 
+
   return (
     <div className="min-h-screen bg-white">
       {/* Background Strip */}
@@ -331,7 +332,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6 relative">
                 {/* Header */}
-              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
                   Built for <span style={{ color: 'var(--grapevne-blue)' }}>Universities.</span><br />
                   <span style={{ color: '#1a1a1a' }}>Designed for Students.</span>
               </h1>
@@ -376,7 +377,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               </div>
               
               {/* Subtext under image strip */}
-              <p className="text-2xl leading-relaxed font-bold text-right" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <p className="text-2xl leading-relaxed font-bold text-right" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
                 A shared feed for leftover and free food, on campus.
               </p>
               
@@ -539,7 +540,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                     <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Place and trust.
                   </h3>
                   <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -555,7 +556,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                     <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Shared by the people already there.
                   </h3>
                   <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -575,7 +576,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                       className="h-full object-contain transition-transform duration-300 hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Make it legible.
                   </h3>
                   <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -591,7 +592,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                     <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Real Impact.
                   </h3>
                   <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -607,7 +608,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                     <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     It becomes routine.
                   </h3>
                   <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
@@ -621,13 +622,29 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             </div>
           </div>
 
+          {/* Video Section */}
+          <section 
+            className="w-full"
+            style={{ backgroundColor: '#fafafa', position: 'static' }}
+          >
+            <video 
+              src="/demo.mov"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto"
+              style={{ display: 'block' }}
+            />
+          </section>
+
           {/* Final Section: Full-Screen Device Mockup */}
           <section 
             className="min-h-screen flex flex-col items-center justify-center px-8 md:px-16 relative"
             style={{ backgroundColor: '#fafafa' }}
           >
             <div className="max-w-4xl mx-auto text-center mb-12">
-              <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+              <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 Built for your<br />
                 <span style={{ color: 'var(--grapevne-blue)' }}>campus.</span>
               </h2>
