@@ -377,7 +377,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               
               {/* Subtext under image strip */}
               <p className="text-2xl leading-relaxed font-bold text-right" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                One place for campus redistribution.
+                A shared feed for leftover and free food, on campus.
               </p>
               
               {/* Folder Tabs - commented out */}
@@ -511,11 +511,11 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             style={{ height: '300vh' }}
           >
             <div 
-              className="sticky top-[140px] bg-white py-8 pl-8 md:pl-16"
+              className="sticky top-[140px] bg-white py-8"
               style={{ height: 'calc(100vh - 180px)' }}
             >
               {/* Progress indicator */}
-              <div className="flex items-center mb-8 pr-8 md:pr-16">
+              <div className="flex items-center mb-8 pl-8 md:pl-16 pr-8 md:pr-16">
                 <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
                   <div 
                     className="h-full rounded-full transition-all duration-100"
@@ -535,7 +535,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {/* Card 1: Place and trust */}
-                <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                <div className="flex-shrink-0 w-80 md:w-96 pl-8 md:pl-16" style={{ minWidth: '320px' }}>
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                     <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                   </div>

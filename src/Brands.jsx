@@ -282,11 +282,11 @@ function Brands() {
           >
             {/* Sticky wrapper that stays in view while scrolling */}
             <div 
-              className="sticky top-[140px] bg-white py-8 pl-8 md:pl-16"
+              className="sticky top-[140px] bg-white py-8"
               style={{ height: 'calc(100vh - 180px)' }}
             >
               {/* Progress indicator */}
-              <div className="flex items-center mb-8 pr-8 md:pr-16">
+              <div className="flex items-center mb-8 pl-8 md:pl-16 pr-8 md:pr-16">
                 <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
                   <div 
                     className="h-full rounded-full transition-all duration-100"
@@ -310,7 +310,7 @@ function Brands() {
               >
               
               {/* Card 1 */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+              <div className="flex-shrink-0 w-80 md:w-96 pl-8 md:pl-16" style={{ minWidth: '320px' }}>
                 <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>

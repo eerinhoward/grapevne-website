@@ -513,7 +513,7 @@ function Home() {
           <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
             {/* Left side - Text */}
             <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <div className="font-bold" style={{ textTransform: 'none', fontFamily: '"Cooper Black", serif' }}>
+              <div className="font-bold" style={{ textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>
                 Map what's happening <span className="font-bold italic">right now</span>
               </div>
               <div className="font-normal">See where things are popping off.</div>
@@ -545,7 +545,7 @@ function Home() {
           <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
             {/* Left side - Text */}
             <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <div className="font-bold mb-2" style={{ textTransform: 'none', fontFamily: '"Cooper Black", serif' }}>
+              <div className="font-bold mb-2" style={{ textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>
                 Your campus footprint, all in one place.
               </div>
               <div className="font-normal">moments.</div>
