@@ -230,7 +230,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                About
+                Info
               </Link>
               {location.pathname === '/about' && (
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
@@ -378,7 +378,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               
               {/* Subtext under image strip */}
               <p className="text-2xl leading-relaxed font-bold text-right" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
-                A shared feed for leftover and free food, on campus.
+                A shared feed for leftover & free food, on campus.
               </p>
               
               {/* Folder Tabs - commented out */}
@@ -643,14 +643,16 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             className="min-h-screen flex flex-col items-center justify-center px-8 md:px-16 relative"
             style={{ backgroundColor: '#fafafa' }}
           >
-            <div className="max-w-4xl mx-auto text-center mb-12">
+            <div className="max-w-4xl mx-auto text-center mb-12 md:pt-24" style={{ paddingTop: '3.25rem' }}>
               <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                Built for your<br />
-                <span style={{ color: 'var(--grapevne-blue)' }}>campus.</span>
+                If there's free food, students know.
               </h2>
-              <p className="text-xl leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#666' }}>
-                Where students are, when they're looking.
-              </p>
+              <button
+                onClick={() => setIsFormOpen(!isFormOpen)}
+                className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
+              >
+                {isFormOpen ? 'Close Form' : 'Get in Touch'}
+              </button>
             </div>
             
             {/* Device Mockup */}
@@ -662,16 +664,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 style={{ maxHeight: '60vh', objectFit: 'contain' }}
               />
             </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="text-center py-20 px-8 md:px-16">
-            <button
-              onClick={() => setIsFormOpen(!isFormOpen)}
-              className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
-            >
-              {isFormOpen ? 'Close Form' : 'Get in Touch'}
-            </button>
           </section>
 
           {/* Contact Form */}

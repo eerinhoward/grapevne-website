@@ -120,7 +120,7 @@ function Terms() {
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                About
+                Info
               </Link>
               {location.pathname === '/about' && (
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
@@ -163,7 +163,7 @@ function Terms() {
       <main className="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-20">
         <div>
           {/* Preface Header */}
-          <h1 className="text-4xl md:text-5xl font-bold mb-8" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+          <h1 className="text-4xl md:text-5xl font-bold mb-8" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
             Preface
           </h1>
           

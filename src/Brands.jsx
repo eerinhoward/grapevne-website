@@ -174,7 +174,7 @@ function Brands() {
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                About
+                Info
               </Link>
               {location.pathname === '/about' && (
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
@@ -321,13 +321,10 @@ function Brands() {
                   Events. Activations. Surplus product.
                 </p>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Pick the window. Post.
-                </p>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Active brand posts appear at the top of the feed.
+                  Pick the window. Post it. Your brand shows up at the top of the feed.
                 </p>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  They fade when it's over.
+                  It fades when it's over.
                 </p>
               </div>
 
@@ -347,10 +344,7 @@ function Brands() {
                   You don't really know who will care until it's there.
                 </p>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  We don't try to guess.
-                </p>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> puts it in front of the campus right away.
+                  We don't try to guess. <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> puts it in front of the campus right away.
                 </p>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                   One notification. Everyone on campus. No detours.
@@ -426,14 +420,16 @@ function Brands() {
             className="min-h-screen flex flex-col items-center justify-center px-8 md:px-16 relative"
             style={{ backgroundColor: '#fafafa' }}
           >
-            <div className="max-w-4xl mx-auto text-center mb-12">
+            <div className="max-w-4xl mx-auto text-center mb-12 md:pt-24" style={{ paddingTop: '3.25rem' }}>
               <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                Ready when your<br />
-                <span style={{ color: 'var(--grapevne-blue)' }}>students are.</span>
+                The campus wants it. We make sure they hear about it.
               </h2>
-              <p className="text-xl leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#666' }}>
-                Be where students are, when they're looking.
-              </p>
+              <button
+                onClick={() => setIsFormOpen(!isFormOpen)}
+                className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
+              >
+                {isFormOpen ? 'Close Form' : 'Get in Touch'}
+              </button>
             </div>
             
             {/* Device Mockup */}
@@ -445,16 +441,6 @@ function Brands() {
                 style={{ maxHeight: '60vh', objectFit: 'contain' }}
               />
             </div>
-          </section>
-
-          {/* CTA Section */}
-          <section className="text-center py-20 px-8 md:px-16">
-            <button
-              onClick={() => setIsFormOpen(!isFormOpen)}
-              className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
-            >
-              {isFormOpen ? 'Close Form' : 'Get in Touch'}
-            </button>
           </section>
 
           {/* Contact Form */}
