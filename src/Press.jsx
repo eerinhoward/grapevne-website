@@ -415,13 +415,6 @@ function Press() {
 
       {/* Kitchen Order Rail */}
       <main className="flex-1 flex flex-col justify-center py-6 overflow-hidden">
-        {/* Header Text */}
-        <div className="text-left pl-8 md:pl-12 mb-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl" style={{ fontFamily: '"Cooper Black", serif', fontWeight: 400, letterSpacing: '0.03em', color: 'var(--grapevne-blue)' }}>
-            We brought the receipts 😮‍💨
-          </h2>
-        </div>
-        
         {/* Order Rail - the metal bar */}
         <div className="relative mb-1" style={{ height: '6px', perspective: '1000px' }}>
           {/* 3D Top face - main rail surface */}
