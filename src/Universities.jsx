@@ -11,28 +11,15 @@ function Universities() {
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
   const [isFormOpen, setIsFormOpen] = useState(false)
-  const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
-  const [scrollStep, setScrollStep] = useState(0) // 0 = initial, 1 = Place and trust, 2 = Shared by the people already there, 3 = Make it legible
-  const scrollStepRef = useRef(0)
   const [hoveredPartner, setHoveredPartner] = useState(null)
   const [selectedPartnerIndex, setSelectedPartnerIndex] = useState(null)
   const [showUseCases, setShowUseCases] = useState(false)
   
-  // Define scroll positions for each step - calculated dynamically
-  const getScrollPositions = () => {
-    // Hero section is approximately 800px (600px min-height + padding)
-    const heroHeight = 800
-    const sectionHeight = 400  // Approximate height of py-24 sections with content
-    return {
-      0: 0,                           // Initial position (hero)
-      1: heroHeight,                  // Place and trust section
-      2: heroHeight + sectionHeight,      // Shared by the people already there section
-      3: heroHeight + sectionHeight * 2,  // Make it legible section
-      4: heroHeight + sectionHeight * 3,  // Make reporting real section
-      5: heroHeight + sectionHeight * 4   // It becomes routine section
-    }
-  }
+  // Scroll-lock horizontal state
+  const horizontalScrollRef = useRef(null)
+  const stickyContainerRef = useRef(null)
+  const [horizontalProgress, setHorizontalProgress] = useState(0)
 
   const partners = [
     {
@@ -154,33 +141,45 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
   }, [])
 
   useEffect(() => {
+    // Scroll-lock: vertical scroll controls horizontal scroll
     const handleScroll = () => {
-      const scrollY = window.scrollY || window.pageYOffset
-      const positions = getScrollPositions()
+      if (!stickyContainerRef.current || !horizontalScrollRef.current) return
       
-      // Update step based on scroll position for highlighting active section
-      let newStep = 0
-      if (scrollY >= positions[5] - 50) {
-        newStep = 5
-      } else if (scrollY >= positions[4] - 50) {
-        newStep = 4
-      } else if (scrollY >= positions[3] - 50) {
-        newStep = 3
-      } else if (scrollY >= positions[2] - 50) {
-        newStep = 2
-      } else if (scrollY >= positions[1] - 50) {
-        newStep = 1
+      const container = stickyContainerRef.current
+      const scrollEl = horizontalScrollRef.current
+      const maxScrollLeft = scrollEl.scrollWidth - scrollEl.clientWidth
+      
+      if (maxScrollLeft <= 0) return
+      
+      // Get the container's position
+      const containerRect = container.getBoundingClientRect()
+      const headerHeight = 140
+      
+      // Calculate how far we've scrolled into the sticky zone
+      const scrollIntoContainer = -containerRect.top + headerHeight
+      const scrollRange = container.offsetHeight - window.innerHeight
+      
+      if (scrollIntoContainer >= 0 && scrollIntoContainer <= scrollRange) {
+        // We're in the sticky zone - translate vertical to horizontal
+        const progress = Math.min(1, Math.max(0, scrollIntoContainer / scrollRange))
+        setHorizontalProgress(progress)
+        scrollEl.scrollLeft = progress * maxScrollLeft
+      } else if (scrollIntoContainer < 0) {
+        // Before sticky zone
+        setHorizontalProgress(0)
+        scrollEl.scrollLeft = 0
+      } else {
+        // After sticky zone
+        setHorizontalProgress(1)
+        scrollEl.scrollLeft = maxScrollLeft
       }
       
-      if (scrollStepRef.current !== newStep) {
-        scrollStepRef.current = newStep
-        setScrollStep(newStep)
-      }
-      
-      lastScrollY.current = scrollY
+      lastScrollY.current = window.scrollY
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    setTimeout(handleScroll, 100)
+    
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
@@ -277,14 +276,8 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
         <div className="space-y-16">
           {/* Hero Section */}
           <section className="text-left pt-12 pb-8 min-h-[600px] relative">
-            {/* Step 0: Hero with header and partner pills */}
-            <div 
-              className="absolute inset-0 transition-opacity duration-300"
-              style={{ 
-                opacity: scrollStep === 0 ? 1 : 0,
-                pointerEvents: scrollStep === 0 ? 'auto' : 'none'
-              }}
-            >
+            {/* Hero with header and partner pills */}
+            <div className="relative">
               {/* Partner Pills - absolutely positioned at bottom left of hero section */}
               {partners.map((partner, index) => {
                 const rotations = [-2, 1.5]
@@ -504,121 +497,149 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             
           </section>
 
-          {/* Horizontal Scroll Narrative Section */}
-          <section className="pb-16" style={{ marginTop: '-0.5rem' }}>
-            {/* Navigation arrows */}
-            <div className="flex justify-end gap-4 mb-3">
-              <button 
-                onClick={() => {
-                  const container = document.getElementById('narrative-scroll')
-                  container.scrollBy({ left: -400, behavior: 'smooth' })
-                }}
-                className="text-2xl font-bold hover:text-gray-500 transition-colors"
-                style={{ color: '#1a1a1a' }}
-              >
-                ←
-              </button>
-              <button 
-                onClick={() => {
-                  const container = document.getElementById('narrative-scroll')
-                  container.scrollBy({ left: 400, behavior: 'smooth' })
-                }}
-                className="text-2xl font-bold hover:text-gray-500 transition-colors"
-                style={{ color: '#1a1a1a' }}
-              >
-                →
-              </button>
-            </div>
-            
-            {/* Horizontal scroll container */}
+          {/* Scroll-Locked Horizontal Narrative Section */}
+          <div 
+            ref={stickyContainerRef}
+            style={{ height: '300vh' }}
+          >
+            {/* Sticky wrapper that stays in view while scrolling */}
             <div 
-              id="narrative-scroll"
-              className="flex gap-8 overflow-x-auto pb-8 -mr-8 md:-mr-16 pr-8 md:pr-16"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="sticky top-[140px] bg-white py-8 pl-8 md:pl-16"
+              style={{ height: 'calc(100vh - 180px)' }}
             >
-              {/* Card 1: Place and trust */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 mb-6 flex items-center justify-center">
-                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Place and trust.
-                </h3>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Things work better when they're built for the place they're used. Everything you see is specific to your campus.
-                </p>
-                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Students, organizers, and campus affiliates join through their university.
-                </p>
-              </div>
-
-              {/* Card 2: Shared by the people already there */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 mb-6 flex items-center justify-center">
-                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Shared by the people already there.
-                </h3>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Posting takes seconds. Checking takes even less. When students are looking, they know where to check.
-                </p>
-                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  It's the same place. Every time.
-                </p>
-              </div>
-
-              {/* Card 3: Make it legible */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 mb-6 flex items-center justify-center">
-                  <img 
-                    src="/notification.png" 
-                    alt="Push notification example" 
-                    className="h-full object-contain transition-transform duration-300 hover:scale-105"
+              {/* Progress indicator */}
+              <div className="flex items-center mb-8 pr-8 md:pr-16">
+                <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full rounded-full transition-all duration-100"
+              style={{ 
+                      width: `${horizontalProgress * 100}%`,
+                      backgroundColor: 'var(--grapevne-blue)'
+                    }}
                   />
                 </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Make it legible.
-                </h3>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Built for campus life. Clear. Immediate. Uncluttered.
-                </p>
-                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  When free food becomes available, students hear about it in time. Designed to feel like second nature.
-                </p>
               </div>
               
-              {/* Card 4: Make reporting real */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 mb-6 flex items-center justify-center">
-                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+              {/* Horizontal scroll container - controlled by vertical scroll */}
+              <div 
+                ref={horizontalScrollRef}
+                id="narrative-scroll"
+                className="flex gap-8 overflow-x-hidden pb-4 h-full items-center"
+                      style={{
+                  scrollbarWidth: 'none', 
+                  msOverflowStyle: 'none'
+                }}
+              >
+                {/* Card 1: Place and trust */}
+                <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Place and trust.
+                  </h3>
+                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Things work better when they're built for the place they're used. Everything you see is specific to your campus.
+                  </p>
+                  <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Students, organizers, and campus affiliates join through their university.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Make reporting real.
-                </h3>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  When sharing happens in one place, it's easier to see what's actually happening.
-                </p>
-                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  That visibility supports sustainability reporting and planning, without adding work for students or staff.
-                </p>
-              </div>
 
-              {/* Card 5: It becomes routine */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ scrollSnapAlign: 'start' }}>
-                <div className="h-64 mb-6 flex items-center justify-center">
-                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                {/* Card 2: Shared by the people already there */}
+                <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Shared by the people already there.
+                  </h3>
+                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Posting takes seconds. Checking takes even less. When students are looking, they know where to check.
+                  </p>
+                  <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    It's the same place. Every time.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  It becomes routine.
-                </h3>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  It takes less effort than the alternatives. So people keep using it.
-                </p>
-                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  And when people keep using it, it becomes the place campus turns to.
-                </p>
+
+                {/* Card 3: Make it legible */}
+                <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                    <img 
+                      src="/notification.png" 
+                      alt="Push notification example" 
+                      className="h-full object-contain transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Make it legible.
+                  </h3>
+                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Built for campus life. Clear. Immediate. Uncluttered.
+                  </p>
+                  <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    When free food becomes available, students hear about it in time. Designed to feel like second nature.
+                  </p>
+                </div>
+                
+                {/* Card 4: Make reporting real */}
+                <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    Make reporting real.
+                  </h3>
+                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    When sharing happens in one place, it's easier to see what's actually happening.
+                  </p>
+                  <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    That visibility supports sustainability reporting and planning, without adding work for students or staff.
+                  </p>
+                </div>
+
+                {/* Card 5: It becomes routine */}
+                <div className="flex-shrink-0 w-80 md:w-96 pr-8 md:pr-16" style={{ minWidth: '320px' }}>
+                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    It becomes routine.
+                  </h3>
+                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    It takes less effort than the alternatives. So people keep using it.
+                  </p>
+                  <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                    And when people keep using it, it becomes the place campus turns to.
+                  </p>
+                </div>
               </div>
+            </div>
+          </div>
+
+          {/* Final Section: Full-Screen Device Mockup */}
+          <section 
+            className="min-h-screen flex flex-col items-center justify-center px-8 md:px-16 relative"
+            style={{ backgroundColor: '#fafafa' }}
+          >
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                Built for your<br />
+                <span style={{ color: 'var(--grapevne-blue)' }}>campus.</span>
+              </h2>
+              <p className="text-xl leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#666' }}>
+                Where students check first.
+              </p>
+            </div>
+            
+            {/* Device Mockup */}
+            <div className="relative w-full max-w-md mx-auto">
+              <img 
+                src="/iphone image.png" 
+                alt="Grapevne app on iPhone" 
+                className="w-full h-auto mx-auto"
+                style={{ maxHeight: '60vh', objectFit: 'contain' }}
+              />
             </div>
           </section>
 
