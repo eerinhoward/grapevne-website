@@ -17,7 +17,6 @@ function Brands() {
   const horizontalScrollRef = useRef(null)
   const stickyContainerRef = useRef(null)
   const [horizontalProgress, setHorizontalProgress] = useState(0)
-  const totalCards = 5
   
 
   useEffect(() => {
@@ -290,7 +289,7 @@ function Brands() {
               style={{ height: 'calc(100vh - 180px)' }}
             >
               {/* Progress indicator */}
-              <div className="flex items-center gap-4 mb-8 pr-8 md:pr-16">
+              <div className="flex items-center mb-8 pr-8 md:pr-16">
                 <div className="flex-1 h-1 bg-gray-200 rounded-full overflow-hidden">
                   <div 
                     className="h-full rounded-full transition-all duration-100"
@@ -300,9 +299,6 @@ function Brands() {
                     }}
                   />
                 </div>
-                <span className="text-sm font-medium text-gray-500" style={{ minWidth: '3rem' }}>
-                  {Math.round(horizontalProgress * (totalCards - 1)) + 1}/{totalCards}
-                </span>
               </div>
               
               {/* Horizontal scroll container - controlled by vertical scroll */}
