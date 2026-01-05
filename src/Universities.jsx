@@ -297,15 +297,24 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 >
                   <button
                     onClick={() => handlePartnerClick(index)}
-                    className={`partner-pill-bounce border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
-                    onMouseEnter={() => setHoveredPartner(index)}
-                    onMouseLeave={() => setHoveredPartner(null)}
+                    className={`partner-pill-bounce border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
+                    onMouseEnter={(e) => {
+                      setHoveredPartner(index)
+                      e.currentTarget.style.transform = `scale(1.1) rotate(${rotation}deg)`
+                      e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+                    }}
+                    onMouseLeave={(e) => {
+                      setHoveredPartner(null)
+                      e.currentTarget.style.transform = `rotate(${rotation}deg)`
+                      e.currentTarget.style.boxShadow = 'none'
+                    }}
                     style={{
                       color: '#1a1a1a',
                       fontFamily: 'Helvetica, Arial, sans-serif',
                       whiteSpace: 'nowrap',
                       padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined,
-                      animationDelay: delay
+                      animationDelay: delay,
+                      transform: `rotate(${rotation}deg)`
                     }}
                   >
                     {partner.image ? (
@@ -365,6 +374,11 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   />
                 </div>
               </div>
+              
+              {/* Subtext under image strip */}
+              <p className="text-2xl leading-relaxed font-bold text-right" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                One place for campus redistribution.
+              </p>
               
               {/* Folder Tabs - commented out */}
               {/*
@@ -572,13 +586,13 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   </p>
                 </div>
                 
-                {/* Card 4: Real reporting */}
+                {/* Card 4: Real Impact */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                     <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                    Real reporting.
+                    Real Impact.
                   </h3>
                   <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                     When sharing happens in one place, it's easier to see what's actually happening.

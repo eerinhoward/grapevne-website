@@ -264,10 +264,10 @@ function Brands() {
             
               {/* Brand Description */}
                 <div className="space-y-0.5 text-right">
-                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                <p className="text-2xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
                     Brands don't live on campus. <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> does.
                 </p>
-                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                <p className="text-2xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
                     <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> provides the consistent entry point for on-campus activations.
                 </p>
               </div>

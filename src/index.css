@@ -375,6 +375,11 @@ body {
 
 .partner-pill-bounce {
   animation: partnerBounce 2s ease-in-out infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.partner-pill-bounce:hover {
+  animation-play-state: paused !important;
 }
 
 @keyframes fadeText {
