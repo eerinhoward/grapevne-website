@@ -40,3 +40,5 @@ service-account.json
 *-credentials.json
 *.pem
 
+# Claude
+.claude
