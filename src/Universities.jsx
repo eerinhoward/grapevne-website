@@ -11,7 +11,6 @@ function Universities() {
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
   const [isFormOpen, setIsFormOpen] = useState(false)
-  const lastScrollY = useRef(0)
   const [hoveredPartner, setHoveredPartner] = useState(null)
   const [selectedPartnerIndex, setSelectedPartnerIndex] = useState(null)
   const [showUseCases, setShowUseCases] = useState(false)
@@ -173,8 +172,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
         setHorizontalProgress(1)
         scrollEl.scrollLeft = maxScrollLeft
       }
-      
-      lastScrollY.current = window.scrollY
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -272,60 +269,58 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
       </header>
 
       {/* Main Content */}
-      <main className="pl-8 md:pl-16 pr-8 md:pr-16 py-20" style={{ paddingTop: '140px', paddingBottom: '40px' }}>
-        <div className="space-y-16">
+      <main className="py-20" style={{ paddingTop: '140px', paddingBottom: '0' }}>
+        <div className="space-y-0">
           {/* Hero Section */}
-          <section className="text-left pt-12 pb-8 min-h-[600px] relative">
-            {/* Hero with header and partner pills */}
-            <div className="relative">
-              {/* Partner Pills - absolutely positioned at bottom left of hero section */}
-              {partners.map((partner, index) => {
-                const rotations = [-2, 1.5]
-                const rotation = rotations[index] || 0
-                const delays = ['0s', '0.3s']
-                const delay = delays[index] || '0s'
-                
-                // Position at bottom left, stacked vertically - moved up slightly
-                const leftPosition = index === 0 ? '6rem' : '0'
-                const bottomPosition = index === 0 ? '2.75rem' : '6.25rem'
-                
-                return (
-                  <div
-                    key={index}
-                    className="absolute"
+          <section className="text-left pt-12 pb-8 min-h-[600px] relative pl-8 md:pl-16 pr-8 md:pr-16">
+            {/* Partner Pills - absolutely positioned at bottom left of hero section */}
+            {partners.map((partner, index) => {
+              const rotations = [-2, 1.5]
+              const rotation = rotations[index] || 0
+              const delays = ['0s', '0.3s']
+              const delay = delays[index] || '0s'
+              
+              // Position at bottom left, stacked vertically - respecting left margin (pl-8 = 2rem, md:pl-16 = 4rem)
+              const leftPosition = index === 0 ? '10rem' : '2rem'  // Trinity offset right, Stevens at margin
+              const bottomPosition = index === 0 ? '0.5rem' : '4rem'
+              
+              return (
+                <div
+                  key={index}
+                  className="absolute"
+                  style={{
+                    bottom: bottomPosition,
+                    left: leftPosition,
+                    transform: `rotate(${rotation}deg)`,
+                    zIndex: hoveredPartner === index ? 1000 : index
+                  }}
+                >
+                  <button
+                    onClick={() => handlePartnerClick(index)}
+                    className={`partner-pill-bounce border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
+                    onMouseEnter={() => setHoveredPartner(index)}
+                    onMouseLeave={() => setHoveredPartner(null)}
                     style={{
-                      bottom: bottomPosition,
-                      left: leftPosition,
-                      transform: `rotate(${rotation}deg)`,
-                      zIndex: hoveredPartner === index ? 1000 : index
+                      color: '#1a1a1a',
+                      fontFamily: 'Helvetica, Arial, sans-serif',
+                      whiteSpace: 'nowrap',
+                      padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined,
+                      animationDelay: delay
                     }}
                   >
-                    <button
-                      onClick={() => handlePartnerClick(index)}
-                      className={`partner-pill-bounce border border-black bg-white rounded-full text-base font-medium hover:bg-gray-50 transition-colors cursor-pointer flex items-center justify-center ${partner.image && partner.name === 'Stevens' ? '' : 'px-6 py-3'}`}
-                      onMouseEnter={() => setHoveredPartner(index)}
-                      onMouseLeave={() => setHoveredPartner(null)}
-                      style={{
-                        color: '#1a1a1a',
-                        fontFamily: 'Helvetica, Arial, sans-serif',
-                        whiteSpace: 'nowrap',
-                        padding: partner.image ? (partner.name === 'Stevens' ? '0' : '12px 16px') : undefined,
-                        animationDelay: delay
-                      }}
-                    >
-                      {partner.image ? (
-                        <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
-                      ) : (
-                        <>
-                          {partner.name} →
-                        </>
-                      )}
-                    </button>
-                  </div>
-                )
-              })}
-              
-              <div className="flex flex-col gap-4 md:gap-5 lg:gap-6 relative">
+                    {partner.image ? (
+                      <img src={partner.image} alt={partner.name} className={partner.name === 'Stevens' ? 'h-24 w-auto object-contain' : 'h-12 w-auto object-contain'} style={partner.name === 'Stevens' ? { margin: '-6px' } : {}} />
+                    ) : (
+                      <>
+                        {partner.name} →
+                      </>
+                    )}
+                  </button>
+                </div>
+              )
+            })}
+            
+            <div className="flex flex-col gap-4 md:gap-5 lg:gap-6 relative">
                 {/* Header */}
               <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                   Built for <span style={{ color: 'var(--grapevne-blue)' }}>Universities.</span><br />
@@ -492,7 +487,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 </div>
               </div>
               */}
-              </div>
             </div>
             
           </section>
@@ -502,7 +496,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             ref={stickyContainerRef}
             style={{ height: '300vh' }}
           >
-            {/* Sticky wrapper that stays in view while scrolling */}
             <div 
               className="sticky top-[140px] bg-white py-8 pl-8 md:pl-16"
               style={{ height: 'calc(100vh - 180px)' }}
@@ -525,10 +518,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 ref={horizontalScrollRef}
                 id="narrative-scroll"
                 className="flex gap-8 overflow-x-hidden pb-4 h-full items-center"
-                      style={{
-                  scrollbarWidth: 'none', 
-                  msOverflowStyle: 'none'
-                }}
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {/* Card 1: Place and trust */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
@@ -582,13 +572,13 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   </p>
                 </div>
                 
-                {/* Card 4: Make reporting real */}
+                {/* Card 4: Real reporting */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                     <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                    Make reporting real.
+                    Real reporting.
                   </h3>
                   <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
                     When sharing happens in one place, it's easier to see what's actually happening.
@@ -628,7 +618,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 <span style={{ color: 'var(--grapevne-blue)' }}>campus.</span>
               </h2>
               <p className="text-xl leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#666' }}>
-                Where students check first.
+                Where students are, when they're looking.
               </p>
             </div>
             
@@ -644,7 +634,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
           </section>
 
           {/* CTA Section */}
-          <section className="text-center pt-8">
+          <section className="text-center py-20 px-8 md:px-16">
             <button
               onClick={() => setIsFormOpen(!isFormOpen)}
               className="inline-block bg-black text-white px-8 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-colors"
@@ -654,7 +644,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
           </section>
 
           {/* Contact Form */}
-          <section className="transition-all duration-500 ease-in-out">
+          <section className="transition-all duration-500 ease-in-out px-8 md:px-16 pb-8">
             <ContactForm 
               isOpen={isFormOpen} 
               onClose={() => setIsFormOpen(false)}

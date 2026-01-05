@@ -377,3 +377,52 @@ body {
   animation: partnerBounce 2s ease-in-out infinite;
 }
 
+@keyframes fadeText {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.fade-text {
+  animation: fadeText 4s ease-in-out forwards;
+}
+
+.buried-text-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.buried-stamp {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.buried-stamp-1 {
+  transform: rotate(-4deg) translate(-3px, -5px);
+  opacity: 0.08;
+}
+
+.buried-stamp-2 {
+  transform: rotate(3deg) translate(4px, 3px);
+  opacity: 0.12;
+}
+
+.buried-stamp-3 {
+  transform: rotate(-2deg) translate(2px, -2px);
+  opacity: 0.06;
+}
+
+.buried-stamp-4 {
+  transform: rotate(5deg) translate(-2px, 4px);
+  opacity: 0.1;
+}
+
+.buried-text-main {
+  position: relative;
+}

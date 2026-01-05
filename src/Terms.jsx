@@ -296,7 +296,7 @@ function Terms() {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 px-4 mt-12">
+      <footer className="py-8 px-4 mt-4">
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>

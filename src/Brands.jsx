@@ -215,7 +215,7 @@ function Brands() {
 
       {/* Main Content */}
       <main className="py-20" style={{ paddingTop: '140px', paddingBottom: '0' }}>
-        {/* Hero Section */}
+          {/* Hero Section */}
         <section className="text-left pt-12 pb-8 min-h-[600px] pl-8 md:pl-16 pr-8 md:pr-16">
             <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
               <h1 className="text-6xl md:text-7xl font-bold leading-tight" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
@@ -265,16 +265,13 @@ function Brands() {
               {/* Brand Description */}
                 <div className="space-y-0.5 text-right">
                 <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                    On campus, brand events are the kind of thing you hear about too late.
+                    Brands don't live on campus. <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> does.
                 </p>
                 <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                    You hear about it after the fact and realize you were next door.
+                    <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> provides the consistent entry point for on-campus activations.
                 </p>
-                <p className="text-xl leading-relaxed font-bold" style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                    <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> is a real-time layer for brand presence on campus, where timing matters.
-                </p>
-                </div>
               </div>
+            </div>
           </section>
 
           {/* Scroll-Locked Horizontal Narrative Section */}
@@ -318,33 +315,23 @@ function Brands() {
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Campus Awareness.
+                  Short-lived by nature.
                 </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Reach students through real, in-person moments.
+                  Events. Activations. Surplus product.
+                </p>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Pick the window. Post.
+                </p>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Active brand posts appear at the top of the feed.
                 </p>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Be where students are, when they're there.
+                  They fade when it's over.
                 </p>
               </div>
 
               {/* Card 2 */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
-                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Product Sampling.
-                </h3>
-                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Distribute food or goods during high-traffic campus moments with zero guesswork.
-                </p>
-                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Timing is everything.
-                </p>
-              </div>
-
-              {/* Card 3 */}
               <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
                 <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img 
@@ -354,45 +341,64 @@ function Brands() {
                   />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Event Visibility.
+                  Campus-wide reach.
                 </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Surface pop-ups and brand moments to students already nearby.
+                  You don't really know who will care until it's there.
                 </p>
-                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Real-time notifications reach students in time.
-                </p>
-              </div>
-              
-              {/* Card 4 */}
-              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
-                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Authentic Engagement.
-                </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Be discovered through utility, not interruption.
+                  We don't try to guess.
+                </p>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> puts it in front of the campus right away.
                 </p>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Students find value in what you offer, naturally.
+                  One notification. Everyone on campus. No detours.
                 </p>
               </div>
 
-              {/* Card 5: Ambassadors */}
+{/* Card 5: Ambassadors */}
+              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                          </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Ambassadors.
+                </h3>
+                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  A direct way for ambassadors to share products with their campus.
+                </p>
+                      </div>
+
+              {/* Card 6: Low friction by design */}
+              <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
+                <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
+                  <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                    </div>
+                <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Designed for real turnout.
+                </h3>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  See response speed and compare outcomes across campuses.
+                </p>
+                <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+                  Context helps teams understand what's working.
+                </p>
+                  </div>
+
+              {/* Card 7: Deployed one campus at a time */}
               <div className="flex-shrink-0 w-80 md:w-96 pr-8 md:pr-16" style={{ minWidth: '320px' }}>
                 <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
                   <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Ambassadors.
+                  Deployed one campus at a time.
                 </h3>
                 <p className="text-base leading-relaxed mb-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Give your ambassadors the direct channel to students on their campus looking for brand perks.
+                  Brand activity aligns with institutional access, local norms, and the physical constraints of each university.
                 </p>
                 <p className="text-base leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-                  Connect directly with the students who want what you're offering.
+                  One campus. Then the next.
                 </p>
               </div>
               </div>
@@ -436,7 +442,7 @@ function Brands() {
           </section>
 
           {/* Contact Form */}
-          <section className="transition-all duration-500 ease-in-out px-8 md:px-16 pb-20">
+          <section className="transition-all duration-500 ease-in-out px-8 md:px-16 pb-8">
             <ContactForm 
               isOpen={isFormOpen} 
               onClose={() => setIsFormOpen(false)}
