@@ -40,5 +40,9 @@ service-account.json
 *-credentials.json
 *.pem
 
+# Custom claims configuration (contains real user emails)
+set-campus.js
+set-campus.cjs
+
 # Claude
 .claude
