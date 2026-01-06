@@ -1,7 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-require('dotenv').config();
+const path = require('path');
+
+// Load .env from parent directory (project root)
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const dashboardRoutes = require('./routes/dashboard');
 
