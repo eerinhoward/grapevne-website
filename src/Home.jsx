@@ -494,7 +494,8 @@ function Home() {
           style={{
             transform: currentSection === 4 ? 'translateY(-5%)' : 'translateY(100%)',
             opacity: currentSection === 4 ? 1 : 0,
-            pointerEvents: currentSection === 4 ? 'auto' : 'none'
+            pointerEvents: currentSection === 4 ? 'auto' : 'none',
+            zIndex: 5
           }}
         >
           <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
