@@ -600,18 +600,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 {isFormOpen ? 'Close Form' : 'Get in Touch'}
               </button>
             </div>
-            
-            {/* Device Mockup */}
-            <div className="relative w-full max-w-md mx-auto">
-              <img 
-                src="/iphone image.png" 
-                alt="Grapevne app on iPhone" 
-                className="w-full h-auto mx-auto"
-                style={{ maxHeight: '60vh', objectFit: 'contain' }}
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
           </section>
 
           {/* Contact Form - lazy loaded when opened */}

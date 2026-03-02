@@ -294,7 +294,6 @@ function Home() {
                 }}
               />
               </Link>
-              {location.pathname === '/' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
             </div>
           </div>
         </div>
@@ -422,7 +421,7 @@ function Home() {
             </div>
             
             {/* iPhone - top on mobile for visual hierarchy */}
-            <div className="flex-shrink-0 order-1 md:order-2">
+            <div className="flex-shrink-0 order-1 md:order-2 mt-4 md:mt-6">
               <img 
                 src="/never-miss-iphone.png" 
                 alt="Grapevne app - Never miss what's happening" 
@@ -450,7 +449,7 @@ function Home() {
                 One swipe RSVPs. It saves to your calendar automatically.
               </p>
             </div>
-            <div className="flex-shrink-0 order-1 md:order-2">
+            <div className="flex-shrink-0 order-1 md:order-2 mt-4 md:mt-6">
               <img 
                 src="/one-swipe-iphone.png" 
                 alt="Grapevne app - One swipe RSVP" 
@@ -478,7 +477,7 @@ function Home() {
                 See the list of who's going. See where your friends are going on the map. Meet them there.
               </p>
             </div>
-            <div className="flex-shrink-0 order-1 md:order-2">
+            <div className="flex-shrink-0 order-1 md:order-2 mt-4 md:mt-6">
               <img 
                 src="/see-who-iphone.png" 
                 alt="Grapevne app - See who else is going" 
