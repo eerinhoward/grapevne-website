@@ -502,20 +502,20 @@ function Home() {
         >
           <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
             {/* Left side - Text */}
-            <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <div className="font-bold mb-2" style={{ textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>
-                Your campus footprint, all in one place.
-              </div>
-              <div className="font-normal">moments.</div>
-              <div className="font-normal">people.</div>
-              <div className="font-normal">things you were part of.</div>
+            <div className="text-left max-w-xl">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                See who else is going
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                See the list of who's going. See where your friends are going on the map. Meet them there.
+              </p>
             </div>
             
-            {/* Right side - iPhone */}
+            {/* Right side - iPhone (replace with see-who-iphone.png when you have it) */}
             <div className="flex-shrink-0">
               <img 
                 src="/iphone image.png" 
-                alt="Grapevne App" 
+                alt="Grapevne app - See who else is going" 
                 className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
               />
             </div>
