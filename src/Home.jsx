@@ -414,13 +414,10 @@ function Home() {
             <div className="h-[280px]"></div>
             
             {/* Tagline */}
-            <div className="text-left pl-8 md:pl-16 space-y-4">
+            <div className="text-left pl-8 md:pl-16">
               <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                Never miss what's happening.
+                The feed that feeds you.
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-xl" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Push notifications when posts go live. No more checking emails or walking past flyers.
-              </p>
             </div>
           </div>
         </div>
@@ -448,7 +445,7 @@ function Home() {
             </div>
           </div>
           
-          {/* Steps 1-4: Use cases with iPhone on the right */}
+          {/* Steps 1-4: Text on left, iPhone on right */}
           <div 
             className="absolute inset-0 flex items-center justify-center gap-12 md:gap-16 lg:gap-24 transition-all duration-700"
             style={{ 
@@ -456,50 +453,14 @@ function Home() {
               pointerEvents: middleStep >= 1 && middleStep < 5 ? 'auto' : 'none'
             }}
           >
-            {/* Left side - sliding text */}
-            <div 
-              className="text-2xl md:text-3xl lg:text-4xl lowercase whitespace-nowrap transition-all duration-700"
-              style={{ 
-                fontFamily: 'Helvetica, Arial, sans-serif', 
-                color: '#1a1a1a',
-                // Start more to the right so full text is visible, then slide left as more items are added
-                transform: middleStep >= 4 ? 'translateX(-600px)' : 
-                          middleStep >= 3 ? 'translateX(100px)' : 
-                          middleStep >= 2 ? 'translateX(300px)' : 'translateX(400px)'
-              }}
-            >
-              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>Grapevne</span>
-              <span> is </span>
-              <span className="transition-all duration-500" style={{ opacity: middleStep >= 1 ? 1 : 0 }}>
-                free food
-              </span>
-              <span 
-                className="transition-all duration-500 inline-block"
-                style={{ 
-                  opacity: middleStep >= 2 ? 1 : 0,
-                  transform: middleStep >= 2 ? 'translateX(0)' : 'translateX(30px)'
-                }}
-              >
-                &nbsp;&amp;&nbsp;brand pop-ups
-              </span>
-              <span 
-                className="transition-all duration-500 inline-block"
-                style={{ 
-                  opacity: middleStep >= 3 ? 1 : 0,
-                  transform: middleStep >= 3 ? 'translateX(0)' : 'translateX(30px)'
-                }}
-              >
-                &nbsp;&amp;&nbsp;iconic campus moments
-              </span>
-              <span 
-                className="transition-all duration-500 inline-block"
-                style={{ 
-                  opacity: middleStep >= 4 ? 1 : 0,
-                  transform: middleStep >= 4 ? 'translateX(0)' : 'translateX(30px)'
-                }}
-              >
-                &nbsp;&amp;&nbsp;things worth leaving your dorm for
-              </span>
+            {/* Left side - headline and body */}
+            <div className="text-left max-w-xl">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                Never miss<br />what's happening
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Push notifications when posts go live. No more checking emails or walking past flyers.
+              </p>
             </div>
             
             {/* Right side - iPhone */}
