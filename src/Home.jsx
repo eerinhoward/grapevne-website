@@ -417,7 +417,7 @@ function Home() {
                 Never miss<br />what's happening
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                Push notifications when posts go live. No more checking emails or walking past flyers.
+                Push notifications when campus posts go live. No more checking emails or walking past flyers.
               </p>
             </div>
             
