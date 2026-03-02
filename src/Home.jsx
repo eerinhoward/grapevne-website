@@ -419,7 +419,7 @@ function Home() {
               <img 
                 src="/never-miss-iphone.png" 
                 alt="Grapevne app - Never miss what's happening" 
-                className="h-[400px] sm:h-[460px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[62vh] sm:max-h-[68vh] md:max-h-none"
+                className="h-[460px] sm:h-[520px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[70vh] sm:max-h-[76vh] md:max-h-none"
               />
             </div>
           </div>
@@ -447,7 +447,7 @@ function Home() {
               <img 
                 src="/one-swipe-iphone.png" 
                 alt="Grapevne app - One swipe RSVP" 
-                className="h-[400px] sm:h-[460px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[62vh] sm:max-h-[68vh] md:max-h-none"
+                className="h-[460px] sm:h-[520px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[70vh] sm:max-h-[76vh] md:max-h-none"
               />
             </div>
           </div>
@@ -475,7 +475,7 @@ function Home() {
               <img 
                 src="/see-who-iphone.png" 
                 alt="Grapevne app - See who else is going" 
-                className="h-[400px] sm:h-[460px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[62vh] sm:max-h-[68vh] md:max-h-none"
+                className="h-[460px] sm:h-[520px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[70vh] sm:max-h-[76vh] md:max-h-none"
               />
             </div>
           </div>
