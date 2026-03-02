@@ -256,49 +256,27 @@ function Home() {
           paddingTop: 'max(1rem, env(safe-area-inset-top))'
         }}
       >
-        <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
-          <div className="flex items-center gap-1 sm:gap-2 md:gap-6 pl-2 sm:pl-6 md:pl-12 flex-wrap">
-            <div className="flex items-center gap-2 sm:gap-4">
-              <div className="flex flex-col items-center">
-                <Link to="/universities" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
-                  universities
-                </Link>
-                {location.pathname === '/universities' && (
-                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                )}
-              </div>
-              <div className="flex flex-col items-center">
-                <Link to="/brands" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
-                  brands
-                </Link>
-                {location.pathname === '/brands' && (
-                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <Link to="/about" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
-                About
-              </Link>
-              {location.pathname === '/about' && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
-            </div>
-            <div className="flex flex-col items-center">
-              <Link to="/press" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
-                Press
-              </Link>
-              {location.pathname === '/press' && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
-            </div>
-          </div>
-          <div className="flex items-center gap-1 sm:gap-3 pr-2 sm:pr-6 md:pr-12">
+        <div className="flex justify-between items-center gap-2" style={{ perspective: '1000px' }}>
+          <nav className="flex items-center gap-3 sm:gap-4 md:gap-6 pl-2 sm:pl-6 md:pl-12 flex-1 min-w-0 flex-shrink">
+            <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
+              universities
+            </Link>
+            <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
+              brands
+            </Link>
+            <Link to="/about" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
+              about
+            </Link>
+            <Link to="/press" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
+              press
+            </Link>
+          </nav>
+          <div className="flex items-center gap-2 sm:gap-3 pr-2 sm:pr-6 md:pr-12 shrink-0">
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 px-1 min-h-[44px] flex items-center"
+              className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center whitespace-nowrap"
               style={{ color: '#1a1a1a' }}
             >
               download
@@ -308,7 +286,7 @@ function Home() {
                 ref={logoRef}
                 src="/filledTransparent.png" 
                 alt="Grapevne Logo" 
-                className="h-12 sm:h-16 md:h-20 lg:h-28 w-auto"
+                className="h-10 sm:h-14 md:h-20 lg:h-28 w-auto"
                 style={{ 
                   transformStyle: 'preserve-3d',
                   willChange: 'transform'
@@ -362,7 +340,7 @@ function Home() {
         
         {/* Original Slogan */}
         <div 
-          className="absolute inset-0 flex items-start justify-start transition-all duration-700 ease-in-out cursor-pointer"
+          className="absolute inset-0 flex items-start justify-center md:justify-start transition-all duration-700 ease-in-out cursor-pointer"
           style={{
             transform: currentSection === 0 ? 'translateY(0)' : 'translateY(-100%)',
             opacity: currentSection === 0 ? 1 : 0,
@@ -379,9 +357,9 @@ function Home() {
             }
           }}
         >
-          <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+          <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6 w-full max-w-2xl mx-auto px-4 sm:px-6 md:px-0 md:mx-0 md:max-w-none">
             {/* Top - Grapevne */}
-            <div className="text-left pl-6 sm:pl-8 md:pl-16">
+            <div className="text-center md:text-left md:pl-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
                 Grapevne
               </h2>
@@ -405,7 +383,7 @@ function Home() {
             <div className="h-[140px] sm:h-[200px] md:h-[280px]"></div>
             
             {/* Tagline */}
-            <div className="text-left pl-6 sm:pl-8 md:pl-16">
+            <div className="text-center md:text-left md:pl-16">
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 The feed that feeds you.
               </h2>
