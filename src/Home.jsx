@@ -128,24 +128,24 @@ function Home() {
         // Scrolling down - can only advance to next section
         if (currentSectionRef.current === 0 && scrollY >= 300) {
           targetSection = 1
-        } else if (currentSectionRef.current === 1 && scrollY >= 5650) {
+        } else if (currentSectionRef.current === 1 && scrollY >= 2350) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY >= 7650) {
+        } else if (currentSectionRef.current === 2 && scrollY >= 4350) {
           targetSection = 3
-        } else if (currentSectionRef.current === 3 && scrollY >= 8850) {
+        } else if (currentSectionRef.current === 3 && scrollY >= 5550) {
           targetSection = 4
-        } else if (currentSectionRef.current === 4 && scrollY >= 10050) {
+        } else if (currentSectionRef.current === 4 && scrollY >= 6700) {
           targetSection = 5
         }
       } else {
         // Scrolling up - can only go back to previous section
-        if (currentSectionRef.current === 5 && scrollY < 10050) {
+        if (currentSectionRef.current === 5 && scrollY < 6700) {
           targetSection = 4
-        } else if (currentSectionRef.current === 4 && scrollY < 8850) {
+        } else if (currentSectionRef.current === 4 && scrollY < 5550) {
           targetSection = 3
-        } else if (currentSectionRef.current === 3 && scrollY < 7650) {
+        } else if (currentSectionRef.current === 3 && scrollY < 4350) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY < 5650) {
+        } else if (currentSectionRef.current === 2 && scrollY < 2350) {
           targetSection = 1
         } else if (currentSectionRef.current === 1 && scrollY < 300) {
           targetSection = 0
@@ -157,18 +157,9 @@ function Home() {
         setCurrentSection(targetSection)
       }
       
-      // Calculate middle step based on scroll position within section 1 (600-5350)
-      // Custom thresholds: step 0 gets 1000px, step 1 gets 750px, step 3 gets 750px, step 5 gets 900px
-      if (scrollY >= 600 && scrollY < 5650) {
-        let step = 0
-        if (scrollY >= 5200) step = 6  // Extra slide after italics (5200-5650)
-        else if (scrollY >= 4300) step = 5  // "…before they're gone." (4300-5200) - 900px
-        else if (scrollY >= 3550) step = 4  // (3550-4300) - 750px for "things worth leaving your dorm for"
-        else if (scrollY >= 2800) step = 3  // (2800-3550) - 750px for "iconic campus moments"
-        else if (scrollY >= 2350) step = 2  // (2350-2800)
-        else if (scrollY >= 1600) step = 1  // (1600-2350) - 750px for "free food"
-        // step 0: 600-1600 (1000px for initial tagline)
-        setMiddleStep(step)
+      // Calculate middle step based on scroll position within section 1 (600-2350)
+      if (scrollY >= 600 && scrollY < 2350) {
+        setMiddleStep(0)
       }
       
       // Header show/hide based on scroll direction
@@ -252,7 +243,7 @@ function Home() {
     <div className="bg-white flex flex-col" style={{ minHeight: '1200vh' }}>
       {/* Background Strip - hides with navbar */}
       <div 
-        className="fixed top-0 left-0 right-0 h-[120px] bg-transparent z-10 transition-transform duration-300"
+        className="fixed top-0 left-0 right-0 h-[88px] sm:h-[100px] md:h-[120px] bg-transparent z-10 transition-transform duration-300"
         style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
       />
       
@@ -266,10 +257,10 @@ function Home() {
         }}
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
-          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 pl-4 sm:pl-6 md:pl-12 flex-wrap">
-            <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1 sm:gap-2 md:gap-6 pl-2 sm:pl-6 md:pl-12 flex-wrap">
+            <div className="flex items-center gap-2 sm:gap-4">
               <div className="flex flex-col items-center">
-                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                <Link to="/universities" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
                   universities
                 </Link>
                 {location.pathname === '/universities' && (
@@ -277,7 +268,7 @@ function Home() {
                 )}
               </div>
               <div className="flex flex-col items-center">
-                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                <Link to="/brands" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
                   brands
                 </Link>
                 {location.pathname === '/brands' && (
@@ -286,7 +277,7 @@ function Home() {
               </div>
             </div>
             <div className="flex flex-col items-center">
-              <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+              <Link to="/about" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
                 About
               </Link>
               {location.pathname === '/about' && (
@@ -294,7 +285,7 @@ function Home() {
               )}
             </div>
             <div className="flex flex-col items-center">
-              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
+              <Link to="/press" className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 px-1 min-h-[44px] flex items-center" style={{ color: '#1a1a1a' }}>
                 Press
               </Link>
               {location.pathname === '/press' && (
@@ -302,22 +293,22 @@ function Home() {
               )}
             </div>
           </div>
-          <div className="flex items-center gap-2 sm:gap-3 pr-4 sm:pr-6 md:pr-12">
+          <div className="flex items-center gap-1 sm:gap-3 pr-2 sm:pr-6 md:pr-12">
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
+              className="text-[15px] sm:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 px-1 min-h-[44px] flex items-center"
               style={{ color: '#1a1a1a' }}
             >
               download
             </a>
-            <Link to="/" className="flex justify-center">
+            <Link to="/" className="flex justify-center min-h-[44px] min-w-[44px] items-center">
               <img 
                 ref={logoRef}
                 src="/filledTransparent.png" 
                 alt="Grapevne Logo" 
-                className="h-16 sm:h-20 md:h-28 w-auto"
+                className="h-12 sm:h-16 md:h-20 lg:h-28 w-auto"
                 style={{ 
                   transformStyle: 'preserve-3d',
                   willChange: 'transform'
@@ -333,8 +324,8 @@ function Home() {
         ref={mainRef} 
         className="fixed left-0 right-0 flex items-center justify-center overflow-hidden"
         style={{
-          top: 'calc(100px + env(safe-area-inset-top, 0px))',
-          bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))'
+          top: 'calc(88px + env(safe-area-inset-top, 0px))',
+          bottom: 'calc(72px + env(safe-area-inset-bottom, 0px))'
         }}
       >
         {/* Trail Images - Bottom Layer */}
@@ -355,7 +346,7 @@ function Home() {
                 style={{
                   left: img.x,
                   top: img.y,
-                  width: 'clamp(8rem, 25vw, 24rem)',
+                  width: 'clamp(5.5rem, 20vw, 24rem)',
                   aspectRatio: '4/3',
                   transform: 'translate(-50%, -50%)',
                   zIndex: index,
@@ -388,10 +379,10 @@ function Home() {
             }
           }}
         >
-          <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
+          <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6">
             {/* Top - Grapevne */}
-            <div className="text-left pl-8 md:pl-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
+            <div className="text-left pl-6 sm:pl-8 md:pl-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
                 Grapevne
               </h2>
             </div>
@@ -411,11 +402,11 @@ function Home() {
             */}
             
             {/* Spacer for where image strip was */}
-            <div className="h-[280px]"></div>
+            <div className="h-[140px] sm:h-[200px] md:h-[280px]"></div>
             
             {/* Tagline */}
-            <div className="text-left pl-8 md:pl-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+            <div className="text-left pl-6 sm:pl-8 md:pl-16">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 The feed that feeds you.
               </h2>
             </div>
@@ -424,37 +415,37 @@ function Home() {
         
         {/* Middle Content - Grapevne description with animated sequence */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-5 sm:px-8 md:px-16 overflow-y-auto"
           style={{
             transform: currentSection === 1 ? 'translateY(0)' : (currentSection === 2 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 1 ? 1 : 0,
             pointerEvents: currentSection === 1 ? 'auto' : 'none'
           }}
         >
-          {/* Steps 0-4: Text on left, iPhone on right */}
+          {/* Steps 0-4: Stack on mobile, side-by-side on desktop */}
           <div 
-            className="absolute inset-0 flex items-center justify-center gap-12 md:gap-16 lg:gap-24 transition-all duration-700"
+            className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 transition-all duration-700 py-4 md:py-0"
             style={{ 
               opacity: middleStep >= 0 ? 1 : 0,
               pointerEvents: middleStep >= 0 ? 'auto' : 'none'
             }}
           >
-            {/* Left side - headline and body */}
-            <div className="text-left max-w-xl">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+            {/* Text - top on mobile, left on desktop */}
+            <div className="text-center md:text-left max-w-xl order-2 md:order-1">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 Never miss<br />what's happening
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                 Push notifications when posts go live. No more checking emails or walking past flyers.
               </p>
             </div>
             
-            {/* Right side - iPhone (Never miss feed) */}
-            <div className="flex-shrink-0">
+            {/* iPhone - top on mobile for visual hierarchy */}
+            <div className="flex-shrink-0 order-1 md:order-2">
               <img 
                 src="/never-miss-iphone.png" 
                 alt="Grapevne app - Never miss what's happening" 
-                className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
+                className="h-[220px] sm:h-[280px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[40vh] sm:max-h-[45vh] md:max-h-none"
               />
             </div>
           </div>
@@ -462,30 +453,27 @@ function Home() {
 
         {/* Section 2 - One swipe RSVP */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-5 sm:px-8 md:px-16 overflow-y-auto"
           style={{
             transform: currentSection === 2 ? 'translateY(-5%)' : (currentSection === 3 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 2 ? 1 : 0,
             pointerEvents: currentSection === 2 ? 'auto' : 'none'
           }}
         >
-          <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
-            {/* Left side - Text */}
-            <div className="text-left max-w-xl">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 py-4 md:py-0">
+            <div className="text-center md:text-left max-w-xl order-2 md:order-1">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 One swipe. You're in.
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                 One swipe RSVPs. It saves to your calendar automatically.
               </p>
             </div>
-            
-            {/* Right side - iPhone */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 order-1 md:order-2">
               <img 
                 src="/one-swipe-iphone.png" 
                 alt="Grapevne app - One swipe RSVP" 
-                className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
+                className="h-[220px] sm:h-[280px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[40vh] sm:max-h-[45vh] md:max-h-none"
               />
             </div>
           </div>
@@ -493,30 +481,27 @@ function Home() {
         
         {/* Section 3 - Campus footprint */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-5 sm:px-8 md:px-16 overflow-y-auto"
           style={{
             transform: currentSection === 3 ? 'translateY(-5%)' : (currentSection === 4 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 3 ? 1 : 0,
             pointerEvents: currentSection === 3 ? 'auto' : 'none'
           }}
         >
-          <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
-            {/* Left side - Text */}
-            <div className="text-left max-w-xl">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 py-4 md:py-0">
+            <div className="text-center md:text-left max-w-xl order-2 md:order-1">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 See who else is going
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                 See the list of who's going. See where your friends are going on the map. Meet them there.
               </p>
             </div>
-            
-            {/* Right side - iPhone */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 order-1 md:order-2">
               <img 
                 src="/see-who-iphone.png" 
                 alt="Grapevne app - See who else is going" 
-                className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
+                className="h-[220px] sm:h-[280px] md:h-[400px] lg:h-[500px] w-auto object-contain iphone-bounce max-h-[40vh] sm:max-h-[45vh] md:max-h-none"
               />
             </div>
           </div>
@@ -524,43 +509,43 @@ function Home() {
         
         {/* Section 4 - Grapevne */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-5 sm:px-8 md:px-16"
           style={{
             transform: currentSection === 4 ? 'translateY(-5%)' : (currentSection === 5 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 4 ? 1 : 0,
             pointerEvents: currentSection === 4 ? 'auto' : 'none'
           }}
         >
-          <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
+          <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
             Grapevne
           </div>
         </div>
         
         {/* Section 5 - No RSVP, No coordinate */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-5 sm:px-8 md:px-16"
           style={{
             transform: currentSection === 5 ? 'translateY(-5%)' : 'translateY(100%)',
             opacity: currentSection === 5 ? 1 : 0,
             pointerEvents: currentSection === 5 ? 'auto' : 'none'
           }}
         >
-          <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-center" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-            <div className="flex items-center justify-center gap-3 mb-2">
-              <svg className="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
+          <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl lowercase text-center px-2" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
               </svg>
               <span>RSVP.</span>
             </div>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <svg className="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
               </svg>
               <span>coordination.</span>
             </div>
-            <div className="font-normal text-xl md:text-2xl lg:text-3xl">
+            <div className="font-normal text-base sm:text-xl md:text-2xl lg:text-3xl">
               You just see what's happening and decide.
             </div>
           </div>
@@ -569,22 +554,22 @@ function Home() {
 
       {/* Footer with ®, ™, and © symbols - Persistent */}
       <footer 
-        className="pt-3 px-4 fixed bottom-0 left-0 right-0 bg-white z-10"
-        style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+        className="pt-2 sm:pt-3 px-3 sm:px-4 fixed bottom-0 left-0 right-0 bg-white z-10"
+        style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
       >
-        <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
-          <div className="flex justify-center items-center gap-3">
-            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
-            <span className="ip-symbol" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
-            <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-0.5 sm:gap-1">
+          <div className="flex justify-center items-center gap-2 sm:gap-3">
+            <span className="ip-symbol text-base sm:text-lg" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
+            <span className="ip-symbol text-base sm:text-lg" style={{ transform: 'translateY(1px)', color: '#1a1a1a' }}>™</span>
+            <span className="ip-symbol text-base sm:text-lg" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>©</span>
           </div>
-          <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
-            <span className="text-gray-400 font-medium">USE CASES</span>
-            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
-            <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
-            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
-            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>
+          <div className="flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-3 gap-y-0.5 text-[11px] sm:text-xs text-gray-600">
+            <span className="text-gray-400 font-medium hidden sm:inline">USE CASES</span>
+            <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link py-1">Universities</Link>
+            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link py-1">Brands</Link>
+            <span className="text-gray-400 font-medium hidden sm:inline ml-1">LEGAL</span>
+            <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link py-1">Terms</Link>
+            <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link py-1">Privacy</Link>
           </div>
         </div>
       </footer>
