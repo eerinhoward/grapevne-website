@@ -106,68 +106,21 @@ function Brands() {
   return (
     <div className="min-h-screen bg-white">
       {/* Background Strip */}
-      <div 
-        className="fixed top-0 left-0 right-0 h-[120px] bg-white z-10"
-      />
+      <div className="fixed top-0 left-0 right-0 h-[88px] sm:h-[100px] md:h-[120px] bg-white z-10" />
       
       {/* Header with Logo - always visible */}
-      <header 
-        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20"
-        style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
-      >
-        <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
-          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 pl-4 sm:pl-6 md:pl-12 flex-wrap">
-            <div className="flex items-center gap-4">
-              <div className="flex flex-col items-center">
-                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                  universities
-                </Link>
-                {location.pathname === '/universities' && (
-                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                )}
-              </div>
-              <div className="flex flex-col items-center">
-                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                  brands
-                </Link>
-                {location.pathname === '/brands' && (
-                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col items-center">
-              <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                About
-              </Link>
-              {location.pathname === '/about' && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
-            </div>
-            <div className="flex flex-col items-center">
-              <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
-                Press
-              </Link>
-              {location.pathname === '/press' && (
-                <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
-              )}
-            </div>
-          </div>
-          <div className="flex items-center gap-2 sm:gap-3 pr-4 sm:pr-6 md:pr-12">
-            <a 
-              href="https://apps.apple.com/us/app/grapevne/id6745459372" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-lg font-bold hover-grapevne-blue transition-colors lowercase"
-              style={{ color: '#1a1a1a' }}
-            >
-              download
-            </a>
-            <Link to="/" className="flex justify-center">
-              <img 
-                ref={logoRef}
-                src="/filledTransparent.png" 
-                alt="Grapevne Logo" 
-                className="h-16 sm:h-20 md:h-28 w-auto"
+      <header className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}>
+        <div className="flex justify-between items-center gap-2" style={{ perspective: '1000px' }}>
+          <nav className="flex items-center gap-3 sm:gap-4 md:gap-6 pl-2 sm:pl-6 md:pl-12 flex-1 min-w-0 flex-shrink">
+            <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>universities</Link>
+            <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>brands</Link>
+            <Link to="/about" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>about</Link>
+            <Link to="/press" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>press</Link>
+          </nav>
+          <div className="flex items-center gap-2 sm:gap-3 pr-2 sm:pr-6 md:pr-12 shrink-0">
+            <a href="https://apps.apple.com/us/app/grapevne/id6745459372" target="_blank" rel="noopener noreferrer" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center whitespace-nowrap" style={{ color: '#1a1a1a' }}>download</a>
+            <Link to="/" className="flex justify-center min-h-[44px] min-w-[44px] items-center">
+              <img ref={logoRef} src="/filledTransparent.png" alt="Grapevne Logo" className="h-10 sm:h-14 md:h-20 lg:h-28 w-auto"
                 style={{ 
                   transformStyle: 'preserve-3d',
                   willChange: 'transform'
