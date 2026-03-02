@@ -125,27 +125,27 @@ function Home() {
       let targetSection = currentSectionRef.current
       
       if (isScrollingDown) {
-        // Scrolling down - can only advance to next section
+        // Scrolling down - can only advance to next section (each feature section ~1200px)
         if (currentSectionRef.current === 0 && scrollY >= 300) {
           targetSection = 1
-        } else if (currentSectionRef.current === 1 && scrollY >= 2350) {
+        } else if (currentSectionRef.current === 1 && scrollY >= 1500) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY >= 4350) {
+        } else if (currentSectionRef.current === 2 && scrollY >= 2700) {
           targetSection = 3
-        } else if (currentSectionRef.current === 3 && scrollY >= 5550) {
+        } else if (currentSectionRef.current === 3 && scrollY >= 3900) {
           targetSection = 4
-        } else if (currentSectionRef.current === 4 && scrollY >= 6700) {
+        } else if (currentSectionRef.current === 4 && scrollY >= 5100) {
           targetSection = 5
         }
       } else {
         // Scrolling up - can only go back to previous section
-        if (currentSectionRef.current === 5 && scrollY < 6700) {
+        if (currentSectionRef.current === 5 && scrollY < 5100) {
           targetSection = 4
-        } else if (currentSectionRef.current === 4 && scrollY < 5550) {
+        } else if (currentSectionRef.current === 4 && scrollY < 3900) {
           targetSection = 3
-        } else if (currentSectionRef.current === 3 && scrollY < 4350) {
+        } else if (currentSectionRef.current === 3 && scrollY < 2700) {
           targetSection = 2
-        } else if (currentSectionRef.current === 2 && scrollY < 2350) {
+        } else if (currentSectionRef.current === 2 && scrollY < 1500) {
           targetSection = 1
         } else if (currentSectionRef.current === 1 && scrollY < 300) {
           targetSection = 0
@@ -157,8 +157,8 @@ function Home() {
         setCurrentSection(targetSection)
       }
       
-      // Calculate middle step based on scroll position within section 1 (600-2350)
-      if (scrollY >= 600 && scrollY < 2350) {
+      // Calculate middle step based on scroll position within section 1 (600-1500)
+      if (scrollY >= 600 && scrollY < 1500) {
         setMiddleStep(0)
       }
       
