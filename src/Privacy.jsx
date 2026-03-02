@@ -62,21 +62,36 @@ function Privacy() {
       <header className="pt-4 pb-4 px-4 relative" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}>
         <div className="flex justify-between items-center gap-2" style={{ perspective: '1000px' }}>
           <nav className="flex items-center gap-3 sm:gap-4 md:gap-6 pl-2 sm:pl-6 md:pl-12 flex-1 min-w-0 flex-shrink">
-            <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>universities</Link>
-            <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>brands</Link>
-            <Link to="/about" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>about</Link>
-            <Link to="/press" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>press</Link>
+            <div className="flex flex-col items-center shrink-0">
+              <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center" style={{ color: '#1a1a1a' }}>universities</Link>
+              {location.pathname === '/universities' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
+            </div>
+            <div className="flex flex-col items-center shrink-0">
+              <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center" style={{ color: '#1a1a1a' }}>brands</Link>
+              {location.pathname === '/brands' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
+            </div>
+            <div className="flex flex-col items-center shrink-0">
+              <Link to="/about" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center" style={{ color: '#1a1a1a' }}>about</Link>
+              {location.pathname === '/about' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
+            </div>
+            <div className="flex flex-col items-center shrink-0">
+              <Link to="/press" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center" style={{ color: '#1a1a1a' }}>press</Link>
+              {location.pathname === '/press' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
+            </div>
           </nav>
           <div className="flex items-center gap-2 sm:gap-3 pr-2 sm:pr-6 md:pr-12 shrink-0">
             <a href="https://apps.apple.com/us/app/grapevne/id6745459372" target="_blank" rel="noopener noreferrer" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center whitespace-nowrap" style={{ color: '#1a1a1a' }}>download</a>
-            <Link to="/" className="flex justify-center min-h-[44px] min-w-[44px] items-center">
-              <img ref={logoRef} src="/filledTransparent.png" alt="Grapevne Logo" className="h-10 sm:h-14 md:h-20 lg:h-28 w-auto"
+            <div className="flex flex-col items-center shrink-0">
+              <Link to="/" className="flex justify-center min-h-[44px] min-w-[44px] items-center">
+                <img ref={logoRef} src="/filledTransparent.png" alt="Grapevne Logo" className="h-10 sm:h-14 md:h-20 lg:h-28 w-auto"
                 style={{ 
                   transformStyle: 'preserve-3d',
                   willChange: 'transform'
                 }}
               />
-            </Link>
+              </Link>
+              {location.pathname === '/' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
+            </div>
           </div>
         </div>
       </header>
