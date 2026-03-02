@@ -14,12 +14,19 @@ function Home() {
   const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
   const currentSectionRef = useRef(0) // Track current section for scroll logic
-  const [showUseCases, setShowUseCases] = useState(false)
   const lastPositionRef = useRef({ x: 0, y: 0 })
   const lastImageIndexRef = useRef(-1)
   const [trailImages, setTrailImages] = useState([])
   const images = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg', '/homepage.jpg', '/snake.jpg', '/taking.jpg', '/gathering.jpg']
   const maxImages = 8
+
+  // Preload all trail images so they appear instantly when mouse moves
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+  }, [])
 
   // Get random image index that's different from the last one
   const getRandomImageIndex = () => {
@@ -218,37 +225,21 @@ function Home() {
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
-            <div className="flex items-center"
-              onMouseEnter={() => setShowUseCases(true)}
-              onMouseLeave={() => setShowUseCases(false)}
-            >
+            <div className="flex items-center gap-4">
               <div className="flex flex-col items-center">
-                <div 
-                  className="text-lg font-bold hover-grapevne-blue transition-colors lowercase cursor-pointer" 
-                  style={{ color: '#1a1a1a' }}
-                  onClick={() => setShowUseCases(true)}
-                >
+                <div className="text-lg font-bold lowercase" style={{ color: '#1a1a1a' }}>
                   Use Cases
                 </div>
-                {(location.pathname === '/universities' || location.pathname === '/brands') && !showUseCases && (
+                {(location.pathname === '/universities' || location.pathname === '/brands') && (
                   <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
                 )}
               </div>
-              <div 
-                className="flex items-center gap-4 overflow-hidden transition-all duration-300 ease-in-out"
-                style={{ 
-                  maxWidth: showUseCases ? '300px' : '0px',
-                  opacity: showUseCases ? 1 : 0,
-                  marginLeft: showUseCases ? '24px' : '0px'
-                }}
-              >
-                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                  Universities
-                </Link>
-                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                  Brands
-                </Link>
-              </div>
+              <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                Universities
+              </Link>
+              <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                Brands
+              </Link>
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
@@ -303,12 +294,15 @@ function Home() {
                 key={img.id}
                 src={img.src}
                 alt=""
-                className="absolute w-64 md:w-80 lg:w-96 h-auto object-cover"
+                loading="eager"
+                className="absolute w-64 md:w-80 lg:w-96 object-cover"
                 style={{
                   left: `${img.x}px`,
                   top: `${img.y}px`,
                   transform: 'translate(-50%, -50%)',
-                  zIndex: index // Newer images on top
+                  zIndex: index,
+                  aspectRatio: '4/3',
+                  height: 'auto'
                 }}
               />
             ))}

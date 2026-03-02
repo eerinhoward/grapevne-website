@@ -13,7 +13,6 @@ function Universities() {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [hoveredPartner, setHoveredPartner] = useState(null)
   const [selectedPartnerIndex, setSelectedPartnerIndex] = useState(null)
-  const [showUseCases, setShowUseCases] = useState(false)
   
   // Scroll-lock horizontal state
   const horizontalScrollRef = useRef(null)
@@ -173,37 +172,21 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
           <div className="flex items-center gap-6 pl-8 md:pl-12">
-            <div className="flex items-center"
-              onMouseEnter={() => setShowUseCases(true)}
-              onMouseLeave={() => setShowUseCases(false)}
-            >
+            <div className="flex items-center gap-4">
               <div className="flex flex-col items-center">
-                <div 
-                  className="text-lg font-bold hover-grapevne-blue transition-colors lowercase cursor-pointer" 
-                  style={{ color: '#1a1a1a' }}
-                  onClick={() => setShowUseCases(true)}
-                >
+                <div className="text-lg font-bold lowercase" style={{ color: '#1a1a1a' }}>
                   Use Cases
                 </div>
-                {(location.pathname === '/universities' || location.pathname === '/brands') && !showUseCases && (
+                {(location.pathname === '/universities' || location.pathname === '/brands') && (
                   <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
                 )}
               </div>
-              <div 
-                className="flex items-center gap-4 overflow-hidden transition-all duration-300 ease-in-out"
-                style={{ 
-                  maxWidth: showUseCases ? '300px' : '0px',
-                  opacity: showUseCases ? 1 : 0,
-                  marginLeft: showUseCases ? '24px' : '0px'
-                }}
-              >
-                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                  Universities
-                </Link>
-                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                  Brands
-                </Link>
-              </div>
+              <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                Universities
+              </Link>
+              <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                Brands
+              </Link>
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
