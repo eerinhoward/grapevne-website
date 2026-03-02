@@ -9,7 +9,7 @@ function Home() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [currentSection, setCurrentSection] = useState(0) // 0 = first, 1 = middle, 2 = map, 3 = campus footprint, 4 = Grapevne, 5 = no RSVP
+  const [currentSection, setCurrentSection] = useState(0) // 0 = hero, 1 = never miss, 2 = one swipe, 3 = see who, 4 = Grapevne
   const [middleStep, setMiddleStep] = useState(0) // 0-4 for the animated sequence in section 1
   const [showHeader, setShowHeader] = useState(true)
   const lastScrollY = useRef(0)
@@ -134,14 +134,10 @@ function Home() {
           targetSection = 3
         } else if (currentSectionRef.current === 3 && scrollY >= 3900) {
           targetSection = 4
-        } else if (currentSectionRef.current === 4 && scrollY >= 5100) {
-          targetSection = 5
         }
       } else {
         // Scrolling up - can only go back to previous section
-        if (currentSectionRef.current === 5 && scrollY < 5100) {
-          targetSection = 4
-        } else if (currentSectionRef.current === 4 && scrollY < 3900) {
+        if (currentSectionRef.current === 4 && scrollY < 3900) {
           targetSection = 3
         } else if (currentSectionRef.current === 3 && scrollY < 2700) {
           targetSection = 2
@@ -489,43 +485,13 @@ function Home() {
         <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-5 sm:px-8 md:px-16"
           style={{
-            transform: currentSection === 4 ? 'translateY(-5%)' : (currentSection === 5 ? 'translateY(-100%)' : 'translateY(100%)'),
+            transform: currentSection === 4 ? 'translateY(-5%)' : 'translateY(100%)',
             opacity: currentSection === 4 ? 1 : 0,
             pointerEvents: currentSection === 4 ? 'auto' : 'none'
           }}
         >
           <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
             Grapevne
-          </div>
-        </div>
-        
-        {/* Section 5 - No RSVP, No coordinate */}
-        <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-5 sm:px-8 md:px-16"
-          style={{
-            transform: currentSection === 5 ? 'translateY(-5%)' : 'translateY(100%)',
-            opacity: currentSection === 5 ? 1 : 0,
-            pointerEvents: currentSection === 5 ? 'auto' : 'none'
-          }}
-        >
-          <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl lowercase text-center px-2" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-              </svg>
-              <span>RSVP.</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="3.5">
-                <circle cx="12" cy="12" r="10" />
-                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
-              </svg>
-              <span>coordination.</span>
-            </div>
-            <div className="font-normal text-base sm:text-xl md:text-2xl lg:text-3xl">
-              You just see what's happening and decide.
-            </div>
           </div>
         </div>
       </main>
