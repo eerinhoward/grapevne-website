@@ -113,9 +113,10 @@ function Brands() {
       {/* Header with Logo - always visible */}
       <header 
         className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-white z-20"
+        style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
-          <div className="flex items-center gap-6 pl-8 md:pl-12">
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 pl-4 sm:pl-6 md:pl-12 flex-wrap">
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-center">
                 <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
@@ -151,7 +152,7 @@ function Brands() {
               )}
             </div>
           </div>
-          <div className="flex items-center gap-3 pr-8 md:pr-12">
+          <div className="flex items-center gap-2 sm:gap-3 pr-4 sm:pr-6 md:pr-12">
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
@@ -166,7 +167,7 @@ function Brands() {
                 ref={logoRef}
                 src="/filledTransparent.png" 
                 alt="Grapevne Logo" 
-                className="h-28 w-auto"
+                className="h-16 sm:h-20 md:h-28 w-auto"
                 style={{ 
                   transformStyle: 'preserve-3d',
                   willChange: 'transform'

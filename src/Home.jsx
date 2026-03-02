@@ -59,26 +59,24 @@ function Home() {
       return
     }
 
-    const handleMouseMove = (e) => {
+    const addTrailAt = (clientX, clientY) => {
       if (!imagesReady || !mainRef.current) return
 
       const rect = mainRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
+      const x = clientX - rect.left
+      const y = clientY - rect.top
 
-      // Only add images when cursor is inside the main content area
       if (x < 0 || x > rect.width || y < 0 || y > rect.height) return
 
       const now = performance.now()
       const elapsed = now - lastTrailTimeRef.current
-
-      const distanceX = Math.abs(e.clientX - lastPositionRef.current.x)
-      const distanceY = Math.abs(e.clientY - lastPositionRef.current.y)
+      const distanceX = Math.abs(clientX - lastPositionRef.current.x)
+      const distanceY = Math.abs(clientY - lastPositionRef.current.y)
       const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
 
       if (distance >= TRAIL_DISTANCE_PX && elapsed >= TRAIL_THROTTLE_MS) {
         lastTrailTimeRef.current = now
-        lastPositionRef.current = { x: e.clientX, y: e.clientY }
+        lastPositionRef.current = { x: clientX, y: clientY }
 
         const newImage = {
           id: ++trailIdRef.current,
@@ -94,8 +92,28 @@ function Home() {
       }
     }
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true })
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    const handlePointer = (e) => {
+      const x = e.clientX ?? e.touches?.[0]?.clientX
+      const y = e.clientY ?? e.touches?.[0]?.clientY
+      if (x != null && y != null) addTrailAt(x, y)
+    }
+
+    const handleTouchStart = (e) => {
+      const touch = e.touches[0]
+      if (touch) {
+        lastPositionRef.current = { x: touch.clientX, y: touch.clientY }
+        addTrailAt(touch.clientX, touch.clientY)
+      }
+    }
+
+    window.addEventListener('mousemove', handlePointer, { passive: true })
+    window.addEventListener('touchmove', handlePointer, { passive: true })
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handlePointer)
+      window.removeEventListener('touchmove', handlePointer)
+      window.removeEventListener('touchstart', handleTouchStart)
+    }
   }, [currentSection, imagesReady])
 
   useEffect(() => {
@@ -240,11 +258,15 @@ function Home() {
       
       {/* Header with Logo - shows on scroll up, hides on scroll down */}
       <header 
-        className="pt-4 pb-4 px-4 fixed top-0 left-0 right-0 bg-transparent z-20 transition-transform duration-300"
-        style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
+        className="pt-4 pb-4 px-4 fixed left-0 right-0 bg-transparent z-20 transition-transform duration-300"
+        style={{ 
+          transform: showHeader ? 'translateY(0)' : 'translateY(-100%)',
+          top: 0,
+          paddingTop: 'max(1rem, env(safe-area-inset-top))'
+        }}
       >
         <div className="flex justify-between items-center" style={{ perspective: '1000px' }}>
-          <div className="flex items-center gap-6 pl-8 md:pl-12">
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-6 pl-4 sm:pl-6 md:pl-12 flex-wrap">
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-center">
                 <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
@@ -280,7 +302,7 @@ function Home() {
               )}
             </div>
           </div>
-          <div className="flex items-center gap-3 pr-8 md:pr-12">
+          <div className="flex items-center gap-2 sm:gap-3 pr-4 sm:pr-6 md:pr-12">
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
@@ -295,7 +317,7 @@ function Home() {
                 ref={logoRef}
                 src="/filledTransparent.png" 
                 alt="Grapevne Logo" 
-                className="h-28 w-auto"
+                className="h-16 sm:h-20 md:h-28 w-auto"
                 style={{ 
                   transformStyle: 'preserve-3d',
                   willChange: 'transform'
@@ -306,8 +328,15 @@ function Home() {
         </div>
       </header>
 
-      {/* Main Content - accounts for header (~120px) and fixed footer (~80px) */}
-      <main ref={mainRef} className="fixed top-[100px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
+      {/* Main Content - accounts for header, footer, and safe areas on iPhone */}
+      <main 
+        ref={mainRef} 
+        className="fixed left-0 right-0 flex items-center justify-center overflow-hidden"
+        style={{
+          top: 'calc(100px + env(safe-area-inset-top, 0px))',
+          bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))'
+        }}
+      >
         {/* Trail Images - Bottom Layer */}
         {currentSection === 0 && (
           <div 
@@ -326,7 +355,7 @@ function Home() {
                 style={{
                   left: img.x,
                   top: img.y,
-                  width: 'clamp(12rem, 20vw, 24rem)',
+                  width: 'clamp(8rem, 25vw, 24rem)',
                   aspectRatio: '4/3',
                   transform: 'translate(-50%, -50%)',
                   zIndex: index,
@@ -610,7 +639,10 @@ function Home() {
       </main>
 
       {/* Footer with ®, ™, and © symbols - Persistent */}
-      <footer className="pt-3 pb-4 px-4 fixed bottom-0 left-0 right-0 bg-white z-10">
+      <footer 
+        className="pt-3 px-4 fixed bottom-0 left-0 right-0 bg-white z-10"
+        style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+      >
         <div className="max-w-6xl mx-auto flex flex-col items-center gap-1">
           <div className="flex justify-center items-center gap-3">
             <span className="ip-symbol" style={{ transform: 'translateY(-1px)', color: '#1a1a1a' }}>®</span>
