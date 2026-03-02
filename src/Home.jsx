@@ -414,10 +414,13 @@ function Home() {
             <div className="h-[280px]"></div>
             
             {/* Tagline */}
-            <div className="text-left pl-8 md:pl-16">
+            <div className="text-left pl-8 md:pl-16 space-y-4">
               <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                The feed that feeds you.
+                Never miss what's happening.
               </h2>
+              <p className="text-lg md:text-xl text-gray-600 max-w-xl" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                Push notifications when posts go live. No more checking emails or walking past flyers.
+              </p>
             </div>
           </div>
         </div>
