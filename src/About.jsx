@@ -258,7 +258,7 @@ function About() {
                 Information arrives late. Food goes to waste.
               </p>
               <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
-                People usually hear about things through each other. Grapevne makes that process faster, and campus-wide.
+                People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.
               </p>
               <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
                 We hope it finds you when you need it, and makes the moment a little better.
