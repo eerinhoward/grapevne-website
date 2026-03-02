@@ -254,10 +254,10 @@ function Home() {
       >
         <div className="flex justify-between items-center gap-2" style={{ perspective: '1000px' }}>
           <nav className="flex items-center gap-3 sm:gap-4 md:gap-6 pl-2 sm:pl-6 md:pl-12 flex-1 min-w-0 flex-shrink">
-            <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
+            <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
               universities
             </Link>
-            <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
+            <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
               brands
             </Link>
             <Link to="/about" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center shrink-0" style={{ color: '#1a1a1a' }}>
