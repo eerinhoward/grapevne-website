@@ -511,10 +511,10 @@ function Home() {
               </p>
             </div>
             
-            {/* Right side - iPhone (replace with see-who-iphone.png when you have it) */}
+            {/* Right side - iPhone */}
             <div className="flex-shrink-0">
               <img 
-                src="/iphone image.png" 
+                src="/see-who-iphone.png" 
                 alt="Grapevne app - See who else is going" 
                 className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
               />
