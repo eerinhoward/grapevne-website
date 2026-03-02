@@ -376,7 +376,7 @@ function Home() {
             */}
             
             {/* Spacer for where image strip was */}
-            <div className="h-[140px] sm:h-[200px] md:h-[280px]"></div>
+            <div className="h-[200px] sm:h-[260px] md:h-[340px]"></div>
             
             {/* Tagline */}
             <div className="text-center md:text-left md:pl-16">
