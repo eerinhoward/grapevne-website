@@ -431,26 +431,12 @@ function Home() {
             pointerEvents: currentSection === 1 ? 'auto' : 'none'
           }}
         >
-          {/* Step 0: Initial tagline - centered, no iPhone */}
-          <div 
-            className="absolute inset-0 flex items-center justify-center transition-all duration-500"
-            style={{ 
-              opacity: middleStep === 0 ? 1 : 0,
-              pointerEvents: middleStep === 0 ? 'auto' : 'none'
-            }}
-          >
-            <div className="text-2xl md:text-3xl lg:text-4xl lowercase whitespace-nowrap" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <span className="font-bold" style={{ color: 'var(--grapevne-blue)', textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>Grapevne</span>
-              <span> is the real-time campus discovery layer.</span>
-            </div>
-          </div>
-          
-          {/* Steps 1-4: Text on left, iPhone on right */}
+          {/* Steps 0-4: Text on left, iPhone on right */}
           <div 
             className="absolute inset-0 flex items-center justify-center gap-12 md:gap-16 lg:gap-24 transition-all duration-700"
             style={{ 
-              opacity: middleStep >= 1 && middleStep < 5 ? 1 : 0,
-              pointerEvents: middleStep >= 1 && middleStep < 5 ? 'auto' : 'none'
+              opacity: middleStep >= 0 ? 1 : 0,
+              pointerEvents: middleStep >= 0 ? 'auto' : 'none'
             }}
           >
             {/* Left side - headline and body */}
@@ -472,29 +458,9 @@ function Home() {
               />
             </div>
           </div>
-          
-          {/* Step 5-6: "…before they're gone." - centered, no iPhone */}
-          <div 
-            className="absolute inset-0 flex items-center justify-center transition-all duration-700"
-            style={{ 
-              opacity: middleStep >= 5 ? 1 : 0,
-              pointerEvents: middleStep >= 5 ? 'auto' : 'none'
-            }}
-          >
-            <div 
-              className="text-2xl md:text-3xl lg:text-4xl lowercase text-center italic transition-all duration-700"
-              style={{ 
-                fontFamily: 'Helvetica, Arial, sans-serif', 
-                color: '#1a1a1a',
-                transform: middleStep >= 5 ? 'translateY(0)' : 'translateY(30px)'
-              }}
-            >
-              …before they're gone.
-            </div>
-          </div>
         </div>
-        
-        {/* Section 2 - Map blurb */}
+
+        {/* Section 2 - One swipe RSVP */}
         <div 
           className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-8 md:px-16"
           style={{
@@ -505,21 +471,20 @@ function Home() {
         >
           <div className="flex items-center justify-center gap-12 md:gap-16 lg:gap-24">
             {/* Left side - Text */}
-            <div className="text-2xl md:text-3xl lg:text-4xl lowercase text-left" style={{ fontFamily: 'Helvetica, Arial, sans-serif', color: '#1a1a1a' }}>
-              <div className="font-bold" style={{ textTransform: 'none', fontFamily: '"Futura Bold", sans-serif' }}>
-                Map what's happening <span className="font-bold italic">right now</span>
-              </div>
-              <div className="font-normal">See where things are popping off.</div>
-              <div className="font-normal">See who's pulling up.</div>
-              <div className="font-normal mt-4">No group chats.</div>
-              <div className="font-normal">No flyers.</div>
+            <div className="text-left max-w-xl">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                One swipe. You're in.
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                One swipe RSVPs. It saves to your calendar automatically.
+              </p>
             </div>
             
-            {/* Right side - iPhone */}
+            {/* Right side - iPhone (replace with one-swipe-iphone.png when you have it) */}
             <div className="flex-shrink-0">
               <img 
                 src="/iphone image.png" 
-                alt="Grapevne App" 
+                alt="Grapevne app - One swipe RSVP" 
                 className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
               />
             </div>
