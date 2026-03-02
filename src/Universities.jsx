@@ -28,11 +28,6 @@ function Universities() {
 Instead of relying on ad-hoc emails, word of mouth, or last-minute signage, Grapevne provides a simple way to: notify students when surplus food is available, thereby reduce food waste from campus events and meetings, and support sustainability initiatives without adding staff overhead.
 
 The app is launching campus-wide in Spring 2026 as part of Trinity's broader sustainability efforts.`
-    },
-    {
-      name: 'Stevens',
-      image: '/stevens.png',
-      description: 'Stevens Institute of Technology partner description coming soon.'
     }
   ]
 
