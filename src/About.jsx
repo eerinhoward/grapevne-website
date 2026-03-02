@@ -86,16 +86,6 @@ function About() {
   }, [selectedMemberIndex, teamMembers.length])
   
   useEffect(() => {
-    const cursor = document.createElement('div')
-    cursor.innerHTML = '🍔'
-    cursor.style.position = 'fixed'
-    cursor.style.pointerEvents = 'none'
-    cursor.style.fontSize = '24px'
-    cursor.style.zIndex = '9999'
-    cursor.style.transform = 'translate(-50%, -50%)'
-    document.body.appendChild(cursor)
-    document.body.style.cursor = 'none'
-
     const updateLogoTransform = () => {
       if (logoRef.current) {
         const logo = logoRef.current
@@ -109,17 +99,6 @@ function About() {
     }
 
     const handleMouseMove = (e) => {
-      cursor.style.left = e.clientX + 'px'
-      cursor.style.top = e.clientY + 'px'
-
-      const target = e.target
-      const isClickable = target.closest('a, button, [onclick], [role="button"], input, textarea, select')
-      if (isClickable) {
-        cursor.style.opacity = '0'
-      } else {
-        cursor.style.opacity = '1'
-      }
-
       // 3D effect for logo
       if (logoRef.current) {
         const logo = logoRef.current
@@ -151,8 +130,6 @@ function About() {
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
-      document.body.removeChild(cursor)
-      document.body.style.cursor = 'auto'
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
       }
@@ -205,7 +182,7 @@ function About() {
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
-          <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center">
               <Link to="/press" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
               Press
             </Link>
@@ -213,6 +190,8 @@ function About() {
               <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
             )}
             </div>
+          </div>
+          <div className="flex items-center gap-3 pr-8 md:pr-12">
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
@@ -222,19 +201,19 @@ function About() {
             >
               download
             </a>
+            <Link to="/" className="flex justify-center">
+              <img 
+                ref={logoRef}
+                src="/filledTransparent.png" 
+                alt="Grapevne Logo" 
+                className="h-28 w-auto"
+                style={{ 
+                  transformStyle: 'preserve-3d',
+                  willChange: 'transform'
+                }}
+              />
+            </Link>
           </div>
-          <Link to="/" className="flex justify-center">
-            <img 
-              ref={logoRef}
-              src="/filledTransparent.png" 
-              alt="Grapevne Logo" 
-              className="h-28 w-auto"
-              style={{ 
-                transformStyle: 'preserve-3d',
-                willChange: 'transform'
-              }}
-            />
-          </Link>
         </div>
       </header>
 

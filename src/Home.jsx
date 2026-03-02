@@ -146,16 +146,6 @@ function Home() {
   }, [])
 
   useEffect(() => {
-    const cursor = document.createElement('div')
-    cursor.innerHTML = '🍔'
-    cursor.style.position = 'fixed'
-    cursor.style.pointerEvents = 'none'
-    cursor.style.fontSize = '24px'
-    cursor.style.zIndex = '9999'
-    cursor.style.transform = 'translate(-50%, -50%)'
-    document.body.appendChild(cursor)
-    document.body.style.cursor = 'none'
-
     const updateLogoTransform = () => {
       if (logoRef.current) {
         const logo = logoRef.current
@@ -169,18 +159,6 @@ function Home() {
     }
 
     const handleMouseMove = (e) => {
-      cursor.style.left = e.clientX + 'px'
-      cursor.style.top = e.clientY + 'px'
-
-      // Hide cursor when hovering over links or clickable elements
-      const target = e.target
-      const isClickable = target.closest('a, button, [onclick], [role="button"]')
-      if (isClickable) {
-        cursor.style.opacity = '0'
-      } else {
-        cursor.style.opacity = '1'
-      }
-
       // 3D effect for logo
       if (logoRef.current) {
         const logo = logoRef.current
@@ -222,8 +200,6 @@ function Home() {
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current)
       }
-      document.body.removeChild(cursor)
-      document.body.style.cursor = 'auto'
     }
   }, [])
 
@@ -290,6 +266,8 @@ function Home() {
                 <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
               )}
             </div>
+          </div>
+          <div className="flex items-center gap-3 pr-8 md:pr-12">
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
@@ -299,19 +277,19 @@ function Home() {
             >
               download
             </a>
+            <Link to="/" className="flex justify-center">
+              <img 
+                ref={logoRef}
+                src="/filledTransparent.png" 
+                alt="Grapevne Logo" 
+                className="h-28 w-auto"
+                style={{ 
+                  transformStyle: 'preserve-3d',
+                  willChange: 'transform'
+                }}
+              />
+            </Link>
           </div>
-          <Link to="/" className="flex justify-center">
-            <img 
-              ref={logoRef}
-              src="/filledTransparent.png" 
-              alt="Grapevne Logo" 
-              className="h-28 w-auto"
-              style={{ 
-                transformStyle: 'preserve-3d',
-                willChange: 'transform'
-              }}
-            />
-          </Link>
         </div>
       </header>
 
