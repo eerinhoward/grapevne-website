@@ -276,7 +276,7 @@ function Home() {
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center whitespace-nowrap"
+              className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center whitespace-nowrap shadow-sm"
               style={{ color: '#1a1a1a' }}
             >
               download

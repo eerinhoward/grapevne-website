@@ -130,7 +130,7 @@ function Brands() {
             </div>
           </nav>
           <div className="flex items-center gap-2 sm:gap-3 pr-2 sm:pr-6 md:pr-12 shrink-0">
-            <a href="https://apps.apple.com/us/app/grapevne/id6745459372" target="_blank" rel="noopener noreferrer" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center whitespace-nowrap" style={{ color: '#1a1a1a' }}>download</a>
+            <a href="https://apps.apple.com/us/app/grapevne/id6745459372" target="_blank" rel="noopener noreferrer" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center whitespace-nowrap shadow-sm" style={{ color: '#1a1a1a' }}>download</a>
             <div className="flex flex-col items-center shrink-0">
               <Link to="/" className="flex justify-center min-h-[44px] min-w-[44px] items-center">
                 <img ref={logoRef} src="/filledTransparent.png" alt="Grapevne Logo" className="h-10 sm:h-14 md:h-20 lg:h-28 w-auto"
