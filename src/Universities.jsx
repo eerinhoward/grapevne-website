@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, lazy, Suspense } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import ContactForm from './ContactForm'
+const ContactForm = lazy(() => import('./ContactForm'))
 
 function Universities() {
   const location = useLocation()
@@ -272,6 +272,9 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                     src="/university.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
                   <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
@@ -279,6 +282,9 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                     src="/university2.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
@@ -286,6 +292,9 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                     src="/university.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
                   <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
@@ -293,6 +302,9 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                     src="/university2.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
                   <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
@@ -300,6 +312,9 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                     src="/university.jpg" 
                     alt="" 
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
               </div>
@@ -466,7 +481,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 {/* Card 1: Place and trust */}
                 <div className="flex-shrink-0 w-80 md:w-96 pl-8 md:pl-16" style={{ minWidth: '320px' }}>
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Place and trust.
@@ -482,7 +497,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 {/* Card 2: Shared by the people already there */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Shared by the people already there.
@@ -502,6 +517,8 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                       src="/notification.png" 
                       alt="Push notification example" 
                       className="h-full object-contain transition-transform duration-300 hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
@@ -518,7 +535,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 {/* Card 4: Real Impact */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Real Impact.
@@ -534,7 +551,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 {/* Card 5: It becomes routine */}
                 <div className="flex-shrink-0 w-80 md:w-96 pr-8 md:pr-16" style={{ minWidth: '320px' }}>
                   <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" />
+                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     It becomes routine.
@@ -561,6 +578,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               loop
               muted
               playsInline
+              preload="metadata"
               className="w-full h-auto"
               style={{ display: 'block' }}
             />
@@ -590,17 +608,23 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 alt="Grapevne app on iPhone" 
                 className="w-full h-auto mx-auto"
                 style={{ maxHeight: '60vh', objectFit: 'contain' }}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </section>
 
-          {/* Contact Form */}
+          {/* Contact Form - lazy loaded when opened */}
           <section className="transition-all duration-500 ease-in-out px-8 md:px-16 pb-8">
-            <ContactForm 
-              isOpen={isFormOpen} 
-              onClose={() => setIsFormOpen(false)}
-              emailTo="universities@grapevneapp.com"
-            />
+            {isFormOpen && (
+              <Suspense fallback={null}>
+                <ContactForm 
+                  isOpen={isFormOpen} 
+                  onClose={() => setIsFormOpen(false)}
+                  emailTo="universities@grapevneapp.com"
+                />
+              </Suspense>
+            )}
           </section>
 
         </div>

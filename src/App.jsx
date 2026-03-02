@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './Home'
 import Press from './Press'
 import Brands from './Brands'
-import Universities from './Universities'
 import Terms from './Terms'
+const Universities = lazy(() => import('./Universities'))
 import Privacy from './Privacy'
 import Ambassadors from './Ambassadors'
 import About from './About'
@@ -167,7 +167,7 @@ function App() {
         <Route path="/press" element={<Press />} />
         <Route path="/about" element={<About />} />
         <Route path="/brands" element={<Brands />} />
-        <Route path="/universities" element={<Universities />} />
+        <Route path="/universities" element={<Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center" />}><Universities /></Suspense>} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/ambassadors" element={<Ambassadors />} />
