@@ -16,24 +16,39 @@ function Home() {
   const currentSectionRef = useRef(0) // Track current section for scroll logic
   const lastPositionRef = useRef({ x: 0, y: 0 })
   const lastImageIndexRef = useRef(-1)
+  const trailIdRef = useRef(0)
+  const mainRef = useRef(null)
   const [trailImages, setTrailImages] = useState([])
+  const [imagesReady, setImagesReady] = useState(false)
   const images = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg', '/homepage.jpg', '/snake.jpg', '/taking.jpg', '/gathering.jpg']
   const maxImages = 8
+  const TRAIL_THROTTLE_MS = 16 // ~60fps
+  const TRAIL_DISTANCE_PX = 35
+  const lastTrailTimeRef = useRef(0)
 
-  // Preload all trail images so they appear instantly when mouse moves
+  // Preload all trail images and verify they're ready before enabling trail
   useEffect(() => {
-    images.forEach((src) => {
-      const img = new Image()
-      img.src = src
+    let mounted = true
+    const loadPromises = images.map((src) => {
+      return new Promise((resolve) => {
+        const img = new Image()
+        img.onload = () => resolve(src)
+        img.onerror = () => resolve(null) // Skip failed images
+        img.src = src
+      })
     })
+    Promise.all(loadPromises).then(() => {
+      if (mounted) setImagesReady(true)
+    })
+    return () => { mounted = false }
   }, [])
 
-  // Get random image index that's different from the last one
   const getRandomImageIndex = () => {
+    if (images.length <= 1) return 0
     let newIndex
     do {
       newIndex = Math.floor(Math.random() * images.length)
-    } while (newIndex === lastImageIndexRef.current && images.length > 1)
+    } while (newIndex === lastImageIndexRef.current)
     lastImageIndexRef.current = newIndex
     return newIndex
   }
@@ -45,38 +60,43 @@ function Home() {
     }
 
     const handleMouseMove = (e) => {
+      if (!imagesReady || !mainRef.current) return
+
+      const rect = mainRef.current.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+
+      // Only add images when cursor is inside the main content area
+      if (x < 0 || x > rect.width || y < 0 || y > rect.height) return
+
+      const now = performance.now()
+      const elapsed = now - lastTrailTimeRef.current
+
       const distanceX = Math.abs(e.clientX - lastPositionRef.current.x)
       const distanceY = Math.abs(e.clientY - lastPositionRef.current.y)
-      
-      // Add image every 25px of movement
-      if (distanceX >= 25 || distanceY >= 25) {
-        const randomIndex = getRandomImageIndex()
-        const newImage = {
-          id: Date.now(),
-          x: e.clientX,
-          y: e.clientY,
-          src: images[randomIndex]
-        }
-        
+      const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
+
+      if (distance >= TRAIL_DISTANCE_PX && elapsed >= TRAIL_THROTTLE_MS) {
+        lastTrailTimeRef.current = now
         lastPositionRef.current = { x: e.clientX, y: e.clientY }
-        
-        setTrailImages(prev => {
+
+        const newImage = {
+          id: ++trailIdRef.current,
+          x,
+          y,
+          src: images[getRandomImageIndex()]
+        }
+
+        setTrailImages((prev) => {
           const updated = [...prev, newImage]
-          // Keep only the last maxImages
-          if (updated.length > maxImages) {
-            return updated.slice(-maxImages)
-          }
-          return updated
+          return updated.length > maxImages ? updated.slice(-maxImages) : updated
         })
       }
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove)
-    }
-  }, [currentSection])
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [currentSection, imagesReady])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -227,19 +247,21 @@ function Home() {
           <div className="flex items-center gap-6 pl-8 md:pl-12">
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-center">
-                <div className="text-lg font-bold lowercase" style={{ color: '#1a1a1a' }}>
-                  Use Cases
-                </div>
-                {(location.pathname === '/universities' || location.pathname === '/brands') && (
+                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  universities
+                </Link>
+                {location.pathname === '/universities' && (
                   <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
                 )}
               </div>
-              <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                Universities
-              </Link>
-              <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                Brands
-              </Link>
+              <div className="flex flex-col items-center">
+                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  brands
+                </Link>
+                {location.pathname === '/brands' && (
+                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+                )}
+              </div>
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
@@ -285,24 +307,33 @@ function Home() {
       </header>
 
       {/* Main Content - accounts for header (~120px) and fixed footer (~80px) */}
-      <main className="fixed top-[100px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
+      <main ref={mainRef} className="fixed top-[100px] left-0 right-0 bottom-[80px] flex items-center justify-center overflow-hidden">
         {/* Trail Images - Bottom Layer */}
         {currentSection === 0 && (
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1 }}>
+          <div 
+            className="absolute inset-0 pointer-events-none" 
+            style={{ zIndex: 1 }}
+          >
             {trailImages.map((img, index) => (
               <img
                 key={img.id}
                 src={img.src}
                 alt=""
                 loading="eager"
-                className="absolute w-64 md:w-80 lg:w-96 object-cover"
+                fetchPriority="high"
+                decoding="async"
+                className="absolute object-cover select-none"
                 style={{
-                  left: `${img.x}px`,
-                  top: `${img.y}px`,
+                  left: img.x,
+                  top: img.y,
+                  width: 'clamp(12rem, 20vw, 24rem)',
+                  aspectRatio: '4/3',
                   transform: 'translate(-50%, -50%)',
                   zIndex: index,
-                  aspectRatio: '4/3',
-                  height: 'auto'
+                  willChange: 'transform',
+                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: 'hidden',
+                  animation: 'trailFadeIn 0.2s ease-out forwards'
                 }}
               />
             ))}
@@ -353,13 +384,10 @@ function Home() {
             {/* Spacer for where image strip was */}
             <div className="h-[280px]"></div>
             
-            {/* What's happening text */}
+            {/* Tagline */}
             <div className="text-left pl-8 md:pl-16">
               <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                What's happening.
-              </h2>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight mt-2" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                While it's happening.
+                The feed that feeds you.
               </h2>
             </div>
           </div>

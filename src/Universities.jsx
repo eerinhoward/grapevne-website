@@ -174,19 +174,21 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
           <div className="flex items-center gap-6 pl-8 md:pl-12">
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-center">
-                <div className="text-lg font-bold lowercase" style={{ color: '#1a1a1a' }}>
-                  Use Cases
-                </div>
-                {(location.pathname === '/universities' || location.pathname === '/brands') && (
+                <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  universities
+                </Link>
+                {location.pathname === '/universities' && (
                   <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
                 )}
               </div>
-              <Link to="/universities" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                Universities
-              </Link>
-              <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
-                Brands
-              </Link>
+              <div className="flex flex-col items-center">
+                <Link to="/brands" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase italic whitespace-nowrap" style={{ color: '#1a1a1a' }}>
+                  brands
+                </Link>
+                {location.pathname === '/brands' && (
+                  <div className="w-1.5 h-1.5 rounded-full mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }}></div>
+                )}
+              </div>
             </div>
             <div className="flex flex-col items-center">
               <Link to="/about" className="text-lg font-bold hover-grapevne-blue transition-colors lowercase" style={{ color: '#1a1a1a' }}>
