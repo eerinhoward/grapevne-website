@@ -480,10 +480,10 @@ function Home() {
               </p>
             </div>
             
-            {/* Right side - iPhone (replace with one-swipe-iphone.png when you have it) */}
+            {/* Right side - iPhone */}
             <div className="flex-shrink-0">
               <img 
-                src="/iphone image.png" 
+                src="/one-swipe-iphone.png" 
                 alt="Grapevne app - One swipe RSVP" 
                 className="h-[400px] md:h-[500px] w-auto object-contain iphone-bounce"
               />
