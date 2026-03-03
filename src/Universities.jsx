@@ -485,10 +485,10 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Place and trust.
                   </h3>
-                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Things work better when they're built for the place they're used. Everything you see is specific to your campus.
                   </p>
-                  <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Students, organizers, and campus affiliates join through their university.
                   </p>
                 </div>
@@ -498,10 +498,10 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Shared by the people already there.
                   </h3>
-                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Posting takes seconds. Checking takes even less. When students are looking, they know where to check.
                   </p>
-                  <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     It's the same place. Every time.
                   </p>
                 </div>
@@ -511,10 +511,10 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Make it legible.
                   </h3>
-                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Built for campus life. Clear. Immediate. Uncluttered.
                   </p>
-                  <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     When free food becomes available, students hear about it in time. Designed to feel like second nature.
                   </p>
                 </div>
@@ -524,10 +524,10 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Real Impact.
                   </h3>
-                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     When sharing happens in one place, it's easier to see what's actually happening.
                   </p>
-                  <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     That visibility supports sustainability reporting and planning, without adding work for students or staff.
                   </p>
                 </div>
@@ -537,10 +537,10 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     It becomes routine.
                   </h3>
-                  <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     It takes less effort than the alternatives. So people keep using it.
                   </p>
-                  <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     And when people keep using it, it becomes the place campus turns to.
                   </p>
                 </div>
@@ -577,25 +577,25 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               <div className="grid md:grid-cols-2 gap-8 text-left mb-10" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
                 <div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Data-Driven Decision Making</h3>
-                  <p className="text-base leading-relaxed" style={{ color: '#444' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ color: '#444', fontFamily: '"Futura Bold", sans-serif' }}>
                     Real-time behavioral data on food sharing, including post creation, engagement, and check-in rates, translates into visibility on waste reduction and surplus redistribution patterns.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Financial Optimization</h3>
-                  <p className="text-base leading-relaxed" style={{ color: '#444' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ color: '#444', fontFamily: '"Futura Bold", sans-serif' }}>
                     Campus-specific analytics on daily active users, weekly posts, and conversion metrics help you spend effectively and track how well surplus food reaches students before it becomes waste.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Innovation</h3>
-                  <p className="text-base leading-relaxed" style={{ color: '#444' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ color: '#444', fontFamily: '"Futura Bold", sans-serif' }}>
                     Digitizing the surplus-to-demand pipeline turns your campus into a living test bed for zero-waste initiatives and carbon footprint reduction.
                   </p>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Student Experience</h3>
-                  <p className="text-base leading-relaxed" style={{ color: '#444' }}>
+                  <p className="text-base leading-relaxed font-normal" style={{ color: '#444', fontFamily: '"Futura Bold", sans-serif' }}>
                     Accessible solutions inspired by humanity and powered by technology, removing barriers to food access and promoting environmentally conscious behavior on campus.
                   </p>
                 </div>
@@ -697,7 +697,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               {/* Description */}
               <div 
                 className="text-lg md:text-xl mb-8 w-full whitespace-pre-line"
-                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif', lineHeight: '1.6', textAlign: 'justify' }}
+                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif', fontWeight: 400, lineHeight: '1.6', textAlign: 'justify' }}
               >
                 {partners[selectedPartnerIndex].description}
               </div>

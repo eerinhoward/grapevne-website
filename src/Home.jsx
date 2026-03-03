@@ -422,7 +422,7 @@ function Home() {
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 Never miss<br />what's happening
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
                 Push notifications when campus posts go live. No more checking emails or walking past flyers.
               </p>
             </div>
@@ -452,7 +452,7 @@ function Home() {
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 One swipe. You're in.
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
                 One swipe RSVPs. It saves to your calendar automatically.
               </p>
             </div>
@@ -480,7 +480,7 @@ function Home() {
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 See who else is going
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif' }}>
                 See the list of who's going. See where your friends are going on the map. Meet them there.
               </p>
             </div>
