@@ -482,8 +482,12 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               >
                 {/* Card 1: Place and trust */}
                 <div className="flex-shrink-0 w-80 md:w-96 pl-8 md:pl-16" style={{ minWidth: '320px' }}>
-                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
+                  <div className="h-48 md:h-64 mb-6 flex flex-col justify-center gap-2 px-5 py-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <p className="text-sm font-medium" style={{ color: '#1a1a1a' }}>Leftover pizza · Mather Hall</p>
+                    <p className="text-xs" style={{ color: '#666' }}>~2 hrs ago</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Free sandwiches · Down the hall</p>
+                    <p className="text-xs" style={{ color: '#666' }}>~3 hrs ago</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Event catering · North Campus</p>
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Place and trust.
@@ -498,8 +502,12 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
                 {/* Card 2: Shared by the people already there */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
-                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
+                  <div className="h-48 md:h-64 mb-6 flex flex-col justify-center gap-2 px-5 py-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <p className="text-sm font-medium" style={{ color: '#1a1a1a' }}>Bagels & cream cheese · Commons</p>
+                    <p className="text-xs" style={{ color: '#666' }}>30 min ago</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Trail mix & fruit · Library lobby</p>
+                    <p className="text-xs" style={{ color: '#666' }}>1 hr ago</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Coffee & pastries · Quad</p>
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Shared by the people already there.
@@ -514,14 +522,12 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
                 {/* Card 3: Make it legible */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
-                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img 
-                      src="/notification.png" 
-                      alt="Push notification example" 
-                      className="h-full object-contain transition-transform duration-300 hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                  <div className="h-48 md:h-64 mb-6 flex flex-col justify-center gap-2 px-5 py-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <p className="text-sm font-medium" style={{ color: '#1a1a1a' }}>Sandwiches · McCook 3rd floor</p>
+                    <p className="text-xs" style={{ color: '#666' }}>Just now</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Fruit platter · Admissions</p>
+                    <p className="text-xs" style={{ color: '#666' }}>15 min ago</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Dessert leftover · Student center</p>
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Make it legible.
@@ -536,8 +542,12 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 
                 {/* Card 4: Real Impact */}
                 <div className="flex-shrink-0 w-80 md:w-96" style={{ minWidth: '320px' }}>
-                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
+                  <div className="h-48 md:h-64 mb-6 flex flex-col justify-center gap-2 px-5 py-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <p className="text-sm font-medium" style={{ color: '#1a1a1a' }}>Catering from event · Chapel</p>
+                    <p className="text-xs" style={{ color: '#666' }}>2 hrs ago</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Snacks · Common room</p>
+                    <p className="text-xs" style={{ color: '#666' }}>4 hrs ago</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Lunch leftovers · Faculty lounge</p>
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     Real Impact.
@@ -552,8 +562,12 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
                 {/* Card 5: It becomes routine */}
                 <div className="flex-shrink-0 w-80 md:w-96 pr-8 md:pr-16" style={{ minWidth: '320px' }}>
-                  <div className="h-48 md:h-64 mb-6 flex items-center justify-center bg-gray-50 rounded-lg">
-                    <img src="/iphone image.png" alt="" className="h-full object-contain transition-transform duration-300 hover:scale-105" loading="lazy" decoding="async" />
+                  <div className="h-48 md:h-64 mb-6 flex flex-col justify-center gap-2 px-5 py-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <p className="text-sm font-medium" style={{ color: '#1a1a1a' }}>Breakfast buffet · Dining hall</p>
+                    <p className="text-xs" style={{ color: '#666' }}>This morning</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Boxed lunches · Lecture hall B</p>
+                    <p className="text-xs" style={{ color: '#666' }}>Yesterday</p>
+                    <p className="text-sm" style={{ color: '#1a1a1a' }}>Cake & coffee · Room 204</p>
                   </div>
                   <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                     It becomes routine.

@@ -369,22 +369,24 @@ function Home() {
               </h2>
             </div>
             
-            {/* Bottom - Horizontal Image Row (commented out for now)
-            <div className="flex gap-4 md:gap-5 lg:gap-6">
-              <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
-                <img src="/Photoshoot1.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
-              </a>
-              <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
-                <img src="/Photoshoot2.png" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
-              </a>
-              <a href="https://www.instagram.com/henry_e_g_b_05/" target="_blank" rel="noopener noreferrer">
-                <img src="/Photoshoot3.jpg" alt="" className="w-80 md:w-96 lg:w-[28rem] h-auto object-cover" />
-              </a>
+            {/* Brands image strip - 1x5 grid */}
+            <div className="grid grid-cols-5 gap-0 w-full max-w-4xl mx-auto">
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
+                <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(300deg) saturate(2)' }}>
+                <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
+                <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
+                <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
+              </div>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
+                <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
+              </div>
             </div>
-            */}
-            
-            {/* Spacer for where image strip was */}
-            <div className="h-[200px] sm:h-[260px] md:h-[340px]"></div>
             
             {/* Tagline */}
             <div className="text-center md:text-left md:pl-16">

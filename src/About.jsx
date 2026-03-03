@@ -9,30 +9,7 @@ function About() {
   const targetRotateX = useRef(0)
   const targetRotateY = useRef(0)
   const animationFrameId = useRef(null)
-  const [showTeamList, setShowTeamList] = useState(false)
   const [selectedMemberIndex, setSelectedMemberIndex] = useState(null)
-  const teamListRef = useRef(null)
-  const teamLinkRef = useRef(null)
-  
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (showTeamList && 
-          teamListRef.current && 
-          !teamListRef.current.contains(event.target) &&
-          teamLinkRef.current &&
-          !teamLinkRef.current.contains(event.target)) {
-        setShowTeamList(false)
-      }
-    }
-    
-    if (showTeamList) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-    
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [showTeamList])
   
   const teamMembers = [
     { name: 'Erin Howard', position: 'Founder', linkedin: 'https://www.linkedin.com/in/erin-howard', image: '/team-member-1-1.png' },
@@ -239,68 +216,9 @@ function About() {
                 We hope it finds you when you need it, and makes the moment a little better.
               </p>
               <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
-                Today, Grapevne is being shaped by a small team of{' '}
-                <span 
-                  ref={teamLinkRef}
-                  onClick={() => setShowTeamList(true)}
-                  className="cursor-pointer"
-                  style={{ 
-                    textDecoration: 'underline',
-                    textDecorationStyle: 'dashed',
-                    textDecorationColor: '#3FA9F5',
-                    color: '#3FA9F5'
-                  }}
-                >
-                  seven college students
-                </span>
-                , and we use it too.
+                Today, Grapevne is being shaped by a small team of seven college students, and we use it too.
               </p>
             </div>
-            {showTeamList && (
-              <div 
-                ref={teamListRef}
-                className="hidden md:block absolute"
-                style={{ 
-                  left: '100%',
-                  marginLeft: '2rem',
-                  width: '220px',
-                  maxWidth: '220px',
-                  top: '0'
-                }}
-              >
-                <ul className="space-y-2">
-                  {teamMembers.map((member, index) => (
-                    <li key={index} style={{ wordWrap: 'break-word', overflowWrap: 'break-word', maxWidth: '220px' }}>
-                      <button
-                        onClick={() => handleMemberClick(index)}
-                        className="text-base transition-colors block group cursor-pointer w-full text-left"
-                        style={{ 
-                          color: '#1a1a1a', 
-                          wordWrap: 'break-word', 
-                          overflowWrap: 'break-word',
-                          maxWidth: '100%',
-                          display: 'block',
-                          background: 'none',
-                          border: 'none',
-                          padding: '0',
-                          font: 'inherit'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.target.style.color = '#3FA9F5'
-                          e.target.textContent = member.position
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.color = '#1a1a1a'
-                          e.target.textContent = member.name
-                        }}
-                      >
-                        {member.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </section>
         </div>
       </main>
