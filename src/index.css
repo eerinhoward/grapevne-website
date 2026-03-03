@@ -75,7 +75,6 @@ a, button {
 
 .footer-link {
   font-family: 'Futura Bold', sans-serif;
-  font-weight: 400;
 }
 
 /* Text selection styling */
@@ -126,7 +125,6 @@ a, button {
   border-radius: 2px;
   transition: background-color 0.2s;
   font-family: 'Futura Bold', sans-serif;
-  font-weight: 400;
 }
 
 .highlight-link:hover {
@@ -159,7 +157,6 @@ a, button {
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Futura Bold', sans-serif;
-  font-weight: 400;
   font-size: 18px;
   margin-right: 12px;
   margin-bottom: 12px;
@@ -197,7 +194,6 @@ a, button {
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
   font-family: 'Futura Bold', sans-serif;
-  font-weight: 400;
   font-size: 13px;
   margin-bottom: 2px;
   white-space: nowrap;

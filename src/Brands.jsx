@@ -252,13 +252,13 @@ function Brands() {
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Short-lived by nature.
                 </h3>
-                <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Events. Activations. Surplus product.
                 </p>
-                <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Pick the window. Post it. Your brand shows up at the top of the feed.
                 </p>
-                <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   It fades when it's over.
                 </p>
               </div>
@@ -275,13 +275,13 @@ function Brands() {
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Campus-wide reach.
                 </h3>
-                <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   You don't really know who will care until it's there.
                 </p>
-                <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   We don't try to guess. <span style={{ color: 'var(--grapevne-blue)' }}>Grapevne</span> puts it in front of the campus right away.
                 </p>
-                <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   One notification. Everyone on campus. No detours.
                 </p>
               </div>
@@ -294,7 +294,7 @@ function Brands() {
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Ambassadors.
                 </h3>
-                <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   A direct way for ambassadors to share products with their campus.
                 </p>
                       </div>
@@ -307,10 +307,10 @@ function Brands() {
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Designed for real turnout.
                 </h3>
-                <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   See response speed and compare outcomes across campuses.
                 </p>
-                <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Context helps teams understand what's working.
                 </p>
                   </div>
@@ -323,10 +323,10 @@ function Brands() {
                 <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Deployed one campus at a time.
                 </h3>
-                <p className="text-base leading-relaxed mb-3 font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed mb-3" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   Brand activity aligns with institutional access, local norms, and the physical constraints of each university.
                 </p>
-                <p className="text-base leading-relaxed font-normal" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                <p className="text-base leading-relaxed" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                   One campus. Then the next.
                 </p>
               </div>

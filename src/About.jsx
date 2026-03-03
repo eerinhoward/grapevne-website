@@ -199,7 +199,7 @@ function About() {
           {/* Our History Section */}
           <section className="flex flex-col items-start gap-8 md:gap-6 relative">
             <div className="w-full space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif', fontWeight: 400 }}>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
                 About
             </h2>
               <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a', textAlign: 'justify' }}>
@@ -269,7 +269,7 @@ function About() {
               {/* Header: "Meet [First Name]" */}
               <h1 
                 className="text-5xl md:text-6xl font-bold mb-6 text-left w-full"
-                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif', fontWeight: 400 }}
+                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}
               >
                 Meet {getFirstName(teamMembers[selectedMemberIndex].name)}.
               </h1>
@@ -280,7 +280,7 @@ function About() {
               {/* Position/Subtext */}
               <p 
                 className="text-xl md:text-2xl mb-8 text-left w-full"
-                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif', fontWeight: 400 }}
+                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}
               >
                 {teamMembers[selectedMemberIndex].position}
               </p>

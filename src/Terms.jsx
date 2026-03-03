@@ -107,7 +107,7 @@ function Terms() {
           </h1>
           
           {/* Legal Process Summary */}
-          <section className="space-y-6" style={{ textAlign: 'justify', fontFamily: '"Futura Bold", sans-serif', fontWeight: 400 }}>
+          <section className="space-y-6" style={{ textAlign: 'justify', fontFamily: '"Futura Bold", sans-serif' }}>
             <p className="text-xl leading-relaxed" style={{ color: '#1a1a1a' }}>
               Our legal framework is built in partnership with the <a href="https://entrepreneurship.mit.edu/bu-law-clinic/" target="_blank" rel="noopener noreferrer" className="highlight-link highlight-link-blue">BU/MIT Student Innovations Law Clinic</a> (SILC), which provides legal advice to student entrepreneurs. The clinic is staffed by BU Law students under law faculty supervision across three practice groups: Intellectual Property & Media; Privacy, Security & Health; and Venture & Finance. SILC has been involved since the beginning of Grapevne's conceptualization and formation, providing ongoing compliance guidance and legal oversight.
             </p>
