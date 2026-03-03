@@ -319,10 +319,12 @@ function Press() {
               <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center" style={{ color: '#1a1a1a' }}>universities</Link>
               {location.pathname === '/universities' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
             </div>
+            {/* brands - commented out for now
             <div className="flex flex-col items-center shrink-0">
               <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center" style={{ color: '#1a1a1a' }}>brands</Link>
               {location.pathname === '/brands' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
             </div>
+            */}
             <div className="flex flex-col items-center shrink-0">
               <Link to="/about" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center" style={{ color: '#1a1a1a' }}>about</Link>
               {location.pathname === '/about' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
@@ -605,7 +607,7 @@ function Press() {
           <div className="flex justify-center items-center gap-3 text-xs text-gray-600">
             <span className="text-gray-400 font-medium">USE CASES</span>
             <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link>
+            {/* <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link">Brands</Link> */}
             <span className="text-gray-400 font-medium ml-2">LEGAL AREA</span>
             <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link">Terms</Link>
             <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link">Privacy</Link>

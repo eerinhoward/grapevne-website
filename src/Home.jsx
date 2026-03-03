@@ -258,10 +258,12 @@ function Home() {
               <Link to="/universities" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center" style={{ color: '#1a1a1a' }}>universities</Link>
               {location.pathname === '/universities' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
             </div>
+            {/* brands - commented out for now
             <div className="flex flex-col items-center shrink-0">
               <Link to="/brands" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase whitespace-nowrap py-2 flex items-center" style={{ color: '#1a1a1a' }}>brands</Link>
               {location.pathname === '/brands' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
             </div>
+            */}
             <div className="flex flex-col items-center shrink-0">
               <Link to="/about" className="text-[13px] sm:text-base md:text-lg font-bold hover-grapevne-blue transition-colors lowercase py-2 flex items-center" style={{ color: '#1a1a1a' }}>about</Link>
               {location.pathname === '/about' && <div className="w-1.5 h-1.5 rounded-full -mt-1" style={{ backgroundColor: 'var(--grapevne-blue)' }} />}
@@ -517,7 +519,7 @@ function Home() {
           <div className="flex flex-wrap justify-center items-center gap-x-2 sm:gap-x-3 gap-y-0.5 text-[11px] sm:text-xs text-gray-600">
             <span className="text-gray-400 font-medium hidden sm:inline">USE CASES</span>
             <Link to="/universities" className="hover-grapevne-blue transition-colors footer-link py-1">Universities</Link>
-            <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link py-1">Brands</Link>
+            {/* <Link to="/brands" className="hover-grapevne-blue transition-colors footer-link py-1">Brands</Link> */}
             <span className="text-gray-400 font-medium hidden sm:inline ml-1">LEGAL</span>
             <Link to="/terms" className="hover-grapevne-blue transition-colors footer-link py-1">Terms</Link>
             <Link to="/privacy" className="hover-grapevne-blue transition-colors footer-link py-1">Privacy</Link>
