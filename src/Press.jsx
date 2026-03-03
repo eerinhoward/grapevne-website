@@ -422,97 +422,70 @@ function Press() {
           ></div>
         </div>
         
-        {/* Scrolling Tickets Container */}
-        <div className="overflow-hidden pb-8">
-          <div 
-            ref={ticketsContainerRef}
-            className="flex gap-6 px-8" 
-            style={{ 
-              minWidth: 'max-content'
-            }}
-          >
-            {pressItems.map((item, index) => {
-              // Base rotation for each ticket
-              const rotations = [-0.5, 0.3, -0.2, 0.4, -0.3, 0.2, -0.4, 0.5, -0.1];
-              const baseRotation = rotations[index % rotations.length];
-              
-              return (
-              <div 
-                key={item.id} 
-                className="flex-shrink-0 w-64 relative ticket-wrapper"
-                data-index={index}
-                style={{
-                  transform: `rotate(${baseRotation}deg)`,
-                  transformOrigin: 'top center',
-                  willChange: 'transform'
-                }}
+        {/* Scrolling Tickets Container - receipts commented out for now */}
+        <div ref={ticketsContainerRef} className="overflow-hidden pb-8 flex-1 flex items-center justify-center">
+          {/* {pressItems.map((item, index) => {
+            const rotations = [-0.5, 0.3, -0.2, 0.4, -0.3, 0.2, -0.4, 0.5, -0.1];
+            const baseRotation = rotations[index % rotations.length];
+            return (
+            <div
+              key={item.id}
+              className="flex-shrink-0 w-64 relative ticket-wrapper"
+              data-index={index}
+              style={{
+                transform: `rotate(${baseRotation}deg)`,
+                transformOrigin: 'top center',
+                willChange: 'transform'
+              }}
+            >
+              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-12 h-2 bg-gray-400 rounded-t-lg border-2 border-gray-500 border-b-0 shadow-md"></div>
+              <div
+                className="receipt-ticket border-2 border-gray-300 rounded-sm overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2 relative mt-1 cursor-pointer"
+                onClick={() => setSelectedItem(item)}
               >
-                {/* Ticket Clip - attaches to rail */}
-                <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-12 h-2 bg-gray-400 rounded-t-lg border-2 border-gray-500 border-b-0 shadow-md"></div>
-                
-                {/* Ticket */}
-                <div 
-                  className="receipt-ticket border-2 border-gray-300 rounded-sm overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2 relative mt-1 cursor-pointer"
-                  onClick={() => setSelectedItem(item)}
-                >
-                  {/* Order Ticket Header - like kitchen ticket */}
-                  <div className="bg-gray-50 border-b-2 border-dashed border-gray-300 px-3 py-2 flex items-center justify-between relative z-10" style={{ background: 'linear-gradient(to bottom, #f5f5f5 0%, #f0f0f0 100%)' }}>
-                    <div className="text-xs font-mono text-gray-600 font-bold">
-                      ORDER #{String(item.id).padStart(3, '0')}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {item.teamMember ? (
-                        <span className="team-member-tag text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                          {item.source.toUpperCase()}
-                        </span>
-                      ) : (
-                        <div className="text-xs font-mono text-gray-500">
-                          {item.source.toUpperCase()}
-                        </div>
-                      )}
-                    </div>
+                <div className="bg-gray-50 border-b-2 border-dashed border-gray-300 px-3 py-2 flex items-center justify-between relative z-10" style={{ background: 'linear-gradient(to bottom, #f5f5f5 0%, #f0f0f0 100%)' }}>
+                  <div className="text-xs font-mono text-gray-600 font-bold">
+                    ORDER #{String(item.id).padStart(3, '0')}
                   </div>
-                  
-                  {/* Image above title - edge to edge */}
-                  <div className="w-full overflow-hidden" style={{ aspectRatio: '4/2' }}>
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="flex items-center gap-2">
+                    {item.teamMember ? (
+                      <span className="team-member-tag text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+                        {item.source.toUpperCase()}
+                      </span>
+                    ) : (
+                      <div className="text-xs font-mono text-gray-500">
+                        {item.source.toUpperCase()}
+                      </div>
+                    )}
                   </div>
-                  
-                  {/* Ticket Content - like order items */}
-                  <div className="p-4 relative z-10">
-                    <div className="mb-3">
-                      <div className="text-xs font-mono text-gray-500 mb-1">ITEM:</div>
-                      <h2 className="text-base font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
-                        {item.title}
-                      </h2>
-                    </div>
-                    
-                    <div className="mb-3 border-t border-dashed border-gray-200 pt-3">
-                      <div className="text-xs font-mono text-gray-500 mb-1">FROM:</div>
-                      <p className="text-sm text-gray-700 font-medium">
-                        {item.author}
-                      </p>
-                    </div>
-                    
-                    <div className="border-t border-dashed border-gray-200 pt-3">
-                      <div className="text-xs font-mono text-gray-500 mb-1">NOTES:</div>
-                      <p className="text-xs text-gray-700 leading-relaxed">
-                        "{item.quote}"
-                      </p>
-                    </div>
-                  </div>
-                  
-                  {/* Perforated edge effect at bottom */}
-                  <div className="h-1 bg-gray-100 border-t border-dashed border-gray-300"></div>
                 </div>
+                <div className="w-full overflow-hidden" style={{ aspectRatio: '4/2' }}>
+                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-4 relative z-10">
+                  <div className="mb-3">
+                    <div className="text-xs font-mono text-gray-500 mb-1">ITEM:</div>
+                    <h2 className="text-base font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
+                      {item.title}
+                    </h2>
+                  </div>
+                  <div className="mb-3 border-t border-dashed border-gray-200 pt-3">
+                    <div className="text-xs font-mono text-gray-500 mb-1">FROM:</div>
+                    <p className="text-sm text-gray-700 font-medium">{item.author}</p>
+                  </div>
+                  <div className="border-t border-dashed border-gray-200 pt-3">
+                    <div className="text-xs font-mono text-gray-500 mb-1">NOTES:</div>
+                    <p className="text-xs text-gray-700 leading-relaxed">"{item.quote}"</p>
+                  </div>
+                </div>
+                <div className="h-1 bg-gray-100 border-t border-dashed border-gray-300"></div>
               </div>
-              );
-            })}
-          </div>
+            </div>
+            );
+          })} */}
+          <p className="text-2xl md:text-3xl font-bold text-center" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
+            coming soon
+          </p>
         </div>
       </main>
 
