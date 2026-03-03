@@ -1,5 +1,6 @@
 import React, { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Home from './Home'
 import Press from './Press'
 import Brands from './Brands'
@@ -162,6 +163,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/press" element={<Press />} />
