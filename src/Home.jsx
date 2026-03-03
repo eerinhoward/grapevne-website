@@ -370,7 +370,7 @@ function Home() {
             </div>
             
             {/* Spacer */}
-            <div className="h-[120px] sm:h-[160px] md:h-[200px] flex-shrink-0" />
+            <div className="h-8 sm:h-10 md:h-12 flex-shrink-0" />
             
             {/* Brands image strip - 1x5 grid, edge to edge like Brands page */}
             <div className="grid grid-cols-5 gap-0 w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]" style={{ maxWidth: '100vw' }}>
