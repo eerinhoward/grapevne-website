@@ -383,7 +383,7 @@ function Home() {
               <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(60deg) saturate(2)' }}>
                 <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
               </div>
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
+              <div className="relative w-full overflow-hidden hidden md:block" style={{ aspectRatio: '4 / 3', filter: 'grayscale(1)' }}>
                 <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
               </div>
               <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3' }}>
