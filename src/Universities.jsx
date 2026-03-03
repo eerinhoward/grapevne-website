@@ -576,25 +576,25 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
               </h2>
               <div className="grid md:grid-cols-2 gap-8 text-left mb-10" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
                 <div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>Data-Driven Decision Making</h3>
+                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Data-Driven Decision Making</h3>
                   <p className="text-base leading-relaxed" style={{ color: '#444' }}>
                     Real-time behavioral data on food sharing, including post creation, engagement, and check-in rates, translates into visibility on waste reduction and surplus redistribution patterns.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>Financial Optimization</h3>
+                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Financial Optimization</h3>
                   <p className="text-base leading-relaxed" style={{ color: '#444' }}>
                     Campus-specific analytics on daily active users, weekly posts, and conversion metrics help you spend effectively and track how well surplus food reaches students before it becomes waste.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>Innovation</h3>
+                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Innovation</h3>
                   <p className="text-base leading-relaxed" style={{ color: '#444' }}>
                     Digitizing the surplus-to-demand pipeline turns your campus into a living test bed for zero-waste initiatives and carbon footprint reduction.
                   </p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>Student Experience</h3>
+                  <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>Student Experience</h3>
                   <p className="text-base leading-relaxed" style={{ color: '#444' }}>
                     Accessible solutions inspired by humanity and powered by technology, removing barriers to food access and promoting environmentally conscious behavior on campus.
                   </p>
