@@ -236,7 +236,7 @@ function Home() {
   }, [])
 
   return (
-    <div className="bg-white flex flex-col" style={{ minHeight: '1200vh' }}>
+    <div className="bg-white flex flex-col" style={{ minHeight: '650vh' }}>
       {/* Background Strip - hides with navbar */}
       <div 
         className="fixed top-0 left-0 right-0 h-[88px] sm:h-[100px] md:h-[120px] bg-transparent z-10 transition-transform duration-300"

@@ -567,10 +567,10 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
 
           {/* Final Section: Full-Screen Device Mockup */}
           <section 
-            className="min-h-screen flex flex-col items-center justify-center px-8 md:px-16 relative"
+            className="min-h-[40vh] py-16 flex flex-col items-center justify-center px-8 md:px-16 relative"
             style={{ backgroundColor: '#fafafa' }}
           >
-            <div className="max-w-4xl mx-auto text-center mb-12 md:pt-24" style={{ paddingTop: '3.25rem' }}>
+            <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
                 If there's free food, students know.
               </h2>
