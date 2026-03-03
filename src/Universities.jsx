@@ -578,7 +578,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 <div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>Data-Driven Decision Making</h3>
                   <p className="text-base leading-relaxed" style={{ color: '#444' }}>
-                    Real-time behavioral data on food sharing—post creation, engagement, check-in rates—translates into visibility on waste reduction and surplus redistribution patterns.
+                    Real-time behavioral data on food sharing, including post creation, engagement, and check-in rates, translates into visibility on waste reduction and surplus redistribution patterns.
                   </p>
                 </div>
                 <div>
@@ -596,7 +596,7 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
                 <div>
                   <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>Student Experience</h3>
                   <p className="text-base leading-relaxed" style={{ color: '#444' }}>
-                    Accessible solutions inspired by humanity and powered by technology—removing barriers to food access and promoting environmentally conscious behavior on campus.
+                    Accessible solutions inspired by humanity and powered by technology, removing barriers to food access and promoting environmentally conscious behavior on campus.
                   </p>
                 </div>
               </div>
