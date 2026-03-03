@@ -372,8 +372,8 @@ function Home() {
             {/* Spacer */}
             <div className="h-8 sm:h-10 md:h-12 flex-shrink-0" />
             
-            {/* Brands image strip - 1x5 grid, edge to edge like Brands page */}
-            <div className="grid grid-cols-5 gap-0 w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]" style={{ maxWidth: '100vw' }}>
+            {/* Brands image grid - 2x2 on mobile, 1x5 strip on desktop */}
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-0 w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]" style={{ maxWidth: '100vw' }}>
               <div className="relative w-full overflow-hidden" style={{ aspectRatio: '4 / 3', filter: 'sepia(1) hue-rotate(180deg) saturate(2)' }}>
                 <img src="/pizza food.png" alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
               </div>
