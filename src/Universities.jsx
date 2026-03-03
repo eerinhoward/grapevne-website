@@ -548,22 +548,6 @@ The app is launching campus-wide in Spring 2026 as part of Trinity's broader sus
             </div>
           </div>
 
-          {/* Video Section */}
-          <section 
-            className="w-full"
-            style={{ backgroundColor: '#fafafa', position: 'static' }}
-          >
-            <video 
-              src="/demo.mov"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              className="w-full h-auto"
-              style={{ display: 'block' }}
-            />
-          </section>
 
           {/* Final Section: Full-Screen Device Mockup */}
           <section 
