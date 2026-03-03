@@ -237,12 +237,13 @@ function Home() {
 
   return (
     <div className="bg-white flex flex-col" style={{ minHeight: '1200vh' }}>
-      {/* Homepage nav - commented out for now */}
-      {/*
+      {/* Background Strip - hides with navbar */}
       <div 
         className="fixed top-0 left-0 right-0 h-[88px] sm:h-[100px] md:h-[120px] bg-transparent z-10 transition-transform duration-300"
         style={{ transform: showHeader ? 'translateY(0)' : 'translateY(-100%)' }}
       />
+      
+      {/* Header with Logo - shows on scroll up, hides on scroll down */}
       <header 
         className="pt-4 pb-4 px-4 fixed left-0 right-0 bg-transparent z-20 transition-transform duration-300"
         style={{ 
@@ -297,14 +298,13 @@ function Home() {
           </div>
         </div>
       </header>
-      */}
 
-      {/* Main Content - full viewport when nav is hidden */}
+      {/* Main Content - accounts for header, footer, and safe areas on iPhone */}
       <main 
         ref={mainRef} 
         className="fixed left-0 right-0 flex items-center justify-center overflow-hidden"
         style={{
-          top: 'env(safe-area-inset-top, 0px)',
+          top: 'calc(88px + env(safe-area-inset-top, 0px))',
           bottom: 'calc(72px + env(safe-area-inset-bottom, 0px))'
         }}
       >
