@@ -269,7 +269,7 @@ function About() {
               {/* Header: "Meet [First Name]" */}
               <h1 
                 className="text-5xl md:text-6xl font-bold mb-6 text-left w-full"
-                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}
+                style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
               >
                 Meet {getFirstName(teamMembers[selectedMemberIndex].name)}.
               </h1>
@@ -280,7 +280,7 @@ function About() {
               {/* Position/Subtext */}
               <p 
                 className="text-xl md:text-2xl mb-8 text-left w-full"
-                style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}
+                style={{ color: '#1a1a1a', fontFamily: 'Helvetica, Arial, sans-serif' }}
               >
                 {teamMembers[selectedMemberIndex].position}
               </p>

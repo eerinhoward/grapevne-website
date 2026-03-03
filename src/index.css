@@ -74,7 +74,7 @@ a, button {
 }
 
 .footer-link {
-  font-family: 'Futura Bold', sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 /* Text selection styling */
@@ -124,7 +124,7 @@ a, button {
   text-decoration: none;
   border-radius: 2px;
   transition: background-color 0.2s;
-  font-family: 'Futura Bold', sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
 .highlight-link:hover {
@@ -156,7 +156,7 @@ a, button {
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Futura Bold', sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
   font-size: 18px;
   margin-right: 12px;
   margin-bottom: 12px;
@@ -193,7 +193,7 @@ a, button {
   position: relative;
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
-  font-family: 'Futura Bold', sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
   font-size: 13px;
   margin-bottom: 2px;
   white-space: nowrap;
