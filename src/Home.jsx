@@ -19,29 +19,11 @@ function Home() {
   const trailIdRef = useRef(0)
   const mainRef = useRef(null)
   const [trailImages, setTrailImages] = useState([])
-  const [imagesReady, setImagesReady] = useState(false)
   const images = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg', '/homepage.jpg', '/snake.jpg', '/taking.jpg', '/gathering.jpg']
   const maxImages = 8
-  const TRAIL_THROTTLE_MS = 16 // ~60fps
-  const TRAIL_DISTANCE_PX = 35
+  const TRAIL_THROTTLE_MS = 8
+  const TRAIL_DISTANCE_PX = 22
   const lastTrailTimeRef = useRef(0)
-
-  // Preload all trail images and verify they're ready before enabling trail
-  useEffect(() => {
-    let mounted = true
-    const loadPromises = images.map((src) => {
-      return new Promise((resolve) => {
-        const img = new Image()
-        img.onload = () => resolve(src)
-        img.onerror = () => resolve(null) // Skip failed images
-        img.src = src
-      })
-    })
-    Promise.all(loadPromises).then(() => {
-      if (mounted) setImagesReady(true)
-    })
-    return () => { mounted = false }
-  }, [])
 
   const getRandomImageIndex = () => {
     if (images.length <= 1) return 0
@@ -60,7 +42,7 @@ function Home() {
     }
 
     const addTrailAt = (clientX, clientY) => {
-      if (!imagesReady || !mainRef.current) return
+      if (!mainRef.current) return
 
       const rect = mainRef.current.getBoundingClientRect()
       const x = clientX - rect.left
@@ -114,7 +96,7 @@ function Home() {
       window.removeEventListener('touchmove', handlePointer)
       window.removeEventListener('touchstart', handleTouchStart)
     }
-  }, [currentSection, imagesReady])
+  }, [currentSection])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -335,7 +317,7 @@ function Home() {
                   willChange: 'transform',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
-                  animation: 'trailFadeIn 0.2s ease-out forwards'
+                  animation: 'trailFadeIn 0.08s ease-out forwards'
                 }}
               />
             ))}
