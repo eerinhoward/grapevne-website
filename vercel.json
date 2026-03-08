@@ -5,6 +5,10 @@
       "dest": "/.well-known/$1",
       "headers": { "Content-Type": "application/json", "Cache-Control": "public, max-age=3600" }
     },
+    {
+      "src": "/__/auth/links",
+      "dest": "/api/auth-redirect"
+    },
     { "handle": "filesystem" },
     {
       "src": "/(.*)",
