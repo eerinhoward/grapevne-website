@@ -1,14 +1,14 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/.well-known/(.*)",
-      "headers": [
-        { "key": "Content-Type", "value": "application/json" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
+      "src": "/.well-known/(.*)",
+      "dest": "/.well-known/$1",
+      "headers": { "Content-Type": "application/json", "Cache-Control": "public, max-age=3600" }
+    },
+    { "handle": "filesystem" },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
