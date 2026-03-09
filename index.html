@@ -2,6 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        var p = new URLSearchParams(window.location.search);
+        if (p.get('mode') === 'signIn' && p.get('oobCode')) {
+          window.location.href = 'grapevne://auth/verify?link=' + encodeURIComponent(window.location.href);
+        }
+      })();
+    </script>
     <link rel="shortcut icon" type="image/png" href="/filledTransparent.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/filledTransparent.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/filledTransparent.png" />
