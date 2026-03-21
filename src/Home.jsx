@@ -386,11 +386,14 @@ function Home() {
               </div>
             </div>
             
-            {/* Tagline */}
+            {/* Tagline - Instagram-style value prop */}
             <div className="text-center md:text-left md:pl-16">
-              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                The feed that feeds you.
+              <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
+                Grapevne brings you closer to the free food, events, and community on your campus.
               </h2>
+              <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                The platform for posting and discovering leftover food—built by students, for students and faculty.
+              </p>
             </div>
             
             {/* Scroll hint arrow */}
@@ -526,7 +529,8 @@ function Home() {
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-black text-white font-medium hover:opacity-90 transition-opacity mt-2"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-medium hover:opacity-90 transition-opacity mt-2"
+              style={{ backgroundColor: 'var(--grapevne-blue)' }}
               aria-label="Download on the App Store"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
