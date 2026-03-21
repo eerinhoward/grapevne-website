@@ -344,15 +344,14 @@ function Home() {
           }}
         >
           <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6 w-full max-w-2xl mx-auto px-4 sm:px-6 md:px-0 md:mx-0 md:max-w-none">
-            {/* Top - Grapevne */}
-            <div className="text-center md:text-left md:pl-16">
+            {/* Top spacer - keeps Grapevne from sitting too high */}
+            <div className="h-8 sm:h-10 md:h-12 flex-shrink-0" />
+            {/* Grapevne */}
+            <div className="text-center md:text-left md:pl-16 -mb-1 sm:-mb-2">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold" style={{ fontFamily: '"Futura Bold", sans-serif', color: 'var(--grapevne-blue)' }}>
                 Grapevne
               </h2>
             </div>
-            
-            {/* Spacer */}
-            <div className="h-8 sm:h-10 md:h-12 flex-shrink-0" />
             
             {/* Brands image grid - 2x2 on mobile, 1x5 strip on desktop */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-0 w-[100vw] relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]" style={{ maxWidth: '100vw' }}>

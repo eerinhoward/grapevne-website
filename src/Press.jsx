@@ -228,85 +228,14 @@ function Press() {
   const pressItems = [
     {
       id: 1,
-      title: "Revolutionizing Campus Food Discovery",
-      author: "Campus Tech Review",
-      source: "campustech.review",
-      quote: "Grapevne transforms how students find free food on campus while providing valuable insights to universities.",
+      title: "Trinity College · Food and Dining",
+      author: "Trinity College Sustainability",
+      source: "trincoll.edu",
+      sourceUrl: "https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/",
+      quote: "To reduce food waste, Trinity is now offering the Grapevne app, which allows anyone on campus who has leftover food, whether it be from an event, or just an opened box of cereal in your dorm, to offer that food to the community. Anyone looking for free food will be notified and can claim it. Help us keep food out of the landfill while also feeding hungry students.",
       teamMember: false,
       image: photoshootImages[0]
     },
-    {
-      id: 2,
-      title: "A Game Changer for Student Life",
-      author: "Erin Howard",
-      source: "Founder",
-      quote: "The app addresses food waste and social isolation simultaneously - a win-win for campuses.",
-      teamMember: true,
-      image: photoshootImages[1]
-    },
-    {
-      id: 3,
-      title: "Gen Z's New Favorite App",
-      author: "Tech Campus",
-      source: "techcampus.com",
-      quote: "Finally, a campus app that students actually want to use. The free food angle is genius.",
-      teamMember: false,
-      image: photoshootImages[2]
-    },
-    {
-      id: 4,
-      title: "Sustainability Meets Innovation",
-      author: "Green Campus",
-      source: "greencampus.org",
-      quote: "Grapevne's approach to reducing food waste through student engagement is innovative and effective.",
-      teamMember: false,
-      image: photoshootImages[3]
-    },
-    {
-      id: 5,
-      title: "Trinity College Partnership",
-      author: "Trinity News",
-      source: "trinity.edu/news",
-      quote: "Trinity becomes the first official partner, bringing real-time behavioral insights to campus operations.",
-      teamMember: false,
-      image: photoshootImages[4]
-    },
-    {
-      id: 6,
-      title: "The Future of Campus Analytics",
-      author: "Higher Ed Tech",
-      source: "higheredtech.com",
-      quote: "Universities gain unprecedented visibility into student movement and engagement patterns.",
-      teamMember: false,
-      image: photoshootImages[5]
-    },
-    {
-      id: 7,
-      title: "Brand Engagement on Campus",
-      author: "Marketing Campus",
-      source: "marketingcampus.io",
-      quote: "Brands can now understand campus-level interest and run more effective activations.",
-      teamMember: false,
-      image: photoshootImages[6]
-    },
-    {
-      id: 8,
-      title: "Utility-First Design Wins",
-      author: "UX Campus",
-      source: "uxcampus.design",
-      quote: "By focusing on daily utility, Grapevne achieves higher engagement than typical campus apps.",
-      teamMember: false,
-      image: photoshootImages[7]
-    },
-    {
-      id: 9,
-      title: "Building the Data Layer",
-      author: "Data Campus",
-      source: "datacampus.tech",
-      quote: "Grapevne is building the behavioral data layer for closed institutional networks.",
-      teamMember: false,
-      image: photoshootImages[8]
-    }
   ]
 
   return (
@@ -422,70 +351,68 @@ function Press() {
           ></div>
         </div>
         
-        {/* Scrolling Tickets Container - receipts commented out for now */}
-        <div ref={ticketsContainerRef} className="overflow-hidden pb-8 flex-1 flex items-center justify-center">
-          {/* {pressItems.map((item, index) => {
-            const rotations = [-0.5, 0.3, -0.2, 0.4, -0.3, 0.2, -0.4, 0.5, -0.1];
-            const baseRotation = rotations[index % rotations.length];
-            return (
-            <div
-              key={item.id}
-              className="flex-shrink-0 w-64 relative ticket-wrapper"
-              data-index={index}
-              style={{
-                transform: `rotate(${baseRotation}deg)`,
-                transformOrigin: 'top center',
-                willChange: 'transform'
-              }}
-            >
-              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-12 h-2 bg-gray-400 rounded-t-lg border-2 border-gray-500 border-b-0 shadow-md"></div>
-              <div
-                className="receipt-ticket border-2 border-gray-300 rounded-sm overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2 relative mt-1 cursor-pointer"
-                onClick={() => setSelectedItem(item)}
-              >
-                <div className="bg-gray-50 border-b-2 border-dashed border-gray-300 px-3 py-2 flex items-center justify-between relative z-10" style={{ background: 'linear-gradient(to bottom, #f5f5f5 0%, #f0f0f0 100%)' }}>
-                  <div className="text-xs font-mono text-gray-600 font-bold">
-                    ORDER #{String(item.id).padStart(3, '0')}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {item.teamMember ? (
-                      <span className="team-member-tag text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                        {item.source.toUpperCase()}
-                      </span>
-                    ) : (
-                      <div className="text-xs font-mono text-gray-500">
-                        {item.source.toUpperCase()}
+        {/* Scrolling Tickets Container */}
+        <div className="overflow-hidden pb-8">
+          <div
+            ref={ticketsContainerRef}
+            className="flex gap-6 px-8 justify-center items-start"
+            style={{ minWidth: 'max-content' }}
+          >
+            {pressItems.map((item, index) => {
+              const rotations = [-0.5, 0.3, -0.2];
+              const baseRotation = rotations[index % rotations.length];
+              return (
+                <div
+                  key={item.id}
+                  className="flex-shrink-0 w-64 md:w-80 relative ticket-wrapper"
+                  data-index={index}
+                  style={{
+                    transform: `rotate(${baseRotation}deg)`,
+                    transformOrigin: 'top center',
+                    willChange: 'transform'
+                  }}
+                >
+                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-12 h-2 bg-gray-400 rounded-t-lg border-2 border-gray-500 border-b-0 shadow-md"></div>
+                  <div
+                    className="receipt-ticket border-2 border-gray-300 rounded-sm overflow-hidden hover:shadow-xl transition-all hover:-translate-y-2 relative mt-1 cursor-pointer bg-white"
+                    onClick={() => item.sourceUrl ? window.open(item.sourceUrl, '_blank') : setSelectedItem(item)}
+                  >
+                    <div className="bg-gray-50 border-b-2 border-dashed border-gray-300 px-3 py-2 flex items-center justify-between relative z-10" style={{ background: 'linear-gradient(to bottom, #f5f5f5 0%, #f0f0f0 100%)' }}>
+                      <div className="text-xs font-mono text-gray-600 font-bold">
+                        PRESS
                       </div>
-                    )}
+                      <div className="flex items-center gap-2">
+                        <div className="text-xs font-mono text-gray-500">
+                          {item.source.toUpperCase()}
+                        </div>
+                        {item.sourceUrl && <span className="text-gray-400">↗</span>}
+                      </div>
+                    </div>
+                    <div className="w-full overflow-hidden" style={{ aspectRatio: '4/2' }}>
+                      <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="p-4 relative z-10">
+                      <div className="mb-3">
+                        <div className="text-xs font-mono text-gray-500 mb-1">SOURCE:</div>
+                        <h2 className="text-base font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
+                          {item.title}
+                        </h2>
+                      </div>
+                      <div className="mb-3 border-t border-dashed border-gray-200 pt-3">
+                        <div className="text-xs font-mono text-gray-500 mb-1">FROM:</div>
+                        <p className="text-sm text-gray-700 font-medium">{item.author}</p>
+                      </div>
+                      <div className="border-t border-dashed border-gray-200 pt-3">
+                        <div className="text-xs font-mono text-gray-500 mb-1">QUOTE:</div>
+                        <p className="text-xs text-gray-700 leading-relaxed">"{item.quote}"</p>
+                      </div>
+                    </div>
+                    <div className="h-1 bg-gray-100 border-t border-dashed border-gray-300"></div>
                   </div>
                 </div>
-                <div className="w-full overflow-hidden" style={{ aspectRatio: '4/2' }}>
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="p-4 relative z-10">
-                  <div className="mb-3">
-                    <div className="text-xs font-mono text-gray-500 mb-1">ITEM:</div>
-                    <h2 className="text-base font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
-                      {item.title}
-                    </h2>
-                  </div>
-                  <div className="mb-3 border-t border-dashed border-gray-200 pt-3">
-                    <div className="text-xs font-mono text-gray-500 mb-1">FROM:</div>
-                    <p className="text-sm text-gray-700 font-medium">{item.author}</p>
-                  </div>
-                  <div className="border-t border-dashed border-gray-200 pt-3">
-                    <div className="text-xs font-mono text-gray-500 mb-1">NOTES:</div>
-                    <p className="text-xs text-gray-700 leading-relaxed">"{item.quote}"</p>
-                  </div>
-                </div>
-                <div className="h-1 bg-gray-100 border-t border-dashed border-gray-300"></div>
-              </div>
-            </div>
-            );
-          })} */}
-          <p className="text-2xl md:text-3xl font-bold text-center" style={{ color: '#1a1a1a', fontFamily: '"Futura Bold", sans-serif' }}>
-            coming soon
-          </p>
+              );
+            })}
+          </div>
         </div>
       </main>
 
