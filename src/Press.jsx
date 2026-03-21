@@ -364,7 +364,7 @@ function Press() {
               return (
                 <div
                   key={item.id}
-                  className="flex-shrink-0 w-56 md:w-72 relative ticket-wrapper"
+                  className="flex-shrink-0 w-64 md:w-80 relative ticket-wrapper"
                   data-index={index}
                   style={{
                     transform: `rotate(${baseRotation}deg)`,
@@ -388,10 +388,10 @@ function Press() {
                         {item.sourceUrl && <span className="text-gray-400">↗</span>}
                       </div>
                     </div>
-                    <div className="w-full overflow-hidden" style={{ aspectRatio: '4/2' }}>
+                    <div className="w-full overflow-hidden" style={{ aspectRatio: '4/1.6' }}>
                       <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
                     </div>
-                    <div className="p-4 relative z-10">
+                    <div className="p-3 relative z-10">
                       <div className="mb-3">
                         <div className="text-xs font-mono text-gray-500 mb-1">SOURCE:</div>
                         <h2 className="text-base font-bold leading-tight mb-2" style={{ color: '#1a1a1a' }}>
