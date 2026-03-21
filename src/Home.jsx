@@ -326,7 +326,7 @@ function Home() {
         
         {/* Original Slogan */}
         <div 
-          className="absolute inset-0 flex items-start justify-center md:justify-start transition-all duration-200 ease-out cursor-pointer"
+          className="absolute inset-0 flex items-start justify-center md:justify-start transition-all duration-500 ease-out cursor-pointer"
           style={{
             transform: currentSection === 0 ? 'translateY(0)' : 'translateY(-100%)',
             opacity: currentSection === 0 ? 1 : 0,
@@ -378,12 +378,26 @@ function Home() {
                 The feed that feeds you.
               </h2>
             </div>
+            
+            {/* Scroll hint arrow */}
+            <div 
+              className="flex justify-center mt-6 md:mt-8 animate-bounce"
+              onClick={() => window.scrollTo({ top: 300, behavior: 'smooth' })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && window.scrollTo({ top: 300, behavior: 'smooth' })}
+              style={{ cursor: 'pointer' }}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--grapevne-blue)' }}>
+                <path d="M12 5v14M19 12l-7 7-7-7" />
+              </svg>
+            </div>
           </div>
         </div>
         
         {/* Middle Content - Grapevne description with animated sequence */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-200 ease-out px-5 sm:px-8 md:px-16 overflow-y-auto"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out px-5 sm:px-8 md:px-16 overflow-y-auto"
           style={{
             transform: currentSection === 1 ? 'translateY(0)' : (currentSection === 2 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 1 ? 1 : 0,
@@ -392,7 +406,7 @@ function Home() {
         >
           {/* Steps 0-4: Stack on mobile, side-by-side on desktop */}
           <div 
-            className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 transition-all duration-200 py-4 md:py-0"
+            className="absolute inset-0 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-16 lg:gap-24 transition-all duration-500 py-4 md:py-0"
             style={{ 
               opacity: middleStep >= 0 ? 1 : 0,
               pointerEvents: middleStep >= 0 ? 'auto' : 'none'
@@ -421,7 +435,7 @@ function Home() {
 
         {/* Section 2 - One swipe RSVP */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-200 ease-out px-5 sm:px-8 md:px-16 overflow-y-auto"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out px-5 sm:px-8 md:px-16 overflow-y-auto"
           style={{
             transform: currentSection === 2 ? 'translateY(-5%)' : (currentSection === 3 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 2 ? 1 : 0,
@@ -449,7 +463,7 @@ function Home() {
         
         {/* Section 3 - Campus footprint */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-200 ease-out px-5 sm:px-8 md:px-16 overflow-y-auto"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out px-5 sm:px-8 md:px-16 overflow-y-auto"
           style={{
             transform: currentSection === 3 ? 'translateY(-5%)' : (currentSection === 4 ? 'translateY(-100%)' : 'translateY(100%)'),
             opacity: currentSection === 3 ? 1 : 0,
@@ -477,7 +491,7 @@ function Home() {
         
         {/* Section 4 - Grapevne */}
         <div 
-          className="absolute inset-0 flex items-center justify-center transition-all duration-200 ease-out px-5 sm:px-8 md:px-16"
+          className="absolute inset-0 flex items-center justify-center transition-all duration-500 ease-out px-5 sm:px-8 md:px-16"
           style={{
             transform: currentSection === 4 ? 'translateY(-5%)' : 'translateY(100%)',
             opacity: currentSection === 4 ? 1 : 0,
