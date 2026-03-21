@@ -19,17 +19,26 @@ function Home() {
   const trailIdRef = useRef(0)
   const mainRef = useRef(null)
   const [trailImages, setTrailImages] = useState([])
-  const images = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg', '/homepage.jpg', '/snake.jpg', '/taking.jpg', '/gathering.jpg']
-  const maxImages = 8
-  const TRAIL_THROTTLE_MS = 8
-  const TRAIL_DISTANCE_PX = 22
+  const trailImagesList = ['/Photoshoot1.jpg', '/Photoshoot2.png', '/Photoshoot3.jpg']
+  const maxTrailImages = 4
+  const TRAIL_THROTTLE_MS = 40
+  const TRAIL_DISTANCE_PX = 50
   const lastTrailTimeRef = useRef(0)
 
+  useEffect(() => {
+    if (currentSection === 4) {
+      trailImagesList.forEach((src) => {
+        const img = new Image()
+        img.src = src
+      })
+    }
+  }, [currentSection])
+
   const getRandomImageIndex = () => {
-    if (images.length <= 1) return 0
+    if (trailImagesList.length <= 1) return 0
     let newIndex
     do {
-      newIndex = Math.floor(Math.random() * images.length)
+      newIndex = Math.floor(Math.random() * trailImagesList.length)
     } while (newIndex === lastImageIndexRef.current)
     lastImageIndexRef.current = newIndex
     return newIndex
@@ -64,12 +73,12 @@ function Home() {
           id: ++trailIdRef.current,
           x,
           y,
-          src: images[getRandomImageIndex()]
+          src: trailImagesList[getRandomImageIndex()]
         }
 
         setTrailImages((prev) => {
           const updated = [...prev, newImage]
-          return updated.length > maxImages ? updated.slice(-maxImages) : updated
+          return updated.length > maxTrailImages ? updated.slice(-maxTrailImages) : updated
         })
       }
     }
@@ -295,8 +304,8 @@ function Home() {
         {/* Trail Images - Bottom Layer (on Grapevne section) */}
         {currentSection === 4 && (
           <div 
-            className="absolute inset-0 pointer-events-none" 
-            style={{ zIndex: 1 }}
+            className="absolute inset-0 pointer-events-none overflow-hidden" 
+            style={{ zIndex: 1, contain: 'layout style paint' }}
           >
             {trailImages.map((img, index) => (
               <img
@@ -304,20 +313,16 @@ function Home() {
                 src={img.src}
                 alt=""
                 loading="eager"
-                fetchPriority="high"
                 decoding="async"
                 className="absolute object-cover select-none"
                 style={{
                   left: img.x,
                   top: img.y,
-                  width: 'clamp(5.5rem, 20vw, 24rem)',
+                  width: 'clamp(4rem, 14vw, 14rem)',
                   aspectRatio: '4/3',
                   transform: 'translate(-50%, -50%)',
                   zIndex: index,
-                  willChange: 'transform',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden',
-                  animation: 'trailFadeIn 0.08s ease-out forwards'
+                  animation: 'trailFadeIn 0.15s ease-out forwards'
                 }}
               />
             ))}
