@@ -352,7 +352,7 @@ function Press() {
         </div>
         
         {/* Scrolling Tickets Container */}
-        <div className="overflow-hidden pb-8">
+        <div className="overflow-hidden pb-24 sm:pb-28">
           <div
             ref={ticketsContainerRef}
             className="flex gap-6 px-8 justify-center items-start"
