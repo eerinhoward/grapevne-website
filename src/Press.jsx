@@ -364,7 +364,7 @@ function Press() {
               return (
                 <div
                   key={item.id}
-                  className="flex-shrink-0 w-64 md:w-80 relative ticket-wrapper"
+                  className="flex-shrink-0 w-56 md:w-72 relative ticket-wrapper"
                   data-index={index}
                   style={{
                     transform: `rotate(${baseRotation}deg)`,
