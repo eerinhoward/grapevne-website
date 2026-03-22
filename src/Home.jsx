@@ -386,14 +386,11 @@ function Home() {
               </div>
             </div>
             
-            {/* Tagline - Instagram-style value prop */}
+            {/* Tagline */}
             <div className="text-center md:text-left md:pl-16">
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight" style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}>
-                Grapevne brings you closer to the free food, events, and community on your campus.
+                The feed that feeds you.
               </h2>
-              <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-                The platform for posting and discovering leftover food—built by students, for students and faculty.
-              </p>
             </div>
             
             {/* Scroll hint arrow */}
@@ -521,9 +518,7 @@ function Home() {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight max-w-3xl" 
               style={{ fontFamily: '"Futura Bold", sans-serif', color: '#1a1a1a' }}
             >
-              The feed that feeds you.
-              <br />
-              Download now.
+              The feed that feeds you. Download now.
             </h2>
             <a 
               href="https://apps.apple.com/us/app/grapevne/id6745459372" 
