@@ -1,15 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import Layout from './components/Layout'
 
-const TEAM = [
-  { name: 'Erin Howard', position: 'Founder', linkedin: 'https://www.linkedin.com/in/erin-howard', image: '/team-member-1-1.png' },
+const CURRENT = [
+  { name: 'Erin Howard', position: 'Founder', linkedin: 'https://www.linkedin.com/in/erin-howard', image: '/erin.png' },
   { name: 'Sara Shiferaw', position: 'Head of Communications', linkedin: 'https://www.linkedin.com', image: '/team-member-2-1.png' },
   { name: 'Jasmine Kamara', position: 'Head of Growth', linkedin: 'https://www.linkedin.com', image: '/team-member-3-1.png' },
+]
+
+const ALUMNI = [
   { name: 'Dylan Koa', position: 'Head of Marketing', linkedin: 'https://www.linkedin.com', image: '/team-member-4-1.png' },
   { name: 'Ryan Kang', position: 'Head of UR/UX', linkedin: 'https://www.linkedin.com', image: '/team-member-5-1.png' },
   { name: 'Siran Rao', position: 'Head of Product Management', linkedin: 'https://www.linkedin.com', image: '/team-member-6-1.png', fit: 'contain' },
   { name: 'Calvin Prajogo', position: 'Head of Engineering', linkedin: 'https://www.linkedin.com', image: null },
 ]
+
+const TEAM = [...CURRENT, ...ALUMNI]
+
+function TeamGrid({ people, offset, onSelect }) {
+  return (
+    <div className="team-grid">
+      {people.map((person, index) => (
+        <button key={person.name} className="team-card" type="button" onClick={() => onSelect(offset + index)}>
+          {person.image ? (
+            <img src={person.image} alt="" className={person.fit === 'contain' ? 'contain' : undefined} />
+          ) : (
+            <span className="avatar" aria-hidden="true">{person.name.split(' ').map((part) => part[0]).join('')}</span>
+          )}
+          <span>
+            <strong>{person.name}</strong>
+            <em>{person.position}</em>
+          </span>
+        </button>
+      ))}
+    </div>
+  )
+}
 
 function hasProfile(url) {
   if (!url) return false
@@ -59,21 +84,14 @@ export default function About() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', marginBottom: 22 }}>The team</h2>
-          <div className="team-grid">
-            {TEAM.map((person, index) => (
-              <button key={person.name} className="team-card" type="button" onClick={() => setSelected(index)}>
-                {person.image ? (
-                  <img src={person.image} alt="" className={person.fit === 'contain' ? 'contain' : undefined} />
-                ) : (
-                  <span className="avatar" aria-hidden="true">{person.name.split(' ').map((part) => part[0]).join('')}</span>
-                )}
-                <span>
-                  <strong>{person.name}</strong>
-                  <em>{person.position}</em>
-                </span>
-              </button>
-            ))}
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', marginBottom: 28 }}>The team</h2>
+          <div className="team-group">
+            <h3 className="kicker">Current</h3>
+            <TeamGrid people={CURRENT} offset={0} onSelect={setSelected} />
+          </div>
+          <div className="team-group">
+            <h3 className="kicker">Alumni</h3>
+            <TeamGrid people={ALUMNI} offset={CURRENT.length} onSelect={setSelected} />
           </div>
         </div>
       </section>

@@ -746,6 +746,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
   color: #333;
 }
 
+.team-group + .team-group { margin-top: 36px; }
+
+.team-group .kicker { margin-bottom: 14px; }
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
