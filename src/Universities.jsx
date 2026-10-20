@@ -114,6 +114,7 @@ export default function Universities() {
               <p className="kicker"><i /> On campus now</p>
               <h2 className="display" style={{ fontSize: '2.4rem', margin: '8px 0 10px' }}>{PARTNER.name}</h2>
               <p className="lede">Launching campus-wide in Spring 2026 with the Sustainability Department.</p>
+              <p className="lede" style={{ margin: '14px 0 0', maxWidth: 'none', color: '#1d1d1f' }}>Grapevne is available at Trinity College. Every account is .edu-verified</p>
               <button className="btn btn-ghost-ink" type="button" style={{ marginTop: 16 }} onClick={() => setPartnerOpen((open) => !open)} aria-expanded={partnerOpen}>
                 {partnerOpen ? 'Hide details' : 'Read the partnership'}
               </button>
