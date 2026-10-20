@@ -481,7 +481,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .blurb p {
-  margin: 0;
+  margin: 0 0 0.7em;
   max-width: none;
   color: #000;
   font-family: "Helvetica Neue Condensed", "Helvetica Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -491,6 +491,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   line-height: 1.28;
   letter-spacing: -0.015em;
 }
+
+.blurb p:last-child { margin-bottom: 0; }
 
 .closing { padding: 88px 22px 100px; }
 

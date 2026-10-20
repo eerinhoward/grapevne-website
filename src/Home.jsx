@@ -64,9 +64,9 @@ export default function Home() {
       </section>
 
       <section className="blurb">
-        <p>
-          Grapevne is the campus feed that gets leftover food to the people who will eat it. Post the pizza after a talk, or the snacks a club didn’t finish. Swipe once and you’re in. Grapevne puts it on your calendar, shows you who’s already going, and sends you to meet them there.
-        </p>
+        <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
+        <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
+        <p>We hope it finds you when you need it, and makes the moment a little better.</p>
       </section>
     </Layout>
   )
