@@ -11,7 +11,7 @@
   --blue: #0071e3;
   --blue-hover: #0077ed;
   --grape: #3FA9F5;
-  --header: 48px;
+  --header: 64px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -58,7 +58,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   justify-content: space-between;
   gap: 12px;
   min-height: var(--header);
-  padding: calc(4px + var(--safe-top)) 22px 4px;
+  padding: calc(8px + var(--safe-top)) 28px 8px;
   background: var(--grape);
   color: #fff;
   border-bottom: 0;
@@ -77,7 +77,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .brand img { height: 28px; width: auto; }
 
-.site-header .brand img { filter: brightness(0) invert(1); }
+.site-header .brand {
+  font-size: 20px;
+  gap: 10px;
+}
+
+.site-header .brand img {
+  height: 36px;
+  filter: brightness(0) invert(1);
+}
 
 .site-nav { display: flex; align-items: center; gap: 2px; }
 
@@ -85,9 +93,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .menu-panel a {
   color: #fff;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 400;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 8px;
 }
 
@@ -119,9 +127,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .menu-btn span {
   display: block;
-  width: 17px;
-  height: 1px;
-  margin: 5px auto;
+  width: 20px;
+  height: 1.5px;
+  margin: 6px auto;
   background: currentColor;
 }
 
@@ -167,6 +175,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .btn-blue:hover { background: var(--blue-hover); text-decoration: none; }
 
 .site-header .header-download {
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 16px;
   background: #fff;
   color: var(--grape);
 }
