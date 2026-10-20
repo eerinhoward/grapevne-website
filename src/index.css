@@ -255,12 +255,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero h1 {
   margin: 0;
+  color: var(--grape);
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   font-stretch: normal;
   letter-spacing: -0.022em;
   line-height: 1.07;
   text-decoration: underline;
+  text-decoration-color: var(--grape);
   text-underline-offset: 0.12em;
   text-decoration-thickness: 1px;
 }
