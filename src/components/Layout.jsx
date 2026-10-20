@@ -37,7 +37,7 @@ export default function Layout({ title = 'Grapevne', children }) {
     <div className="site">
       <header className="site-header">
         <Link to="/" className="brand" aria-label="Grapevne home">
-          <img src="/filledTransparent.png" alt="" />
+          <img src="/mark.png" alt="" />
           <span>Grapevne</span>
         </Link>
         <nav className="site-nav" aria-label="Primary">
@@ -67,7 +67,7 @@ export default function Layout({ title = 'Grapevne', children }) {
         <div className="wrap footer-grid">
           <div>
             <Link to="/" className="brand">
-              <img src="/filledTransparent.png" alt="" />
+              <img src="/mark.png" alt="" />
               <span>Grapevne</span>
             </Link>
             <p>Campus events, leftover food, and who’s going.</p>

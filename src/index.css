@@ -415,35 +415,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .app-demo {
   --demo-h: min(680px, 78vh);
-  /* Full frame is 1200×2160. The device bezel is stable at
-     x152 y142, 896×1876 — one pixel of pad past the black edge.
-     Corner radius 143 matches that curve, so only the white matte
-     outside the phone is clipped. */
-  --crop-x: 152;
-  --crop-y: 142;
-  --crop-w: 896;
-  --crop-h: 1876;
-  --frame-w: 1200;
-  --frame-h: 2160;
+  /* The hero file is already cropped to the bezel (896×1876).
+     Radius 143 matches that curve. */
   position: relative;
   height: var(--demo-h);
-  width: calc(var(--demo-h) * var(--crop-w) / var(--crop-h));
+  width: calc(var(--demo-h) * 896 / 1876);
   margin: 0 auto;
   overflow: hidden;
-  border-radius: calc(var(--demo-h) * 143 / var(--crop-h));
+  border-radius: calc(var(--demo-h) * 143 / 1876);
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
   background: transparent;
 }
 
 .app-demo video {
-  position: absolute;
   display: block;
-  width: calc(100% * var(--frame-w) / var(--crop-w));
-  height: calc(100% * var(--frame-h) / var(--crop-h));
-  left: calc(100% * -1 * var(--crop-x) / var(--crop-w));
-  top: calc(100% * -1 * var(--crop-y) / var(--crop-h));
-  max-width: none;
-  object-fit: fill;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   background: transparent;
 }
 

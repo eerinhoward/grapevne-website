@@ -19,16 +19,18 @@ export default function Home() {
       <section className="hero">
         <div className="hero-visual">
           <div className="hero-bg" aria-hidden="true">
-            <img src="/Photoshoot1.jpg" alt="" />
+            <img src="/hero-bg.jpg" alt="" decoding="async" />
           </div>
           <div className="app-demo">
             <video
               ref={videoRef}
-              src="/grapevne-phone.mp4"
+              src="/grapevne-phone-hero.mp4"
+              poster="/grapevne-phone-poster.jpg"
               autoPlay
               muted
               loop
               playsInline
+              preload="metadata"
               aria-label="Grapevne app demo"
             />
           </div>
