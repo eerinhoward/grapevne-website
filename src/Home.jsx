@@ -65,7 +65,7 @@ export default function Home() {
 
       <section className="blurb">
         <p>
-          Grapevne is the campus feed for events, leftover food, and who’s going. A post shows up when there’s pizza after a talk or snacks left at a club, and one swipe RSVPs and saves it to your calendar. You can see who’s already headed there, and meet them when you show up.
+          Grapevne is the campus feed that gets leftover food to the people who will eat it. Post the pizza after a talk, or the snacks a club didn’t finish. Swipe once and you’re in. Grapevne puts it on your calendar, shows you who’s already going, and sends you to meet them there.
         </p>
       </section>
     </Layout>
