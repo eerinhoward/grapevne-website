@@ -174,8 +174,8 @@ export default function Home() {
       <section className="section campus-now">
         <div className="split">
           <div>
+            <p className="trusted">Trusted By</p>
             <img className="campus-logo" src="/trinitylogo.svg" alt="Trinity College" />
-            <h2 className="display">Now at Trinity College</h2>
             <p>Launched campus-wide in Spring 2026 with the Sustainability Department.</p>
           </div>
           <div className="campus-stage">
