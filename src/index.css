@@ -11,6 +11,7 @@
   --blue: #0071e3;
   --blue-hover: #0077ed;
   --grape: #3FA9F5;
+  --grape-hover: #2e96dc;
   --header: 64px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -172,12 +173,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .btn-blue {
-  background: var(--blue);
+  background: var(--grape);
   color: #fff;
   text-decoration: none;
 }
 
-.btn-blue:hover { background: var(--blue-hover); text-decoration: none; }
+.btn-blue:hover { background: var(--grape-hover); text-decoration: none; }
 
 .site-header .header-download {
   min-height: 40px;
