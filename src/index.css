@@ -10,6 +10,7 @@
   --wash: #f5f5f7;
   --blue: #0071e3;
   --blue-hover: #0077ed;
+  --grape: #3FA9F5;
   --header: 48px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -23,7 +24,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 17px;
   line-height: 1.47;
   -webkit-font-smoothing: antialiased;
@@ -58,10 +59,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   gap: 12px;
   min-height: var(--header);
   padding: calc(4px + var(--safe-top)) 22px 4px;
-  background: rgba(255, 255, 255, 0.86);
-  color: var(--text);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  backdrop-filter: saturate(180%) blur(20px);
+  background: var(--grape);
+  color: #fff;
+  border-bottom: 0;
 }
 
 .brand {
@@ -77,11 +77,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .brand img { height: 28px; width: auto; }
 
+.site-header .brand img { filter: brightness(0) invert(1); }
+
 .site-nav { display: flex; align-items: center; gap: 2px; }
 
 .site-nav a,
 .menu-panel a {
-  color: var(--text);
+  color: #fff;
   text-decoration: none;
   font-size: 14px;
   font-weight: 400;
@@ -89,10 +91,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 8px;
 }
 
-.site-nav a.active,
-.menu-panel a.active { color: var(--blue); }
+.menu-panel a:not(.btn) { color: var(--text); }
 
-.site-nav a:hover,
+.menu-panel .btn-blue { color: #fff; }
+
+.site-nav a.active,
+.site-nav a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.menu-panel a.active,
 .menu-panel a:hover { color: var(--blue); }
 
 .header-actions { display: flex; align-items: center; }
@@ -156,6 +166,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .btn-blue:hover { background: var(--blue-hover); text-decoration: none; }
 
+.site-header .header-download {
+  background: #fff;
+  color: var(--grape);
+}
+
+.site-header .header-download:hover { background: #f2f2f2; }
+
+.site-header a:focus-visible,
+.site-header .menu-btn:focus-visible {
+  outline-color: #fff;
+}
+
 .btn-ink {
   background: var(--text);
   color: #fff;
@@ -193,7 +215,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .chapter h2,
 .closing h2,
 .display {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   letter-spacing: -0.022em;
   line-height: 1.07;
