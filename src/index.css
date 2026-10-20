@@ -288,6 +288,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero-visual,
 .hero-copy { position: relative; z-index: 1; }
 
+.hero:has(.app-demo.is-open),
+.hero:has(.app-demo.is-open) .hero-visual {
+  isolation: auto;
+  z-index: auto;
+}
+
 .hero-visual {
   display: flex;
   flex-direction: column;
@@ -434,18 +440,43 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .chapter { padding: 72px 22px 28px; }
 
-.app-demo {
+.app-demo-slot {
   --demo-h: min(680px, 78vh);
-  /* The hero file is already cropped to the bezel (896×1876).
-     Radius 143 matches that curve. */
   position: relative;
   height: var(--demo-h);
   width: calc(var(--demo-h) * 896 / 1876);
   margin: 0 auto;
+}
+
+.app-demo {
+  /* The hero file is already cropped to the bezel (896×1876).
+     Radius 143 matches that curve. */
+  position: relative;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   border-radius: calc(var(--demo-h) * 143 / 1876);
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
   background: transparent;
+  cursor: pointer;
+}
+
+.app-demo.is-open {
+  cursor: default;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.demo-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  cursor: pointer;
 }
 
 .app-demo video {
@@ -950,7 +981,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .hero .cta-row { justify-content: center; }
   .hero-visual { min-height: 560px; }
   .hero-product, .chapter .phone { height: 460px; }
-  .app-demo { --demo-h: 460px; }
+  .app-demo-slot { --demo-h: 460px; }
 }
 
 @media (max-width: 640px) {
