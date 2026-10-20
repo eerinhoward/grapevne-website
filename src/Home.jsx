@@ -158,6 +158,7 @@ export default function Home() {
         </div>
         <div className="hero-copy">
           <h1>The feed that feeds you.</h1>
+          <p className="hook">Grapevne is building the default way campuses share leftover food.</p>
           <div className="blurb">
             <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
             <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>

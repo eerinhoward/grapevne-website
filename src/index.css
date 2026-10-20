@@ -383,6 +383,17 @@ button, a { -webkit-tap-highlight-color: transparent; }
   color: #000;
 }
 
+.hero-copy .hook {
+  margin: 18px 0 0;
+  color: #000;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-stretch: normal;
+  font-weight: 400;
+  font-size: clamp(20px, 1.65vw, 26px);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+}
+
 .display em,
 .accent { font-style: normal; color: inherit; }
 
