@@ -5,7 +5,6 @@ import DownloadLink from './DownloadLink'
 const NAV = [
   { to: '/universities', label: 'Universities' },
   { to: '/about', label: 'About' },
-  { to: '/press', label: 'Press' },
 ]
 
 function NavLinks({ onNavigate }) {
