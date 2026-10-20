@@ -180,7 +180,7 @@ export default function Home() {
           </div>
           <div className="campus-stage">
             <div className="hero-bg" aria-hidden="true">
-              <img src="/friends-bg.jpg" alt="" />
+              <img src="/pizza-bg.jpg" alt="" />
             </div>
           <a className="browser" href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">
             <div className="browser-bar">
