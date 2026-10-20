@@ -179,9 +179,6 @@ export default function Home() {
             <p>Launched campus-wide in Spring 2026 with the Sustainability Department.</p>
           </div>
           <div className="campus-stage">
-            <div className="hero-bg" aria-hidden="true">
-              <img src="/pizza-bg.jpg" alt="" />
-            </div>
           <a className="browser" href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">
             <div className="browser-bar">
               <span className="traffic" aria-hidden="true"><i /><i /><i /></span>
