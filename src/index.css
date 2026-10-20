@@ -475,6 +475,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .note a { color: var(--blue); font-size: 17px; font-weight: 400; }
 
+.blurb {
+  background: #fff;
+  padding: 72px 48px 64px;
+}
+
+.blurb p {
+  margin: 0;
+  max-width: none;
+  color: #000;
+  font-family: "Helvetica Neue Condensed", "Helvetica Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: condensed;
+  font-weight: 400;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+}
+
 .closing { padding: 88px 22px 100px; }
 
 .page-hero { text-align: center; padding: 64px 0 8px; }
@@ -814,6 +831,8 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
 @media (max-width: 640px) {
   .wrap { width: min(1040px, calc(100% - 32px)); }
   .lede, .hero-copy p, .chapter p { font-size: 17px; }
+  .blurb { padding: 40px 22px 36px; }
+  .blurb p { font-size: 22px; }
   .filmstrip { grid-template-columns: 1fr 1fr; }
   .filmstrip img { height: 160px; }
   .note p { font-size: 22px; }

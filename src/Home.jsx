@@ -63,12 +63,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="closing">
-        <h2>The feed that feeds you.</h2>
-        <div className="cta-row">
-          <DownloadLink className="btn btn-blue">Download on the App Store</DownloadLink>
-          <Link to="/about" className="btn btn-ghost">About Grapevne</Link>
-        </div>
+      <section className="blurb">
+        <p>
+          Grapevne is the campus feed for events, leftover food, and who’s going. A post shows up when there’s pizza after a talk or snacks left at a club, and one swipe RSVPs and saves it to your calendar. You can see who’s already headed there, and meet them when you show up.
+        </p>
       </section>
     </Layout>
   )
