@@ -27,14 +27,6 @@ export default function Home() {
         <div className="hero-bg" aria-hidden="true">
           <img src="/Photoshoot1.jpg" alt="" />
         </div>
-        <div className="hero-copy">
-          <h1>The feed that feeds you.</h1>
-          <p>Events, leftover food, and who’s going. On your campus.</p>
-          <div className="cta-row">
-            <DownloadLink className="btn btn-blue">Download</DownloadLink>
-            <Link to="/universities" className="btn btn-ghost">For universities</Link>
-          </div>
-        </div>
         <div className="hero-visual">
           <div className="app-demo">
             {APP_SCREENS.map((item, index) => (
@@ -60,6 +52,14 @@ export default function Home() {
             ))}
           </div>
           <p className="demo-caption">{APP_SCREENS[screen].label}</p>
+        </div>
+        <div className="hero-copy">
+          <h1>The feed that feeds you.</h1>
+          <p>Events, leftover food, and who’s going. On your campus.</p>
+          <div className="cta-row">
+            <DownloadLink className="btn btn-blue">Download</DownloadLink>
+            <Link to="/universities" className="btn btn-ghost">For universities</Link>
+          </div>
         </div>
       </section>
 
