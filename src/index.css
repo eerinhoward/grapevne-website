@@ -277,8 +277,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-align: center;
 }
 
-.hero-visual .app-demo,
-.hero-visual .demo-dots {
+.hero-visual .app-demo {
   position: relative;
   z-index: 1;
 }
@@ -415,41 +414,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .app-demo {
   position: relative;
-  height: min(640px, 74vh);
-  width: calc(min(640px, 74vh) * 0.5);
+  height: min(680px, 78vh);
+  aspect-ratio: 900 / 1880;
+  width: auto;
   margin: 0 auto;
+  border-radius: 36px;
+  overflow: hidden;
 }
 
-.app-demo img {
-  position: absolute;
-  inset: 0;
+.app-demo video {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 0.45s ease;
+  object-fit: cover;
+  background: transparent;
 }
-
-.app-demo img.on { opacity: 1; }
-
-.demo-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.demo-dots button {
-  width: 8px;
-  height: 8px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: #d2d2d7;
-  cursor: pointer;
-}
-
-.demo-dots button.on { background: #1d1d1f; }
 
 .chapter.alt { background: var(--wash); }
 .chapter h2 { font-size: clamp(32px, 4vw, 48px); max-width: 18ch; margin-left: auto; margin-right: auto; }

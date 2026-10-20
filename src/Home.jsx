@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from './components/Layout'
 import DownloadLink from './components/DownloadLink'
 
-const APP_SCREENS = [
-  { src: '/never-miss-iphone.png', label: 'The feed' },
-  { src: '/one-swipe-iphone.png', label: 'One swipe' },
-  { src: '/see-who-iphone.png', label: 'Who’s going' },
-]
-
 export default function Home() {
-  const [screen, setScreen] = useState(0)
+  const videoRef = useRef(null)
 
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (motion.matches) return undefined
-    const id = window.setInterval(() => {
-      setScreen((current) => (current + 1) % APP_SCREENS.length)
-    }, 2800)
-    return () => window.clearInterval(id)
+    const video = videoRef.current
+    if (!video || !motion.matches) return undefined
+    video.pause()
+    return undefined
   }, [])
 
   return (
@@ -29,27 +22,15 @@ export default function Home() {
             <img src="/Photoshoot1.jpg" alt="" />
           </div>
           <div className="app-demo">
-            {APP_SCREENS.map((item, index) => (
-              <img
-                key={item.src}
-                src={item.src}
-                alt={item.label}
-                className={index === screen ? 'on' : undefined}
-              />
-            ))}
-          </div>
-          <div className="demo-dots" role="tablist" aria-label="App screens">
-            {APP_SCREENS.map((item, index) => (
-              <button
-                key={item.label}
-                type="button"
-                role="tab"
-                aria-selected={index === screen}
-                aria-label={item.label}
-                className={index === screen ? 'on' : undefined}
-                onClick={() => setScreen(index)}
-              />
-            ))}
+            <video
+              ref={videoRef}
+              src="/grapevne-phone-hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label="Grapevne app demo"
+            />
           </div>
         </div>
         <div className="hero-copy">
