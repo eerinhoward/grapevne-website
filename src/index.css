@@ -535,6 +535,17 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .uni-hero .wrap { position: relative; z-index: 1; }
 
 .uni-hero h1 {
+  margin: 0;
+  color: var(--grape);
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  letter-spacing: -0.022em;
+  line-height: 1.07;
+  text-decoration: underline;
+  text-decoration-color: var(--grape);
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 1px;
   white-space: nowrap;
   font-size: clamp(18px, 3.15vw, 48px);
 }
