@@ -24,7 +24,7 @@ export default function Home() {
           <div className="app-demo">
             <video
               ref={videoRef}
-              src="/grapevne-phone-hero.mp4"
+              src="/grapevne-phone.mp4"
               autoPlay
               muted
               loop
