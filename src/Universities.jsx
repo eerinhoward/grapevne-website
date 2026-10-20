@@ -136,28 +136,28 @@ export default function Universities() {
             </div>
           </article>
 
-          <p className="lede" style={{ margin: '22px 0 0', maxWidth: '40rem' }}>
+          <p className="lede" style={{ margin: '22px auto 0', maxWidth: '36rem', textAlign: 'center' }}>
             On their site, under Food and Dining, the Free Food tab is Grapevne.
           </p>
-          <figure className="browser">
+          <a className="browser" href={TRINITY_PAGE} target="_blank" rel="noopener noreferrer">
             <div className="browser-bar">
               <span className="traffic" aria-hidden="true"><i /><i /><i /></span>
-              <a className="browser-url" href={TRINITY_PAGE} target="_blank" rel="noopener noreferrer">
+              <span className="browser-url">
                 <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
                   <rect x="2.2" y="5.2" width="7.6" height="5.2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.2" />
                   <path d="M3.8 5.2V3.6a2.2 2.2 0 0 1 4.4 0V5.2" fill="none" stroke="currentColor" strokeWidth="1.2" />
                 </svg>
                 <span>trincoll.edu/sustainability/…/food-and-dining</span>
-              </a>
+              </span>
               <span aria-hidden="true" />
             </div>
-            <div className="browser-view">
+            <span className="browser-view">
               <img
                 src="/trinity-free-food.jpg"
-                alt="Trinity College’s Food and Dining page, with the Free Food section open, describing the Grapevne app."
+                alt="Trinity College’s Food and Dining page, with the Free Food section open. Opens the live page."
               />
-            </div>
-          </figure>
+            </span>
+          </a>
         </div>
       </section>
 
