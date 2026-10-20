@@ -228,7 +228,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) max-content;
   align-items: center;
   gap: 12px 40px;
   width: min(1120px, calc(100% - 48px));
@@ -239,7 +239,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero-visual { text-align: center; }
 
-.hero-copy { max-width: 460px; }
+.hero-copy { max-width: none; }
 
 .hero .cta-row { justify-content: flex-start; }
 
@@ -265,9 +265,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-decoration-color: var(--grape);
   text-underline-offset: 0.12em;
   text-decoration-thickness: 1px;
+  white-space: nowrap;
+  font-size: min(56px, 8vw);
 }
 
-.hero h1,
 .page-hero h1,
 .closing h2 {
   font-size: clamp(40px, 6vw, 56px);
@@ -780,7 +781,6 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
 
 @media (max-width: 640px) {
   .wrap { width: min(1040px, calc(100% - 32px)); }
-  .hero h1 { font-size: 36px; }
   .lede, .hero-copy p, .chapter p { font-size: 17px; }
   .filmstrip { grid-template-columns: 1fr 1fr; }
   .filmstrip img { height: 160px; }
