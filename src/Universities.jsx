@@ -106,7 +106,7 @@ export default function Universities() {
         <div className="wrap split edu-works">
           <div>
             <p className="kicker"><i /> On campus</p>
-            <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>How it works</h2>
+            <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>Getting Started.</h2>
             <div className="story">
               <p>Every account is .edu-verified. Users must verify they are students of their school before gaining access to anything on Grapevne</p>
               <p>Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.</p>
