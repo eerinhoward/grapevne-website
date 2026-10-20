@@ -73,37 +73,41 @@ export default function Home() {
   return (
     <Layout title="Grapevne — The feed that feeds you">
       <section className="hero">
-        <p className="eyebrow">Free on the App Store</p>
-        <h1>The feed that feeds you.</h1>
-        <p>Events, leftover food, and who’s going. On your campus.</p>
-        <div className="cta-row">
-          <DownloadLink className="btn btn-blue">Download</DownloadLink>
-          <Link to="/universities" className="btn btn-ghost">For universities</Link>
+        <div className="hero-visual">
+          <div className="app-demo">
+            {APP_SCREENS.map((item, index) => (
+              <img
+                key={item.src}
+                src={item.src}
+                alt={item.label}
+                className={index === screen ? 'on' : undefined}
+              />
+            ))}
+          </div>
+          <div className="demo-dots" role="tablist" aria-label="App screens">
+            {APP_SCREENS.map((item, index) => (
+              <button
+                key={item.label}
+                type="button"
+                role="tab"
+                aria-selected={index === screen}
+                aria-label={item.label}
+                className={index === screen ? 'on' : undefined}
+                onClick={() => setScreen(index)}
+              />
+            ))}
+          </div>
+          <p className="demo-caption">{APP_SCREENS[screen].label}</p>
         </div>
-        <div className="app-demo">
-          {APP_SCREENS.map((item, index) => (
-            <img
-              key={item.src}
-              src={item.src}
-              alt={item.label}
-              className={index === screen ? 'on' : undefined}
-            />
-          ))}
+        <div className="hero-copy">
+          <p className="eyebrow">Free on the App Store</p>
+          <h1>The feed that feeds you.</h1>
+          <p>Events, leftover food, and who’s going. On your campus.</p>
+          <div className="cta-row">
+            <DownloadLink className="btn btn-blue">Download</DownloadLink>
+            <Link to="/universities" className="btn btn-ghost">For universities</Link>
+          </div>
         </div>
-        <div className="demo-dots" role="tablist" aria-label="App screens">
-          {APP_SCREENS.map((item, index) => (
-            <button
-              key={item.label}
-              type="button"
-              role="tab"
-              aria-selected={index === screen}
-              aria-label={item.label}
-              className={index === screen ? 'on' : undefined}
-              onClick={() => setScreen(index)}
-            />
-          ))}
-        </div>
-        <p className="demo-caption">{APP_SCREENS[screen].label}</p>
       </section>
 
       <div className="wrap">

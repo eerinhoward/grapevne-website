@@ -204,12 +204,30 @@ button, a { -webkit-tap-highlight-color: transparent; }
   margin: 0 auto;
 }
 
-.hero,
 .chapter,
 .closing {
   text-align: center;
   padding: 54px 22px 20px;
 }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+  align-items: center;
+  gap: 12px 40px;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 28px 0 12px;
+  text-align: left;
+}
+
+.hero-visual { text-align: center; }
+
+.hero-copy { max-width: 460px; }
+
+.hero-copy .eyebrow { margin-bottom: 10px; }
+
+.hero .cta-row { justify-content: flex-start; }
 
 .hero h1,
 .chapter h2,
@@ -241,11 +259,19 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .kicker i { display: none; }
 
 .lede,
-.hero p,
 .chapter p,
 .closing p {
   max-width: 640px;
   margin: 12px auto 0;
+  color: var(--muted);
+  font-size: 21px;
+  line-height: 1.38;
+  font-weight: 400;
+}
+
+.hero-copy p {
+  max-width: 28em;
+  margin: 14px 0 0;
   color: var(--muted);
   font-size: 21px;
   line-height: 1.38;
@@ -311,8 +337,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .app-demo {
   position: relative;
-  height: min(620px, 68vh);
-  margin: 18px auto 0;
+  height: min(680px, 78vh);
+  margin: 0 auto;
 }
 
 .app-demo img {
@@ -709,13 +735,22 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .photo-row img { width: 70vw; flex: none; height: 200px; }
   .gallery, .filmstrip, .team-grid { grid-template-columns: 1fr 1fr; }
   .partner { flex-direction: column; }
+  .hero {
+    grid-template-columns: 1fr;
+    width: min(1120px, calc(100% - 32px));
+    text-align: center;
+    padding-top: 36px;
+  }
+  .hero-copy { max-width: none; margin: 0 auto; order: -1; }
+  .hero-copy p { margin-left: auto; margin-right: auto; }
+  .hero .cta-row { justify-content: center; }
   .hero-product, .chapter .phone, .app-demo { height: 460px; }
 }
 
 @media (max-width: 640px) {
   .wrap { width: min(1040px, calc(100% - 32px)); }
   .hero h1 { font-size: 36px; }
-  .lede, .hero p, .chapter p { font-size: 17px; }
+  .lede, .hero-copy p, .chapter p { font-size: 17px; }
   .filmstrip { grid-template-columns: 1fr 1fr; }
   .filmstrip img { height: 160px; }
   .note p { font-size: 22px; }
