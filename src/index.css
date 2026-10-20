@@ -230,16 +230,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: auto max-content;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px 28px;
+  gap: 28px;
   width: 100%;
   min-height: calc(100vh - var(--header));
   margin: 0;
-  padding: 40px 40px 48px;
-  text-align: left;
+  padding: 64px 24px 48px;
+  text-align: center;
 }
 
 .hero-bg {
@@ -271,7 +270,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero-copy { max-width: none; }
 
-.hero .cta-row { justify-content: flex-start; }
+.hero .cta-row { justify-content: center; }
 
 .chapter h2,
 .closing h2,
@@ -330,8 +329,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .hero-copy p {
-  max-width: 22em;
-  margin: 16px 0 0;
+  max-width: none;
+  margin: 16px auto 0;
   color: #000;
   font-size: 28px;
   line-height: 1.38;
@@ -397,8 +396,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .app-demo {
   position: relative;
-  height: min(640px, 74vh);
-  width: calc(min(640px, 74vh) * 0.5);
+  height: min(620px, 68vh);
+  aspect-ratio: 0.5;
+  width: auto;
   margin: 0 auto;
 }
 
@@ -798,17 +798,12 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .gallery, .filmstrip, .team-grid { grid-template-columns: 1fr 1fr; }
   .partner { flex-direction: column; }
   .hero {
-    grid-template-columns: 1fr;
     width: 100%;
     min-height: 0;
-    text-align: center;
     padding: 36px 20px 32px;
   }
   .hero h1 { font-size: min(40px, 8.4vw); }
-  .hero-copy { max-width: none; margin: 0 auto; order: -1; }
-  .hero-copy p { margin-left: auto; margin-right: auto; }
-  .hero .cta-row { justify-content: center; }
-  .hero-product, .chapter .phone, .app-demo { height: 460px; }
+  .hero-product, .chapter .phone, .app-demo { height: 460px; width: 230px; }
 }
 
 @media (max-width: 640px) {
