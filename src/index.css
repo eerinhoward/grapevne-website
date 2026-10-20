@@ -286,6 +286,50 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .chapter { padding: 72px 22px 28px; }
+
+.app-demo {
+  position: relative;
+  height: min(620px, 68vh);
+  margin: 18px auto 0;
+}
+
+.app-demo img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: auto;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.app-demo img.on { opacity: 1; }
+
+.demo-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.demo-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #d2d2d7;
+  cursor: pointer;
+}
+
+.demo-dots button.on { background: #1d1d1f; }
+
+.demo-caption {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--muted);
+}
 .chapter.alt { background: var(--wash); }
 .chapter h2 { font-size: clamp(32px, 4vw, 48px); max-width: 18ch; margin-left: auto; margin-right: auto; }
 
@@ -643,7 +687,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .photo-row img { width: 70vw; flex: none; height: 200px; }
   .gallery, .filmstrip, .team-grid { grid-template-columns: 1fr 1fr; }
   .partner { flex-direction: column; }
-  .hero-product, .chapter .phone { height: 460px; }
+  .hero-product, .chapter .phone, .app-demo { height: 460px; }
 }
 
 @media (max-width: 640px) {
