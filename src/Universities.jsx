@@ -18,6 +18,21 @@ const BENEFITS = [
   },
 ]
 
+const ADMIN = [
+  {
+    title: 'Not an open list',
+    body: 'A free-food list lets anyone in, and finding the food turns into a direct message with someone you don’t know. Grapevne is limited to verified students of that school.',
+  },
+  {
+    title: 'It stays on the post',
+    body: 'Students see the food and respond there. They don’t have to leave the feed for a private message.',
+  },
+  {
+    title: 'It expires',
+    body: 'Leftover food is finite, and so is the post. When it’s gone, it leaves the feed.',
+  },
+]
+
 const FAQS = [
   {
     question: 'What do students see?',
@@ -133,6 +148,31 @@ export default function Universities() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 18px' }}>Features for administrators</h2>
+          <div className="cards cards-3">
+            {ADMIN.map((feature) => (
+              <article className="card" key={feature.title}>
+                <h3>{feature.title}</h3>
+                <p>{feature.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 14px' }}>Pilot</h2>
+          <div className="story">
+            <p>A new campus starts as a pilot: one school, for a term. Long enough to see whether leftover food gets claimed and whether students use the feed.</p>
+            <p>After the term, we talk about staying, and what it costs.</p>
+          </div>
+          <button className="btn btn-blue" type="button" onClick={openForm}>Talk about a pilot</button>
         </div>
       </section>
 
