@@ -70,7 +70,7 @@ export default function Layout({ title = 'Grapevne', children }) {
               <img src="/mark.png" alt="" />
               <span>Grapevne</span>
             </Link>
-            <p>Campus events, leftover food, and who’s going.</p>
+            <p>the feed that feeds you</p>
           </div>
           <div>
             <h3>Campus</h3>
