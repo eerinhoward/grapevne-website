@@ -656,6 +656,41 @@ button, a { -webkit-tap-highlight-color: transparent; }
   padding: 24px 8vw;
 }
 
+.campus-now .campus-logo {
+  display: block;
+  width: min(280px, 78%);
+  height: auto;
+  max-height: none;
+  margin: 0 auto 22px;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.campus-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  align-self: stretch;
+  width: 100%;
+  aspect-ratio: calc((100vw / 2) / (100vh - var(--header)));
+  padding: 48px 32px;
+}
+
+.campus-stage .hero-bg img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 0;
+  filter: blur(2px);
+  transform: scale(1.02);
+}
+
+.campus-stage .browser { position: relative; z-index: 1; }
+
 .campus-now h2 {
   font-size: clamp(2rem, 4vw, 3.2rem);
   margin: 0 0 14px;
@@ -1022,6 +1057,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .hero h1 { font-size: min(40px, 8.4vw); white-space: normal; }
   .hero .cta-row { justify-content: center; }
   .hero-visual { min-height: 560px; }
+  .campus-stage { aspect-ratio: calc(100vw / 560px); }
   .hero-product, .chapter .phone { height: 460px; }
   .app-demo-slot { --demo-h: 460px; }
 }
