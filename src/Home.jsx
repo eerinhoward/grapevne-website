@@ -24,10 +24,10 @@ export default function Home() {
   return (
     <Layout title="Grapevne — The feed that feeds you">
       <section className="hero">
-        <div className="hero-bg" aria-hidden="true">
-          <img src="/Photoshoot1.jpg" alt="" />
-        </div>
         <div className="hero-visual">
+          <div className="hero-bg" aria-hidden="true">
+            <img src="/Photoshoot1.jpg" alt="" />
+          </div>
           <div className="app-demo">
             {APP_SCREENS.map((item, index) => (
               <img
@@ -51,22 +51,19 @@ export default function Home() {
               />
             ))}
           </div>
-          <p className="demo-caption">{APP_SCREENS[screen].label}</p>
         </div>
         <div className="hero-copy">
           <h1>The feed that feeds you.</h1>
-          <p>Events, leftover food, and who’s going. On your campus.</p>
+          <div className="blurb">
+            <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
+            <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
+            <p>We hope it finds you when you need it, and makes the moment a little better.</p>
+          </div>
           <div className="cta-row">
             <DownloadLink className="btn btn-blue">Download</DownloadLink>
             <Link to="/universities" className="btn btn-ghost">For universities</Link>
           </div>
         </div>
-      </section>
-
-      <section className="blurb">
-        <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
-        <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
-        <p>We hope it finds you when you need it, and makes the moment a little better.</p>
       </section>
     </Layout>
   )
