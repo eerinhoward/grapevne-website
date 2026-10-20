@@ -33,6 +33,11 @@ body {
 
 img { max-width: 100%; }
 
+p {
+  font-family: "Helvetica Neue Condensed", "Helvetica Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: condensed;
+}
+
 button, a { -webkit-tap-highlight-color: transparent; }
 
 ::selection { background: #b3d7ff; }
@@ -240,7 +245,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero .cta-row { justify-content: flex-start; }
 
-.hero h1,
 .chapter h2,
 .closing h2,
 .display {
@@ -249,6 +253,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: -0.022em;
   line-height: 1.07;
   margin: 0;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  letter-spacing: -0.022em;
+  line-height: 1.07;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  text-decoration-thickness: 1px;
 }
 
 .hero h1,
@@ -261,6 +277,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .kicker {
   margin: 0 0 8px;
   color: var(--muted);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -386,6 +404,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .demo-caption {
   margin-top: 8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
   font-size: 15px;
   color: var(--muted);
 }
