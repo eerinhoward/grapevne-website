@@ -33,6 +33,21 @@ const ADMIN = [
   },
 ]
 
+const PHONES = [
+  {
+    src: '/never-miss-iphone.png',
+    alt: 'The feed: an ice cream cart on the quad, drinks and snacks at the student union, pizza after an econ seminar, and a physics tea',
+  },
+  {
+    src: '/one-swipe-iphone.png',
+    alt: 'A post for a lookalike contest with pizza for participants, at the student center, expiring in 36 minutes',
+  },
+  {
+    src: '/see-who-iphone.png',
+    alt: 'A map post for a history colloquium reception in the lounge at the campus dining hall',
+  },
+]
+
 const FAQS = [
   {
     question: 'What do students see?',
@@ -160,6 +175,43 @@ export default function Universities() {
                 <h3>{feature.title}</h3>
                 <p>{feature.body}</p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section impact" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 22px' }}>Impact</h2>
+          <div className="impact-stats">
+            <div>
+              <strong>200</strong>
+              <span>students on Grapevne at Trinity, Wellesley, MIT, and UChicago</span>
+            </div>
+            <div>
+              <strong>Spring 2026</strong>
+              <span>launched campus-wide at Trinity</span>
+            </div>
+          </div>
+          <blockquote className="impact-quote">
+            <p>Help us keep food out of the landfill while also feeding hungry students.</p>
+            <cite>
+              Trinity College Sustainability
+              {' · '}
+              <a href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">Food and Dining</a>
+            </cite>
+          </blockquote>
+        </div>
+        <div className="phone-strip">
+          <div className="phone-track">
+            {[0, 1].map((copy) => (
+              <div className="phone-set" key={copy} aria-hidden={copy === 1 ? 'true' : undefined}>
+                {PHONES.map((phone) => (
+                  <figure key={phone.src}>
+                    <img src={phone.src} alt={copy === 1 ? '' : phone.alt} />
+                  </figure>
+                ))}
+              </div>
             ))}
           </div>
         </div>

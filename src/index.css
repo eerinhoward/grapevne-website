@@ -662,6 +662,98 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .card p { margin: 0; color: #333; line-height: 1.45; }
 
+.impact-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 40px;
+  margin-bottom: 28px;
+}
+
+.impact-stats strong {
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-stretch: normal;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(40px, 5vw, 68px);
+  color: #000;
+}
+
+.impact-stats span {
+  display: block;
+  max-width: 22rem;
+  margin-top: 8px;
+  color: #000;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.impact-quote {
+  margin: 0;
+  max-width: 38rem;
+}
+
+.impact-quote p {
+  margin: 0;
+  color: #000;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-stretch: normal;
+  font-weight: 400;
+  font-size: clamp(22px, 2.1vw, 32px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.impact-quote cite {
+  display: block;
+  margin-top: 14px;
+  color: var(--muted);
+  font-style: normal;
+  font-size: 15px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+}
+
+.impact-quote a { color: var(--grape); }
+
+.phone-strip {
+  overflow: hidden;
+  margin-top: 36px;
+  padding: 28px 0 12px;
+}
+
+.phone-track {
+  display: flex;
+  width: max-content;
+  animation: phone-slide 32s linear infinite;
+}
+
+.phone-set {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  padding-right: 42px;
+}
+
+.phone-set figure { margin: 0; }
+
+.phone-set img {
+  display: block;
+  height: 460px;
+  width: auto;
+  max-width: none;
+}
+
+.phone-set figure:nth-child(3n + 1) img { transform: rotate(-7deg); }
+.phone-set figure:nth-child(3n + 2) img { transform: rotate(5deg); }
+.phone-set figure:nth-child(3n) img { transform: rotate(-3deg); }
+
+@keyframes phone-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .campus-now { padding: 72px 0; }
 
 .campus-now .split {
@@ -1079,9 +1171,12 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .filmstrip { grid-template-columns: 1fr 1fr; }
   .filmstrip img { height: 160px; }
   .note p { font-size: 22px; }
-  .cards, .cards-3 { grid-template-columns: 1fr; }
+  .cards, .cards-3, .impact-stats { grid-template-columns: 1fr; }
+  .phone-set img { height: 340px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .phone-track { animation: none; }
+  .phone-strip { overflow-x: auto; }
 }
