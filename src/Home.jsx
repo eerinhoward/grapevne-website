@@ -3,135 +3,105 @@ import { Link } from 'react-router-dom'
 import Layout from './components/Layout'
 import DownloadLink from './components/DownloadLink'
 
-const FEATURES = [
+const POINTS = [
   {
-    step: '01',
-    title: "Never miss what's happening",
-    body: 'Push notifications when campus posts go live. No more checking emails or walking past flyers.',
-    image: '/never-miss-iphone.png',
-    alt: 'Grapevne feed with campus food posts',
+    image: '/Photoshoot1.jpg',
+    title: 'Free food, while it lasts.',
+    body: 'Leftover pizza, club snacks, and open events show up in one feed.',
   },
   {
-    step: '02',
-    title: "One swipe. You're in.",
-    body: 'One swipe RSVPs. It saves to your calendar automatically.',
-    image: '/one-swipe-iphone.png',
-    alt: 'RSVP on Grapevne with a single swipe',
+    image: '/gathering.jpg',
+    title: 'One swipe. You’re in.',
+    body: 'RSVP in a swipe. It saves to your calendar.',
   },
   {
-    step: '03',
-    title: 'See who else is going',
-    body: "See the list of who's going. See where your friends are going on the map. Meet them there.",
-    image: '/see-who-iphone.png',
-    alt: 'Grapevne showing who is going to a campus post',
+    image: '/Photoshoot3.jpg',
+    title: 'See who else is going.',
+    body: 'The list, the map, and your friends. Meet them there.',
   },
 ]
 
-const TICKER = [
-  'Free food',
-  'Campus events',
-  'One-swipe RSVP',
-  "Who's going",
-  'Leftover pizza',
-  'Club meetings',
-  'Saved to your calendar',
-  'Campus-wide',
+const CHAPTERS = [
+  {
+    title: 'Never miss what’s happening.',
+    body: 'A notification when a campus post goes live. No inbox, no flyer.',
+    image: '/never-miss-iphone.png',
+    alt: 'Grapevne feed on an iPhone',
+    altBg: false,
+  },
+  {
+    title: 'Show up if you want to.',
+    body: 'One swipe RSVPs. Grapevne puts it on your calendar.',
+    image: '/one-swipe-iphone.png',
+    alt: 'RSVP on Grapevne',
+    altBg: true,
+  },
+  {
+    title: 'Know who’s already there.',
+    body: 'See the list of who’s going, and where your friends are headed.',
+    image: '/see-who-iphone.png',
+    alt: 'Who is going, on Grapevne',
+    altBg: false,
+  },
+]
+
+const STRIP = [
+  '/Photoshoot1.jpg',
+  '/Photoshoot2.png',
+  '/gathering.jpg',
+  '/walking.jpg',
 ]
 
 export default function Home() {
-  const ticker = [...TICKER, ...TICKER]
-
   return (
     <Layout title="Grapevne — The feed that feeds you">
       <section className="hero">
-        <div>
-          <p className="kicker"><i /> Free on the App Store</p>
-          <h1 className="display">
-            The feed<br />that <em>feeds</em><br />you.
-          </h1>
-          <p className="lede">
-            A shared feed for events, leftover and free food, on campus. Hear about it when it posts. Show up if you want to.
-          </p>
-          <div className="cta-row">
-            <DownloadLink className="btn btn-blue">Download on the App Store</DownloadLink>
-            <Link to="/universities" className="btn btn-ghost">For universities</Link>
-          </div>
+        <p className="eyebrow">Free on the App Store</p>
+        <h1>The feed that feeds you.</h1>
+        <p>Events, leftover food, and who’s going. On your campus.</p>
+        <div className="cta-row">
+          <DownloadLink className="btn btn-blue">Download</DownloadLink>
+          <Link to="/universities" className="btn btn-ghost">For universities</Link>
         </div>
-        <div className="hero-stage">
-          <div className="hero-panel">
-            <img className="hero-phone" src="/never-miss-iphone.png" alt="The Grapevne app on an iPhone" />
-          </div>
-          <img className="print print-a" src="/Photoshoot1.jpg" alt="" />
-          <img className="print print-b" src="/gathering.jpg" alt="" />
-          <img className="print print-c" src="/pizza food.png" alt="" />
-        </div>
+        <img className="hero-product" src="/never-miss-iphone.png" alt="The Grapevne app on an iPhone" />
       </section>
 
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {ticker.map((item, index) => (
-            <span key={`${item}-${index}`}>{item} ·</span>
+      <div className="wrap">
+        <div className="tiles">
+          {POINTS.map((point) => (
+            <article className="tile" key={point.title}>
+              <img src={point.image} alt="" />
+              <h2>{point.title}</h2>
+              <p>{point.body}</p>
+            </article>
           ))}
         </div>
       </div>
 
-      <section className="section">
-        <div className="wrap">
-          <div className="section-head">
-            <h2 className="display">Campus, in one feed.</h2>
-            <p className="lede">
-              People usually hear about things through each other. Grapevne makes that faster, organized, and campus-wide.
-            </p>
-          </div>
-          {FEATURES.map((feature, index) => (
-            <article className={index % 2 === 1 ? 'feature reverse' : 'feature'} key={feature.step}>
-              <div className="feature-copy">
-                <div className="step">{feature.step}</div>
-                <h3 className="display">{feature.title}</h3>
-                <p className="lede">{feature.body}</p>
-              </div>
-              <div className="phone-well">
-                <img src={feature.image} alt={feature.alt} />
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      {CHAPTERS.map((chapter) => (
+        <section className={chapter.altBg ? 'chapter alt' : 'chapter'} key={chapter.title}>
+          <h2>{chapter.title}</h2>
+          <p>{chapter.body}</p>
+          <img className="phone" src={chapter.image} alt={chapter.alt} />
+        </section>
+      ))}
 
-      <section className="facts">
-        <div className="fact">
-          <strong>2025</strong>
-          <p>Grapevne started after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go.</p>
-        </div>
-        <div className="fact">
-          <strong>Seven</strong>
-          <p>College students are shaping it. We use it too.</p>
-        </div>
-        <div className="fact">
-          <strong>Spring 2026</strong>
-          <p>Launching campus-wide at Trinity College with the Sustainability Department.</p>
-        </div>
-      </section>
+      <div className="filmstrip">
+        {STRIP.map((src) => (
+          <img key={src} src={src} alt="" />
+        ))}
+      </div>
 
-      <section className="quote-band">
-        <img src="/Photoshoot2.png" alt="Students sharing food on campus" />
-        <div className="quote-copy">
-          <p className="kicker"><i /> Trinity College</p>
-          <p>
-            “To reduce food waste, Trinity is now offering the Grapevne app, which allows anyone on campus who has leftover food to offer that food to the community.”
-          </p>
-          <Link to="/press">Read the feature</Link>
-        </div>
+      <section className="note">
+        <p>Trinity College is offering Grapevne so leftover food reaches students instead of the landfill.</p>
+        <Link to="/press">Read the feature</Link>
       </section>
 
       <section className="closing">
-        <div className="wrap">
-          <p className="kicker" style={{ justifyContent: 'center' }}><i /> Get Grapevne</p>
-          <h2 className="display">The feed that feeds you.</h2>
-          <div className="cta-row" style={{ justifyContent: 'center' }}>
-            <DownloadLink className="btn btn-ink">Download on the App Store</DownloadLink>
-            <Link to="/about" className="btn btn-ghost-ink">Meet the team</Link>
-          </div>
+        <h2>The feed that feeds you.</h2>
+        <div className="cta-row">
+          <DownloadLink className="btn btn-blue">Download on the App Store</DownloadLink>
+          <Link to="/about" className="btn btn-ghost">About Grapevne</Link>
         </div>
       </section>
     </Layout>

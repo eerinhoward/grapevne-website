@@ -71,8 +71,7 @@ export default function Layout({ title = 'Grapevne', children }) {
               <img src="/filledTransparent.png" alt="" />
               <span>Grapevne</span>
             </Link>
-            <h2 className="display">The feed that feeds you.</h2>
-            <p>Campus events, leftover food, and who's going — in one place.</p>
+            <p>Campus events, leftover food, and who’s going.</p>
           </div>
           <div>
             <h3>Campus</h3>
