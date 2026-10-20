@@ -5,16 +5,6 @@ const ContactForm = lazy(() => import('./ContactForm'))
 
 const TRINITY_PAGE = 'https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/'
 
-const PARTNER = {
-  name: 'Trinity College',
-  image: '/trinitylogo.svg',
-  description: `At Trinity College, Grapevne is launching with the Sustainability Department.
-
-Instead of ad-hoc emails, word of mouth, or last-minute signs, students get one campus feed for free food and events. The college gets a clearer view of what they notice and show up for.
-
-The app launches campus-wide in Spring 2026.`,
-}
-
 const BENEFITS = [
   {
     title: 'Food gets there in time',
@@ -52,7 +42,6 @@ const FAQS = [
 export default function Universities() {
   const [openFaq, setOpenFaq] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
-  const [partnerOpen, setPartnerOpen] = useState(false)
   const formRef = useRef(null)
 
   const openForm = () => {
@@ -108,23 +97,20 @@ export default function Universities() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <article className="card partner">
-            <img className="logo" src={PARTNER.image} alt={PARTNER.name} />
-            <div>
-              <p className="kicker"><i /> On campus now</p>
-              <h2 className="display" style={{ fontSize: '2.4rem', margin: '8px 0 10px' }}>{PARTNER.name}</h2>
-              <p className="lede">Launching campus-wide in Spring 2026 with the Sustainability Department.</p>
-              <p className="lede" style={{ margin: '14px 0 0', maxWidth: 'none', color: '#1d1d1f' }}>Grapevne is available at Trinity College. Every account is .edu-verified</p>
-              <button className="btn btn-ghost-ink" type="button" style={{ marginTop: 16 }} onClick={() => setPartnerOpen((open) => !open)} aria-expanded={partnerOpen}>
-                {partnerOpen ? 'Hide details' : 'Read the partnership'}
-              </button>
-              {partnerOpen && (
-                <div style={{ marginTop: 16, whiteSpace: 'pre-line', lineHeight: 1.6 }}>{PARTNER.description}</div>
-              )}
-            </div>
-          </article>
+          <p className="kicker"><i /> On campus</p>
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>How it works</h2>
+          <div className="story">
+            <p>Grapevne is available at Trinity College. Every account is .edu-verified</p>
+            <p>Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.</p>
+          </div>
+        </div>
+      </section>
 
-          <p className="lede" style={{ margin: '22px auto 0', maxWidth: '36rem', textAlign: 'center' }}>
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <img className="campus-logo" src="/trinitylogo.svg" alt="Trinity College" />
+          <p className="lede" style={{ margin: '18px auto 0', maxWidth: '36rem', textAlign: 'center', color: '#1d1d1f' }}>Launched campus-wide in Spring 2026 with the Sustainability Department.</p>
+          <p className="lede" style={{ margin: '8px auto 0', maxWidth: '36rem', textAlign: 'center' }}>
             On their site, under Food and Dining, the Free Food tab is Grapevne.
           </p>
           <a className="browser" href={TRINITY_PAGE} target="_blank" rel="noopener noreferrer">
