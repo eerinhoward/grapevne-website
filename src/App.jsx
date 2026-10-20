@@ -1,12 +1,11 @@
 import React, { useEffect, lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import Home from './Home'
 import Press from './Press'
 import Brands from './Brands'
 import Terms from './Terms'
 import Privacy from './Privacy'
-import Ambassadors from './Ambassadors'
 import About from './About'
 
 const Universities = lazy(() => import('./Universities'))
@@ -41,7 +40,7 @@ function App() {
         />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
-        <Route path="/ambassadors" element={<Ambassadors />} />
+        <Route path="/ambassadors" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   )

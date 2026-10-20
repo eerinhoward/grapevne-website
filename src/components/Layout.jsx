@@ -76,7 +76,6 @@ export default function Layout({ title = 'Grapevne', children }) {
             <h3>Campus</h3>
             <ul>
               <li><Link to="/universities">Universities</Link></li>
-              <li><Link to="/ambassadors">Ambassadors</Link></li>
               <li><Link to="/brands">Brands</Link></li>
             </ul>
           </div>
