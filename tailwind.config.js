@@ -13,7 +13,7 @@ export default {
       },
       fontFamily: {
         display: ['"Futura Bold"', 'Outfit', 'sans-serif'],
-        sans: ['Arial', 'Helvetica', 'sans-serif'],
+        sans: ['"Times New Roman"', 'Times', 'serif'],
       },
     },
   },
