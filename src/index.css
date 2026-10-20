@@ -717,6 +717,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .impact-quote a { color: var(--grape); }
 
+.impact .phone-strip {
+  margin-top: 0;
+}
+
 .phone-strip {
   overflow: hidden;
   margin-top: 36px;

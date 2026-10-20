@@ -170,37 +170,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="section campus-now">
-        <div className="split">
-          <div>
-            <p className="trusted">Trusted By</p>
-            <img className="campus-logo" src="/trinitylogo.svg" alt="Trinity College" />
-            <p>Launched campus-wide in Spring 2026 with the Sustainability Department.</p>
-          </div>
-          <div className="campus-stage">
-          <a className="browser" href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">
-            <div className="browser-bar">
-              <span className="traffic" aria-hidden="true"><i /><i /><i /></span>
-              <span className="browser-url">
-                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-                  <rect x="2.2" y="5.2" width="7.6" height="5.2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                  <path d="M3.8 5.2V3.6a2.2 2.2 0 0 1 4.4 0V5.2" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                </svg>
-                <span>trincoll.edu/sustainability/…/food-and-dining</span>
-              </span>
-              <span aria-hidden="true" />
-            </div>
-            <span className="browser-view">
-              <img
-                src="/trinity-free-food.jpg"
-                alt="Trinity College’s Food and Dining page, with the Free Food section open. Opens the live page."
-              />
-            </span>
-          </a>
-          </div>
-        </div>
-      </section>
     </Layout>
   )
 }
