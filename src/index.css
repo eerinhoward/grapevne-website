@@ -639,11 +639,41 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .card p { margin: 0; color: #333; line-height: 1.45; }
 
-.campus-logo {
-  display: block;
-  width: min(280px, 72%);
-  height: auto;
+.campus-now { padding: 72px 0; }
+
+.campus-now .split {
+  width: 100%;
+  gap: 0;
+  align-items: center;
+}
+
+.campus-now .split > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px 8vw;
+}
+
+.campus-now h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin: 0 0 14px;
+}
+
+.campus-now p {
+  margin: 0;
+  max-width: 28rem;
+  color: #000;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.4;
+}
+
+.campus-now .browser {
+  width: min(100% - 64px, 520px);
+  max-width: none;
   margin: 0 auto;
+  justify-self: center;
 }
 
 .browser {

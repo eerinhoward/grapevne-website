@@ -3,8 +3,6 @@ import Layout from './components/Layout'
 
 const ContactForm = lazy(() => import('./ContactForm'))
 
-const TRINITY_PAGE = 'https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/'
-
 const BENEFITS = [
   {
     title: 'Food gets there in time',
@@ -103,35 +101,6 @@ export default function Universities() {
             <p>Grapevne is available at Trinity College. Every account is .edu-verified</p>
             <p>Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.</p>
           </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <img className="campus-logo" src="/trinitylogo.svg" alt="Trinity College" />
-          <p className="lede" style={{ margin: '18px auto 0', maxWidth: '36rem', textAlign: 'center', color: '#1d1d1f' }}>Launched campus-wide in Spring 2026 with the Sustainability Department.</p>
-          <p className="lede" style={{ margin: '8px auto 0', maxWidth: '36rem', textAlign: 'center' }}>
-            On their site, under Food and Dining, the Free Food tab is Grapevne.
-          </p>
-          <a className="browser" href={TRINITY_PAGE} target="_blank" rel="noopener noreferrer">
-            <div className="browser-bar">
-              <span className="traffic" aria-hidden="true"><i /><i /><i /></span>
-              <span className="browser-url">
-                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-                  <rect x="2.2" y="5.2" width="7.6" height="5.2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                  <path d="M3.8 5.2V3.6a2.2 2.2 0 0 1 4.4 0V5.2" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                </svg>
-                <span>trincoll.edu/sustainability/…/food-and-dining</span>
-              </span>
-              <span aria-hidden="true" />
-            </div>
-            <span className="browser-view">
-              <img
-                src="/trinity-free-food.jpg"
-                alt="Trinity College’s Food and Dining page, with the Free Food section open. Opens the live page."
-              />
-            </span>
-          </a>
         </div>
       </section>
 
