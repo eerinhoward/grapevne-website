@@ -30,14 +30,6 @@ const BENEFITS = [
   },
 ]
 
-const PHOTOS = [
-  '/universitiesimage.jpg',
-  '/universitiesimage2.jpg',
-  '/Photozhoot3.png',
-  '/universitiesimage5.jpg',
-  '/universitiesimage4.jpg',
-]
-
 const FAQS = [
   {
     question: 'What do students see?',
@@ -72,7 +64,10 @@ export default function Universities() {
 
   return (
     <Layout title="Universities — Grapevne">
-      <section className="page-hero">
+      <section className="page-hero uni-hero">
+        <div className="hero-bg" aria-hidden="true">
+          <img src="/uni-hero.jpg" alt="" />
+        </div>
         <div className="wrap">
           <p className="kicker"><i /> Universities</p>
           <h1 className="display">Free food and campus events, in one feed.</h1>
@@ -81,14 +76,6 @@ export default function Universities() {
           </p>
         </div>
       </section>
-
-      <div className="wrap">
-        <div className="photo-row">
-          {PHOTOS.map((src) => (
-            <img key={src} src={src} alt="" />
-          ))}
-        </div>
-      </div>
 
       <section className="section">
         <div className="wrap">

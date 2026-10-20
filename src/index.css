@@ -514,6 +514,31 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-hero { text-align: center; padding: 64px 0 8px; }
 .page-hero .lede { margin-left: auto; margin-right: auto; }
 
+.uni-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 520px;
+  padding: 88px 0;
+  overflow: hidden;
+}
+
+.uni-hero .hero-bg img {
+  object-position: center 32%;
+  filter: blur(2px);
+  transform: scale(1.02);
+}
+
+.uni-hero .hero-bg::after { background: rgba(255, 255, 255, 0.52); }
+
+.uni-hero .wrap { position: relative; z-index: 1; }
+
+.uni-hero h1 {
+  white-space: nowrap;
+  font-size: clamp(18px, 3.15vw, 48px);
+}
+
 .section { padding: 56px 0; }
 
 .photo-row,
