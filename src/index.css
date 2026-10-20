@@ -498,6 +498,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background: transparent;
 }
 
+.edu-works { align-items: center; }
+
+.edu-demo { --demo-h: min(560px, 68vh); }
+
+.edu-demo .app-demo {
+  cursor: default;
+  border-radius: calc(var(--demo-h) * 143 / 1878);
+}
+
 .chapter.alt { background: var(--wash); }
 .chapter h2 { font-size: clamp(32px, 4vw, 48px); max-width: 18ch; margin-left: auto; margin-right: auto; }
 

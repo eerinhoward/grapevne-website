@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState, useRef } from 'react'
+import React, { lazy, Suspense, useEffect, useState, useRef } from 'react'
 import Layout from './components/Layout'
 
 const ContactForm = lazy(() => import('./ContactForm'))
@@ -41,6 +41,15 @@ export default function Universities() {
   const [openFaq, setOpenFaq] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const formRef = useRef(null)
+  const eduRef = useRef(null)
+
+  useEffect(() => {
+    const video = eduRef.current
+    if (!video) return undefined
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (motion.matches) video.pause()
+    return undefined
+  }, [])
 
   const openForm = () => {
     setFormOpen(true)
@@ -94,12 +103,29 @@ export default function Universities() {
       </section>
 
       <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <p className="kicker"><i /> On campus</p>
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>How it works</h2>
-          <div className="story">
-            <p>Grapevne is available at Trinity College. Every account is .edu-verified</p>
-            <p>Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.</p>
+        <div className="wrap split edu-works">
+          <div>
+            <p className="kicker"><i /> On campus</p>
+            <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>How it works</h2>
+            <div className="story">
+              <p>Grapevne is available at Trinity College. Every account is .edu-verified</p>
+              <p>Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.</p>
+            </div>
+          </div>
+          <div className="app-demo-slot edu-demo">
+            <div className="app-demo">
+              <video
+                ref={eduRef}
+                src="/grapevne-edu-login-hero.mp4"
+                poster="/grapevne-edu-login-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Signing in with a .edu email, from choosing a school to the verified campus feed"
+              />
+            </div>
           </div>
         </div>
       </section>
