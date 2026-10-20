@@ -241,8 +241,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .hero-copy { max-width: 460px; }
 
-.hero-copy .eyebrow { margin-bottom: 10px; }
-
 .hero .cta-row { justify-content: flex-start; }
 
 .chapter h2,

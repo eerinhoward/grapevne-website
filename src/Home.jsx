@@ -100,7 +100,6 @@ export default function Home() {
           <p className="demo-caption">{APP_SCREENS[screen].label}</p>
         </div>
         <div className="hero-copy">
-          <p className="eyebrow">Free on the App Store</p>
           <h1>The feed that feeds you.</h1>
           <p>Events, leftover food, and who’s going. On your campus.</p>
           <div className="cta-row">
