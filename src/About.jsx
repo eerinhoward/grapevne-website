@@ -48,10 +48,7 @@ export default function About() {
 
       <section className="section" style={{ paddingTop: 28 }}>
         <div className="wrap story">
-          <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
-          <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
-          <p>We hope it finds you when you need it, and makes the moment a little better.</p>
-          <p>Today, Grapevne is being shaped by a small team of seven college students, and we use it too.</p>
+          <p>Today, Grapevne is being shaped by a small team of three college students.</p>
           <div className="socials">
             <a href="https://www.instagram.com/grapevne" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.linkedin.com/company/grapevne" target="_blank" rel="noopener noreferrer">LinkedIn</a>
