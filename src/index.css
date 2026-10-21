@@ -646,54 +646,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-hero { text-align: center; padding: 64px 0 8px; }
 .page-hero .lede { margin-left: auto; margin-right: auto; }
 
-.uni-hero {
-  position: relative;
-  isolation: isolate;
-  display: flex;
-  align-items: center;
-  min-height: 520px;
-  padding: 88px 0;
-  overflow: hidden;
-}
-
-.uni-hero .hero-bg img {
-  object-position: center 32%;
-  filter: blur(2px);
-  transform: scale(1.02);
-}
-
-.uni-hero .hero-bg::after { background: rgba(255, 255, 255, 0.52); }
-
-.uni-hero .wrap { position: relative; z-index: 1; }
-
-.uni-intro { padding-bottom: 28px; }
-
-.uni-intro p {
-  margin: 0;
-  max-width: 40rem;
-  color: #000;
-  font-family: "Helvetica Neue Condensed", "Helvetica Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-stretch: condensed;
-  font-weight: 400;
-  font-size: clamp(20px, 1.7vw, 26px);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-}
+.uni-hero .hero-bg img { object-position: center 32%; }
 
 .uni-hero h1 {
-  margin: 0;
-  color: var(--grape);
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 400;
-  font-stretch: normal;
-  letter-spacing: -0.022em;
-  line-height: 1.07;
-  text-decoration: underline;
-  text-decoration-color: var(--grape);
-  text-underline-offset: 0.12em;
-  text-decoration-thickness: 1px;
-  white-space: nowrap;
-  font-size: clamp(18px, 3.15vw, 48px);
+  font-size: clamp(22px, 2.15vw, 40px);
 }
 
 .section { padding: 56px 0; }

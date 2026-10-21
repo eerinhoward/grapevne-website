@@ -112,22 +112,17 @@ export default function Universities() {
 
   return (
     <Layout title="Universities — Grapevne">
-      <section className="page-hero uni-hero">
-        <div className="hero-bg" aria-hidden="true">
-          <img src="/uni-hero.jpg" alt="" />
+      <section className="hero uni-hero">
+        <div className="hero-copy">
+          <h1>Free food and campus events, in one feed.</h1>
+          <div className="blurb">
+            <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
+          </div>
         </div>
-        <div className="wrap">
-          <p className="kicker"><i /> Universities</p>
-          <h1 className="display">Free food and campus events, in one feed.</h1>
-          <p className="lede">
-            Grapevne is the shared feed for leftover food, events, and who’s going. Students find it while it lasts. The university sees what they show up for.
-          </p>
-        </div>
-      </section>
-
-      <section className="section uni-intro">
-        <div className="wrap">
-          <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
+        <div className="hero-visual">
+          <div className="hero-bg" aria-hidden="true">
+            <img src="/uni-hero.jpg" alt="" />
+          </div>
         </div>
       </section>
 
