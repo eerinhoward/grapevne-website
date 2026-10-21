@@ -500,15 +500,33 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .edu-works { align-items: center; }
 
-.demo-start {
-  margin: 0;
-  color: #000;
-  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
-  font-stretch: normal;
-  font-weight: 400;
-  font-size: clamp(20px, 1.65vw, 26px);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+.know-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--grape) transparent;
+}
+
+.know-scroll::-webkit-scrollbar { height: 12px; }
+
+.know-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--grape);
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+
+.know-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 28px;
+  box-sizing: border-box;
+  padding: 8px max(20px, calc((100vw - 1040px) / 2)) 20px;
 }
 
 .edu-demo { --demo-h: min(560px, 68vh); }
@@ -1167,7 +1185,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   }
   .menu-panel[hidden] { display: none; }
   .menu-panel a { font-size: 17px; padding: 10px 4px; }
-  .tiles, .cards, .cards-3, .split, .press-feature, .footer-grid, .form-grid {
+  .tiles, .cards, .cards-3, .split, .know-slide, .press-feature, .footer-grid, .form-grid {
     grid-template-columns: 1fr;
   }
   .photo-row { display: flex; overflow-x: auto; }
@@ -1201,4 +1219,5 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   html { scroll-behavior: auto; }
   .phone-track { animation: none; }
   .phone-strip { overflow-x: auto; }
+  .know-scroll { scroll-behavior: auto; }
 }

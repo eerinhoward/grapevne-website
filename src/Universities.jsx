@@ -139,31 +139,53 @@ export default function Universities() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap split edu-works">
-          <div>
-            <p className="demo-start">Get to know Grapevne</p>
-            <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>Getting Started.</h2>
+      <section className="section know" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 18px' }}>Get to know Grapevne</h2>
+        </div>
+        <div className="know-scroll" tabIndex={0} aria-label="Get to know Grapevne">
+          <article className="know-slide">
             <div className="story">
               <p>Every account is .edu-verified. Users must verify they are students of their school before gaining access to anything on Grapevne</p>
               <p>Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.</p>
             </div>
-          </div>
-          <div className="app-demo-slot edu-demo">
-            <div className="app-demo">
-              <video
-                ref={eduRef}
-                src="/grapevne-edu-login-hero.mp4"
-                poster="/grapevne-edu-login-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Signing in with a .edu email, from choosing a school to the verified campus feed"
-              />
+            <div className="app-demo-slot edu-demo">
+              <div className="app-demo">
+                <video
+                  ref={eduRef}
+                  src="/grapevne-edu-login-hero.mp4"
+                  poster="/grapevne-edu-login-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Signing in with a .edu email, from choosing a school to the verified campus feed"
+                />
+              </div>
             </div>
-          </div>
+          </article>
+          <article className="know-slide">
+            <div className="story">
+              <p>Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.</p>
+              <p>If the food runs out first, someone on campus can mark it gone. The post comes down.</p>
+            </div>
+            <div className="app-demo-slot safety-demo">
+              <div className="app-demo">
+                <video
+                  ref={safetyRef}
+                  src="/grapevne-food-safety-hero.mp4"
+                  poster="/grapevne-food-safety-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Setting how long a food post stays up, then marking it gone when the food runs out"
+                />
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -177,34 +199,6 @@ export default function Universities() {
                 <p>{feature.body}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap split edu-works">
-          <div>
-            <p className="demo-start">Get to know Grapevne</p>
-            <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>Food safety.</h2>
-            <div className="story">
-              <p>Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.</p>
-              <p>If the food runs out first, someone on campus can mark it gone. The post comes down.</p>
-            </div>
-          </div>
-          <div className="app-demo-slot safety-demo">
-            <div className="app-demo">
-              <video
-                ref={safetyRef}
-                src="/grapevne-food-safety-hero.mp4"
-                poster="/grapevne-food-safety-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Setting how long a food post stays up, then marking it gone when the food runs out"
-              />
-            </div>
           </div>
         </div>
       </section>
