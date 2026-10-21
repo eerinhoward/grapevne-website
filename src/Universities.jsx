@@ -18,21 +18,6 @@ const BENEFITS = [
   },
 ]
 
-const ADMIN = [
-  {
-    title: 'Not an open list',
-    body: 'A free-food list lets anyone in, and finding the food turns into a direct message with someone you don’t know. Grapevne is limited to verified students of that school.',
-  },
-  {
-    title: 'It stays on the post',
-    body: 'Students see the food and respond there. They don’t have to leave the feed for a private message.',
-  },
-  {
-    title: 'It expires',
-    body: 'Leftover food is finite, and so is the post. When it’s gone, it leaves the feed.',
-  },
-]
-
 const PHONES = [
   {
     src: '/never-miss-iphone.png',
@@ -73,6 +58,8 @@ export default function Universities() {
   const formRef = useRef(null)
   const eduRef = useRef(null)
   const safetyRef = useRef(null)
+  const knowRef = useRef(null)
+  const [knowIndex, setKnowIndex] = useState(0)
 
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -81,6 +68,40 @@ export default function Universities() {
     safetyRef.current?.pause()
     return undefined
   }, [])
+
+  useEffect(() => {
+    const el = knowRef.current
+    if (!el) return undefined
+    const step = () => {
+      const slides = el.querySelectorAll('.know-slide')
+      if (slides.length > 1) return slides[1].offsetLeft - slides[0].offsetLeft
+      const slide = slides[0]
+      return slide ? slide.getBoundingClientRect().width : el.clientWidth
+    }
+    const update = () => {
+      const size = step()
+      const index = size > 0 ? Math.round(el.scrollLeft / size) : 0
+      setKnowIndex(index)
+    }
+    update()
+    el.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      el.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  const scrollKnow = (direction) => {
+    const el = knowRef.current
+    if (!el) return
+    const slides = el.querySelectorAll('.know-slide')
+    const step = slides.length > 1
+      ? slides[1].offsetLeft - slides[0].offsetLeft
+      : (slides[0]?.getBoundingClientRect().width || el.clientWidth)
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    el.scrollBy({ left: direction * step, behavior: motion.matches ? 'auto' : 'smooth' })
+  }
 
   const openForm = () => {
     setFormOpen(true)
@@ -140,10 +161,22 @@ export default function Universities() {
       </section>
 
       <section className="section know" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 18px' }}>Get to know Grapevne</h2>
+        <div className="wrap know-head">
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: 0 }}>Get to know Grapevne</h2>
+          <div className="know-nav">
+            <button className="know-arrow" type="button" onClick={() => scrollKnow(-1)} disabled={knowIndex === 0} aria-label="Previous">
+              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M11 4 L6 9 L11 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button className="know-arrow" type="button" onClick={() => scrollKnow(1)} disabled={knowIndex >= 1} aria-label="Next">
+              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M7 4 L12 9 L7 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
         </div>
-        <div className="know-scroll" tabIndex={0} aria-label="Get to know Grapevne">
+        <div className="know-scroll" ref={knowRef} tabIndex={0} aria-label="Get to know Grapevne">
           <article className="know-slide">
             <div className="story">
               <p>Every account is .edu-verified. Users must verify they are students of their school before gaining access to anything on Grapevne</p>
@@ -187,19 +220,9 @@ export default function Universities() {
             </div>
           </article>
         </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 18px' }}>Features for administrators</h2>
-          <div className="cards cards-3">
-            {ADMIN.map((feature) => (
-              <article className="card" key={feature.title}>
-                <h3>{feature.title}</h3>
-                <p>{feature.body}</p>
-              </article>
-            ))}
-          </div>
+        <div className="know-dots" aria-hidden="true">
+          <i className={knowIndex === 0 ? 'is-on' : undefined} />
+          <i className={knowIndex >= 1 ? 'is-on' : undefined} />
         </div>
       </section>
 

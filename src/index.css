@@ -500,33 +500,78 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .edu-works { align-items: center; }
 
-.know-scroll {
+.know-head {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.know-nav { display: flex; gap: 8px; flex: none; }
+
+.know-arrow {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--grape);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.know-arrow:disabled {
+  background: var(--wash);
+  color: #a1a1a6;
+  cursor: default;
+}
+
+.know-arrow:not(:disabled):hover { background: var(--grape-hover); }
+
+.know-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.know-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d2d2d7;
+}
+
+.know-dots i.is-on { background: var(--grape); }
+
+.know-scroll {
+  --know-inset: max(20px, calc((100vw - 1040px) / 2));
+  --know-peek: 96px;
+  display: flex;
+  gap: 28px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--grape) transparent;
+  scroll-padding-left: var(--know-inset);
+  padding: 8px var(--know-peek) 20px var(--know-inset);
+  scrollbar-width: none;
 }
 
-.know-scroll::-webkit-scrollbar { height: 12px; }
-
-.know-scroll::-webkit-scrollbar-thumb {
-  background-color: var(--grape);
-  border: 3px solid transparent;
-  border-radius: 999px;
-  background-clip: content-box;
-}
+.know-scroll::-webkit-scrollbar { display: none; }
 
 .know-slide {
-  flex: 0 0 100%;
+  flex: 0 0 calc(100vw - var(--know-inset) - var(--know-peek) - 28px);
   scroll-snap-align: start;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 28px;
   box-sizing: border-box;
-  padding: 8px max(20px, calc((100vw - 1040px) / 2)) 20px;
+  min-width: 0;
 }
 
 .edu-demo { --demo-h: min(560px, 68vh); }
@@ -1188,6 +1233,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .tiles, .cards, .cards-3, .split, .know-slide, .press-feature, .footer-grid, .form-grid {
     grid-template-columns: 1fr;
   }
+  .know-scroll { --know-peek: 52px; }
   .photo-row { display: flex; overflow-x: auto; }
   .photo-row img { width: 70vw; flex: none; height: 200px; }
   .gallery, .filmstrip, .team-grid { grid-template-columns: 1fr 1fr; }
