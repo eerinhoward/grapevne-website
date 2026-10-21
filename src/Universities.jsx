@@ -72,12 +72,13 @@ export default function Universities() {
   const [formOpen, setFormOpen] = useState(false)
   const formRef = useRef(null)
   const eduRef = useRef(null)
+  const safetyRef = useRef(null)
 
   useEffect(() => {
-    const video = eduRef.current
-    if (!video) return undefined
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (motion.matches) video.pause()
+    if (!motion.matches) return undefined
+    eduRef.current?.pause()
+    safetyRef.current?.pause()
     return undefined
   }, [])
 
@@ -176,6 +177,34 @@ export default function Universities() {
                 <p>{feature.body}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap split edu-works">
+          <div>
+            <p className="kicker"><i /> While it lasts</p>
+            <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>Food safety.</h2>
+            <div className="story">
+              <p>Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.</p>
+              <p>If the food runs out first, someone on campus can mark it gone. The post comes down.</p>
+            </div>
+          </div>
+          <div className="app-demo-slot safety-demo">
+            <div className="app-demo">
+              <video
+                ref={safetyRef}
+                src="/grapevne-food-safety-hero.mp4"
+                poster="/grapevne-food-safety-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Setting how long a food post stays up, then marking it gone when the food runs out"
+              />
+            </div>
           </div>
         </div>
       </section>

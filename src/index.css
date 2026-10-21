@@ -507,6 +507,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: calc(var(--demo-h) * 143 / 1878);
 }
 
+.safety-demo { --demo-h: min(560px, 68vh); }
+
+.safety-demo .app-demo {
+  cursor: default;
+  border-radius: calc(var(--demo-h) * 143 / 1876);
+}
+
 .chapter.alt { background: var(--wash); }
 .chapter h2 { font-size: clamp(32px, 4vw, 48px); max-width: 18ch; margin-left: auto; margin-right: auto; }
 
