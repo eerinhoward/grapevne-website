@@ -142,7 +142,7 @@ export default function Universities() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap split edu-works">
           <div>
-            <p className="kicker"><i /> On campus</p>
+            <p className="demo-start">Get to know Grapevne</p>
             <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>Getting Started.</h2>
             <div className="story">
               <p>Every account is .edu-verified. Users must verify they are students of their school before gaining access to anything on Grapevne</p>
@@ -184,7 +184,7 @@ export default function Universities() {
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap split edu-works">
           <div>
-            <p className="kicker"><i /> While it lasts</p>
+            <p className="demo-start">Get to know Grapevne</p>
             <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '10px 0 14px' }}>Food safety.</h2>
             <div className="story">
               <p>Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.</p>
