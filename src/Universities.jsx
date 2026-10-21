@@ -156,7 +156,7 @@ export default function Universities() {
       </section>
 
       <section className="section know" style={{ paddingTop: 0 }}>
-        <div className="wrap know-head">
+        <div className="know-head">
           <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: 0 }}>Get to know Grapevne</h2>
           <div className="know-nav">
             <button className="know-arrow" type="button" onClick={() => scrollKnow(-1)} disabled={knowIndex === 0} aria-label="Previous">

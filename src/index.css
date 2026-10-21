@@ -500,12 +500,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .edu-works { align-items: center; }
 
+.know { --know-inset: 56px; text-align: left; }
+
 .know-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 18px;
+  padding: 0 var(--know-inset);
 }
 
 .know-nav { display: flex; gap: 8px; flex: none; }
@@ -534,9 +537,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .know-dots {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   margin-top: 8px;
+  padding-left: var(--know-inset);
 }
 
 .know-dots i {
@@ -549,7 +553,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .know-dots i.is-on { background: var(--grape); }
 
 .know-scroll {
-  --know-inset: max(20px, calc((100vw - 1040px) / 2));
   --know-peek: 96px;
   display: flex;
   gap: 28px;
@@ -567,12 +570,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
   flex: 0 0 calc(100vw - var(--know-inset) - var(--know-peek) - 28px);
   scroll-snap-align: start;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 34rem) auto;
+  justify-content: start;
   align-items: center;
-  gap: 28px;
+  align-content: start;
+  column-gap: 20px;
   box-sizing: border-box;
   min-width: 0;
 }
+
+.know-slide .app-demo-slot { margin: 0; }
 
 .edu-demo { --demo-h: min(560px, 68vh); }
 
@@ -1195,6 +1202,8 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .tiles, .cards, .cards-3, .split, .know-slide, .press-feature, .footer-grid, .form-grid {
     grid-template-columns: 1fr;
   }
+  .know-slide { row-gap: 16px; }
+  .know { --know-inset: 22px; }
   .know-scroll { --know-peek: 52px; }
   .photo-row { display: flex; overflow-x: auto; }
   .photo-row img { width: 70vw; flex: none; height: 200px; }
