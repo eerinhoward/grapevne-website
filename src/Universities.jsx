@@ -290,17 +290,6 @@ export default function Universities() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 14px' }}>Pilot</h2>
-          <div className="story">
-            <p>A new campus starts as a pilot: one school, for a term. Long enough to see whether leftover food gets claimed and whether students use the feed.</p>
-            <p>After the term, we talk about staying, and what it costs.</p>
-          </div>
-          <button className="btn btn-blue" type="button" onClick={openForm}>Talk about a pilot</button>
-        </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap">
           <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: 8 }}>Questions</h2>
           <div className="faq">
             {FAQS.map((faq, index) => {
