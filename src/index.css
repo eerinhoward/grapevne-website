@@ -646,6 +646,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-hero { text-align: center; padding: 64px 0 8px; }
 .page-hero .lede { margin-left: auto; margin-right: auto; }
 
+.uni-hero { min-height: 0; }
+
+.uni-hero .hero-copy { padding: 36px 56px; }
+
+.uni-hero .hero-visual { min-height: 0; }
+
 .uni-hero .hero-bg img { object-position: center 32%; }
 
 .uni-hero h1 {
@@ -1202,6 +1208,8 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .hero h1 { font-size: min(40px, 8.4vw); white-space: normal; }
   .hero .cta-row { justify-content: center; }
   .hero-visual { min-height: 560px; }
+  .uni-hero .hero-visual { min-height: 240px; }
+  .uni-hero .hero-copy { padding: 28px 22px; }
   .hero-product, .chapter .phone { height: 460px; }
   .app-demo-slot { --demo-h: 460px; }
 }
