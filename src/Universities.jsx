@@ -3,18 +3,28 @@ import Layout from './components/Layout'
 
 const ContactForm = lazy(() => import('./ContactForm'))
 
-const BENEFITS = [
+const DEMOS = [
   {
-    title: 'Food gets there in time',
-    body: 'Students see leftover and free food while it lasts, so more of it gets claimed and less of it goes to waste.',
+    key: 'edu',
+    slot: 'edu-demo',
+    src: '/grapevne-edu-login-hero.mp4',
+    poster: '/grapevne-edu-login-poster.jpg',
+    label: 'Signing in with a .edu email, from choosing a school to the verified campus feed',
+    lines: [
+      'Every account is .edu-verified. Users must verify they are students of their school before gaining access to anything on Grapevne',
+      'Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.',
+    ],
   },
   {
-    title: 'One place to post',
-    body: 'Departments and student groups post once. The same news no longer has to chase email threads, group chats, and last-minute signs.',
-  },
-  {
-    title: 'A clear read on interest',
-    body: 'Swipes, saves, and who’s going show which events and drops students actually care about, and when.',
+    key: 'safety',
+    slot: 'safety-demo',
+    src: '/grapevne-food-safety-hero.mp4',
+    poster: '/grapevne-food-safety-poster.jpg',
+    label: 'Setting how long a food post stays up, then marking it gone when the food runs out',
+    lines: [
+      'Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.',
+      'If the food runs out first, someone on campus can mark it gone. The post comes down.',
+    ],
   },
 ]
 
@@ -56,52 +66,14 @@ export default function Universities() {
   const [openFaq, setOpenFaq] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const formRef = useRef(null)
-  const eduRef = useRef(null)
-  const safetyRef = useRef(null)
-  const knowRef = useRef(null)
-  const [knowIndex, setKnowIndex] = useState(0)
+  const demoRefs = useRef({})
 
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
     if (!motion.matches) return undefined
-    eduRef.current?.pause()
-    safetyRef.current?.pause()
+    Object.values(demoRefs.current).forEach((video) => video?.pause())
     return undefined
   }, [])
-
-  useEffect(() => {
-    const el = knowRef.current
-    if (!el) return undefined
-    const step = () => {
-      const slides = el.querySelectorAll('.know-slide')
-      if (slides.length > 1) return slides[1].offsetLeft - slides[0].offsetLeft
-      const slide = slides[0]
-      return slide ? slide.getBoundingClientRect().width : el.clientWidth
-    }
-    const update = () => {
-      const size = step()
-      const index = size > 0 ? Math.round(el.scrollLeft / size) : 0
-      setKnowIndex(index)
-    }
-    update()
-    el.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
-    return () => {
-      el.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
-    }
-  }, [])
-
-  const scrollKnow = (direction) => {
-    const el = knowRef.current
-    if (!el) return
-    const slides = el.querySelectorAll('.know-slide')
-    const step = slides.length > 1
-      ? slides[1].offsetLeft - slides[0].offsetLeft
-      : (slides[0]?.getBoundingClientRect().width || el.clientWidth)
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    el.scrollBy({ left: direction * step, behavior: motion.matches ? 'auto' : 'smooth' })
-  }
 
   const openForm = () => {
     setFormOpen(true)
@@ -115,9 +87,6 @@ export default function Universities() {
       <section className="hero uni-hero">
         <div className="hero-copy">
           <h1>Free food and campus events, in one feed.</h1>
-          <div className="blurb">
-            <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
-          </div>
         </div>
         <div className="hero-visual">
           <div className="hero-bg" aria-hidden="true">
@@ -126,100 +95,35 @@ export default function Universities() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: 18 }}>What you get</h2>
-          <div className="cards cards-3">
-            {BENEFITS.map((benefit) => (
-              <article className="card" key={benefit.title}>
-                <h3>{benefit.title}</h3>
-                <p>{benefit.body}</p>
-              </article>
+      <section className="uni-problem">
+        <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
+      </section>
+
+      {DEMOS.map((demo, index) => (
+        <section className={index % 2 ? 'uni-chapter is-flip' : 'uni-chapter'} key={demo.key}>
+          <div className="story">
+            <h2>{demo.lines[0]}</h2>
+            {demo.lines.slice(1).map((line) => (
+              <p key={line}>{line}</p>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap split">
-          <div>
-            <p className="kicker"><i /> Why Grapevne</p>
-            <h2 className="display" style={{ fontSize: 'clamp(2.2rem, 4vw, 3.4rem)', margin: '10px 0 14px' }}>
-              Students already hear about campus through each other.
-            </h2>
-            <p className="lede">
-              Grapevne makes that faster, organized, and specific to your school. Each campus gets its own feed. Students get something immediate. Staff get a read on what earns attention, without another system to run.
-            </p>
+          <div className={`app-demo-slot ${demo.slot}`}>
+            <div className="app-demo">
+              <video
+                ref={(node) => { demoRefs.current[demo.key] = node }}
+                src={demo.src}
+                poster={demo.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label={demo.label}
+              />
+            </div>
           </div>
-          <img src="/phones.png" alt="Grapevne on two phones" />
-        </div>
-      </section>
-
-      <section className="section know" style={{ paddingTop: 0 }}>
-        <div className="know-head">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: 0 }}>Get to know Grapevne</h2>
-          <div className="know-nav">
-            <button className="know-arrow" type="button" onClick={() => scrollKnow(-1)} disabled={knowIndex === 0} aria-label="Previous">
-              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                <path d="M11 4 L6 9 L11 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <button className="know-arrow" type="button" onClick={() => scrollKnow(1)} disabled={knowIndex >= 1} aria-label="Next">
-              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                <path d="M7 4 L12 9 L7 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div className="know-scroll" ref={knowRef} tabIndex={0} aria-label="Get to know Grapevne">
-          <article className="know-slide">
-            <div className="story">
-              <p>Every account is .edu-verified. Users must verify they are students of their school before gaining access to anything on Grapevne</p>
-              <p>Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.</p>
-            </div>
-            <div className="app-demo-slot edu-demo">
-              <div className="app-demo">
-                <video
-                  ref={eduRef}
-                  src="/grapevne-edu-login-hero.mp4"
-                  poster="/grapevne-edu-login-poster.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-label="Signing in with a .edu email, from choosing a school to the verified campus feed"
-                />
-              </div>
-            </div>
-          </article>
-          <article className="know-slide">
-            <div className="story">
-              <p>Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.</p>
-              <p>If the food runs out first, someone on campus can mark it gone. The post comes down.</p>
-            </div>
-            <div className="app-demo-slot safety-demo">
-              <div className="app-demo">
-                <video
-                  ref={safetyRef}
-                  src="/grapevne-food-safety-hero.mp4"
-                  poster="/grapevne-food-safety-poster.jpg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-label="Setting how long a food post stays up, then marking it gone when the food runs out"
-                />
-              </div>
-            </div>
-          </article>
-        </div>
-        <div className="know-dots" aria-hidden="true">
-          <i className={knowIndex === 0 ? 'is-on' : undefined} />
-          <i className={knowIndex >= 1 ? 'is-on' : undefined} />
-        </div>
-      </section>
+        </section>
+      ))}
 
       <section className="section impact" style={{ paddingTop: 0 }}>
         <div className="wrap">
