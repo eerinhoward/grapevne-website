@@ -67,6 +67,8 @@ export default function Universities() {
   const [formOpen, setFormOpen] = useState(false)
   const formRef = useRef(null)
   const demoRefs = useRef({})
+  const knowRef = useRef(null)
+  const [knowIndex, setKnowIndex] = useState(0)
 
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -74,6 +76,46 @@ export default function Universities() {
     Object.values(demoRefs.current).forEach((video) => video?.pause())
     return undefined
   }, [])
+
+  useEffect(() => {
+    const el = knowRef.current
+    if (!el) return undefined
+    const nearest = () => {
+      const slides = [...el.querySelectorAll('.know-slide')]
+      const mid = el.scrollLeft + el.clientWidth / 2
+      let best = 0
+      let bestDist = Infinity
+      slides.forEach((slide, index) => {
+        const center = slide.offsetLeft + slide.offsetWidth / 2
+        const dist = Math.abs(center - mid)
+        if (dist < bestDist) {
+          best = index
+          bestDist = dist
+        }
+      })
+      return best
+    }
+    const update = () => setKnowIndex(nearest())
+    update()
+    el.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      el.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [])
+
+  const scrollKnow = (direction) => {
+    const el = knowRef.current
+    if (!el) return
+    const slides = [...el.querySelectorAll('.know-slide')]
+    const next = Math.min(Math.max(knowIndex + direction, 0), slides.length - 1)
+    const slide = slides[next]
+    if (!slide) return
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const left = slide.offsetLeft - (el.clientWidth - slide.offsetWidth) / 2
+    el.scrollTo({ left, behavior: motion.matches ? 'auto' : 'smooth' })
+  }
 
   const openForm = () => {
     setFormOpen(true)
@@ -99,31 +141,55 @@ export default function Universities() {
         <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
       </section>
 
-      {DEMOS.map((demo, index) => (
-        <section className={index % 2 ? 'uni-chapter is-flip' : 'uni-chapter'} key={demo.key}>
-          <div className="story">
-            <h2>{demo.lines[0]}</h2>
-            {demo.lines.slice(1).map((line) => (
-              <p key={line}>{line}</p>
-            ))}
+      <section className="know">
+        <div className="know-head">
+          <h2 className="display">Get to Know Grapevne.</h2>
+          <div className="know-nav">
+            <button className="know-arrow" type="button" onClick={() => scrollKnow(-1)} disabled={knowIndex === 0} aria-label="Previous">
+              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M11 4 L6 9 L11 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button className="know-arrow" type="button" onClick={() => scrollKnow(1)} disabled={knowIndex >= DEMOS.length - 1} aria-label="Next">
+              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M7 4 L12 9 L7 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
           </div>
-          <div className={`app-demo-slot ${demo.slot}`}>
-            <div className="app-demo">
-              <video
-                ref={(node) => { demoRefs.current[demo.key] = node }}
-                src={demo.src}
-                poster={demo.poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={demo.label}
-              />
-            </div>
-          </div>
-        </section>
-      ))}
+        </div>
+        <div className="know-scroll" ref={knowRef} tabIndex={0} aria-label="Demos">
+          {DEMOS.map((demo) => (
+            <article className="know-slide" key={demo.key}>
+              <div className="story">
+                <h2>{demo.lines[0]}</h2>
+                {demo.lines.slice(1).map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+              <div className={`app-demo-slot ${demo.slot}`}>
+                <div className="app-demo">
+                  <video
+                    ref={(node) => { demoRefs.current[demo.key] = node }}
+                    src={demo.src}
+                    poster={demo.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label={demo.label}
+                  />
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="know-dots" aria-hidden="true">
+          {DEMOS.map((demo, index) => (
+            <i key={demo.key} className={knowIndex === index ? 'is-on' : undefined} />
+          ))}
+        </div>
+      </section>
 
       <section className="section impact" style={{ paddingTop: 0 }}>
         <div className="wrap">

@@ -513,26 +513,96 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: -0.015em;
 }
 
-.uni-chapter {
+.know { --know-inset: 56px; padding-top: 36px; text-align: left; }
+
+.know-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 0 var(--know-inset);
+}
+
+.know-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: left;
+}
+
+.know-nav { display: flex; gap: 8px; flex: none; }
+
+.know-arrow {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--grape);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.know-arrow:disabled {
+  background: var(--wash);
+  color: #a1a1a6;
+  cursor: default;
+}
+
+.know-arrow:not(:disabled):hover { background: var(--grape-hover); }
+
+.know-dots {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  padding-left: var(--know-inset);
+}
+
+.know-dots i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d2d2d7;
+}
+
+.know-dots i.is-on { background: var(--grape); }
+
+.know-scroll {
+  --demo-h: min(560px, 68vh);
+  --know-slide: calc(34rem + 20px + (var(--demo-h) * 896 / 1876));
+  --know-peek: 96px;
+  --know-side: max(24px, calc((100vw - var(--know-slide)) / 2));
+  display: flex;
+  gap: max(28px, calc(var(--know-side) - var(--know-peek)));
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-inline: var(--know-side);
+  padding: 8px var(--know-side) 20px;
+  scrollbar-width: none;
+}
+
+.know-scroll::-webkit-scrollbar { display: none; }
+
+.know-slide {
+  flex: 0 0 var(--know-slide);
+  scroll-snap-align: center;
   display: grid;
   grid-template-columns: minmax(0, 34rem) auto;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   column-gap: 20px;
-  padding: 56px;
   box-sizing: border-box;
+  min-width: 0;
 }
 
-.uni-chapter.is-flip {
-  grid-template-columns: auto minmax(0, 34rem);
-}
+.know-slide .app-demo-slot { margin: 0; }
 
-.uni-chapter.is-flip .story { order: 2; }
-.uni-chapter.is-flip .app-demo-slot { order: 1; }
-
-.uni-chapter .app-demo-slot { margin: 0; }
-
-.uni-chapter h2 {
+.know-slide h2 {
   margin: 0 0 14px;
   max-width: none;
   color: #1d1d1f;
@@ -1161,13 +1231,17 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   }
   .menu-panel[hidden] { display: none; }
   .menu-panel a { font-size: 17px; padding: 10px 4px; }
-  .tiles, .cards, .cards-3, .split, .uni-chapter, .press-feature, .footer-grid, .form-grid {
+  .tiles, .cards, .cards-3, .split, .know-slide, .press-feature, .footer-grid, .form-grid {
     grid-template-columns: 1fr;
   }
-  .uni-chapter,
-  .uni-chapter.is-flip { grid-template-columns: 1fr; row-gap: 16px; padding: 28px 22px; }
-  .uni-chapter.is-flip .story { order: 1; }
-  .uni-chapter.is-flip .app-demo-slot { order: 2; }
+  .know-slide { row-gap: 16px; }
+  .know-slide .app-demo-slot { margin-inline: auto; }
+  .know { --know-inset: 22px; }
+  .know-scroll {
+    --demo-h: 460px;
+    --know-slide: calc(100vw - 96px);
+    --know-peek: 28px;
+  }
   .uni-problem { padding: 36px 22px 8px; }
   .photo-row { display: flex; overflow-x: auto; }
   .photo-row img { width: 70vw; flex: none; height: 200px; }
@@ -1202,4 +1276,5 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   html { scroll-behavior: auto; }
   .phone-track { animation: none; }
   .phone-strip { overflow-x: auto; }
+  .know-scroll { scroll-behavior: auto; }
 }
