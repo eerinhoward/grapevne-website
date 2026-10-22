@@ -184,11 +184,6 @@ export default function Universities() {
             </article>
           ))}
         </div>
-        <div className="know-dots" aria-hidden="true">
-          {DEMOS.map((demo, index) => (
-            <i key={demo.key} className={knowIndex === index ? 'is-on' : undefined} />
-          ))}
-        </div>
       </section>
 
       <section className="section impact" style={{ paddingTop: 0 }}>
