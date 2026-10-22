@@ -187,27 +187,6 @@ export default function Universities() {
       </section>
 
       <section className="section impact" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 22px' }}>Impact</h2>
-          <div className="impact-stats">
-            <div>
-              <strong>200</strong>
-              <span>students on Grapevne at Trinity, Wellesley, MIT, and UChicago</span>
-            </div>
-            <div>
-              <strong>Spring 2026</strong>
-              <span>launched campus-wide at Trinity</span>
-            </div>
-          </div>
-          <blockquote className="impact-quote">
-            <p>Help us keep food out of the landfill while also feeding hungry students.</p>
-            <cite>
-              Trinity College Sustainability
-              {' · '}
-              <a href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">Food and Dining</a>
-            </cite>
-          </blockquote>
-        </div>
         <div className="campus-now">
           <div className="split">
             <div>
@@ -237,6 +216,27 @@ export default function Universities() {
               </a>
             </div>
           </div>
+        </div>
+        <div className="wrap">
+          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', margin: '0 0 22px' }}>Impact</h2>
+          <div className="impact-stats">
+            <div>
+              <strong>200</strong>
+              <span>students on Grapevne at Trinity, Wellesley, MIT, and UChicago</span>
+            </div>
+            <div>
+              <strong>Spring 2026</strong>
+              <span>launched campus-wide at Trinity</span>
+            </div>
+          </div>
+          <blockquote className="impact-quote">
+            <p>Help us keep food out of the landfill while also feeding hungry students.</p>
+            <cite>
+              Trinity College Sustainability
+              {' · '}
+              <a href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">Food and Dining</a>
+            </cite>
+          </blockquote>
         </div>
         <div className="phone-strip">
           <div className="phone-track">
