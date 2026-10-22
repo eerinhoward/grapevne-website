@@ -166,7 +166,7 @@ export default function Home() {
           </div>
           <div className="cta-row">
             <DownloadLink className="btn btn-blue">Download</DownloadLink>
-            <Link to="/universities" className="btn btn-ghost">For universities</Link>
+            <Link to="/universities" className="btn btn-ghost">Learn More</Link>
           </div>
         </div>
       </section>
