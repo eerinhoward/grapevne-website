@@ -11,7 +11,7 @@ const DEMOS = [
     poster: '/grapevne-edu-login-poster.jpg',
     label: 'Signing in with a .edu email, from choosing a school to the verified campus feed',
     lines: [
-      'Every account is .edu-verified. Users must verify they are students of their school before gaining access to anything on Grapevne',
+      'Exclusively for [.Edu]',
       'Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.',
     ],
   },
@@ -123,6 +123,7 @@ export default function Universities() {
       </section>
 
       <section className="uni-problem">
+        <p>Cultivating a zero-waste campus.</p>
         <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
         <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
       </section>
