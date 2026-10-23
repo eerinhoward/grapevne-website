@@ -11,7 +11,7 @@ const DEMOS = [
     poster: '/grapevne-edu-login-poster.jpg',
     label: 'Signing in with a .edu email, from choosing a school to the verified campus feed',
     lines: [
-      'Exclusively for [.Edu]',
+      'Exclusively for [.edu]',
       'Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.',
     ],
   },
