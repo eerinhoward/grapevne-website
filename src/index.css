@@ -515,15 +515,33 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .uni-problem p + p { margin-top: 22px; }
 
-.know { --know-inset: 56px; padding-top: 36px; text-align: left; }
+.know {
+  --know-inset: 56px;
+  --know-steps: 1;
+  --know-step: 78vh;
+  position: relative;
+  height: calc(100vh - var(--header) + (var(--know-steps) * var(--know-step)));
+  text-align: left;
+}
+
+.know-pin {
+  position: sticky;
+  top: var(--header);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--header));
+  padding: 28px var(--know-inset) 24px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
 
 .know-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 18px;
-  padding: 0 var(--know-inset);
+  margin-bottom: 8px;
+  flex: none;
 }
 
 .know-head h2 {
@@ -531,6 +549,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
   font-weight: 400;
   font-size: clamp(2rem, 4vw, 3rem);
   text-align: left;
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.24, 1), opacity 0.7s ease;
+}
+
+.know.is-in .know-head h2 {
+  opacity: 1;
+  transform: none;
 }
 
 .know-nav { display: flex; gap: 8px; flex: none; }
@@ -557,38 +583,35 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .know-arrow:not(:disabled):hover { background: var(--grape-hover); }
 
-.know-scroll {
-  --demo-h: min(560px, 68vh);
-  --know-slide: calc(34rem + 20px + (var(--demo-h) * 896 / 1876));
-  --know-peek: 96px;
-  --know-side: max(24px, calc((100vw - var(--know-slide)) / 2));
-  display: flex;
-  gap: max(28px, calc(var(--know-side) - var(--know-peek)));
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scroll-padding-inline: var(--know-side);
-  padding: 8px var(--know-side) 20px;
-  scrollbar-width: none;
+.know-wheel {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
-.know-scroll::-webkit-scrollbar { display: none; }
-
-.know-slide {
-  flex: 0 0 var(--know-slide);
-  scroll-snap-align: center;
+.know-slice {
+  position: absolute;
+  inset: 0;
   display: grid;
   grid-template-columns: minmax(0, 34rem) auto;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  column-gap: 20px;
+  column-gap: 28px;
   box-sizing: border-box;
   min-width: 0;
+  transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.24, 1);
+  will-change: transform;
 }
 
-.know-slide .app-demo-slot { margin: 0; }
+.know-slice .story { max-width: 34rem; }
 
-.know-slide h2 {
+.know-slice .app-demo-slot {
+  --demo-h: min(520px, calc(100vh - var(--header) - 148px));
+  margin: 0;
+}
+
+.know-slice h2 {
   margin: 0 0 14px;
   max-width: none;
   color: #1d1d1f;
@@ -656,8 +679,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   margin: 0 0 0.75em;
   max-width: none;
   color: #000;
-  font-family: "Helvetica Neue Condensed", "Helvetica Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-stretch: condensed;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  font-stretch: normal;
   font-weight: 400;
   font-size: clamp(18px, 1.45vw, 24px);
   line-height: 1.35;
@@ -1225,17 +1248,20 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   }
   .menu-panel[hidden] { display: none; }
   .menu-panel a { font-size: 17px; padding: 10px 4px; }
-  .tiles, .cards, .cards-3, .split, .know-slide, .press-feature, .footer-grid, .form-grid {
+  .tiles, .cards, .cards-3, .split, .know-slice, .press-feature, .footer-grid, .form-grid {
     grid-template-columns: 1fr;
   }
-  .know-slide { row-gap: 16px; }
-  .know-slide .app-demo-slot { margin-inline: auto; }
-  .know { --know-inset: 22px; }
-  .know-scroll {
-    --demo-h: 460px;
-    --know-slide: calc(100vw - 96px);
-    --know-peek: 28px;
+  .know-slice {
+    align-content: center;
+    justify-items: stretch;
+    row-gap: 16px;
   }
+  .know-slice .app-demo-slot {
+    --demo-h: min(300px, 38vh);
+    margin-inline: auto;
+  }
+  .know { --know-inset: 22px; }
+  .know-pin { padding-top: 20px; padding-bottom: 16px; }
   .uni-problem { padding: 36px 22px 8px; }
   .photo-row { display: flex; overflow-x: auto; }
   .photo-row img { width: 70vw; flex: none; height: 200px; }
@@ -1270,5 +1296,6 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   html { scroll-behavior: auto; }
   .phone-track { animation: none; }
   .phone-strip { overflow-x: auto; }
-  .know-scroll { scroll-behavior: auto; }
+  .know-head h2,
+  .know-slice { transition: none; }
 }

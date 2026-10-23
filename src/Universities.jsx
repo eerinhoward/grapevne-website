@@ -54,6 +54,7 @@ export default function Universities() {
   const demoRefs = useRef({})
   const knowRef = useRef(null)
   const [knowIndex, setKnowIndex] = useState(0)
+  const [knowIn, setKnowIn] = useState(false)
 
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -63,43 +64,54 @@ export default function Universities() {
   }, [])
 
   useEffect(() => {
-    const el = knowRef.current
-    if (!el) return undefined
-    const nearest = () => {
-      const slides = [...el.querySelectorAll('.know-slide')]
-      const mid = el.scrollLeft + el.clientWidth / 2
-      let best = 0
-      let bestDist = Infinity
-      slides.forEach((slide, index) => {
-        const center = slide.offsetLeft + slide.offsetWidth / 2
-        const dist = Math.abs(center - mid)
-        if (dist < bestDist) {
-          best = index
-          bestDist = dist
-        }
-      })
-      return best
+    const section = knowRef.current
+    if (!section) return undefined
+    let frame = 0
+    const headerOffset = () => {
+      const raw = getComputedStyle(document.documentElement).getPropertyValue('--header')
+      const parsed = parseFloat(raw)
+      return Number.isFinite(parsed) ? parsed : 64
     }
-    const update = () => setKnowIndex(nearest())
+    const range = () => {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY
+      const start = sectionTop - headerOffset()
+      const end = sectionTop + section.offsetHeight - window.innerHeight
+      return { start, span: Math.max(end - start, 1) }
+    }
+    const update = () => {
+      const { start, span } = range()
+      const progress = Math.min(1, Math.max(0, (window.scrollY - start) / span))
+      const last = DEMOS.length - 1
+      setKnowIndex(Math.round(progress * last))
+      const rect = section.getBoundingClientRect()
+      setKnowIn(rect.top < window.innerHeight * 0.86 && rect.bottom > window.innerHeight * 0.2)
+    }
+    const onScroll = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(update)
+    }
     update()
-    el.addEventListener('scroll', update, { passive: true })
-    window.addEventListener('resize', update)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
     return () => {
-      el.removeEventListener('scroll', update)
-      window.removeEventListener('resize', update)
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
     }
   }, [])
 
   const scrollKnow = (direction) => {
-    const el = knowRef.current
-    if (!el) return
-    const slides = [...el.querySelectorAll('.know-slide')]
-    const next = Math.min(Math.max(knowIndex + direction, 0), slides.length - 1)
-    const slide = slides[next]
-    if (!slide) return
+    const section = knowRef.current
+    if (!section) return
+    const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 64
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY
+    const start = sectionTop - header
+    const end = sectionTop + section.offsetHeight - window.innerHeight
+    const last = DEMOS.length - 1
+    const next = Math.min(Math.max(knowIndex + direction, 0), last)
+    const progress = last === 0 ? 0 : next / last
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const left = slide.offsetLeft - (el.clientWidth - slide.offsetWidth) / 2
-    el.scrollTo({ left, behavior: motion.matches ? 'auto' : 'smooth' })
+    window.scrollTo({ top: start + progress * (end - start), behavior: motion.matches ? 'auto' : 'smooth' })
   }
 
   const openForm = () => {
@@ -126,6 +138,8 @@ export default function Universities() {
         <p>Cultivating a zero-waste campus.</p>
         <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
         <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
+        <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
+        <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
       </section>
 
       <section className="campus-now" aria-label="Trusted By">
@@ -159,48 +173,60 @@ export default function Universities() {
         </div>
       </section>
 
-      <section className="know">
-        <div className="know-head">
-          <h2 className="display">Get to Know Grapevne.</h2>
-          <div className="know-nav">
-            <button className="know-arrow" type="button" onClick={() => scrollKnow(-1)} disabled={knowIndex === 0} aria-label="Previous">
-              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                <path d="M11 4 L6 9 L11 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <button className="know-arrow" type="button" onClick={() => scrollKnow(1)} disabled={knowIndex >= DEMOS.length - 1} aria-label="Next">
-              <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                <path d="M7 4 L12 9 L7 14" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
+      <section
+        className={`know${knowIn ? ' is-in' : ''}`}
+        ref={knowRef}
+        style={{ '--know-steps': DEMOS.length - 1 }}
+      >
+        <div className="know-pin">
+          <div className="know-head">
+            <h2 className="display">Get to Know Grapevne.</h2>
+            <div className="know-nav">
+              <button className="know-arrow" type="button" onClick={() => scrollKnow(-1)} disabled={knowIndex === 0} aria-label="Previous">
+                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M4 11 L9 6 L14 11" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+              <button className="know-arrow" type="button" onClick={() => scrollKnow(1)} disabled={knowIndex >= DEMOS.length - 1} aria-label="Next">
+                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+                  <path d="M4 7 L9 12 L14 7" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="know-scroll" ref={knowRef} tabIndex={0} aria-label="Demos">
-          {DEMOS.map((demo) => (
-            <article className="know-slide" key={demo.key}>
-              <div className="story">
-                <h2>{demo.lines[0]}</h2>
-                {demo.lines.slice(1).map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
-              </div>
-              <div className={`app-demo-slot ${demo.slot}`}>
-                <div className="app-demo">
-                  <video
-                    ref={(node) => { demoRefs.current[demo.key] = node }}
-                    src={demo.src}
-                    poster={demo.poster}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label={demo.label}
-                  />
+          <div className="know-wheel" aria-roledescription="wheel">
+            <p className="sr-only" aria-live="polite">{DEMOS[knowIndex].lines[0]}</p>
+            {DEMOS.map((demo, index) => (
+              <article
+                className={`know-slice${index === knowIndex ? ' is-active' : ''}`}
+                key={demo.key}
+                style={{ transform: `translate3d(0, ${(index - knowIndex) * 100}%, 0)` }}
+                aria-hidden={index !== knowIndex}
+              >
+                <div className="story">
+                  <h2>{demo.lines[0]}</h2>
+                  {demo.lines.slice(1).map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className={`app-demo-slot ${demo.slot}`}>
+                  <div className="app-demo">
+                    <video
+                      ref={(node) => { demoRefs.current[demo.key] = node }}
+                      src={demo.src}
+                      poster={demo.poster}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      aria-label={demo.label}
+                    />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
