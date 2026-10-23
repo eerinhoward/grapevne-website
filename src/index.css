@@ -690,20 +690,37 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-hero { text-align: center; padding: 64px 0 8px; }
 .page-hero .lede { margin-left: auto; margin-right: auto; }
 
-.closing h2 {
+.uni-open {
+  box-sizing: border-box;
+  padding: 36px 0 28px;
+}
+
+@media (min-width: 901px) {
+  .uni-open {
+    min-height: calc(100vh - var(--header));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 0 48px;
+  }
+}
+
+.uni-open h1 {
   width: min(920px, calc(100% - 48px));
   margin: 0 auto;
 }
 
-.closing h2 span { color: var(--grape); }
+.uni-open h1 span { color: var(--grape); }
 
 .uni-frame {
+  --uni-fit: min(460px, calc(100vh - var(--header) - 280px));
   display: block;
-  width: min(1040px, 100%);
+  width: min(1040px, calc(100% - 72px), calc(var(--uni-fit) * 16 / 9));
   aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center 32%;
-  margin: 28px auto 8px;
+  margin: 28px auto 0;
 }
 
 .section { padding: 56px 0; }
