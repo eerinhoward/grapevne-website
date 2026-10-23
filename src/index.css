@@ -691,6 +691,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .uni-hero .hero-visual { min-height: 440px; }
 
+.uni-hero .hero-bg::after { background: transparent; }
+
 .uni-hero .hero-bg img { object-position: center 32%; }
 
 .section { padding: 56px 0; }
