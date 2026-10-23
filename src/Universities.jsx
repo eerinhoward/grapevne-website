@@ -24,8 +24,8 @@ const DEMOS = [
     poster: '/grapevne-food-safety-poster.jpg',
     label: 'Setting how long a food post stays up, then marking it gone when the food runs out',
     lines: [
+      'Food Safety',
       'Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.',
-      'If the food runs out first, someone on campus can mark it gone. The post comes down.',
     ],
   },
 ]
