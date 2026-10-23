@@ -67,7 +67,7 @@ export default function About() {
       <section className="page-hero">
         <div className="wrap">
           <p className="kicker"><i /> About</p>
-          <h1 className="display">Hi there.</h1>
+          <h1 className="display">built by students who got tired of watching good food get thrown out</h1>
         </div>
       </section>
 
