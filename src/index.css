@@ -352,16 +352,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
   font-size: clamp(40px, 6vw, 56px);
 }
 
-.page-hero .about-next {
-  margin: 0.85em 0 0;
+.about-hero h1,
+.about-hero .about-next {
+  font-weight: 400;
   font-stretch: normal;
+}
+
+.page-hero .about-next {
+  margin: 0.95em 0 0;
 }
 
 .page-hero h1 a,
 .page-hero .about-next a { color: var(--grape); }
 .page-hero h1 a:hover,
 .page-hero .about-next a:hover { text-decoration: underline; }
-.page-hero .socials { justify-content: center; margin-top: 22px; }
 
 .eyebrow,
 .kicker {
@@ -973,33 +977,49 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-align: left;
 }
 
-.team-row {
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - var(--header));
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: 16px;
-  align-items: flex-start;
+  align-items: center;
+  padding: 48px 0;
 }
 
-.team-row figure {
-  margin: 0;
-  width: 200px;
-  max-width: calc((100% - 32px) / 3);
+.about-hero .wrap { width: min(640px, calc(100% - 48px)); }
+
+.about-floats {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.team-row img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 0;
+.about-hero .wrap { position: relative; z-index: 2; }
+
+.float-face {
+  position: absolute;
+  height: clamp(190px, 24vw, 300px);
+  width: auto;
+  --tilt: -8deg;
+  filter: drop-shadow(0 16px 14px rgba(29, 29, 31, 0.16));
+  animation: team-float 4.8s ease-in-out infinite;
 }
 
-.team-row figcaption { margin-top: 8px; text-align: left; }
-.team-row strong { display: block; font-size: 15px; font-weight: 600; }
-.team-row figcaption span { display: block; color: var(--muted); font-size: 13px; }
+.float-face.is-erin { left: 1.2vw; top: 14%; }
+.float-face.is-jasmine { right: 1.2vw; top: 18%; --tilt: 5deg; animation-delay: -1.6s; }
+.float-face.is-sara {
+  left: 2vw;
+  bottom: 3%;
+  height: clamp(170px, 20vw, 250px);
+  --tilt: 7deg;
+  animation-delay: -3.1s;
+}
+
+@keyframes team-float {
+  0%, 100% { transform: rotate(var(--tilt)) translateY(0); }
+  50% { transform: rotate(var(--tilt)) translateY(-12px); }
+}
 
 .icon-btn {
   width: 36px;
@@ -1031,10 +1051,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .story p { font-size: 19px; line-height: 1.5; margin: 0 0 16px; color: #1d1d1f; }
 .story a { color: var(--grape); }
 .story a:hover { text-decoration: underline; }
-
-.socials { display: flex; gap: 16px; flex-wrap: wrap; }
-.socials a { color: var(--blue); text-decoration: none; }
-.socials a:hover { text-decoration: underline; }
 
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; text-align: left; }
 .field span { font-size: 14px; font-weight: 600; }
@@ -1203,6 +1219,27 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .app-demo-slot { --demo-h: 460px; }
 }
 
+@media (max-width: 1100px) {
+  .about-hero {
+    display: block;
+    min-height: 0;
+    overflow: visible;
+    padding: 36px 0 28px;
+  }
+  .about-hero .wrap { width: min(1040px, calc(100% - 40px)); }
+  .about-floats {
+    position: relative;
+    inset: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: min(1040px, calc(100% - 16px));
+    margin: 28px auto 0;
+    pointer-events: none;
+  }
+  .float-face { position: static; height: 150px; }
+}
+
 @media (max-width: 640px) {
   .wrap { width: min(1040px, calc(100% - 32px)); }
   .lede, .chapter p { font-size: 17px; }
@@ -1212,10 +1249,12 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .note p { font-size: 22px; }
   .cards, .cards-3, .impact-stats { grid-template-columns: 1fr; }
   .phone-set img { height: 340px; }
+  .float-face { height: 96px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .phone-track { animation: none; }
   .phone-strip { overflow-x: auto; }
+  .float-face { animation: none; transform: rotate(var(--tilt)); }
 }
