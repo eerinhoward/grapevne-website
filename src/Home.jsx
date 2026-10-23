@@ -162,7 +162,7 @@ export default function Home() {
           <div className="blurb">
             <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
             <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
-            <p>We hope it finds you when you need it, and makes the moment a little better.</p>
+            <p>Taste everything the campus has to offer</p>
           </div>
           <div className="cta-row">
             <DownloadLink className="btn btn-blue">Download</DownloadLink>
