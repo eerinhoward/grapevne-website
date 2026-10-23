@@ -225,7 +225,7 @@ export default function Universities() {
 
       <section className="closing" style={{ paddingTop: 20 }}>
         <div className="wrap">
-          <h2 className="display">Bring Grapevne to your campus.</h2>
+          <h2 className="display">Bring Grapevne to your (s)quad</h2>
           <p className="lede" style={{ margin: '0 auto 20px' }}>
             Tell us about your school. We’ll show you how the feed works.
           </p>
