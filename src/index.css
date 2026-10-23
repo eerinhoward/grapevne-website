@@ -990,6 +990,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-align: left;
 }
 
+.faq-section {
+  padding: 28px 56px 56px;
+  text-align: left;
+}
+
+.faq-section h2 {
+  margin: 0 0 8px;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: left;
+}
+
+.faq-section .faq { max-width: 1040px; }
+
 .faq { border-top: 1px solid var(--line); text-align: left; margin-top: 12px; }
 
 .faq button {
@@ -1262,6 +1276,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
     margin-inline: auto;
   }
   .know { --know-inset: 22px; }
+  .faq-section { padding-left: 22px; padding-right: 22px; }
   .know-pin { padding-top: 20px; padding-bottom: 16px; }
   .uni-problem { padding: 36px 22px 8px; }
   .photo-row { display: flex; overflow-x: auto; }

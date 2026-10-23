@@ -230,23 +230,21 @@ export default function Universities() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', marginBottom: 8 }}>Questions</h2>
-          <div className="faq">
-            {FAQS.map((faq, index) => {
-              const open = openFaq === index
-              return (
-                <div key={faq.question}>
-                  <button type="button" aria-expanded={open} onClick={() => setOpenFaq(open ? null : index)}>
-                    <span>{faq.question}</span>
-                    <span aria-hidden="true">{open ? '–' : '+'}</span>
-                  </button>
-                  {open && <p className="answer">{faq.answer}</p>}
-                </div>
-              )
-            })}
-          </div>
+      <section className="faq-section">
+        <h2 className="display">Frequently Asked</h2>
+        <div className="faq">
+          {FAQS.map((faq, index) => {
+            const open = openFaq === index
+            return (
+              <div key={faq.question}>
+                <button type="button" aria-expanded={open} onClick={() => setOpenFaq(open ? null : index)}>
+                  <span>{faq.question}</span>
+                  <span aria-hidden="true">{open ? '–' : '+'}</span>
+                </button>
+                {open && <p className="answer">{faq.answer}</p>}
+              </div>
+            )
+          })}
         </div>
       </section>
 
