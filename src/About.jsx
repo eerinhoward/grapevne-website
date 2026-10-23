@@ -30,7 +30,6 @@ export default function About() {
 
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <h2 className="display" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', marginBottom: 28 }}>The team</h2>
           <div className="team-row">
             {TEAM.map((person) => (
               <figure key={person.name}>

@@ -964,6 +964,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .team-row {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
   gap: 16px;
   align-items: flex-start;
 }
