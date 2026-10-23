@@ -516,102 +516,45 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .uni-problem p + p { margin-top: 22px; }
 
 .know {
-  --know-inset: 56px;
-  --know-steps: 1;
-  --know-step: 78vh;
-  position: relative;
-  height: calc(100vh - var(--header) + (var(--know-steps) * var(--know-step)));
+  padding: 48px 56px 20px;
   text-align: left;
 }
 
-.know-pin {
-  position: sticky;
-  top: var(--header);
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - var(--header));
-  padding: 28px var(--know-inset) 24px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-.know-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 8px;
-  flex: none;
-}
-
-.know-head h2 {
+.know > h2 {
   margin: 0;
   font-weight: 400;
   font-size: clamp(2rem, 4vw, 3rem);
   text-align: left;
-  opacity: 0;
-  transform: translateX(-32px);
-  transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.24, 1), opacity 0.7s ease;
 }
 
-.know.is-in .know-head h2 {
-  opacity: 1;
-  transform: none;
-}
-
-.know-nav { display: flex; gap: 8px; flex: none; }
-
-.know-arrow {
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--grape);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-}
-
-.know-arrow:disabled {
-  background: var(--wash);
-  color: #a1a1a6;
-  cursor: default;
-}
-
-.know-arrow:not(:disabled):hover { background: var(--grape-hover); }
-
-.know-wheel {
-  position: relative;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.know-slice {
-  position: absolute;
-  inset: 0;
+.know-grid {
   display: grid;
-  grid-template-columns: minmax(0, 34rem) auto;
-  justify-content: center;
-  align-items: center;
-  column-gap: 28px;
-  box-sizing: border-box;
-  min-width: 0;
-  transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.24, 1);
-  will-change: transform;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 56px 40px;
+  margin-top: 36px;
 }
 
-.know-slice .story { width: min(34rem, 100%); max-width: 34rem; }
+.know-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
 
-.know-slice .app-demo-slot {
-  --demo-h: min(520px, calc(100vh - var(--header) - 148px));
+.know-cell .story {
+  width: min(34rem, 100%);
+  max-width: 34rem;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.know-cell .app-demo-slot {
+  --demo-h: min(420px, 46vh);
   margin: 0;
 }
 
-.know-slice h2 {
+.know-cell h2 {
   margin: 0 0 14px;
   max-width: none;
   color: #1d1d1f;
@@ -625,14 +568,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .edu-demo { --demo-h: min(560px, 68vh); }
 
 .edu-demo .app-demo {
-  cursor: default;
   border-radius: calc(var(--demo-h) * 143 / 1878);
 }
 
 .safety-demo { --demo-h: min(560px, 68vh); }
 
 .safety-demo .app-demo {
-  cursor: default;
   border-radius: calc(var(--demo-h) * 143 / 1876);
 }
 
@@ -1262,22 +1203,12 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   }
   .menu-panel[hidden] { display: none; }
   .menu-panel a { font-size: 17px; padding: 10px 4px; }
-  .tiles, .cards, .cards-3, .split, .know-slice, .press-feature, .footer-grid, .form-grid {
+  .tiles, .cards, .cards-3, .split, .know-grid, .press-feature, .footer-grid, .form-grid {
     grid-template-columns: 1fr;
   }
-  .know-slice {
-    align-content: center;
-    justify-items: center;
-    row-gap: 16px;
-  }
-  .know-slice .story { text-align: center; }
-  .know-slice .app-demo-slot {
-    --demo-h: min(300px, 38vh);
-    margin-inline: auto;
-  }
-  .know { --know-inset: 22px; }
+  .know { padding-left: 22px; padding-right: 22px; }
+  .know-cell .app-demo-slot { --demo-h: min(380px, 48vh); }
   .faq-section { padding-left: 22px; padding-right: 22px; }
-  .know-pin { padding-top: 20px; padding-bottom: 16px; }
   .uni-problem { padding: 36px 22px 8px; }
   .photo-row { display: flex; overflow-x: auto; }
   .photo-row img { width: 70vw; flex: none; height: 200px; }
@@ -1312,6 +1243,4 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   html { scroll-behavior: auto; }
   .phone-track { animation: none; }
   .phone-strip { overflow-x: auto; }
-  .know-head h2,
-  .know-slice { transition: none; }
 }

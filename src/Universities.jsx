@@ -7,6 +7,7 @@ const DEMOS = [
   {
     key: 'edu',
     slot: 'edu-demo',
+    curve: 1878,
     src: '/grapevne-edu-login-hero.mp4',
     poster: '/grapevne-edu-login-poster.jpg',
     label: 'Signing in with a .edu email, from choosing a school to the verified campus feed',
@@ -18,6 +19,7 @@ const DEMOS = [
   {
     key: 'safety',
     slot: 'safety-demo',
+    curve: 1876,
     src: '/grapevne-food-safety-hero.mp4',
     poster: '/grapevne-food-safety-poster.jpg',
     label: 'Setting how long a food post stays up, then marking it gone when the food runs out',
@@ -27,6 +29,33 @@ const DEMOS = [
     ],
   },
 ]
+
+function place(el, box, animate, curve) {
+  el.style.position = 'fixed'
+  el.style.zIndex = '80'
+  el.style.margin = '0'
+  el.style.left = `${box.left}px`
+  el.style.top = `${box.top}px`
+  el.style.width = `${box.width}px`
+  el.style.height = `${box.height}px`
+  el.style.borderRadius = `${box.height * 143 / curve}px`
+  el.style.transition = animate
+    ? 'left 0.45s ease, top 0.45s ease, width 0.45s ease, height 0.45s ease, border-radius 0.45s ease'
+    : 'none'
+}
+
+function clearPlace(el) {
+  if (!el) return
+  el.style.position = ''
+  el.style.zIndex = ''
+  el.style.margin = ''
+  el.style.left = ''
+  el.style.top = ''
+  el.style.width = ''
+  el.style.height = ''
+  el.style.borderRadius = ''
+  el.style.transition = ''
+}
 
 const FAQS = [
   {
@@ -51,67 +80,84 @@ export default function Universities() {
   const [openFaq, setOpenFaq] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const formRef = useRef(null)
-  const demoRefs = useRef({})
-  const knowRef = useRef(null)
-  const [knowIndex, setKnowIndex] = useState(0)
-  const [knowIn, setKnowIn] = useState(false)
+  const frameRefs = useRef({})
+  const videoRefs = useRef({})
+  const originRef = useRef(null)
+  const [openKey, setOpenKey] = useState(null)
 
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
     if (!motion.matches) return undefined
-    Object.values(demoRefs.current).forEach((video) => video?.pause())
+    Object.entries(videoRefs.current).forEach(([key, video]) => {
+      if (key !== openKey) video?.pause()
+    })
     return undefined
-  }, [])
+  }, [openKey])
 
   useEffect(() => {
-    const section = knowRef.current
-    if (!section) return undefined
-    let frame = 0
-    const headerOffset = () => {
-      const raw = getComputedStyle(document.documentElement).getPropertyValue('--header')
-      const parsed = parseFloat(raw)
-      return Number.isFinite(parsed) ? parsed : 64
+    if (!openKey) return undefined
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (event) => {
+      if (event.key === 'Escape') closeDemo()
     }
-    const range = () => {
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY
-      const start = sectionTop - headerOffset()
-      const end = sectionTop + section.offsetHeight - window.innerHeight
-      return { start, span: Math.max(end - start, 1) }
-    }
-    const update = () => {
-      const { start, span } = range()
-      const progress = Math.min(1, Math.max(0, (window.scrollY - start) / span))
-      const last = DEMOS.length - 1
-      setKnowIndex(Math.round(progress * last))
-      const rect = section.getBoundingClientRect()
-      setKnowIn(rect.top < window.innerHeight * 0.86 && rect.bottom > window.innerHeight * 0.2)
-    }
-    const onScroll = () => {
-      cancelAnimationFrame(frame)
-      frame = requestAnimationFrame(update)
-    }
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    window.addEventListener('keydown', onKey)
     return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
+      document.body.style.overflow = previous
+      window.removeEventListener('keydown', onKey)
     }
-  }, [])
+  }, [openKey])
 
-  const scrollKnow = (direction) => {
-    const section = knowRef.current
-    if (!section) return
-    const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header')) || 64
-    const sectionTop = section.getBoundingClientRect().top + window.scrollY
-    const start = sectionTop - header
-    const end = sectionTop + section.offsetHeight - window.innerHeight
-    const last = DEMOS.length - 1
-    const next = Math.min(Math.max(knowIndex + direction, 0), last)
-    const progress = last === 0 ? 0 : next / last
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    window.scrollTo({ top: start + progress * (end - start), behavior: motion.matches ? 'auto' : 'smooth' })
+  const openDemo = (key) => {
+    const el = frameRefs.current[key]
+    const video = videoRefs.current[key]
+    const demo = DEMOS.find((item) => item.key === key)
+    if (!el || !video || !demo || openKey) return
+    const box = el.getBoundingClientRect()
+    originRef.current = { key, box }
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const height = Math.min(window.innerHeight * 0.86, 820)
+    const width = height * (896 / 1876)
+    const next = {
+      left: (window.innerWidth - width) / 2,
+      top: (window.innerHeight - height) / 2,
+      width,
+      height,
+    }
+    place(el, box, false, demo.curve)
+    setOpenKey(key)
+    window.requestAnimationFrame(() => {
+      place(el, next, !motion, demo.curve)
+    })
+    video.currentTime = 0
+    video.muted = false
+    video.play().catch(() => {})
+  }
+
+  const closeDemo = () => {
+    const origin = originRef.current
+    if (!origin) return
+    const el = frameRefs.current[origin.key]
+    const video = videoRefs.current[origin.key]
+    const demo = DEMOS.find((item) => item.key === origin.key)
+    if (video) video.muted = true
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!el || !demo || motion) {
+      clearPlace(el)
+      originRef.current = null
+      setOpenKey(null)
+      return
+    }
+    const finish = (event) => {
+      if (event && event.propertyName !== 'left') return
+      el.removeEventListener('transitionend', finish)
+      clearPlace(el)
+      originRef.current = null
+      setOpenKey(null)
+    }
+    el.addEventListener('transitionend', finish)
+    window.setTimeout(() => finish(), 500)
+    place(el, origin.box, true, demo.curve)
   }
 
   const openForm = () => {
@@ -123,6 +169,9 @@ export default function Universities() {
 
   return (
     <Layout title="Universities — Grapevne">
+      {openKey && (
+        <button className="demo-backdrop" type="button" aria-label="Close the demo" onClick={closeDemo} />
+      )}
       <section className="hero uni-hero">
         <div className="hero-copy">
           <h1>Free food and campus events, in one feed.</h1>
@@ -173,60 +222,48 @@ export default function Universities() {
         </div>
       </section>
 
-      <section
-        className={`know${knowIn ? ' is-in' : ''}`}
-        ref={knowRef}
-        style={{ '--know-steps': DEMOS.length - 1 }}
-      >
-        <div className="know-pin">
-          <div className="know-head">
-            <h2 className="display">Get to Know Grapevne.</h2>
-            <div className="know-nav">
-              <button className="know-arrow" type="button" onClick={() => scrollKnow(-1)} disabled={knowIndex === 0} aria-label="Previous">
-                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                  <path d="M4 11 L9 6 L14 11" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              <button className="know-arrow" type="button" onClick={() => scrollKnow(1)} disabled={knowIndex >= DEMOS.length - 1} aria-label="Next">
-                <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
-                  <path d="M4 7 L9 12 L14 7" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div className="know-wheel" aria-roledescription="wheel">
-            <p className="sr-only" aria-live="polite">{DEMOS[knowIndex].lines[0]}</p>
-            {DEMOS.map((demo, index) => (
-              <article
-                className={`know-slice${index === knowIndex ? ' is-active' : ''}`}
-                key={demo.key}
-                style={{ transform: `translate3d(0, ${(index - knowIndex) * 100}%, 0)` }}
-                aria-hidden={index !== knowIndex}
-              >
-                <div className="story">
-                  <h2>{demo.lines[0]}</h2>
-                  {demo.lines.slice(1).map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
+      <section className="know">
+        <h2 className="display">Get to Know Grapevne.</h2>
+        <div className="know-grid">
+          {DEMOS.map((demo) => (
+            <article className="know-cell" key={demo.key}>
+              <div className="story">
+                <h2>{demo.lines[0]}</h2>
+                {demo.lines.slice(1).map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+              <div className={`app-demo-slot ${demo.slot}`}>
+                <div
+                  className={openKey === demo.key ? 'app-demo is-open' : 'app-demo'}
+                  ref={(node) => { frameRefs.current[demo.key] = node }}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={openKey === demo.key}
+                  aria-label={openKey === demo.key ? demo.label : `Play: ${demo.label}`}
+                  onClick={openKey ? undefined : () => openDemo(demo.key)}
+                  onKeyDown={(event) => {
+                    if (openKey) return
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault()
+                      openDemo(demo.key)
+                    }
+                  }}
+                >
+                  <video
+                    ref={(node) => { videoRefs.current[demo.key] = node }}
+                    src={demo.src}
+                    poster={demo.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                  />
                 </div>
-                <div className={`app-demo-slot ${demo.slot}`}>
-                  <div className="app-demo">
-                    <video
-                      ref={(node) => { demoRefs.current[demo.key] = node }}
-                      src={demo.src}
-                      poster={demo.poster}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      aria-label={demo.label}
-                    />
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
