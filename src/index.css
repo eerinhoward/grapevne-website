@@ -595,7 +595,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   inset: 0;
   display: grid;
   grid-template-columns: minmax(0, 34rem) auto;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   column-gap: 28px;
   box-sizing: border-box;
@@ -604,7 +604,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   will-change: transform;
 }
 
-.know-slice .story { max-width: 34rem; }
+.know-slice .story { width: min(34rem, 100%); max-width: 34rem; }
 
 .know-slice .app-demo-slot {
   --demo-h: min(520px, calc(100vh - var(--header) - 148px));
@@ -1253,9 +1253,10 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   }
   .know-slice {
     align-content: center;
-    justify-items: stretch;
+    justify-items: center;
     row-gap: 16px;
   }
+  .know-slice .story { text-align: center; }
   .know-slice .app-demo-slot {
     --demo-h: min(300px, 38vh);
     margin-inline: auto;
