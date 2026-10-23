@@ -356,7 +356,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .about-hero .about-next {
   font-weight: 400;
   font-stretch: normal;
-  font-size: clamp(26px, 2.35vw, 36px);
+  font-size: clamp(30px, 2.7vw, 42px);
   line-height: 1.16;
 }
 
