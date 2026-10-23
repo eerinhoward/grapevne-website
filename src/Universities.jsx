@@ -225,8 +225,8 @@ export default function Universities() {
       <section className="know">
         <h2 className="display">Get to Know Grapevne.</h2>
         <div className="know-grid">
-          {DEMOS.map((demo) => (
-            <article className="know-cell" key={demo.key}>
+          {DEMOS.map((demo, index) => (
+            <article className={`know-cell ${index === 0 ? 'is-left' : 'is-right'}`} key={demo.key}>
               <div className="story">
                 <h2>{demo.lines[0]}</h2>
                 {demo.lines.slice(1).map((line) => (

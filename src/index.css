@@ -529,24 +529,44 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .know-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: end;
-  gap: 56px 40px;
-  margin-top: 36px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 36px;
+  row-gap: 28px;
+  margin-top: 28px;
 }
 
-.know-cell {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 0;
-}
+.know-cell { display: contents; }
 
 .know-cell .story {
-  width: min(34rem, 100%);
-  max-width: 34rem;
-  margin-bottom: 22px;
-  text-align: center;
+  width: min(32rem, 100%);
+  max-width: 32rem;
+  margin: 0;
+}
+
+.know-cell.is-left .story {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: start;
+  text-align: left;
+}
+
+.know-cell.is-right .story {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  text-align: right;
+}
+
+.know-cell.is-left .app-demo-slot {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+}
+
+.know-cell.is-right .app-demo-slot {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
 }
 
 .know-cell .app-demo-slot {
@@ -1207,7 +1227,26 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
     grid-template-columns: 1fr;
   }
   .know { padding-left: 22px; padding-right: 22px; }
-  .know-cell .app-demo-slot { --demo-h: min(380px, 48vh); }
+  .know-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .know-cell .story,
+  .know-cell .app-demo-slot {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: auto;
+  }
+  .know-cell.is-left { align-items: flex-start; flex-direction: column-reverse; }
+  .know-cell.is-left .story { text-align: left; }
+  .know-cell.is-right { align-items: flex-end; }
+  .know-cell.is-right .story { text-align: right; }
+  .know-cell .app-demo-slot {
+    --demo-h: min(380px, 48vh);
+    align-self: center;
+  }
   .faq-section { padding-left: 22px; padding-right: 22px; }
   .uni-problem { padding: 36px 22px 8px; }
   .photo-row { display: flex; overflow-x: auto; }
