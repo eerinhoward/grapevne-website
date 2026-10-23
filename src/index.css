@@ -991,58 +991,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .about-hero {
-  position: relative;
-  overflow: hidden;
   min-height: calc(100vh - var(--header));
   display: flex;
   align-items: center;
   padding: 48px 0;
-}
-
-.about-hero .wrap { width: min(640px, calc(100% - 48px)); }
-
-.about-floats {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.about-hero .wrap { position: relative; z-index: 2; }
-
-.float-face {
-  position: absolute;
-  height: clamp(190px, 24vw, 300px);
-  width: auto;
-  --tilt: -8deg;
-  filter: drop-shadow(0 16px 14px rgba(29, 29, 31, 0.16));
-  animation: team-float 4.8s ease-in-out infinite;
-}
-
-.float-face.is-erin {
-  left: calc(25% - 160px);
-  top: 14%;
-  translate: -50% 0;
-}
-.float-face.is-jasmine {
-  left: calc(75% + 160px);
-  top: 18%;
-  translate: -50% 0;
-  --tilt: 5deg;
-  animation-delay: -1.6s;
-}
-.float-face.is-sara {
-  left: calc(25% - 160px);
-  bottom: 3%;
-  height: clamp(170px, 20vw, 250px);
-  translate: -50% 0;
-  --tilt: 7deg;
-  animation-delay: -3.1s;
-}
-
-@keyframes team-float {
-  0%, 100% { transform: rotate(var(--tilt)) translateY(0); }
-  50% { transform: rotate(var(--tilt)) translateY(-12px); }
 }
 
 .icon-btn {
@@ -1246,21 +1198,8 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .about-hero {
     display: block;
     min-height: 0;
-    overflow: visible;
     padding: 36px 0 28px;
   }
-  .about-hero .wrap { width: min(1040px, calc(100% - 40px)); }
-  .about-floats {
-    position: relative;
-    inset: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: min(1040px, calc(100% - 16px));
-    margin: 28px auto 0;
-    pointer-events: none;
-  }
-  .float-face { position: static; height: 150px; translate: none; }
 }
 
 @media (max-width: 640px) {
@@ -1272,12 +1211,10 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .note p { font-size: 22px; }
   .cards, .cards-3, .impact-stats { grid-template-columns: 1fr; }
   .phone-set img { height: 340px; }
-  .float-face { height: 96px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .phone-track { animation: none; }
   .phone-strip { overflow-x: auto; }
-  .float-face { animation: none; transform: rotate(var(--tilt)); }
 }
