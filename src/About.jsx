@@ -13,13 +13,8 @@ export default function About() {
       <section className="page-hero">
         <div className="wrap">
           <p className="kicker"><i /> About</p>
-          <h1 className="display">built by students who got tired of watching good food get thrown out</h1>
-        </div>
-      </section>
-
-      <section className="section" style={{ paddingTop: 28 }}>
-        <div className="wrap story">
-          <p>Grapevne is entirely designed and built by students at Amherst, Brown, and Wellesley. Our operations are incubated at the <a href="https://entrepreneurship.mit.edu/" target="_blank" rel="noopener noreferrer">MIT Martin Trust Center for Entrepreneurship</a>.</p>
+          <h1 className="display">Grapevne is entirely designed and built by students at Amherst, Brown, and Wellesley. We're students who believe good food should not get thrown out.</h1>
+          <p className="display about-next">Our operations are incubated at the <a href="https://entrepreneurship.mit.edu/" target="_blank" rel="noopener noreferrer">MIT Martin Trust Center for Entrepreneurship</a>.</p>
           <div className="socials">
             <a href="https://www.instagram.com/grapevne" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.linkedin.com/company/grapevne" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -28,7 +23,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section" style={{ paddingTop: 36 }}>
         <div className="wrap">
           <div className="team-row">
             {TEAM.map((person) => (

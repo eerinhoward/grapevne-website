@@ -347,9 +347,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 
 .page-hero h1,
+.page-hero .about-next,
 .closing h2 {
   font-size: clamp(40px, 6vw, 56px);
 }
+
+.page-hero .about-next {
+  margin: 0.85em 0 0;
+  font-stretch: normal;
+}
+
+.page-hero h1 a,
+.page-hero .about-next a { color: var(--grape); }
+.page-hero h1 a:hover,
+.page-hero .about-next a:hover { text-decoration: underline; }
+.page-hero .socials { justify-content: center; margin-top: 22px; }
 
 .eyebrow,
 .kicker {
