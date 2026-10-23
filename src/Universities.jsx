@@ -158,44 +158,6 @@ export default function Universities() {
         <img className="uni-frame" src="/uni-hero.jpg" alt="" />
       </section>
 
-      <section className="uni-problem">
-        <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
-        <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
-        <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
-        <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
-      </section>
-
-      <section className="campus-now" aria-label="Trusted By">
-        <div className="split">
-          <div>
-            <p className="trusted">Trusted By</p>
-            <img className="campus-logo" src="/trinitylogo.svg" alt="Trinity College" />
-            <p>Launched campus-wide in Spring 2026 with the Sustainability Department.</p>
-          </div>
-          <div className="campus-stage">
-            <a className="browser" href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">
-              <div className="browser-bar">
-                <span className="traffic" aria-hidden="true"><i /><i /><i /></span>
-                <span className="browser-url">
-                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-                    <rect x="2.2" y="5.2" width="7.6" height="5.2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                    <path d="M3.8 5.2V3.6a2.2 2.2 0 0 1 4.4 0V5.2" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                  </svg>
-                  <span>trincoll.edu/sustainability/…/food-and-dining</span>
-                </span>
-                <span aria-hidden="true" />
-              </div>
-              <span className="browser-view">
-                <img
-                  src="/trinity-free-food.jpg"
-                  alt="Trinity College’s Food and Dining page, with the Free Food section open. Opens the live page."
-                />
-              </span>
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section className="know">
         <h2 className="display">Get to Know Grapevne.</h2>
         <div className="know-grid">
@@ -238,6 +200,44 @@ export default function Universities() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="uni-problem">
+        <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
+        <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
+        <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
+        <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
+      </section>
+
+      <section className="campus-now" aria-label="Trusted By">
+        <div className="split">
+          <div>
+            <p className="trusted">Trusted By</p>
+            <img className="campus-logo" src="/trinitylogo.svg" alt="Trinity College" />
+            <p>Launched campus-wide in Spring 2026 with the Sustainability Department.</p>
+          </div>
+          <div className="campus-stage">
+            <a className="browser" href="https://www.trincoll.edu/sustainability/sample-page-2/campus-operations/food-and-dining/" target="_blank" rel="noopener noreferrer">
+              <div className="browser-bar">
+                <span className="traffic" aria-hidden="true"><i /><i /><i /></span>
+                <span className="browser-url">
+                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                    <rect x="2.2" y="5.2" width="7.6" height="5.2" rx="1" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                    <path d="M3.8 5.2V3.6a2.2 2.2 0 0 1 4.4 0V5.2" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                  </svg>
+                  <span>trincoll.edu/sustainability/…/food-and-dining</span>
+                </span>
+                <span aria-hidden="true" />
+              </div>
+              <span className="browser-view">
+                <img
+                  src="/trinity-free-food.jpg"
+                  alt="Trinity College’s Food and Dining page, with the Free Food section open. Opens the live page."
+                />
+              </span>
+            </a>
+          </div>
         </div>
       </section>
 
