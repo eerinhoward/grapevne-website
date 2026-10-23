@@ -154,9 +154,6 @@ export default function Universities() {
         <button className="demo-backdrop" type="button" aria-label="Close the demo" onClick={closeDemo} />
       )}
       <section className="hero uni-hero">
-        <div className="hero-copy">
-          <h1>Free food and campus events, in one feed.</h1>
-        </div>
         <div className="hero-visual">
           <div className="hero-bg" aria-hidden="true">
             <img src="/uni-hero.jpg" alt="" />
