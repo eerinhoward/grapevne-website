@@ -124,6 +124,7 @@ export default function Universities() {
 
       <section className="uni-problem">
         <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
+        <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
       </section>
 
       <section className="campus-now" aria-label="Trusted By">

@@ -513,6 +513,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   letter-spacing: -0.015em;
 }
 
+.uni-problem p + p { margin-top: 22px; }
+
 .know { --know-inset: 56px; padding-top: 36px; text-align: left; }
 
 .know-head {
