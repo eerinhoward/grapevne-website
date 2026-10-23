@@ -153,11 +153,6 @@ export default function Universities() {
       {openKey && (
         <button className="demo-backdrop" type="button" aria-label="Close the demo" onClick={closeDemo} />
       )}
-      <section className="page-hero uni-open">
-        <h1 className="display">Cultivating a <span>zero-waste</span> campus.</h1>
-        <img className="uni-frame" src="/uni-hero.jpg" alt="" />
-      </section>
-
       <section className="know">
         <h2 className="display">Get to Know Grapevne.</h2>
         <div className="know-grid">
@@ -241,10 +236,11 @@ export default function Universities() {
         </div>
       </section>
 
-      <section className="closing" style={{ paddingTop: 20 }}>
+      <section className="closing">
+        <h2 className="display">Cultivating a <span>zero-waste</span> campus.</h2>
+        <img className="uni-frame" src="/uni-hero.jpg" alt="" />
         <div className="wrap">
-          <h2 className="display">Bring Grapevne to your (s)quad</h2>
-          <p className="lede" style={{ margin: '0 auto 20px' }}>
+          <p className="lede" style={{ margin: '28px auto 20px' }}>
             Tell us about your school. We’ll show you how the feed works.
           </p>
           <button className="btn btn-blue" type="button" onClick={openForm}>Get in touch</button>
