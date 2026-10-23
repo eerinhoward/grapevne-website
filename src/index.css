@@ -1101,6 +1101,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .story { text-align: left; max-width: 720px; }
 .story p { font-size: 19px; line-height: 1.5; margin: 0 0 16px; color: #1d1d1f; }
+.story a { color: var(--grape); }
+.story a:hover { text-decoration: underline; }
 
 .socials { display: flex; gap: 16px; flex-wrap: wrap; }
 .socials a { color: var(--blue); text-decoration: none; }

@@ -73,7 +73,7 @@ export default function About() {
 
       <section className="section" style={{ paddingTop: 28 }}>
         <div className="wrap story">
-          <p>Today, Grapevne is being shaped by a small team of three college students.</p>
+          <p>Today, Grapevne is being shaped by a small team of three college students. Grapevne is entirely designed and built by students at Amherst, Brown, and Wellesley. Our operations are incubated at the <a href="https://entrepreneurship.mit.edu/" target="_blank" rel="noopener noreferrer">MIT Martin Trust Center for Entrepreneurship</a>.</p>
           <div className="socials">
             <a href="https://www.instagram.com/grapevne" target="_blank" rel="noopener noreferrer">Instagram</a>
             <a href="https://www.linkedin.com/company/grapevne" target="_blank" rel="noopener noreferrer">LinkedIn</a>
