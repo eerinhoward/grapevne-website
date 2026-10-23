@@ -58,27 +58,7 @@ function clearPlace(el) {
   el.style.transition = ''
 }
 
-const FAQS = [
-  {
-    question: 'What do students see?',
-    answer: 'A feed for their campus: leftover and free food, events, and who’s going. It is specific to the university, not a public stream.',
-  },
-  {
-    question: 'Who can post?',
-    answer: 'Student organizations, campus departments, and other university-connected groups the school approves.',
-  },
-  {
-    question: 'Does this add work for staff?',
-    answer: 'No. People post where students already look, instead of maintaining separate emails, chats, and sign-up sheets.',
-  },
-  {
-    question: 'What can a campus measure?',
-    answer: 'Which posts students swipe and save, who says they’re going, and which times and events get a response.',
-  },
-]
-
 export default function Universities() {
-  const [openFaq, setOpenFaq] = useState(null)
   const [formOpen, setFormOpen] = useState(false)
   const formRef = useRef(null)
   const frameRefs = useRef({})
@@ -265,24 +245,6 @@ export default function Universities() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="faq-section">
-        <h2 className="display">Frequently Asked</h2>
-        <div className="faq">
-          {FAQS.map((faq, index) => {
-            const open = openFaq === index
-            return (
-              <div key={faq.question}>
-                <button type="button" aria-expanded={open} onClick={() => setOpenFaq(open ? null : index)}>
-                  <span>{faq.question}</span>
-                  <span aria-hidden="true">{open ? '–' : '+'}</span>
-                </button>
-                {open && <p className="answer">{faq.answer}</p>}
-              </div>
-            )
-          })}
         </div>
       </section>
 
