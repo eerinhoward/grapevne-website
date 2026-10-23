@@ -516,7 +516,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .edu-works { align-items: center; }
 
 .uni-problem {
-  padding: 72px 56px 8px;
+  padding: 40px 56px 8px;
 }
 
 .uni-problem p {
@@ -684,16 +684,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .page-hero { text-align: center; padding: 64px 0 8px; }
 .page-hero .lede { margin-left: auto; margin-right: auto; }
 
-.uni-hero {
-  min-height: 0;
-  grid-template-columns: 1fr;
+.uni-open h1 {
+  width: min(920px, calc(100% - 48px));
+  margin: 0 auto;
+  color: var(--grape);
 }
 
-.uni-hero .hero-visual { min-height: 440px; }
-
-.uni-hero .hero-bg::after { background: transparent; }
-
-.uni-hero .hero-bg img { object-position: center 32%; }
+.uni-frame {
+  display: block;
+  width: min(1040px, calc(100% - 72px));
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center 32%;
+  margin: 36px auto 0;
+}
 
 .section { padding: 56px 0; }
 
@@ -1227,7 +1231,6 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   .hero h1 { font-size: min(40px, 8.4vw); white-space: normal; }
   .hero .cta-row { justify-content: center; }
   .hero-visual { min-height: 560px; }
-  .uni-hero .hero-visual { min-height: 240px; }
   .hero-product, .chapter .phone { height: 460px; }
   .app-demo-slot { --demo-h: 460px; }
 }

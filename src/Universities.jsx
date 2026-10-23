@@ -153,16 +153,12 @@ export default function Universities() {
       {openKey && (
         <button className="demo-backdrop" type="button" aria-label="Close the demo" onClick={closeDemo} />
       )}
-      <section className="hero uni-hero">
-        <div className="hero-visual">
-          <div className="hero-bg" aria-hidden="true">
-            <img src="/uni-hero.jpg" alt="" />
-          </div>
-        </div>
+      <section className="page-hero uni-open">
+        <h1 className="display">Cultivating a zero-waste campus.</h1>
+        <img className="uni-frame" src="/uni-hero.jpg" alt="" />
       </section>
 
       <section className="uni-problem">
-        <p>Cultivating a zero-waste campus.</p>
         <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
         <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
         <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
