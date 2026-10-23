@@ -1006,12 +1006,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
   animation: team-float 4.8s ease-in-out infinite;
 }
 
-.float-face.is-erin { left: 1.2vw; top: 14%; }
-.float-face.is-jasmine { right: 1.2vw; top: 18%; --tilt: 5deg; animation-delay: -1.6s; }
+.float-face.is-erin {
+  left: calc(25% - 160px);
+  top: 14%;
+  translate: -50% 0;
+}
+.float-face.is-jasmine {
+  left: calc(75% + 160px);
+  top: 18%;
+  translate: -50% 0;
+  --tilt: 5deg;
+  animation-delay: -1.6s;
+}
 .float-face.is-sara {
-  left: 2vw;
+  left: calc(25% - 160px);
   bottom: 3%;
   height: clamp(170px, 20vw, 250px);
+  translate: -50% 0;
   --tilt: 7deg;
   animation-delay: -3.1s;
 }
@@ -1237,7 +1248,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
     margin: 28px auto 0;
     pointer-events: none;
   }
-  .float-face { position: static; height: 150px; }
+  .float-face { position: static; height: 150px; translate: none; }
 }
 
 @media (max-width: 640px) {
