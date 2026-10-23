@@ -687,8 +687,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .uni-open h1 {
   width: min(920px, calc(100% - 48px));
   margin: 0 auto;
-  color: var(--grape);
 }
+
+.uni-open h1 span { color: var(--grape); }
 
 .uni-frame {
   display: block;
