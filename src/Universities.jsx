@@ -223,6 +223,8 @@ export default function Universities() {
           <p className="answer">No. Grapevne is an independent, third-party app. Unless we've announced an official partnership with your school, we aren't affiliated with or endorsed by it.</p>
           <h3>How does Grapevne verify accounts?</h3>
           <p className="answer">Every account is tied to a school email. You sign up with your .edu address and tap a sign-in link we send to it. Some schools use their own campus sign-in instead. Other users see your username and profile, never your email. Verification confirms you have an email at that school; it doesn't confirm your name or whether you're a student, faculty, or staff member.</p>
+          <h3>Can other people on Grapevne see who I am?</h3>
+          <p className="answer">Only what you choose to show. Your name, username, profile photo, and bio are all up to you. You don't have to use your real name or a photo of yourself. Other users also see your school and your activity on Grapevne, like the posts you share and the ones you're going to. Your school email is never shown to other users. It's only used to verify your account.</p>
         </div>
       </section>
 
