@@ -212,6 +212,14 @@ export default function Universities() {
         <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
       </section>
 
+      <section className="faq-section" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" className="display">Frequently Asked</h2>
+        <div className="faq">
+          <h3>Can faculty and staff use Grapevne?</h3>
+          <p className="answer">Yes. Grapevne is open to students, faculty, and staff at the campuses we serve. You'll need your school .edu email to sign up, and you must be 18 or older.</p>
+        </div>
+      </section>
+
       <section className="campus-now" aria-label="Trusted By">
         <div className="split">
           <div>

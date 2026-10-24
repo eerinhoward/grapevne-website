@@ -536,6 +536,44 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .uni-problem p + p { margin-top: 22px; }
 
+.faq-section {
+  padding: 28px 56px 56px;
+  text-align: left;
+}
+
+.faq-section h2 {
+  margin: 0 0 8px;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: left;
+}
+
+.faq {
+  max-width: 1040px;
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+
+.faq h3 {
+  margin: 0;
+  padding: 18px 0 8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.faq .answer {
+  max-width: 46rem;
+  margin: 0;
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--line);
+  color: #333;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
 #food-safety { scroll-margin-top: calc(var(--header) + 24px); }
 
 .know {
@@ -1197,6 +1235,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
     margin: 0;
   }
   .uni-problem { padding: 36px 22px 8px; }
+  .faq-section { padding-left: 22px; padding-right: 22px; }
   .photo-row { display: flex; overflow-x: auto; }
   .photo-row img { width: 70vw; flex: none; height: 200px; }
   .gallery, .filmstrip { grid-template-columns: 1fr 1fr; }
