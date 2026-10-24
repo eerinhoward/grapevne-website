@@ -225,6 +225,8 @@ export default function Universities() {
           <p className="answer">Every account is tied to a school email. You sign up with your .edu address and tap a sign-in link we send to it. Some schools use their own campus sign-in instead. Other users see your username and profile, never your email. Verification confirms you have an email at that school; it doesn't confirm your name or whether you're a student, faculty, or staff member.</p>
           <h3>Can other people on Grapevne see who I am?</h3>
           <p className="answer">Only what you choose to show. Your name, username, profile photo, and bio are all up to you. You don't have to use your real name or a photo of yourself. Other users also see your school and your activity on Grapevne, like the posts you share and the ones you're going to. Your school email is never shown to other users. It's only used to verify your account.</p>
+          <h3>What does Grapevne do with my data?</h3>
+          <p className="answer">We collect what we need to run the app: your school email to verify your account, the profile you create, the posts you share and the ones you're going to, and basic device and usage information. Your data is stored on Google Firebase, and we use a small number of service providers for things like maps and analytics. You can delete your account in Edit Profile.</p>
         </div>
       </section>
 
