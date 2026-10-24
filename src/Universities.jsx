@@ -217,6 +217,10 @@ export default function Universities() {
         <div className="faq">
           <h3>Can faculty and staff use Grapevne?</h3>
           <p className="answer">Yes. Grapevne is open to students, faculty, and staff at the campuses we serve. You'll need your school .edu email to sign up, and you must be 18 or older.</p>
+          <h3>Who moderates Grapevne?</h3>
+          <p className="answer">The Grapevne team. Anyone can report a post or block a user in the app, and every report goes straight to our team for review. We remove content and suspend accounts that break our community rules.</p>
+          <h3>Is Grapevne run by my school?</h3>
+          <p className="answer">No. Grapevne is an independent, third-party app. Unless we've announced an official partnership with your school, we aren't affiliated with or endorsed by it.</p>
         </div>
       </section>
 
