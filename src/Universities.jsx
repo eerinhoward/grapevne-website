@@ -22,11 +22,12 @@ const DEMOS = [
     curve: 1876,
     src: '/grapevne-food-safety-hero.mp4',
     poster: '/grapevne-food-safety-poster.jpg',
-    label: 'Setting how long a food post stays up, marking it gone, and messaging about it in the app',
+    label: 'Setting how long a food post stays up, marking it gone, messaging about it, and tagging it Halal or Vegetarian',
     lines: [
       'Food Safety',
       'Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.',
       'If the food runs out first, someone on campus can mark it gone. Students message about it in the app.',
+      'Posts can be tagged Halal or Vegetarian.',
     ],
   },
 ]
@@ -201,6 +202,12 @@ export default function Universities() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="safety-liability" aria-labelledby="food-safety-liability">
+        <h2 id="food-safety-liability">Food Safety and Liability</h2>
+        <p>Grapevne serves as a platform for connecting users with free food opportunities. We do not prepare, handle, or distribute food. Users who share food are responsible for ensuring compliance with all applicable food safety regulations. Grapevne is not liable for any issues arising from food shared through the platform. Users consume food at their own risk and should exercise appropriate judgment regarding food safety.</p>
+        <p><a href="/terms#food-safety">Read it in the app terms.</a></p>
       </section>
 
       <section className="uni-problem">
