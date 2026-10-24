@@ -22,12 +22,10 @@ const DEMOS = [
     curve: 1876,
     src: '/grapevne-food-safety-hero.mp4',
     poster: '/grapevne-food-safety-poster.jpg',
-    label: 'Setting how long a food post stays up, marking it gone, messaging about it, and tagging it Halal or Vegetarian',
+    label: 'A post window of at most four hours, marking food gone, and dietary tags that are not allergen guarantees',
     lines: [
       'Food Safety',
-      'Organizers set when the food is out, and when the post comes down. A post stays up for that window, and no longer than four hours.',
-      'If the food runs out first, someone on campus can mark it gone. Students message about it in the app.',
-      'Posts can be tagged Halal or Vegetarian.',
+      'Every post has a window set by the organizer, and none stays up past four hours. Anyone can mark food gone. Dietary tags describe the food but are not allergen guarantees. Grapevne doesn’t prepare or inspect food.',
     ],
   },
 ]
@@ -167,7 +165,10 @@ export default function Universities() {
               <div className="story">
                 <h2>{demo.lines[0]}</h2>
                 {demo.lines.slice(1).map((line) => (
-                  <p key={line}>{line}</p>
+                  <p key={line}>
+                    {line}
+                    {demo.key === 'safety' && <> [<a href="/terms#food-safety">Terms</a>]</>}
+                  </p>
                 ))}
               </div>
               <div className={`app-demo-slot ${demo.slot}`}>
@@ -202,12 +203,6 @@ export default function Universities() {
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="safety-liability" aria-labelledby="food-safety-liability">
-        <h2 id="food-safety-liability">Food Safety and Liability</h2>
-        <p>Grapevne serves as a platform for connecting users with free food opportunities. We do not prepare, handle, or distribute food. Users who share food are responsible for ensuring compliance with all applicable food safety regulations. Grapevne is not liable for any issues arising from food shared through the platform. Users consume food at their own risk and should exercise appropriate judgment regarding food safety.</p>
-        <p><a href="/terms#food-safety">Read it in the app terms.</a></p>
       </section>
 
       <section className="uni-problem">
