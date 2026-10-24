@@ -697,7 +697,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @media (min-width: 901px) {
   .uni-open {
-    min-height: calc(100vh - var(--header));
+    min-height: calc(100vh - var(--header) - 96px);
     display: flex;
     flex-direction: column;
     align-items: center;
