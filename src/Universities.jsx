@@ -251,7 +251,7 @@ export default function Universities() {
           <div ref={formRef} style={{ scrollMarginTop: 96, textAlign: 'left', marginTop: 8 }}>
             {formOpen && (
               <Suspense fallback={null}>
-                <ContactForm isOpen={formOpen} onClose={() => setFormOpen(false)} emailTo="universities@grapevneapp.com" />
+                <ContactForm isOpen={formOpen} onClose={() => setFormOpen(false)} emailTo="universities@grapevneapp.com" variant="campus" />
               </Suspense>
             )}
           </div>
