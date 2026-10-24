@@ -221,6 +221,8 @@ export default function Universities() {
           <p className="answer">The Grapevne team. Anyone can report a post or block a user in the app, and every report goes straight to our team for review. We remove content and suspend accounts that break our community rules.</p>
           <h3>Is Grapevne run by my school?</h3>
           <p className="answer">No. Grapevne is an independent, third-party app. Unless we've announced an official partnership with your school, we aren't affiliated with or endorsed by it.</p>
+          <h3>How does Grapevne verify accounts?</h3>
+          <p className="answer">Every account is tied to a school email. You sign up with your .edu address and tap a sign-in link we send to it. Some schools use their own campus sign-in instead. Other users see your username and profile, never your email. Verification confirms you have an email at that school; it doesn't confirm your name or whether you're a student, faculty, or staff member.</p>
         </div>
       </section>
 
