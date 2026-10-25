@@ -187,6 +187,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .field input:focus-visible,
 .field textarea:focus-visible,
 .field select:focus-visible,
+.faq button:focus-visible,
 .tabs button:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 2px;
@@ -555,20 +556,37 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-align: left;
 }
 
-.faq h3 {
-  margin: 0;
-  padding: 18px 0 8px;
+.faq button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+  font: inherit;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 19px;
   font-weight: 600;
   letter-spacing: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+.faq button span:last-child {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1;
 }
 
 .faq .answer {
   max-width: 46rem;
   margin: 0;
-  padding: 0 0 18px;
-  border-bottom: 1px solid var(--line);
+  padding: 14px 0 18px;
   color: #333;
   font-size: 17px;
   line-height: 1.45;
