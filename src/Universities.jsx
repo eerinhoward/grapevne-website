@@ -22,10 +22,12 @@ const DEMOS = [
     curve: 1876,
     src: '/grapevne-food-safety-hero.mp4',
     poster: '/grapevne-food-safety-poster.jpg',
-    label: 'Why posts close within four hours, how to mark food gone or message the organizer about what’s left, and dietary tags that are not allergen guarantees',
+    label: 'Organizers choose how long a food post stays up, up to four hours. The organizer can mark it gone, people can flag a post until it expires, and you can message about any post. Dietary tags help you find what fits but do not guarantee a dish is allergen-free.',
     lines: [
       'Food Safety',
-      'A post stays up only while the food is out: the organizer sets the window, nothing stays active past four hours, and anyone can mark it gone so people stop showing up after it’s finished. If you’re unsure what’s left, message the person who posted before you head over. Dietary tags describe the food but are not allergen guarantees, and Grapevne doesn’t prepare or inspect food.',
+      'When an organizer posts food, they choose how long it’s up. Posts can’t stay active longer than four hours.',
+      'If the food runs out, the organizer can mark it as gone. You can also flag a post. When enough people flag it, the post expires. You can message about any post in the app.',
+      'Dietary tags help you find what fits. They don’t guarantee a dish is allergen-free, so if you have an allergy, send a message before you go. Grapevne doesn’t make or check the food.',
     ],
   },
 ]
@@ -192,10 +194,10 @@ export default function Universities() {
             <article className={`know-cell ${index === 0 ? 'is-left' : 'is-right'}`} key={demo.key}>
               <div className="story">
                 <h2>{demo.lines[0]}</h2>
-                {demo.lines.slice(1).map((line) => (
+                {demo.lines.slice(1).map((line, index, lines) => (
                   <p key={line}>
                     {line}
-                    {demo.key === 'safety' && <> [<a href="/terms#food-safety">Terms</a>]</>}
+                    {demo.key === 'safety' && index === lines.length - 1 && <> <a href="/terms#food-safety">Terms</a></>}
                   </p>
                 ))}
               </div>
