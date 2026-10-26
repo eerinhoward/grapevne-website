@@ -743,19 +743,19 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .note a { color: var(--blue); font-size: 17px; font-weight: 400; }
 
 .blurb {
-  margin-top: 22px;
+  margin-top: 0;
 }
 
 .blurb p {
-  margin: 0 0 0.75em;
+  margin: 18px 0 0;
   max-width: none;
   color: #000;
   font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
   font-stretch: normal;
   font-weight: 400;
-  font-size: clamp(18px, 1.45vw, 24px);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
+  font-size: clamp(20px, 1.65vw, 26px);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
 }
 
 .blurb p:last-child { margin-bottom: 0; }
@@ -1292,7 +1292,6 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
 @media (max-width: 640px) {
   .wrap { width: min(1040px, calc(100% - 32px)); }
   .lede, .chapter p { font-size: 17px; }
-  .blurb p { font-size: 18px; }
   .filmstrip { grid-template-columns: 1fr 1fr; }
   .filmstrip img { height: 160px; }
   .note p { font-size: 22px; }
