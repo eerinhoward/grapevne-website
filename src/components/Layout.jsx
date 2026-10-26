@@ -39,7 +39,6 @@ export default function Layout({ title = 'Grapevne', children }) {
       <header className="site-header">
         <Link to="/" className="brand" aria-label="Grapevne home">
           <img src="/mark.png" alt="" />
-          <span>Grapevne</span>
         </Link>
         <nav className="site-nav" aria-label="Primary">
           <NavLinks />
