@@ -184,7 +184,6 @@ export default function Universities() {
       )}
       <section className="page-hero uni-open">
         <h1 className="display">Cultivating a <span>zero-waste</span> campus.</h1>
-        <img className="uni-frame" src="/uni-hero.jpg" alt="" />
       </section>
 
       <section className="know">
