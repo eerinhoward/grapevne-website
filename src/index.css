@@ -1150,7 +1150,10 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-stretch: normal;
 }
-.terms-doc p + p { margin-top: 1em; }
+.terms-doc p + p { margin-top: 1.75em; }
+.terms-preface,
+.terms-preface h2,
+.terms-preface p { text-align: center; }
 
 .media-well {
   height: 240px;

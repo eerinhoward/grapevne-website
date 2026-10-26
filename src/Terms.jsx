@@ -12,19 +12,21 @@ export default function Terms() {
       </section>
       <section className="section legal terms-doc" style={{ paddingTop: 12 }}>
         <div className="wrap">
-          <h2>Preface</h2>
-          <p>
-            Our legal framework is built in partnership with the <a href="https://entrepreneurship.mit.edu/bu-law-clinic/" target="_blank" rel="noopener noreferrer">BU/MIT Student Innovations Law Clinic</a> (SILC), which provides legal advice to student entrepreneurs. The clinic is staffed by BU Law students under law faculty supervision across three practice groups: Intellectual Property & Media; Privacy, Security & Health; and Venture & Finance. SILC has been involved since the beginning of Grapevne's conceptualization and formation, providing ongoing compliance guidance and legal oversight.
-          </p>
-          <p>
-            Given that Grapevne facilitates the sharing of food on campus, we work closely with the clinic to address food safety regulations, liability considerations, and compliance requirements. This includes guidance on food handling standards and campus-specific regulations that protect both those sharing food and those receiving it. The clinic's early involvement has helped shape our platform design and user safety measures from the ground up.
-          </p>
-          <p>
-            SILC's expertise in intellectual property, information privacy, corporate law, and platform liability helps us navigate the complex legal landscape of operating a platform that connects students, universities, and brands around food sharing. Their guidance on user conduct policies, platform protections, and regulatory compliance has been integral to Grapevne's development.
-          </p>
-          <p>
-            Our terms of service reflect this collaborative approach, ensuring transparency, safety, and legal compliance while maintaining the community-driven spirit of Grapevne.
-          </p>
+          <div className="terms-preface">
+            <h2>Preface</h2>
+            <p>
+              Our legal framework is built in partnership with the <a href="https://entrepreneurship.mit.edu/bu-law-clinic/" target="_blank" rel="noopener noreferrer">BU/MIT Student Innovations Law Clinic</a> (SILC), which provides legal advice to student entrepreneurs. The clinic is staffed by BU Law students under law faculty supervision across three practice groups: Intellectual Property & Media; Privacy, Security & Health; and Venture & Finance. SILC has been involved since the beginning of Grapevne's conceptualization and formation, providing ongoing compliance guidance and legal oversight.
+            </p>
+            <p>
+              Given that Grapevne facilitates the sharing of food on campus, we work closely with the clinic to address food safety regulations, liability considerations, and compliance requirements. This includes guidance on food handling standards and campus-specific regulations that protect both those sharing food and those receiving it. The clinic's early involvement has helped shape our platform design and user safety measures from the ground up.
+            </p>
+            <p>
+              SILC's expertise in intellectual property, information privacy, corporate law, and platform liability helps us navigate the complex legal landscape of operating a platform that connects students, universities, and brands around food sharing. Their guidance on user conduct policies, platform protections, and regulatory compliance has been integral to Grapevne's development.
+            </p>
+            <p>
+              Our terms of service reflect this collaborative approach, ensuring transparency, safety, and legal compliance while maintaining the community-driven spirit of Grapevne.
+            </p>
+          </div>
 
           <h2>Terms of Service</h2>
           <p>The following Terms of Service (the "Terms") and our Privacy Policy between you and the founders of the online service Grapevne ("Grapevne," "we," or "us") govern your use of and access to Grapevne, including its website, smartphone application and related features (collectively, the "Services"). These Terms constitutes a binding agreement made between you and Grapevne. By using or accessing any part of the Services, you agree to these Terms. If you do not agree to all of these Terms, you may not use or access the Services.</p>
