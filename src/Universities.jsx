@@ -10,10 +10,10 @@ const DEMOS = [
     curve: 1878,
     src: '/grapevne-edu-login-hero.mp4',
     poster: '/grapevne-edu-login-poster.jpg',
-    label: 'Signing in with a .edu email, from choosing a school to the verified campus feed',
+    label: 'A private campus feed, open only to people with a verified school email',
     lines: [
       'Exclusively for [.edu]',
-      'Each school gets its own feed. Departments and student groups post leftover food and events. Students see them while they last, and the university sees what people notice and show up for.',
+      'Every school gets its own private feed, open only to people with a verified school email. Anyone on campus can post leftover food, and you see it while it lasts.',
     ],
   },
   {
