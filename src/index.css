@@ -668,6 +668,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
   margin: 0;
 }
 
+.know-cell .steps {
+  margin: 0;
+  padding-left: 1.15rem;
+  list-style: disc;
+}
+.know-cell .steps li {
+  margin: 0 0 10px;
+  font-family: "Helvetica Neue Condensed", "Helvetica Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: condensed;
+  font-size: 17px;
+  line-height: 1.35;
+  color: #1d1d1f;
+}
+.know-cell .steps li:last-child { margin-bottom: 0; }
+.know-cell .steps strong { font-weight: 600; }
+
 .know-cell h2 {
   margin: 0 0 14px;
   max-width: none;

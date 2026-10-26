@@ -10,10 +10,13 @@ const DEMOS = [
     curve: 1878,
     src: '/grapevne-edu-login-hero.mp4',
     poster: '/grapevne-edu-login-poster.jpg',
-    label: 'A private campus feed, open only to people with a verified school email',
-    lines: [
-      'Exclusively for [.edu]',
-      'Every school gets its own private feed, open only to people with a verified school email. Anyone on campus can post leftover food, and you see it while it lasts.',
+    label: 'Download Grapevne, choose your school, verify a .edu email, and join that school’s private feed',
+    lines: ['Exclusively for [.edu]'],
+    steps: [
+      ['Download the app', 'Get Grapevne for iPhone on the App Store.'],
+      ['Select your campus', 'Open the app and choose your school.'],
+      ['Verify your email', 'Enter your school .edu address and tap the sign-in link we send. Some schools use their own campus sign-in.'],
+      ['Join your feed', 'The feed is private to that school. Anyone on campus can post leftover food, and you see it while it lasts.'],
     ],
   },
   {
@@ -193,7 +196,13 @@ export default function Universities() {
             <article className={`know-cell ${index === 0 ? 'is-left' : 'is-right'}`} key={demo.key}>
               <div className="story">
                 <h2>{demo.lines[0]}</h2>
-                {demo.lines.slice(1).map((line, index, lines) => (
+                {demo.steps ? (
+                  <ul className="steps">
+                    {demo.steps.map(([title, text]) => (
+                      <li key={title}><strong>{title}:</strong> {text}</li>
+                    ))}
+                  </ul>
+                ) : demo.lines.slice(1).map((line, index, lines) => (
                   <p key={line}>
                     {line}
                     {demo.key === 'safety' && index === lines.length - 1 && <> <a href="/terms#food-safety">Terms</a></>}
