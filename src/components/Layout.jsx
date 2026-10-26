@@ -45,7 +45,7 @@ export default function Layout({ title = 'Grapevne', children }) {
           <NavLinks />
         </nav>
         <div className="header-actions">
-          <DownloadLink className="btn btn-blue btn-small header-download">Get the app</DownloadLink>
+          <DownloadLink className="btn btn-blue btn-small header-download">Download</DownloadLink>
           <button
             className="menu-btn"
             type="button"
