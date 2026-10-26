@@ -22,10 +22,10 @@ const DEMOS = [
     curve: 1876,
     src: '/grapevne-food-safety-hero.mp4',
     poster: '/grapevne-food-safety-poster.jpg',
-    label: 'A post window of at most four hours, marking food gone, and dietary tags that are not allergen guarantees',
+    label: 'Why posts close within four hours, how to mark food gone or message the organizer about what’s left, and dietary tags that are not allergen guarantees',
     lines: [
       'Food Safety',
-      'Every post has a window set by the organizer, so none stays active past four hours, and anyone can mark the food gone before then. Dietary tags describe the food but are not allergen guarantees, and Grapevne doesn’t prepare or inspect food.',
+      'A post stays up only while the food is out: the organizer sets the window, nothing stays active past four hours, and anyone can mark it gone so people stop showing up after it’s finished. If you’re unsure what’s left, message the person who posted before you head over. Dietary tags describe the food but are not allergen guarantees, and Grapevne doesn’t prepare or inspect food.',
     ],
   },
 ]
