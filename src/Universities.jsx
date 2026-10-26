@@ -25,7 +25,7 @@ const DEMOS = [
     label: 'A post window of at most four hours, marking food gone, and dietary tags that are not allergen guarantees',
     lines: [
       'Food Safety',
-      'Every post has a window set by the organizer, and none stays active past four hours. Anyone can mark food gone. Dietary tags describe the food but are not allergen guarantees. Grapevne doesn’t prepare or inspect food.',
+      'Every post has a window set by the organizer, so none stays active past four hours, and anyone can mark the food gone before then. Dietary tags describe the food but are not allergen guarantees, and Grapevne doesn’t prepare or inspect food.',
     ],
   },
 ]
