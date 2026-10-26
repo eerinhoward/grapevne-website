@@ -4,6 +4,7 @@ import DownloadLink from './DownloadLink'
 
 const NAV = [
   { to: '/universities', label: 'Universities' },
+  { to: '/safety', label: 'Safety' },
   { to: '/about', label: 'About' },
 ]
 
@@ -76,6 +77,7 @@ export default function Layout({ title = 'Grapevne', children }) {
             <h3>Campus</h3>
             <ul>
               <li><Link to="/universities">Universities</Link></li>
+              <li><Link to="/safety">Safety</Link></li>
               <li><Link to="/brands">Brands</Link></li>
             </ul>
           </div>

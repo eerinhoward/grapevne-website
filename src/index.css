@@ -668,12 +668,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
   margin: 0;
 }
 
-.know-cell .steps {
+.know .steps {
   margin: 0;
   padding-left: 1.15rem;
   list-style: disc;
 }
-.know-cell .steps li {
+.know .steps li {
   margin: 0 0 10px;
   font-family: "Helvetica Neue Condensed", "Helvetica Condensed", "Arial Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-stretch: condensed;
@@ -681,9 +681,65 @@ button, a { -webkit-tap-highlight-color: transparent; }
   line-height: 1.35;
   color: #1d1d1f;
 }
-.know-cell .steps li:last-child { margin-bottom: 0; }
-.know-cell .steps strong { font-weight: 600; }
+.know .steps li:last-child { margin-bottom: 0; }
+.know .steps strong { font-weight: 600; }
 
+.know.know-one {
+  height: auto;
+}
+
+.know-one-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.know-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  width: min(980px, 100%);
+}
+
+.know-pair .story {
+  width: min(28rem, 100%);
+  max-width: 28rem;
+}
+
+.know-pair .app-demo-slot {
+  --demo-h: min(520px, calc(100vh - var(--header) - 220px));
+  margin: 0;
+}
+
+.safety-board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  padding: 8px 56px 80px;
+}
+
+.safety-board .story {
+  width: min(36rem, 100%);
+  max-width: 36rem;
+}
+
+.safety-board .story h2 {
+  margin: 0 0 16px;
+  font-weight: 400;
+  font-size: clamp(26px, 2.15vw, 36px);
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+}
+
+.safety-board .app-demo-slot {
+  --demo-h: min(560px, 68vh);
+  margin: 0;
+}
+
+.know-pair h2,
 .know-cell h2 {
   margin: 0 0 14px;
   max-width: none;
@@ -1250,6 +1306,18 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
     grid-row: auto;
     justify-self: auto;
   }
+  .know-one-row { display: block; }
+  .know-pair,
+  .safety-board {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .know-pair .app-demo-slot,
+  .safety-board .app-demo-slot { align-self: center; }
+  .safety-board { padding: 8px 22px 56px; }
   .know-cell.is-left { align-items: flex-start; flex-direction: column-reverse; }
   .know-cell.is-left .story { text-align: left; }
   .know-cell.is-right { align-items: flex-end; }

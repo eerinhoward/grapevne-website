@@ -9,6 +9,7 @@ import Privacy from './Privacy'
 import About from './About'
 
 const Universities = lazy(() => import('./Universities'))
+const Safety = lazy(() => import('./Safety'))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -42,6 +43,14 @@ function App() {
           element={
             <Suspense fallback={<div className="section wrap">Loading…</div>}>
               <Universities />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/safety"
+          element={
+            <Suspense fallback={<div className="section wrap">Loading…</div>}>
+              <Safety />
             </Suspense>
           }
         />

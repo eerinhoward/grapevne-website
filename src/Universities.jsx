@@ -19,20 +19,6 @@ const DEMOS = [
       ['Join your feed', 'The feed is private to that school. Anyone on campus can post leftover food, and you see it while it lasts.'],
     ],
   },
-  {
-    key: 'safety',
-    slot: 'safety-demo',
-    curve: 1876,
-    src: '/grapevne-food-safety-hero.mp4',
-    poster: '/grapevne-food-safety-poster.jpg',
-    label: 'Organizers choose how long a food post stays up, up to four hours. The organizer can mark it gone, people can flag a post until it expires, and you can message about any post. Dietary tags help you find what fits but do not guarantee a dish is allergen-free.',
-    lines: [
-      'Food Safety',
-      'When an organizer posts food, they choose how long it’s up. Posts can’t stay active longer than four hours.',
-      'If the food runs out, the organizer can mark it as gone. You can also flag a post. When enough people flag it, the post expires. You can message about any post in the app.',
-      'Dietary tags help you find what fits. They don’t guarantee a dish is allergen-free, so if you have an allergy, send a message before you go. Grapevne doesn’t make or check the food.',
-    ],
-  },
 ]
 
 const FAQS = [
@@ -189,25 +175,18 @@ export default function Universities() {
         <h1 className="display">Cultivating a <span>zero-waste</span> campus.</h1>
       </section>
 
-      <section className="know">
+      <section className="know know-one">
         <h2 className="display">Get to Know Grapevne.</h2>
-        <div className="know-grid">
-          {DEMOS.map((demo, index) => (
-            <article className={`know-cell ${index === 0 ? 'is-left' : 'is-right'}`} key={demo.key}>
+        <div className="know-one-row">
+          {DEMOS.map((demo) => (
+            <article className="know-pair" key={demo.key}>
               <div className="story">
                 <h2>{demo.lines[0]}</h2>
-                {demo.steps ? (
-                  <ul className="steps">
-                    {demo.steps.map(([title, text]) => (
-                      <li key={title}><strong>{title}:</strong> {text}</li>
-                    ))}
-                  </ul>
-                ) : demo.lines.slice(1).map((line, index, lines) => (
-                  <p key={line}>
-                    {line}
-                    {demo.key === 'safety' && index === lines.length - 1 && <> <a href="/terms#food-safety">Terms</a></>}
-                  </p>
-                ))}
+                <ul className="steps">
+                  {demo.steps.map(([title, text]) => (
+                    <li key={title}><strong>{title}:</strong> {text}</li>
+                  ))}
+                </ul>
               </div>
               <div className={`app-demo-slot ${demo.slot}`}>
                 <div
