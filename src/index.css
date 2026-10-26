@@ -1130,8 +1130,7 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   font-stretch: normal;
 }
 .terms-doc p + p { margin-top: 1.75em; }
-.terms-doc p,
-.terms-doc li {
+.terms-preface p {
   text-align: justify;
   hyphens: auto;
 }
