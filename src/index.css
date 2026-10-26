@@ -1266,6 +1266,57 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
 
 .marks { letter-spacing: 0.12em; }
 
+.campus-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 22px calc(10px + var(--safe-bottom));
+  background: #000;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.campus-bar img {
+  height: 22px;
+  width: auto;
+  flex: none;
+}
+
+.campus-bar span span {
+  color: var(--grape);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.campus-bar:hover span span { color: #7ec8f8; }
+
+.site:has(.campus-bar) {
+  padding-bottom: calc(44px + var(--safe-bottom));
+}
+
+@media (min-width: 901px) {
+  .site:has(.campus-bar) .hero {
+    min-height: calc(100vh - var(--header) - 44px);
+  }
+}
+
+@media (max-width: 640px) {
+  .campus-bar { font-size: 13px; padding-left: 16px; padding-right: 16px; }
+  .site:has(.campus-bar) { padding-bottom: calc(64px + var(--safe-bottom)); }
+}
+
 @media (max-width: 900px) {
   .menu-btn { display: inline-block; }
   .site-nav, .header-download { display: none; }

@@ -104,6 +104,12 @@ export default function Layout({ title = 'Grapevne', children }) {
           <span className="marks" aria-label="Registered, trademark, and copyright">® ™ ©</span>
         </div>
       </footer>
+      {pathname !== '/universities' && (
+        <Link to="/universities" className="campus-bar">
+          <img src="/mark.png" alt="" />
+          <span>Are you a university? Learn how Grapevne works on <span>your campus.</span></span>
+        </Link>
+      )}
     </div>
   )
 }
