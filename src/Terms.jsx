@@ -10,7 +10,7 @@ export default function Terms() {
           <h1 className="display">Terms</h1>
         </div>
       </section>
-      <section className="section legal" style={{ paddingTop: 12 }}>
+      <section className="section legal terms-doc" style={{ paddingTop: 12 }}>
         <div className="wrap">
           <h2>Preface</h2>
           <p>
