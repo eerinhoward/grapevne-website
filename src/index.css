@@ -1132,7 +1132,7 @@ main { padding-top: var(--header); }
   to { transform: translateX(-50%); }
 }
 
-.campus-now { padding: 72px 0; }
+.campus-now { padding: 28px 0 64px; }
 
 .campus-now .split {
   width: 100%;
