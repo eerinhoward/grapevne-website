@@ -1313,19 +1313,29 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
   line-height: 1.35;
 }
 
-.campus-bar img {
-  height: 22px;
-  width: auto;
+.campus-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   flex: none;
+  color: var(--grape);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
-.campus-bar span span {
+.campus-brand img {
+  height: 22px;
+  width: auto;
+}
+
+.campus-line span {
   color: var(--grape);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.campus-bar:hover span span { color: #7ec8f8; }
+.campus-bar:hover .campus-line span { color: #7ec8f8; }
 
 .site:has(.campus-bar) {
   padding-bottom: calc(44px + var(--safe-bottom));

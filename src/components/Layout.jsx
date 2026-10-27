@@ -105,8 +105,11 @@ export default function Layout({ title = 'Grapevne', children }) {
       </footer>
       {pathname !== '/universities' && (
         <Link to="/universities" className="campus-bar">
-          <img src="/mark.png" alt="" />
-          <span>Are you a university? Learn how Grapevne works on <span>your campus.</span></span>
+          <span className="campus-brand">
+            <img src="/mark.png" alt="" />
+            Grapevne
+          </span>
+          <span className="campus-line">Are you a university? Learn how Grapevne works on <span>your campus.</span></span>
         </Link>
       )}
     </div>
