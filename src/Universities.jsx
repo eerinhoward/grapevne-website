@@ -179,7 +179,7 @@ export default function Universities() {
         </div>
         <div className="pillar-mosaic" aria-label="What Grapevne does for a campus">
           <a className="pillar" href="#the-gap">
-            <img src="/gathering.jpg" alt="" />
+            <img src="/university2.jpg" alt="" />
             <h2>Extra food. Students still looking.</h2>
             <p>Campus events order for the crowd they hope for. The leftovers usually go in the trash.</p>
             <span>The gap</span>
@@ -191,7 +191,7 @@ export default function Universities() {
             <span>How it works</span>
           </a>
           <a className="pillar" href="#insights">
-            <img src="/university2.jpg" alt="" />
+            <img src="/pizza food.png" alt="" />
             <h2>What the campus shared.</h2>
             <p>Reporting and data from the feed, so a school can see what was shared.</p>
             <span>Insights</span>
