@@ -191,7 +191,7 @@ export default function Universities() {
             <span>How it works</span>
           </a>
           <a className="pillar" href="#insights">
-            <img src="/hero-bg.jpg" alt="" />
+            <img src="/university2.jpg" alt="" />
             <h2>What the campus shared.</h2>
             <p>Reporting and data from the feed, so a school can see what was shared.</p>
             <span>Insights</span>
