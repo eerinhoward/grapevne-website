@@ -858,6 +858,82 @@ main { padding-top: var(--header); }
 
 .uni-open h1 span { color: var(--grape); }
 
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: min(1120px, calc(100% - 40px));
+  margin: 28px auto 12px;
+}
+
+.pillar {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 460px;
+  padding: 28px 22px 22px;
+  border-radius: 28px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.pillar img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.pillar:nth-child(2) img { object-position: center 18%; }
+
+.pillar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.05) 38%, rgba(0, 0, 0, 0.78) 78%, rgba(0, 0, 0, 0.88) 100%);
+}
+
+.pillar h2 {
+  margin: 0;
+  max-width: 11em;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+  font-weight: 600;
+  font-size: clamp(26px, 2.1vw, 34px);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+.pillar p {
+  margin: auto 0 18px;
+  max-width: 28em;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+  font-size: 16px;
+  line-height: 1.35;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+}
+
+.pillar span {
+  align-self: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(18, 18, 20, 0.88);
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .section { padding: 56px 0; }
 
 .photo-row,
@@ -1407,6 +1483,8 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
     justify-self: auto;
     margin: 0;
   }
+  .pillars { grid-template-columns: 1fr; width: min(1120px, calc(100% - 32px)); }
+  .pillar { min-height: 340px; }
   .uni-problem { padding: 36px 22px 8px; }
   .faq-section h2,
   .faq button,

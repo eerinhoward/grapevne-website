@@ -175,6 +175,27 @@ export default function Universities() {
         <h1 className="display">Cultivating a <span>zero-waste</span> campus.</h1>
       </section>
 
+      <section className="pillars" aria-label="What Grapevne does for a campus">
+        <article className="pillar">
+          <img src="/gathering.jpg" alt="" />
+          <h2>Extra food. Students still looking.</h2>
+          <p>Campus events order for the crowd they hope for. The leftovers usually go in the trash.</p>
+          <span>The gap</span>
+        </article>
+        <article className="pillar">
+          <img src="/university.jpg" alt="" />
+          <h2>Posted in seconds. Seen in the feed.</h2>
+          <p>Organizers post leftover food, and students on that campus see it while it’s still there.</p>
+          <span>How it works</span>
+        </article>
+        <article className="pillar">
+          <img src="/hero-bg.jpg" alt="" />
+          <h2>What the campus shared.</h2>
+          <p>Reporting and data from the feed, so a school can see what was shared.</p>
+          <span>Insights</span>
+        </article>
+      </section>
+
       <section className="know know-one">
         <h2 className="display">Get to Know Grapevne.</h2>
         <div className="know-one-row">
