@@ -175,6 +175,7 @@ export default function Universities() {
         <div className="uni-stage-copy">
           <h1 className="display">Cultivating a <span>zero-waste</span> campus.</h1>
           <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
+          <button className="btn btn-blue" type="button" onClick={openForm}>Get in touch</button>
         </div>
         <div className="pillar-mosaic" aria-label="What Grapevne does for a campus">
           <a className="pillar" href="#the-gap">

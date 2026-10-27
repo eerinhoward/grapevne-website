@@ -876,6 +876,8 @@ main { padding-top: var(--header); }
 
 .uni-stage h1 span { color: var(--grape); }
 
+.uni-stage-copy .btn { margin-top: 22px; }
+
 .uni-stage-copy p {
   margin: 22px 0 0;
   max-width: 22em;
