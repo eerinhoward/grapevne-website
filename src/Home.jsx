@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Layout from './components/Layout'
 
 const SOUND = '/grapevne-phone-sound.mp4'
@@ -160,9 +159,6 @@ export default function Home() {
           <p className="hook">Grapevne is building the default way campuses share leftover food.</p>
           <div className="blurb">
             <p>Taste everything the campus has to offer.</p>
-          </div>
-          <div className="cta-row">
-            <Link to="/universities" className="btn btn-ghost">Learn More</Link>
           </div>
         </div>
       </section>
