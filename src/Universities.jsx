@@ -171,32 +171,34 @@ export default function Universities() {
       {openKey && (
         <button className="demo-backdrop" type="button" aria-label="Close the demo" onClick={closeDemo} />
       )}
-      <section className="page-hero uni-open">
-        <h1 className="display">Cultivating a <span>zero-waste</span> campus.</h1>
+      <section className="uni-stage">
+        <div className="uni-stage-copy">
+          <h1 className="display">Cultivating a <span>zero-waste</span> campus.</h1>
+          <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
+        </div>
+        <div className="pillar-mosaic" aria-label="What Grapevne does for a campus">
+          <a className="pillar" href="#the-gap">
+            <img src="/gathering.jpg" alt="" />
+            <h2>Extra food. Students still looking.</h2>
+            <p>Campus events order for the crowd they hope for. The leftovers usually go in the trash.</p>
+            <span>The gap</span>
+          </a>
+          <a className="pillar" href="#how-it-works">
+            <img src="/university.jpg" alt="" />
+            <h2>Posted in seconds. Seen in the feed.</h2>
+            <p>Organizers post leftover food, and students on that campus see it while it’s still there.</p>
+            <span>How it works</span>
+          </a>
+          <a className="pillar" href="#insights">
+            <img src="/hero-bg.jpg" alt="" />
+            <h2>What the campus shared.</h2>
+            <p>Reporting and data from the feed, so a school can see what was shared.</p>
+            <span>Insights</span>
+          </a>
+        </div>
       </section>
 
-      <section className="pillars" aria-label="What Grapevne does for a campus">
-        <article className="pillar">
-          <img src="/gathering.jpg" alt="" />
-          <h2>Extra food. Students still looking.</h2>
-          <p>Campus events order for the crowd they hope for. The leftovers usually go in the trash.</p>
-          <span>The gap</span>
-        </article>
-        <article className="pillar">
-          <img src="/university.jpg" alt="" />
-          <h2>Posted in seconds. Seen in the feed.</h2>
-          <p>Organizers post leftover food, and students on that campus see it while it’s still there.</p>
-          <span>How it works</span>
-        </article>
-        <article className="pillar">
-          <img src="/hero-bg.jpg" alt="" />
-          <h2>What the campus shared.</h2>
-          <p>Reporting and data from the feed, so a school can see what was shared.</p>
-          <span>Insights</span>
-        </article>
-      </section>
-
-      <section className="know know-one">
+      <section className="know know-one" id="how-it-works">
         <h2 className="display">Get to Know Grapevne.</h2>
         <div className="know-one-row">
           {DEMOS.map((demo) => (
@@ -243,11 +245,16 @@ export default function Universities() {
         </div>
       </section>
 
-      <section className="uni-problem">
+      <section className="uni-problem" id="the-gap">
         <p>As anyone who runs campus events knows, most of them end with extra food. Club meetings, department talks, and catered receptions all order for the crowd they hope for, not the one that shows up. When the event ends, the leftovers usually go in the trash, while students across campus are looking for their next meal. Grapevne closes that gap. Organizers post leftover food in seconds, and students nearby see it in their feed while it’s still there.</p>
         <p>Grapevne takes that institutional challenge and meets it where students already are, in a feed.</p>
         <p>Grapevne started in 2025 after a simple observation: there's a lot of free food on campus, and it doesn't get where it needs to go. Information arrives late. Food goes to waste.</p>
         <p>People usually hear about things through each other. Grapevne makes that process faster, beautifully organized, and campus-wide.</p>
+      </section>
+
+      <section className="uni-problem" id="insights">
+        <h2 className="display">Insights</h2>
+        <p>Reporting and data from the feed, so a school can see what was shared.</p>
       </section>
 
       <section className="campus-now" aria-label="Trusted By">

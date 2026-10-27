@@ -858,13 +858,47 @@ main { padding-top: var(--header); }
 
 .uni-open h1 span { color: var(--grape); }
 
-.pillars {
+.uni-stage {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  width: min(1120px, calc(100% - 40px));
-  margin: 28px auto 12px;
+  grid-template-columns: minmax(260px, 0.82fr) 1.25fr;
+  gap: 36px;
+  align-items: center;
+  width: min(1160px, calc(100% - 40px));
+  margin: 36px auto 20px;
 }
+
+.uni-stage h1 {
+  margin: 0;
+  color: #1d1d1f;
+  font-size: clamp(40px, 4.4vw, 64px);
+  text-align: left;
+}
+
+.uni-stage h1 span { color: var(--grape); }
+
+.uni-stage-copy p {
+  margin: 22px 0 0;
+  max-width: 22em;
+  color: #1d1d1f;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.35;
+}
+
+.pillar-mosaic {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  min-height: 640px;
+}
+
+.pillar-mosaic .pillar:first-child { grid-row: 1 / span 2; }
+
+#how-it-works,
+#the-gap,
+#insights { scroll-margin-top: calc(var(--header) + 16px); }
 
 .pillar {
   position: relative;
@@ -872,11 +906,19 @@ main { padding-top: var(--header); }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 560px;
-  padding: 28px 22px 22px;
+  min-height: 0;
+  padding: 22px 18px 16px;
   border-radius: 28px;
   overflow: hidden;
   color: #fff;
+  text-decoration: none;
+}
+
+.pillar:hover { text-decoration: none; }
+
+.pillar:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -6px;
 }
 
 .pillar img {
@@ -889,7 +931,18 @@ main { padding-top: var(--header); }
   object-fit: cover;
 }
 
-.pillar:nth-child(2) img { object-position: center 18%; }
+.pillar-mosaic .pillar:nth-child(2) img { object-position: center 12%; }
+
+.pillar-mosaic .pillar:not(:first-child) h2 {
+  font-size: clamp(22px, 1.7vw, 28px);
+}
+
+#insights h2 {
+  margin: 0 0 18px;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 48px);
+  text-align: left;
+}
 
 .pillar::after {
   content: "";
@@ -1483,8 +1536,18 @@ form.card { max-width: 680px; margin-left: auto; margin-right: auto; text-align:
     justify-self: auto;
     margin: 0;
   }
-  .pillars { grid-template-columns: 1fr; width: min(1120px, calc(100% - 32px)); }
-  .pillar { min-height: 420px; }
+  .uni-stage {
+    display: block;
+    width: min(1160px, calc(100% - 32px));
+  }
+  .pillar-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    min-height: 0;
+    margin-top: 22px;
+  }
+  .pillar-mosaic .pillar:first-child { grid-row: auto; }
+  .pillar { min-height: 360px; }
   .uni-problem { padding: 36px 22px 8px; }
   .faq-section h2,
   .faq button,
