@@ -935,6 +935,26 @@ main { padding-top: var(--header); }
 
 .pillar-mosaic .pillar:nth-child(2) img { object-position: center 12%; }
 
+.pillar-mosaic .pillar:first-child::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  z-index: -3;
+  background: url("/university2.jpg") center / cover no-repeat;
+  filter: blur(20px);
+}
+
+.pillar-mosaic .pillar:first-child img {
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  width: auto;
+  height: 88%;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  object-fit: fill;
+}
+
 .pillar-mosaic .pillar:not(:first-child) h2 {
   font-size: clamp(22px, 1.7vw, 28px);
 }
