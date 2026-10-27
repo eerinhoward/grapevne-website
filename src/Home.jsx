@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from './components/Layout'
-import DownloadLink from './components/DownloadLink'
 
 const SOUND = '/grapevne-phone-sound.mp4'
 
@@ -163,7 +162,6 @@ export default function Home() {
             <p>Taste everything the campus has to offer.</p>
           </div>
           <div className="cta-row">
-            <DownloadLink className="btn btn-blue">Download</DownloadLink>
             <Link to="/universities" className="btn btn-ghost">Learn More</Link>
           </div>
         </div>
